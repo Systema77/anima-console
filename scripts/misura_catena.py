@@ -18,6 +18,13 @@ FIN DOVE ARRIVA
   · Guarda il CORPO, non il codice. Su Pages e su Cloudflare un indirizzo mai
     esistito risponde 200 con una pagina di ripiego: il codice non prova niente,
     la prova e' l'impronta nel corpo (lezione di SUONO/SQUELCH, 10/08).
+    ⚠️ E un corpo letto A META' non prova nemmeno il contrario. Al primo giro
+    vero (run #1, 06/09) leggevo 200 KB e ho dato «non e' il nostro» a
+    systema77.com/meteo.html: l'impronta stava al byte 227.455 di 252.596.
+    La pagina era sana, era corto il metro. Da qui la regola, che vale oltre
+    questo file: 📜 *un'impronta trovata prova la presenza; un'impronta non
+    trovata prova qualcosa solo se hai letto tutto.* Ora il corpo troncato
+    dichiara di esserlo e l'esito diventa «senza prova», mai un rosso.
   · Dove la prova richiederebbe la chiave (Cloudflare, Porkbun) l'esito e'
     «senza prova»: non verde e non rosso. Un colore inventato e' peggio del
     trattino.
@@ -54,6 +61,7 @@ PAGINA = os.path.join(ROOT, "docs", "regia", "index.html")
 
 CONTROLLO = "https://api.github.com/"   # vivo da qui e dal runner: e' il metro
 ATTESA = 25                             # secondi per bersaglio
+LIMITE = 1_000_000                      # quanto corpo leggo: /meteo.html ne pesa 253 KB
 AGENTE = "systema77-misura-catena/1 (+https://cyberboomer.io/regia/)"
 
 # ── IL REGISTRO ───────────────────────────────────────────────────────────────
@@ -147,25 +155,34 @@ REPO = "Pierluigi-De-Palo/anima-console"
 
 
 # ── interrogazione ────────────────────────────────────────────────────────────
+def leggi(flusso):
+    """Corpo e se l'ho troncato. Chiedo UN byte oltre il tetto proprio per
+    saperlo: senza questo, «l'impronta non c'e'» e «non sono arrivato fin li'»
+    sarebbero la stessa frase, e non lo sono."""
+    dati = flusso.read(LIMITE + 1)
+    return dati[:LIMITE].decode("utf-8", "replace"), len(dati) > LIMITE
+
+
 def chiedi(url: str):
-    """(codice, corpo, guasto). codice 0 = non ho potuto chiedere."""
+    """(codice, corpo, troncato, guasto). codice 0 = non ho potuto chiedere."""
     req = urllib.request.Request(url, headers={"User-Agent": AGENTE}, method="GET")
     try:
         with urllib.request.urlopen(req, timeout=ATTESA) as r:
-            return r.status, r.read(200_000).decode("utf-8", "replace"), None
+            corpo, troncato = leggi(r)
+            return r.status, corpo, troncato, None
     except urllib.error.HTTPError as e:
         # Un 404 e' una risposta: il servizio c'e' e dice di no. Non e' un guasto mio.
-        corpo = ""
+        corpo, troncato = "", False
         try:
-            corpo = e.read(200_000).decode("utf-8", "replace")
+            corpo, troncato = leggi(e)
         except Exception:
             pass
-        return e.code, corpo, None
+        return e.code, corpo, troncato, None
     except Exception as e:
-        return 0, "", type(e).__name__ + ": " + str(e)[:120]
+        return 0, "", False, type(e).__name__ + ": " + str(e)[:120]
 
 
-def esito_bersaglio(codice, corpo, guasto, impronta, atteso="acceso"):
+def esito_bersaglio(codice, corpo, troncato, guasto, impronta, atteso="acceso"):
     if codice == 0:
         return ("muto", guasto or "nessuna risposta")
     vivo = 200 <= codice < 300
@@ -176,6 +193,11 @@ def esito_bersaglio(codice, corpo, guasto, impronta, atteso="acceso"):
     if not vivo:
         return ("muto", f"{codice} — risponde, ma non serve la pagina")
     if impronta and impronta not in corpo:
+        if troncato:
+            # Non ho letto tutto: l'assenza non prova niente. Rosso sarebbe una bugia.
+            return ("senza-prova",
+                    f"{codice}, ma ho letto solo i primi {LIMITE // 1000} KB: "
+                    f"«{impronta}» potrebbe essere piu' avanti")
         # La trappola: 200 non prova niente se il corpo non e' il nostro.
         return ("estraneo", f"{codice}, ma nel corpo manca l'impronta «{impronta}»")
     return ("vivo", f"{codice} · {len(corpo)} byte" + (" · impronta riconosciuta" if impronta else ""))
@@ -188,7 +210,7 @@ def conta_code():
     ② un filtro per etichetta che non trova niente non dice «non c'e' niente»,
        dice «non vedo niente»: qui si scarica la coda NUDA e si contano le
        etichette sopra, cosi' una richiesta senza etichetta non sparisce."""
-    codice, corpo, guasto = chiedi(
+    codice, corpo, _, guasto = chiedi(
         f"https://api.github.com/repos/{REPO}/issues?state=open&per_page=100")
     if codice != 200:
         return None, guasto or f"l'API ha risposto {codice}"
@@ -276,7 +298,7 @@ def main() -> int:
     args = ap.parse_args()
 
     # ── guardia ①: il metro. Senza, nessuna conclusione e' lecita.
-    cod, _, guasto = chiedi(CONTROLLO)
+    cod, _, _, guasto = chiedi(CONTROLLO)
     if cod == 0:
         print(f"✗ non raggiungo nemmeno il bersaglio di controllo ({CONTROLLO}): {guasto}")
         print("  Il guasto e' della mia rete. Nessuna conclusione sulla catena e' lecita.")
@@ -290,8 +312,8 @@ def main() -> int:
         if s["url"] is None:
             stato, dettaglio = "senza-prova", s["perche_senza_prova"]
         else:
-            c, corpo, g = chiedi(s["url"])
-            stato, dettaglio = esito_bersaglio(c, corpo, g, s["impronta"])
+            c, corpo, tr, g = chiedi(s["url"])
+            stato, dettaglio = esito_bersaglio(c, corpo, tr, g, s["impronta"])
             if c:
                 raggiunti += 1
         print(f"  {s['nome']:24s} {stato:12s} {dettaglio[:70]}")
@@ -299,8 +321,8 @@ def main() -> int:
 
     galassia = []
     for nome, url, atteso, mestiere in GALASSIA:
-        c, corpo, g = chiedi(url)
-        stato, dettaglio = esito_bersaglio(c, corpo, g, None, atteso)
+        c, corpo, tr, g = chiedi(url)
+        stato, dettaglio = esito_bersaglio(c, corpo, tr, g, None, atteso)
         if c:
             raggiunti += 1
         print(f"  {nome:24s} {stato:12s} {dettaglio[:70]}")

@@ -65,8 +65,10 @@ jobs:
           fi
           git config user.name  "misura-catena"
           git config user.email "misura-catena@users.noreply.github.com"
-          git commit -- docs/regia/index.html \
-            -m "La catena misurata dal runner: $(date -u '+%Y-%m-%d %H:%M UTC')"
+          # `-m` PRIMA di `--`: dopo i due trattini git legge solo percorsi, e
+          # al run #1 si e' preso «-m» e il messaggio per due nomi di file.
+          git commit -m "La catena misurata dal runner: $(date -u '+%Y-%m-%d %H:%M UTC')" \
+            -- docs/regia/index.html
           git push origin "HEAD:${GITHUB_REF_NAME}"
           echo "✓ pagina aggiornata sul ramo ${GITHUB_REF_NAME}"
 
