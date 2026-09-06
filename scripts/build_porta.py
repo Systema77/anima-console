@@ -564,6 +564,98 @@ def blocco_numeri() -> dict:
                     "per sito, ultimi 7 giorni, quando ci sarà una fonte vera."}
 
 
+def blocco_moviola() -> dict:
+    """Chi si muove e chi no. Il decimo blocco, dal 05/09.
+
+    PERCHE' STA QUI E NON NEL SITO. La moviola completa vive in
+    `comuni/MOVIOLA-77.html` dentro la cartella madre, e li' deve restare: mette
+    in fila nomi di agenti, arcani, quali case sono ferme per ordine e chi ha
+    lavorato in che giorno. Questo repo e' PUBBLICO. Pubblicarla in `docs/`
+    sarebbe mettere in piazza la mappa interna dell'agenzia — le stesse parole
+    che l'elenco delle spie qui sotto tiene fuori dalla pagina. Quindi entra come
+    tutto il resto: **dentro il cifrato**, e solo il riassunto che serve al
+    Direttore quando apre il telefono.
+
+    NON RISCRIVE LA LOGICA: importa `scripts/genera-moviola.py` dalla cartella
+    madre e chiama le sue funzioni. Due viste degli stessi file che leggessero
+    due liste diverse prima o poi si contraddirebbero — e qui il rischio e'
+    concreto, perche' l'elenco delle case congelate lo leggono gia' in tre
+    (semaforo, moviola, questa porta).
+
+    Se la cartella madre non e' raggiungibile il blocco si dichiara vuoto invece
+    di indovinare: una casella che dice «non ho potuto guardare» e' utile, una
+    che mostra numeri vecchi fa prendere decisioni sbagliate.
+    """
+    import importlib.util
+    import datetime as _dt
+
+    gen = None
+    for cand in (os.path.join(os.path.dirname(ROOT), "ROOT_CLODE"), os.path.dirname(ROOT)):
+        prova = os.path.join(cand, "scripts", "genera-moviola.py")
+        if os.path.exists(prova):
+            gen = prova
+            break
+    if not gen:
+        return {"ok": False, "nota": "Cartella madre non raggiungibile da qui: la moviola "
+                                     "non e' stata misurata. Rigenera la porta dal Mac."}
+
+    try:
+        spec = importlib.util.spec_from_file_location("_moviola", gen)
+        m = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(m)
+
+        gg = m.movimenti()
+        gelo, svegli, atto = m.congelate()
+        cieche = m.invisibili_a_git()
+        dischi = {c: m.dal_disco(os.path.join(os.path.dirname(gen), "..", c)) for c in cieche}
+        date = m.serie(gg)
+        dentro = set(date)
+        dischi = {c: {d: n for d, n in v.items() if d in dentro} for c, v in dischi.items()}
+        oggi = _dt.date.today()
+
+        righe = []
+        for a in m.agenti():
+            cieca = a["cartella"] in cieche
+            fonte = dischi.get(a["cartella"], {}) if cieca else None
+            giorni = {d: (fonte.get(d, 0) if cieca else gg.get(d, {}).get(a["cartella"], 0))
+                      for d in date}
+            vivi = [d for d in date if giorni[d]]
+            ultimo = vivi[-1] if vivi else ""
+            fermo = (oggi - _dt.date.fromisoformat(ultimo)).days if ultimo else None
+            righe.append({
+                "n": a["nome"],
+                "ultimo": ultimo or "—",
+                "fermo": fermo,
+                "gelo": a["nome"] in gelo or a["cartella"] in gelo,
+                "sveglia": a["nome"] in svegli or a["cartella"] in svegli,
+                "disco": cieca,
+            })
+
+        # l'ordine e' quello che serve a chi guarda: prima chi e' fermo senza un ordine
+        righe.sort(key=lambda r: (r["gelo"], r["fermo"] is not None and r["fermo"] < m.FERMO_DA,
+                                  -(r["fermo"] or 999)))
+        fermi = [r for r in righe if not r["gelo"]
+                 and (r["fermo"] is None or r["fermo"] >= m.FERMO_DA)]
+        return {
+            "ok": True,
+            "giorni": len(date),
+            "dal": date[0] if date else "",
+            "atto": atto,
+            "soglia": m.FERMO_DA,
+            "conta": {"totale": len(righe),
+                      "gelo": sum(1 for r in righe if r["gelo"]),
+                      "fermi": len(fermi),
+                      "vivi": sum(1 for r in righe if not r["gelo"] and r["fermo"] is not None
+                                  and r["fermo"] < m.FERMO_DA)},
+            "righe": righe,
+            "dove": "comuni/MOVIOLA-77.html — la pagina intera, sul Mac: i giorni sono "
+                    "fotogrammi e girano. Qui c'e' solo il riassunto.",
+        }
+    except Exception as e:                      # noqa: BLE001 — meglio vuoto che finto
+        return {"ok": False, "nota": f"Moviola non misurata ({type(e).__name__}). "
+                                     f"La pagina intera resta in comuni/MOVIOLA-77.html."}
+
+
 def payload_esistente(html: str):
     m = re.search(rf'<script[^>]*id="{SEGNO}"[^>]*>(.*?)</script>', html, re.S)
     if not m:
@@ -902,6 +994,34 @@ th{color:var(--cia);font-family:ui-monospace,Menlo,monospace;font-size:10px;lett
     var nm = d.numeri || {};
     h += '<h2>Numeri</h2><div class="vuoto">' + esc(nm.nota) + '</div>';
 
+    // ⑤ LA MOVIOLA — chi si muove e chi no. Dal 05/09.
+    //    La pagina intera resta sul Mac: qui e' materiale interno, e questo repo
+    //    e' pubblico. Dentro il cifrato ci sta; in docs/ no.
+    var mv = d.moviola || {};
+    h += '<h2>Moviola</h2>';
+    if (!mv.ok) {
+      h += '<div class="vuoto">' + esc(mv.nota || 'Non misurata.') + '</div>';
+    } else {
+      var c = mv.conta || {};
+      h += '<div class="avv">' + c.vivi + ' in movimento · ' + c.gelo + ' ferme per ordine · '
+         + '<b>' + c.fermi + ' ferme senza un ordine</b>'
+         + ' — su ' + c.totale + ' case, ' + mv.giorni + ' giorni dal ' + esc(mv.dal || '?') + '.</div>';
+      h += '<div class="scorre"><table><tr><th>Casa</th><th>Stato</th><th>Ultimo movimento</th></tr>';
+      (mv.righe || []).forEach(function (r) {
+        var st = r.sveglia ? 'sveglia per una cosa sola'
+               : r.gelo ? 'ferma per ordine'
+               : r.fermo == null ? 'mai mossa'
+               : r.fermo >= mv.soglia ? 'ferma da ' + r.fermo + ' giorni'
+               : 'in movimento';
+        var cl = (!r.gelo && (r.fermo == null || r.fermo >= mv.soglia)) ? classeEta(99) : classeEta(1);
+        h += '<tr><td class="mono">' + esc(r.n) + (r.disco ? ' <span class="meta">dal disco</span>' : '')
+           + '</td><td class="' + cl + '">' + esc(st) + '</td>'
+           + '<td class="mono">' + esc(r.ultimo) + '</td></tr>';
+      });
+      h += '</table></div>';
+      h += '<div class="vuoto">' + esc(mv.dove) + '</div>';
+    }
+
     h += '<h2>Strumenti</h2><div class="griglia">';
     ((d.strumenti || {}).voci || []).forEach(function (v) {
       h += '<div class="att"><div class="n"><a href="' + esc(v.dove) + '">' + esc(v.nome) + ' →</a></div>'
@@ -1058,6 +1178,7 @@ def main() -> None:
         "digest": blocco_digest(),
         "pr": blocco_pr(),
         "numeri": blocco_numeri(),
+        "moviola": blocco_moviola(),
     }
 
     vecchio = None
