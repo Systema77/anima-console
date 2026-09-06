@@ -1,0 +1,78 @@
+# COSA FA — misura la catena (strumenti, galassia, code) e riscrive il blocco
+#   «in piazza» della plancia, `docs/regia/`. Poi committa la pagina sul ramo,
+#   cosi' il Direttore la apre dal telefono e legge una misura, non un ricordo.
+# PERCHE ESISTE — da una sessione agente questa misura NON si puo' fare:
+#   l'egress risponde 403 al CONNECT su ogni host nostro (misurato il 06/09, e
+#   gia' misurato da PROVINO il 04/09). Il runner ha la rete che l'agente non ha.
+#   E' lo stesso motivo per cui esistono «Prova della porta» e «Prova del Worker».
+# FIN DOVE ARRIVA — solo GET su host nostri e sull'API pubblica delle issue.
+#   Nessun POST, nessun `authorization`, nessun segreto: lo script non legge
+#   nessuna chiave e non ne manda nessuna. Misura la strada, non apre niente.
+#   Le due chiavi che si proverebbero solo usandole (Cloudflare, Porkbun)
+#   restano «senza prova»: non verdi e non rosse.
+# COSTO — zero: nessuna API a pagamento, nessun token.
+# USO — Actions -> «Misura della catena» -> Run workflow. Parte anche da sola
+#   quando si tocca questo file o lo script: il filtro `paths` e' anche la
+#   guardia contro il rimbalzo, perche' il commit di ritorno tocca solo
+#   docs/regia/index.html e quindi non si richiama da capo.
+# — creato da SQUELCH, 2026-09-06
+
+name: Misura della catena
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/misura-catena.yml'
+      - 'scripts/misura_catena.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: misura-catena-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  misura:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 0 · Bersaglio di controllo — la rete del runner funziona?
+        # Prima di dichiarare morto qualcosa si prova un bersaglio noto vivo.
+        # Se muore anche questo, il guasto e' del runner e tutto il resto del
+        # referto va buttato. Lo script rifa' questo controllo per conto suo:
+        # qui sta perche' il log lo dica prima di ogni altra riga.
+        run: |
+          set -u
+          COD=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 25 https://github.com/ || echo 000)
+          echo "github.com: $COD"
+          [ "$COD" != "000" ] || { echo "✗ rete del runner morta: nessuna conclusione lecita"; exit 1; }
+
+      - name: 1 · La misura
+        # Uscita 2 = «il metro risponde ma nessuno dei nostri»: cieco chi misura.
+        # Lo script in quel caso NON scrive, e il passo deve fallire: un referto
+        # che non ha misurato niente non deve sembrare andato bene.
+        run: python3 scripts/misura_catena.py
+
+      - name: 2 · Committa la pagina, se e' cambiata
+        run: |
+          set -eu
+          if [ -z "$(git status --porcelain docs/regia/index.html)" ]; then
+            echo "= la pagina dice gia' quello che ho misurato: niente da committare"
+            exit 0
+          fi
+          git config user.name  "misura-catena"
+          git config user.email "misura-catena@users.noreply.github.com"
+          git commit -- docs/regia/index.html \
+            -m "La catena misurata dal runner: $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          echo "✓ pagina aggiornata sul ramo ${GITHUB_REF_NAME}"
+
+      - name: 3 · Cosa legge il Direttore — le righe, in chiaro nel log
+        if: always()
+        run: |
+          set -u
+          sed -n '/REGIA:CATENA:INIZIO/,/REGIA:CATENA:FINE/p' docs/regia/index.html \
+            | sed -e 's/<[^>]*>/ /g' -e 's/  */ /g' -e '/^ *$/d'
