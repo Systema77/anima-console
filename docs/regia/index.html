@@ -67,6 +67,10 @@
      La differenza si vede prima di leggerla. Una cosa aperta ha UN lato e la
      superficie liscia; una cosa chiusa ha QUATTRO lati e la superficie rigata.
      Nessuna delle due porta scritto cos'è: lo dice la forma. (JUDY, 06/09) */
+  .ingresso{border:0;border-left:2px solid var(--green);background:var(--panel);
+    border-radius:0 4px 4px 0;padding:11px 14px;margin:18px 0 0;font-size:13.5px;color:var(--muted)}
+  .ingresso b{color:var(--green)}
+  .ingresso i{font-style:normal;color:var(--txt)}
   .piazza{background:var(--panel);border:0;border-left:2px solid var(--cyan);
     border-radius:0 4px 4px 0;padding:2px 15px 12px}
   .chiave{border:2px solid var(--cyan);border-radius:4px;
@@ -157,6 +161,17 @@
        STRATO PUBBLICO — spazio libero: qui si innesta la pagina vera.
        Chi scrive qui non deve toccare né la serratura né il motore in fondo.
        ═══════════════════════════════════════════════════════════════════════ -->
+
+  <!-- Riga d'impianto, non di vetrina: il 06/09 l'unico utente ha detto «la plancia
+       non l'ho MAI vista sul web, non riesco ad accedere». Non era la rete e non era
+       la frase: era che chi arriva non sa che questa metà è già aperta, e si ferma
+       davanti al campo della passphrase credendo che chiuda tutto. Una porta che
+       sembra chiusa è chiusa. @ECHO se la riscrivi meglio, riscrivila. -->
+  <div class="ingresso">
+    <b>Sei già dentro.</b> Tutto quello che sta qui sopra la fascia rigata non chiede
+    niente: strumenti, galassia, code, prompt. La parola d'ordine serve <i>solo</i> per
+    la parte a quattro lati, in fondo — e se non ce l'hai, non ti manca niente di questa.
+  </div>
   <div id="strato-pubblico">
     <section class="box">
       <p>Questa pagina non è una vetrina: è dove la squadra controlla lo stato del
