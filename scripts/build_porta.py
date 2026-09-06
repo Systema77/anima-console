@@ -154,17 +154,56 @@ def blocco_strumenti() -> dict:
     ]}
 
 
+def registro_chiavi() -> list:
+    """Le chiavi dal registro vero: `comuni/REGISTRO-CHIAVI.md` nella cartella madre.
+
+    Fino al 06/09 questo elenco era scritto a mano e aveva DUE voci. Il registro
+    ne aveva SEI, con lo stato e la data — e fra quelle che mancavano c'era una
+    credenziale dichiarata esposta dal 09/08. Un elenco scritto a mano invecchia
+    il giorno dopo e nessuno se ne accorge: la stessa dottrina della moviola e
+    dei prompt, applicata alle chiavi.
+
+    NOMI E STATO, MAI VALORI. Il registro non ne contiene, questa funzione non ne
+    cerca, e la pagina non ne mostra: i segreti vivono nel Portachiavi e da li'
+    non escono. Una porta che custodisse le chiavi vere varrebbe quanto la sua
+    frase di sblocco — cioe' molto meno delle chiavi.
+    """
+    for cand in (os.path.join(os.path.dirname(ROOT), "ROOT_CLODE"), os.path.dirname(ROOT)):
+        reg = os.path.join(cand, "comuni", "REGISTRO-CHIAVI.md")
+        if os.path.exists(reg):
+            break
+    else:
+        return []
+
+    fuori = []
+    for riga in open(reg, encoding="utf-8"):
+        if not riga.startswith("|") or "---" in riga:
+            continue
+        celle = [c.strip() for c in riga.strip().strip("|").split("|")]
+        if len(celle) < 5 or celle[0].lower() in ("servizio", "chiave"):
+            continue
+        stato = re.sub(r"[*`]", "", celle[4])
+        fuori.append({
+            "nome": re.sub(r"[*`]", "", celle[0]),
+            "serve": re.sub(r"[*`]", "", celle[1]),
+            "vive": re.sub(r"[*`]", "", celle[2]),
+            "stato": stato[:150] + ("\u2026" if len(stato) > 150 else ""),
+            "rosso": "\U0001F534" in celle[4],
+        })
+    return fuori
+
+
 def blocco_chiavi() -> dict:
     """Il registro delle chiavi: NOMI e STATO, mai valori. Mai."""
+    voci = registro_chiavi()
+    if not voci:                       # cartella madre non raggiungibile: si dichiara
+        voci = [{"nome": "(registro non raggiungibile)",
+                 "serve": "Rigenera la porta dal Mac e l'elenco torna vero",
+                 "vive": "comuni/REGISTRO-CHIAVI.md", "stato": "\u2014", "rosso": False}]
     return {
         "regola": "Qui non c'è nessun valore, e non deve entrarcene mai uno. "
                   "Solo il nome della chiave, a cosa serve e dove vive.",
-        "voci": [
-            {"nome": "systema77.regia", "serve": "Aprire questa porta e la plancia /regia/",
-             "vive": "Portachiavi del Mac", "stato": "attiva"},
-            {"nome": "ANTHROPIC_API_KEY", "serve": "L'automazione dei verdetti (GitHub Actions)",
-             "vive": "GitHub → Settings → Secrets → Actions", "stato": "da verificare col workflow «Prova della chiave»"},
-        ],
+        "voci": voci,
         "comandi": [
             {"cosa": "Leggere una chiave dal Portachiavi",
              "come": "bash squadra/chiavi.sh leggi regia"},
@@ -1043,8 +1082,10 @@ th{color:var(--cia);font-family:ui-monospace,Menlo,monospace;font-size:10px;lett
     h += '<div class="scorre">';
     h += '<table><tr><th>Chiave</th><th>A cosa serve</th><th>Dove vive</th><th>Stato</th></tr>';
     (k.voci || []).forEach(function (v) {
-      h += '<tr><td class="mono">' + esc(v.nome) + '</td><td>' + esc(v.serve)
-         + '</td><td>' + esc(v.vive) + '</td><td>' + esc(v.stato) + '</td></tr>';
+      // le rosse in testa all'occhio: sono quelle che aspettano una mano tua
+      h += '<tr><td class="mono">' + (v.rosso ? '\U0001F534 ' : '') + esc(v.nome) + '</td><td>' + esc(v.serve)
+         + '</td><td>' + esc(v.vive) + '</td><td class="' + (v.rosso ? 'vecchio' : '') + '">'
+         + esc(v.stato) + '</td></tr>';
     });
     h += '</table></div>';
     (k.comandi || []).forEach(function (c) {
