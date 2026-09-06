@@ -348,6 +348,12 @@ def main() -> int:
 
     testo = open(PAGINA, encoding="utf-8").read()
     fuori = dentro(testo, "CATENA", componi(strumenti, galassia, code, quando, CONTROLLO))
+    # L'ora della misura va anche in TESTA, dove si guarda per primo: in fondo alla
+    # pagina nessuno la cerca. Il 06/09 il Direttore ha letto la data dell'ultimo
+    # verdetto in cima («ha una settimana») senza vedere che la catena sotto era di
+    # venti minuti prima. Un dato fresco nascosto sotto uno vecchio non e' fresco.
+    fuori = dentro(fuori, "QUANDO",
+                   f'<div class="kv"><b>misurata</b><span>{html.escape(quando)}</span></div>')
     if fuori == testo:
         print("= nessun cambiamento in pagina")
         return 0
