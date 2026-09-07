@@ -1,0 +1,96 @@
+{
+  "titolo": "Mappa dei player globali dell'AI (LLM e infrastruttura)",
+  "oggetto": "OpenAI, Anthropic, Google DeepMind, Meta, Nvidia, DeepSeek e il resto del mercato AI mondiale",
+  "domanda": "Sono questi i principali player del mercato AI mondiale? Chi manca? Come interagiscono? Cosa fanno/prevedono di fare in un mercato definito il più ricco dal dopoguerra? Come si organizzeranno? A che punto sono gli Stati rispetto ai privati negli LLM?",
+  "modalita": "rapida",
+  "punteggio": 70,
+  "etichetta": "affidabile",
+  "verdetto": "La lista indicata è corretta ma incompleta: mancano almeno Microsoft, Amazon, xAI, Mistral e i giganti cinesi (Alibaba, Baidu, Tencent, ByteDance, Huawei), oltre ai produttori di chip alternativi a Nvidia (AMD, TSMC come foundry chiave) e agli hub sovrani del Golfo (UAE, Arabia Saudita). Il settore è dominato da ecosistemi verticali privati (cloud+chip+modello+app) fortemente interconnessi da investimenti incrociati, mentre gli Stati agiscono soprattutto come regolatori, finanziatori e clienti, raramente come sviluppatori diretti di LLM frontiera. Attenzione: questa sintesi non è stata verificata con ricerche live in questo turno per un limite tecnico dello strumento, quindi trattarla come inquadramento generale da aggiornare, non come fact-check puntuale su cifre/notizie dell'ultima ora.",
+  "green_flags": [
+    "I 6 nomi citati sono realmente tra i soggetti più rilevanti e sono ben documentati pubblicamente (prodotti reali, uffici, dipendenti, clienti enterprise verificabili)",
+    "Le dinamiche di partnership (Microsoft-OpenAI, Amazon/Google-Anthropic, Nvidia come fornitore quasi universale) sono strutture note e ripetutamente riportate da stampa economica",
+    "DeepSeek ha rilasciato pesi open e benchmark verificabili da terze parti, non solo annunci marketing"
+  ],
+  "red_flags": [
+    "Assenza in questo turno di ricerche live per confermare cifre e news più recenti (limite tecnico del tool, non del contenuto)",
+    "Il mercato AI è soggetto a annunci molto gonfiati (valutazioni, capex futuri) che vanno distinti dai fatti già realizzati",
+    "Le cifre di investimento 'più ricco mercato dal dopoguerra' sono spesso affermazioni giornalistiche/PR, non misure economiche standardizzate e comparabili storicamente in modo rigoroso"
+  ],
+  "fonti": [
+    {
+      "titolo": "OpenAI - sito ufficiale",
+      "url": "https://openai.com",
+      "tipo": "ufficiale",
+      "sostiene": "neutro",
+      "autorevolezza": 5
+    },
+    {
+      "titolo": "Anthropic - sito ufficiale",
+      "url": "https://www.anthropic.com",
+      "tipo": "ufficiale",
+      "sostiene": "neutro",
+      "autorevolezza": 5
+    },
+    {
+      "titolo": "Google DeepMind - sito ufficiale",
+      "url": "https://deepmind.google",
+      "tipo": "ufficiale",
+      "sostiene": "neutro",
+      "autorevolezza": 5
+    },
+    {
+      "titolo": "Meta AI - sito ufficiale",
+      "url": "https://ai.meta.com",
+      "tipo": "ufficiale",
+      "sostiene": "neutro",
+      "autorevolezza": 5
+    },
+    {
+      "titolo": "Nvidia - sito ufficiale",
+      "url": "https://www.nvidia.com",
+      "tipo": "ufficiale",
+      "sostiene": "neutro",
+      "autorevolezza": 5
+    },
+    {
+      "titolo": "DeepSeek - sito ufficiale",
+      "url": "https://www.deepseek.com",
+      "tipo": "ufficiale",
+      "sostiere": "neutro",
+      "autorevolezza": 4
+    }
+  ],
+  "timeline": [
+    {
+      "data": "2015-12",
+      "evento": "Fondazione di OpenAI come no-profit"
+    },
+    {
+      "data": "2019-01",
+      "evento": "Microsoft investe in OpenAI, inizio partnership strategica su cloud Azure"
+    },
+    {
+      "data": "2021-05",
+      "evento": "Ex ricercatori OpenAI fondano Anthropic"
+    },
+    {
+      "data": "2023-2024",
+      "evento": "Amazon e Google investono miliardi in Anthropic, restando anche concorrenti diretti con modelli propri"
+    },
+    {
+      "data": "2023-07",
+      "evento": "Meta rilascia Llama 2 in modalità open-weight, differenziandosi dalla strategia chiusa di OpenAI/Anthropic"
+    },
+    {
+      "data": "2025-01",
+      "evento": "DeepSeek (Cina) rilascia il modello R1, causando forte reazione sui mercati per l'efficienza dichiarata a basso costo"
+    },
+    {
+      "data": "2025-01",
+      "evento": "Annuncio del progetto infrastrutturale 'Stargate' (OpenAI, Oracle, SoftBank, MGX) per investimenti massicci in data center AI"
+    }
+  ],
+  "nota_sicurezza": "Nessun segnale di malware o phishing: la richiesta è un'analisi di mercato, non un link o un'offerta da verificare per truffa. Attenzione generale: diffidare di siti/app che si spacciano per 'ChatGPT', 'Claude' o 'Gemini' ufficiali con domini simili ma non corrispondenti a quelli reali sopra elencati.",
+  "issue": 46,
+  "data_verifica": "2026-09-07"
+}
