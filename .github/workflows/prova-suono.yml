@@ -52,6 +52,18 @@ jobs:
           npx playwright install --with-deps chromium
           node -e "require.resolve('playwright'); console.log('playwright importabile: si')"
 
+      - name: 1b · I file da cui dipende il lettore
+        env:
+          INDIRIZZO: ${{ inputs.indirizzo }}
+        run: |
+          set -u
+          BASE="${INDIRIZZO%/}"
+          for f in onda.json radio-player.js orario.js; do
+            echo "== $f"
+            curl -sS -o /tmp/f -w '   codice: %{http_code} · byte: %{size_download} · tipo: %{content_type}\n' --max-time 25 "$BASE/$f" || true
+            head -c 220 /tmp/f | tr -d '\r'; echo
+          done
+
       - name: 2 · Ascolta
         env:
           INDIRIZZO: ${{ inputs.indirizzo }}
@@ -63,8 +75,11 @@ jobs:
           const URL = process.env.INDIRIZZO, SEC = Number(process.env.SECONDI || 12);
           const b = await chromium.launch({ args: ['--autoplay-policy=no-user-gesture-required'] });
           const p = await (await b.newContext()).newPage();
-          const errori = [];
-          p.on('pageerror', e => errori.push(e.message));
+          const errori = [], voci = [];
+          p.on('pageerror', e => errori.push('pageerror: ' + e.message));
+          // Il player, quando non parte, LO DICE in console. Non ascoltarlo è
+          // stato il difetto dei run #2 e #3: la risposta era lì e non la leggevo.
+          p.on('console', m => voci.push(`[${m.type()}] ${m.text()}`.slice(0, 200)));
           const r = await p.goto(URL, { waitUntil: 'load', timeout: 60000 });
           console.log(`pagina: ${r.status()} · ${(await p.content()).length} byte`);
 
@@ -95,6 +110,8 @@ jobs:
               testo: (document.body.innerText || '').trim().slice(0, 400),
             }));
             for (const [k, v] of Object.entries(dentro)) console.log(`  ${k.padEnd(10)} ${v}`);
+            if (voci.length) { console.log('\n── COSA DICE IL PLAYER ──'); voci.forEach(v => console.log('  ' + v)); }
+            if (errori.length) { console.log('\n── ERRORI ──'); errori.forEach(v => console.log('  ' + v)); }
             console.log('\n✗ Nessun elemento audio, nemmeno dopo 15 secondi dal click.');
             console.log('  Questo NON dice «il file non suona»: dice che la pagina servita');
             console.log('  non contiene un lettore. Il perche\' e\' la prossima domanda.');
