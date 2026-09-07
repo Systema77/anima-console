@@ -37,14 +37,28 @@ jobs:
           [ "$COD" != "000" ] || { echo "✗ rete del runner morta: nessuna conclusione lecita"; exit 1; }
 
       - name: 1 · Il browser
-        run: npx --yes playwright@1.56.1 install --with-deps chromium
+        # ⚠️ `npx playwright install` scarica i BROWSER ma non lascia il pacchetto
+        #   importabile: uno script fuori dal workspace muore con
+        #   ERR_MODULE_NOT_FOUND prima di misurare qualunque cosa. E' costato il
+        #   run #1 di questo stesso workflow: un rosso che non diceva niente
+        #   sulla radio, solo su di me. Quindi si installa NEL workspace, lo
+        #   script gira da li', e si verifica che il pacchetto si importi PRIMA
+        #   di provare ad ascoltare.
+        run: |
+          set -u
+          cd "$GITHUB_WORKSPACE"
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund --silent playwright@1.56.1
+          npx playwright install --with-deps chromium
+          node -e "require.resolve('playwright'); console.log('playwright importabile: si')"
 
       - name: 2 · Ascolta
         env:
           INDIRIZZO: ${{ inputs.indirizzo }}
           SECONDI: ${{ inputs.secondi }}
         run: |
-          cat > /tmp/ascolta.mjs <<'JS'
+          cd "$GITHUB_WORKSPACE"
+          cat > ascolta.mjs <<'JS'
           import { chromium } from 'playwright';
           const URL = process.env.INDIRIZZO, SEC = Number(process.env.SECONDI || 12);
           const b = await chromium.launch({ args: ['--autoplay-policy=no-user-gesture-required'] });
@@ -117,4 +131,4 @@ jobs:
           }
           console.log('\n✓ Il suono esce davvero. Resta il gusto, che è del Direttore.');
           JS
-          node /tmp/ascolta.mjs
+          node ascolta.mjs
