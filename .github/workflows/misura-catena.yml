@@ -20,6 +20,20 @@
 name: Misura della catena
 
 on:
+  # ⏱ TRE VOLTE AL GIORNO — 06:00, 12:00 e 18:00 UTC (08 · 14 · 20 in Italia).
+  #   Ordine del Direttore del 07/09: «trova un modo di tenere aggiornata la regia,
+  #   inizio finalmente a usarla». Prima girava solo a mano o quando si toccava lo
+  #   script: la plancia diceva il vero dell'ultima volta che qualcuno l'aveva
+  #   lanciata, che non e' la stessa cosa.
+  #   Il passo 2 committa SOLO se la pagina e' cambiata: un giro a vuoto non lascia
+  #   traccia e non costa niente.
+  #   ⚠️ CONSEGUENZA DA SAPERE, ed e' la domanda che SQUELCH aveva lasciato aperta il
+  #   06/09: cosi' il workflow scrive dentro `docs/` da solo, che per regola e' del
+  #   Direttore. E' il prezzo di una console che si aggiorna da se', e l'ha chiesto
+  #   lui. Scrive solo il blocco fra i marcatori, mai testo editoriale, e ogni
+  #   scrittura resta un commit visibile. Per spegnerlo: si toglie `schedule`.
+  schedule:
+    - cron: '0 6,12,18 * * *'
   workflow_dispatch:
   push:
     paths:

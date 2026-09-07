@@ -444,6 +444,31 @@ QUANDO HAI FINITO - `DROP/STATO.md` riscritto in testa, una voce in cima a
     </div>
     <div class="esito" id="esito-comando" role="status" aria-live="polite"></div>
 
+    <h2>Quello che puoi fare tu <i></i></h2>
+    <p class="nota" style="margin:0 0 14px">I comandi qui sopra <b>depositano una richiesta</b>: aprono una issue precompilata su GitHub, con l'etichetta giusta, e qualcuno la lavora. Questi qui sotto invece <b>li esegui tu</b>, e rispondono subito. Il bottone <i>copia</i> te li mette negli appunti.</p>
+
+    <article class="pr"><div class="pr-t"><span class="pr-n">Le chiavi — metterle, leggerle, elencarle</span><button type="button" class="copia" data-per="c-chiavi">copia</button></div><div class="pr-m">Dal Terminale del Mac. Il valore lo chiede a schermo spento: non passa dalla riga di comando e non finisce nella cronologia. Non incollare mai una chiave in una chat.</div><pre id="c-chiavi">cd ~/Desktop/ROOT_CLODE/anima-console
+bash squadra/chiavi.sh lista            # quali chiavi abbiamo (nomi, mai valori)
+bash squadra/chiavi.sh setta open-meteo # ne mette una nuova, a schermo spento
+bash squadra/chiavi.sh leggi regia      # la frase che apre questa pagina</pre></article>
+
+    <article class="pr"><div class="pr-t"><span class="pr-n">Il collaudo di una casa — rosso = non si pubblica</span><button type="button" class="copia" data-per="c-collaudo">copia</button></div><div class="pr-m">Apre le pagine in un browser vero a 320 · 768 · 1600 px e misura. Se non trova Playwright lo dice, invece di fingere di aver guardato. Poi leggi la sezione 6: elenca le promesse che solo una persona può aprire.</div><pre id="c-collaudo">cd ~/Desktop/ROOT_CLODE/systema77-site
+node strumenti/collaudo.mjs</pre></article>
+
+    <article class="pr"><div class="pr-t"><span class="pr-n">Il giro della galassia — una galassia si rompe FRA le case</span><button type="button" class="copia" data-per="c-giro">copia</button></div><div class="pr-m">Lancia il guardiano di ogni casa, controlla che da ognuna si arrivi alle altre, e confronta quello che le pagine dichiarano col registro unico. Vuole le case clonate una accanto all'altra.</div><pre id="c-giro">cd ~/Desktop/ROOT_CLODE/systema77-site
+node strumenti/galassia.mjs</pre></article>
+
+    <article class="pr"><div class="pr-t"><span class="pr-n">La bacheca corta — dopo aver scritto una voce</span><button type="button" class="copia" data-per="c-bacheca">copia</button></div><div class="pr-m">Si scrive in <code>comuni/BACHECA.md</code>, in cima. Poi si rigenera la versione corta, che è quella che leggono gli agenti quando nascono. Il file corto non si scrive mai a mano.</div><pre id="c-bacheca">cd ~/Desktop/ROOT_CLODE
+python3 scripts/genera-bacheca-recente.py</pre></article>
+
+    <p class="nota" style="margin:16px 0 8px"><b>E queste si aprono col dito, dal telefono.</b> Sono misure che da una chat non si possono fare — l'egress verso i nostri host risponde 403 — ma il runner di GitHub sì.</p>
+    <ul class="nota" style="margin:0 0 4px 18px;line-height:1.9">
+      <li><a href="https://github.com/Systema77/anima-console/actions/workflows/prova-porta.yml" rel="noopener" target="_blank">Prova della porta</a> → <i>Run workflow</i>: sei case, certificato, codice, byte e <code>last-modified</code>. È la risposta a «cosa abbiamo online di nuovo?»</li>
+      <li><a href="https://github.com/Systema77/anima-console/actions/workflows/misura-catena.yml" rel="noopener" target="_blank">Misura della catena</a> → aggiorna il blocco qui sopra. Da oggi parte da sola tre volte al giorno (08 · 14 · 20).</li>
+      <li><a href="https://github.com/Systema77/anima-console/pulls" rel="noopener" target="_blank">Le PR aperte</a> → quello che aspetta la tua firma.</li>
+      <li><a href="https://github.com/Systema77/anima-console/issues?q=is%3Aissue+is%3Aopen" rel="noopener" target="_blank">La coda, senza filtro</a> → <b>senza</b>, apposta: un filtro che non trova niente non dice «non c'è niente», dice «non vedo niente». Il 17/08 tre richieste vere sono rimaste ferme cinque giorni per questo.</li>
+    </ul>
+
     <h2>Il quadro <i></i></h2>
     <div id="innesto"></div>
   </section>
