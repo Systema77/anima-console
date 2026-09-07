@@ -1,3 +1,8 @@
+# AGGIORNATO 2026-09-07 (D.R.A.G.O.) — passo 5: le altre tre case (systema77.com,
+#   animagame.io, anima.solar). Motivo: i sette repo sono passati all'organizzazione
+#   GitHub `Systema77` e un trasferimento puo' far cadere il dominio di Pages. Questa
+#   prova ne guardava due su sei: sulle altre quattro «non si e' rotto niente» era una
+#   speranza. (La radio era gia' al passo 4.)
 # COSA FA — risponde a tre domande che da una sessione agente non si possono
 #   fare (l'egress risponde 403 su ogni host nostro): ① la PORTA di
 #   cyberboomer.io arriva in HTTPS con un certificato valido, ed è la porta
@@ -72,3 +77,21 @@ jobs:
           COD=$(curl -sS -o /tmp/x.html -w '%{http_code}' --max-time 25 -A 'Mozilla/5.0' https://x.com/cyberboomer || echo 000)
           echo "https://x.com/cyberboomer → $COD (X serve una shell JS a tutti: il codice da solo non dice se l'account esiste)"
           grep -o '<title>[^<]*' /tmp/x.html | head -1 || true
+
+      - name: 5 · Le altre tre case — systema77.com, animagame.io, anima.solar
+        run: |
+          set -u
+          # PERCHE' — il 07/09 i sette repo sono passati all'organizzazione GitHub `Systema77`.
+          # Un trasferimento di proprieta' puo' far cadere il dominio personalizzato di Pages, e
+          # questa prova guardava due case su sei: cyberboomer.io e .ninja. Le altre tre non le
+          # misurava nessuno, quindi «il trasloco non ha rotto niente» era una speranza, non una
+          # misura. Solo GET e HEAD, come il resto del file.
+          for casa in systema77.com animagame.io anima.solar; do
+            echo "== $casa =="
+            echo | openssl s_client -connect "$casa":443 -servername "$casa" 2>/dev/null \
+              | openssl x509 -noout -subject -dates 2>/dev/null || echo "  ✗ nessun certificato letto"
+            COD=$(curl -sS -o /tmp/casa.html -w '%{http_code}' --max-time 25 "https://$casa/" || echo 000)
+            echo "  codice: $COD · byte: $(wc -c < /tmp/casa.html)"
+            grep -o '<title>[^<]*' /tmp/casa.html | head -1 | sed 's/^/  /'
+            curl -sSI --max-time 25 "https://$casa/" | grep -i -E '^(server|last-modified):' | sed 's/^/  /' || true
+          done
