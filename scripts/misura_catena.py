@@ -151,7 +151,7 @@ CODE = [
     ("commessa",         "Commesse dal modulo, in attesa della ronda"),
     ("regia",            "Comandi premuti da questa plancia"),
 ]
-REPO = "Pierluigi-De-Palo/anima-console"
+REPO = "Systema77/anima-console"
 
 
 # ── interrogazione ────────────────────────────────────────────────────────────
