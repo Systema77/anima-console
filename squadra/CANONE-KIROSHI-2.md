@@ -262,7 +262,7 @@ function comandoURL(agente, azione, dettaglio){
   var corpo = 'AGENTE — ' + agente + '\nAZIONE — ' + azione +
     (dettaglio ? '\nDETTAGLIO — ' + dettaglio : '') +
     '\n\n---\n_Comando premuto dalla PLANCIA · ' + new Date().toISOString().slice(0,10) + '_';
-  return 'https://github.com/Pierluigi-De-Palo/anima-console/issues/new'
+  return 'https://github.com/Systema77/anima-console/issues/new'
     + '?title=' + encodeURIComponent(titolo)
     + '&body=' + encodeURIComponent(corpo)
     + '&labels=' + encodeURIComponent('regia');
