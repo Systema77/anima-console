@@ -77,6 +77,31 @@ jobs:
           }
           console.log(`bottone premuto: ${premuto}`);
 
+          // ⚠️ Il run #2 ha detto «nessun elemento audio» dopo aver premuto ENTRA.
+          //   Poteva essere vero, o poteva essere che ho guardato troppo presto:
+          //   il bottone puo' navigare, o l'audio puo' nascere da JS dopo il click.
+          //   Prima di dare la colpa alla radio, si aspetta e si guarda cosa c'e'.
+          await p.waitForLoadState('load').catch(() => {});
+          const dopoClick = p.url();
+          if (dopoClick !== URL) console.log(`la pagina è cambiata: ${dopoClick}`);
+          const elemento = await p.waitForSelector('audio, video', { timeout: 15000 }).catch(() => null);
+          if (!elemento) {
+            console.log('\n── COSA C\'E\' DAVVERO NELLA PAGINA ──');
+            const dentro = await p.evaluate(() => ({
+              titolo: document.title,
+              elementi: document.querySelectorAll('*').length,
+              tag: [...new Set([...document.querySelectorAll('body *')].map(e => e.tagName))].join(' '),
+              script: [...document.querySelectorAll('script')].map(s => s.src || '(in linea)').join(' · '),
+              testo: (document.body.innerText || '').trim().slice(0, 400),
+            }));
+            for (const [k, v] of Object.entries(dentro)) console.log(`  ${k.padEnd(10)} ${v}`);
+            console.log('\n✗ Nessun elemento audio, nemmeno dopo 15 secondi dal click.');
+            console.log('  Questo NON dice «il file non suona»: dice che la pagina servita');
+            console.log('  non contiene un lettore. Il perche\' e\' la prossima domanda.');
+            await b.close();
+            process.exit(1);
+          }
+
           const misura = await p.evaluate(async (sec) => {
             const a = document.querySelector('audio, video');
             if (!a) return { errore: 'nessun elemento audio nella pagina' };
