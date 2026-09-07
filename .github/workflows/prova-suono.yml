@@ -1,0 +1,120 @@
+# COSA FA — apre la radio in un browser VERO sul runner, preme il bottone e
+#   misura se ne esce DAVVERO del suono: byte audio decodificati dal browser,
+#   currentTime che avanza, e il livello del segnale letto con un AnalyserNode.
+# PERCHE ESISTE — dal 05/09 la radio e' dichiarata «in prova» e non «accesa»
+#   per una ragione sola, scritta nel registro della galassia: «SUONO ha
+#   misurato i BYTE, nessuno l'ha ancora sentita suonare».
+#   Un 200 e un content-type dicono che il file arriva. Non dicono che suona.
+#   Questo workflow non sostituisce l'orecchio del Direttore: ma sposta il
+#   confine da «nessuno sa» a «la macchina l'ha decodificata e il segnale non
+#   e' silenzio». Quello che resta e' il gusto, non il funzionamento.
+# FIN DOVE ARRIVA — solo GET su host nostri, nessun segreto, nessuna scrittura.
+#   Se il browser non c'e' o l'audio non parte, lo DICE e fallisce: non finge.
+# COSTO — zero.  USO — Actions -> «Prova del suono» -> Run workflow.
+# — creato da D.R.A.G.O., 2026-09-07
+
+name: Prova del suono
+
+on:
+  workflow_dispatch:
+    inputs:
+      indirizzo:
+        description: "La pagina della radio"
+        default: "https://radio-anima.pages.dev/"
+      secondi:
+        description: "Quanti secondi ascoltare"
+        default: "12"
+
+jobs:
+  ascolta:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 0 · Bersaglio di controllo — la rete del runner funziona?
+        run: |
+          set -u
+          COD=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 25 https://github.com/ || echo 000)
+          echo "github.com: $COD"
+          [ "$COD" != "000" ] || { echo "✗ rete del runner morta: nessuna conclusione lecita"; exit 1; }
+
+      - name: 1 · Il browser
+        run: npx --yes playwright@1.56.1 install --with-deps chromium
+
+      - name: 2 · Ascolta
+        env:
+          INDIRIZZO: ${{ inputs.indirizzo }}
+          SECONDI: ${{ inputs.secondi }}
+        run: |
+          cat > /tmp/ascolta.mjs <<'JS'
+          import { chromium } from 'playwright';
+          const URL = process.env.INDIRIZZO, SEC = Number(process.env.SECONDI || 12);
+          const b = await chromium.launch({ args: ['--autoplay-policy=no-user-gesture-required'] });
+          const p = await (await b.newContext()).newPage();
+          const errori = [];
+          p.on('pageerror', e => errori.push(e.message));
+          const r = await p.goto(URL, { waitUntil: 'load', timeout: 60000 });
+          console.log(`pagina: ${r.status()} · ${(await p.content()).length} byte`);
+
+          // il bottone: la radio NON parte da sola, per scelta di casa
+          const etichette = /entra|ascolta|play|sintonizz|accendi|▶/i;
+          let premuto = 'nessuno';
+          for (const el of await p.locator('button, a, [role=button]').all()) {
+            const t = ((await el.textContent()) || '').trim();
+            if (t && etichette.test(t)) { try { await el.click({ timeout: 4000 }); premuto = t.slice(0,40); break; } catch {} }
+          }
+          console.log(`bottone premuto: ${premuto}`);
+
+          const misura = await p.evaluate(async (sec) => {
+            const a = document.querySelector('audio, video');
+            if (!a) return { errore: 'nessun elemento audio nella pagina' };
+            try { await a.play(); } catch (e) { /* il click potrebbe bastare */ }
+            const t0 = a.currentTime, d0 = a.webkitAudioDecodedByteCount || 0;
+
+            // l'orecchio: RMS del segnale, letto dal grafo audio
+            let rms = null, motivo = null;
+            try {
+              const ctx = new (window.AudioContext || window.webkitAudioContext)();
+              const src = ctx.createMediaElementSource(a);
+              const an = ctx.createAnalyser(); an.fftSize = 2048;
+              src.connect(an); an.connect(ctx.destination);
+              await ctx.resume();
+              const buf = new Float32Array(an.fftSize);
+              let picco = 0;
+              for (let i = 0; i < sec * 4; i++) {
+                await new Promise(r => setTimeout(r, 250));
+                an.getFloatTimeDomainData(buf);
+                let s = 0; for (const v of buf) s += v * v;
+                picco = Math.max(picco, Math.sqrt(s / buf.length));
+              }
+              rms = picco;
+            } catch (e) { motivo = String(e).slice(0, 120); await new Promise(r => setTimeout(r, sec * 1000)); }
+
+            return {
+              sorgente: (a.currentSrc || a.src || '').slice(0, 120),
+              pronto: a.readyState, durata: a.duration,
+              partito: t0, arrivato: a.currentTime, avanzato: +(a.currentTime - t0).toFixed(2),
+              in_pausa: a.paused, muto: a.muted, volume: a.volume,
+              byte_audio_decodificati: (a.webkitAudioDecodedByteCount || 0) - d0,
+              rms_massimo: rms, rms_non_letto: motivo,
+            };
+          }, SEC);
+
+          console.log('\n── LA MISURA ──');
+          for (const [k, v] of Object.entries(misura)) if (v !== null) console.log(`  ${k.padEnd(26)} ${v}`);
+          if (errori.length) console.log(`  errori in pagina: ${errori.join(' | ')}`);
+          await b.close();
+
+          // Il verdetto, e le tre condizioni sono tutte necessarie.
+          const avanza  = misura.avanzato > 1;
+          const decodif = misura.byte_audio_decodificati > 10000;
+          const suona   = misura.rms_massimo === null ? null : misura.rms_massimo > 0.001;
+          console.log('\n── IL VERDETTO ──');
+          console.log(`  il tempo avanza                 ${avanza  ? '✓' : '✗'}`);
+          console.log(`  il browser DECODIFICA audio     ${decodif ? '✓' : '✗'}`);
+          console.log(`  il segnale non è silenzio       ${suona === null ? '· non letto: ' + misura.rms_non_letto : (suona ? '✓' : '✗')}`);
+          if (!avanza || !decodif || suona === false) {
+            console.log('\n✗ NON si può dire che suona. Resta «in prova».');
+            process.exit(1);
+          }
+          console.log('\n✓ Il suono esce davvero. Resta il gusto, che è del Direttore.');
+          JS
+          node /tmp/ascolta.mjs
