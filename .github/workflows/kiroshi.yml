@@ -13,6 +13,14 @@
 #      eseguire `scripts/guardia_privacy.py`. La guardia esiste dal 01/08, è
 #      dottrina, ed era scollegata proprio dall'UNICA strada automatica verso il
 #      pubblico: presidiava le porte da cui non passava nessuno.
+#   3. (misurato il 08/09, guasto del 07/09) moriva al passo 7 senza dirlo a
+#      nessuno. Il verdetto era già prodotto e spinto sul ramo; `gh pr create`
+#      falliva per un interruttore del repo, il job usciva, e la issue restava
+#      muta. Ogni rilancio inciampava poi al passo 2 — «il ramo esiste già» — che
+#      è il SINTOMO: cancellare quel ramo avrebbe buttato l'unica copia del
+#      verdetto e ricomprato la stessa chiamata a pagamento per morire di nuovo
+#      al passo 7. Ora il passo 7 non uccide il job: si dice nella issue dove sta
+#      il verdetto (8-9), e solo dopo si fallisce (10).
 # FIN DOVE ARRIVA — dice se il verdetto è pulito e mette la proposta in mano al
 #   Direttore. NON dice se il verdetto è giusto: che le fonti sostengano davvero
 #   la tesi, che il punteggio regga, che l'oggetto sia una ditta e non una persona
@@ -168,15 +176,34 @@ jobs:
 
           — aperta dall'automazione, ramo \`$RAMO\`
           TESTO
-          URL=$(gh pr create --draft --base "$BASE" --head "$RAMO" \
-                  --title "KIROSHI — verdetto proposto per la richiesta #$NUMERO" \
-                  --body-file "$RUNNER_TEMP/corpo-pr.md")
-          echo "url=$URL" >> "$GITHUB_OUTPUT"
-          echo "✓ proposta in bozza: $URL"
+          # Se questa chiamata fallisce, il verdetto ESISTE GIÀ: il passo 6 l'ha
+          # committato e spinto. Morire qui lasciava il lavoro fatto su un ramo di
+          # cui nessuno sapeva niente, e la issue muta. Misurato sul run #46 del
+          # 07/09: «GitHub Actions is not permitted to create or approve pull
+          # requests», ramo `kiroshi/verifica-44` spinto col verdetto dentro,
+          # nessuna PR, nessun commento, richiedente a mani vuote. Poi ogni
+          # rilancio moriva al passo 2 — sul RAMO, cioè sul sintomo.
+          # Da qui in avanti il job fallisce lo stesso (passo 10), ma solo DOPO
+          # aver detto nella issue dove sta il verdetto e cosa manca.
+          if URL=$(gh pr create --draft --base "$BASE" --head "$RAMO" \
+                     --title "KIROSHI — verdetto proposto per la richiesta #$NUMERO" \
+                     --body-file "$RUNNER_TEMP/corpo-pr.md" \
+                     2>"$RUNNER_TEMP/errore-pr.txt"); then
+            echo "aperta=si" >> "$GITHUB_OUTPUT"
+            echo "url=$URL" >> "$GITHUB_OUTPUT"
+            echo "✓ proposta in bozza: $URL"
+          else
+            echo "aperta=no" >> "$GITHUB_OUTPUT"
+            echo "::warning::Non ho potuto aprire la PR. Il verdetto resta su $RAMO."
+            # Il motivo esatto resta NEL LOG, non nella issue: è testo che arriva
+            # da un comando, e la issue è pubblica. Chi ripara lo legge da qui.
+            cat "$RUNNER_TEMP/errore-pr.txt"
+          fi
 
       - name: 8 · Di' nella issue che è una proposta, e ricontrolla
         env:
           PR: ${{ steps.pr.outputs.url }}
+          APERTA: ${{ steps.pr.outputs.aperta }}
         run: |
           # Il commento che scrive kiroshi_check.py si legge come un verdetto già
           # emesso. Non lo è: fino al merge è una proposta. Una scritta che dice
@@ -184,8 +211,20 @@ jobs:
           {
             echo ""
             echo "---"
-            echo "**Stato: proposta, non ancora pubblicata.** Il verdetto vive in una pull"
-            echo "request in bozza ($PR) e diventa pubblico solo se il Direttore la fonde."
+            if [ "$APERTA" = "si" ]; then
+              echo "**Stato: proposta, non ancora pubblicata.** Il verdetto vive in una pull"
+              echo "request in bozza ($PR) e diventa pubblico solo se il Direttore la fonde."
+            else
+              # Uno stato onesto batte il silenzio. Il verdetto c'è: dire dove.
+              echo "**Stato: verdetto prodotto, proposta NON aperta.** Il testo è già"
+              echo "committato sul ramo \`$RAMO\`, ma l'automazione non ha potuto aprire"
+              echo "la pull request e il passo è fallito."
+              echo ""
+              echo "Cosa serve: aprire a mano la proposta da \`$RAMO\` verso \`$BASE\`."
+              echo "Il motivo esatto sta nel log del run, non qui: questa issue è pubblica."
+              echo ""
+              echo "⚠️ Il ramo NON va cancellato: porta l'unica copia di questo verdetto."
+            fi
           } >> kiroshi_comment.md
           # Il commento è cambiato DOPO il passo 5: quello che si pubblica non deve
           # mai essere una versione che la guardia non ha visto.
@@ -197,3 +236,18 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body-path: kiroshi_comment.md
+
+      - name: 10 · Se la proposta non è nata, il run è rosso — ma dopo aver parlato
+        if: steps.pr.outputs.aperta != 'si'
+        run: |
+          # Il rosso resta: un ciclo che non arriva alla proposta NON è riuscito, e
+          # un run verde direbbe il falso. Cambia solo l'ordine: prima si dice al
+          # richiedente dove sta il suo verdetto, poi si fallisce.
+          echo "::error::Verdetto prodotto e spinto su $RAMO, ma la proposta non è stata aperta."
+          echo "La issue #$NUMERO ora lo dice. Il ramo NON va cancellato: ci vive il verdetto."
+          echo ""
+          echo "Se il motivo è «GitHub Actions is not permitted to create or approve pull"
+          echo "requests», non è un guasto di questo file: è un interruttore del repo."
+          echo "Settings → Actions → General → Workflow permissions →"
+          echo "  «Allow GitHub Actions to create and approve pull requests»."
+          exit 1
