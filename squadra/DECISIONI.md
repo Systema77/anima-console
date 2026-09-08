@@ -12,6 +12,7 @@ chiesta**.
 Questo repo è pubblico: niente nomi di persone private, niente cifre che sono sue, niente
 percorsi del deposito privato. La guardia privacy legge anche questo file.
 
+- [ ] 2026-09-08 · D.R.A.G.O. · la radio SUONA, misurato dal runner (Prova del suono, run #11 delle 21:29 UTC sulla replica: 12,02 s avanzati, 289.152 byte decodificati, segnale non silenzio); nel registro della galassia è ancora «in prova» dal 06/09. La dichiari «accesa» — prima il registro, poi le pagine, poi il giro — o resta «in prova» finché non la senti tu con le tue orecchie? · anima-console, Actions → «Prova del suono»
 - [ ] 2026-09-08 · JUDY · la parola «social» nei 5 verdetti importabili in .ninja: RISCRIVERE (la regola resta intera, lento) o ESENTARE (una riga, e da domani è un precedente)? Finché non rispondi, 0002 e 0007 restano fuori da soli · comunicazione/LABORATORIO-FASE1-2026-09-08.html
 - [ ] 2026-09-08 · JUDY · sì ai due agenti della troupe del laboratorio, l'ARCHIVISTA (cataloga la pellicola digitalizzata) e il CONTABILE DELLA RESA (conta secondi, euro, ore: da lì il listino)? I prompt li scrive D.R.A.G.O. dopo il sì; i nomi di battesimo li scegli tu · comunicazione/DA-JUDY-per-DRAGO-troupe-e-social.md
 - [ ] 2026-09-08 · JUDY · ok a ROGUE per comprare systema77.film dal Mac (da una sessione agente il registrar non si raggiunge) · comunicazione/PIANO-LABORATORIO-2026-09-08.md, FASE 2
