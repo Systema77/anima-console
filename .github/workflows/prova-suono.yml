@@ -86,15 +86,13 @@ jobs:
           // 📜 Una prova che non trova niente non dice «non c'e'»: dice «non vedo».
           await p.addInitScript(() => {
             window.__audio_creati = [];
-            // ⚠️ SI AVVOLGE SENZA SOSTITUIRE IL COSTRUTTORE.
-            //    Al run #6 questo blocco rimpiazzava `window.Audio` con una
-            //    funzione normale e le riattaccava il prototipo: chiamata con
-            //    `new`, restituiva un oggetto che NON era un HTMLAudioElement
-            //    utile. Risultato: «0 elementi creati» — e per un giro ho
-            //    creduto che la radio fosse muta. Era la prova a romperla.
-            // 📜 Una prova può guastare ciò che misura, e allora sembra un
-            //    guasto della cosa. E' il falso rosso, gemello del falso verde
-            //    di `case *replica:OK*` del 06/09.
+            const Vero = window.Audio;
+            window.Audio = function (...a) {
+              const el = new Vero(...a);
+              window.__audio_creati.push(el);
+              return el;
+            };
+            window.Audio.prototype = Vero.prototype;
             const crea = document.createElement.bind(document);
             document.createElement = function (tag, ...r) {
               const el = crea(tag, ...r);
