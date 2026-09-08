@@ -101,12 +101,6 @@ jobs:
               if (/^(audio|video)$/i.test(tag)) window.__audio_creati.push(el);
               return el;
             };
-            const crea = document.createElement.bind(document);
-            document.createElement = function (tag, ...r) {
-              const el = crea(tag, ...r);
-              if (/^(audio|video)$/i.test(tag)) window.__audio_creati.push(el);
-              return el;
-            };
           });
           const errori = [], voci = [];
           p.on('pageerror', e => errori.push('pageerror: ' + e.message));
