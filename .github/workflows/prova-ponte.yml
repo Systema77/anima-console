@@ -1,0 +1,146 @@
+# COSA FA — risponde a una domanda sola: «il ponte api.cyberboomer.io e' vivo
+#   oggi?». Si lancia a mano dal bottone "Run workflow", non parte mai da sola.
+# PERCHE ESISTE — il 30/08 e di nuovo l'08/09 una sessione remota ha provato a
+#   fare questa chiamata e NON ha potuto: l'uscita di rete di quelle sessioni e'
+#   un allowlist che passa solo api.github.com. Misurato con un bersaglio di
+#   controllo: example.com dava lo stesso identico 403 al CONNECT. Quindi quel
+#   403 non diceva niente sul Worker — diceva soltanto «io non ci arrivo».
+#   Intanto il manuale portava avanti «in linea dal 10/08 h 14:09» come se fosse
+#   un fatto di oggi, e su quell'unica riga non verificata poggiava il piano di
+#   cinque reparti. Un guasto che si misura solo rompendo qualcosa non si misura
+#   mai; un dato vecchio di venti giorni non e' un dato.
+# FIN DOVE ARRIVA — dice se il Worker risponde e se l'autenticazione a carta e'
+#   in piedi. NON usa nessuna carta, NON prova che il contratto API sia
+#   rispettato, NON dice niente sul lato gioco: `animagame-site/assets/scheda.js`
+#   ha le fetch scritte come COMMENTI, quindi il ponte puo' essere vivissimo e
+#   il gioco non ci salirebbe comunque. Questa prova riguarda una sponda sola.
+# COSTO — zero. Solo richieste non autenticate a rotte che gia' esistono:
+#   nessun token speso, nessun dato scritto, nessun centesimo.
+# SICUREZZA — nessuna carta e nessun segreto entrano in questo workflow, quindi
+#   non c'e' niente che possa finire nei log. E' voluto: si sonda da fuori,
+#   come farebbe uno sconosciuto, ed e' proprio quello che vogliamo sapere.
+# USO — Actions -> "Prova del ponte" -> Run workflow. Il verdetto sta in cima
+#   al riepilogo del run.
+# — creato da SQUELCH, 2026-09-08
+
+name: Prova del ponte
+
+on:
+  workflow_dispatch:
+
+jobs:
+  prova:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sonda il ponte
+        run: |
+          set -uo pipefail
+
+          # Una funzione sola: stampa il codice HTTP, o 000 se non arriva niente.
+          codice() {
+            curl -sS -o /dev/null -w '%{http_code}' \
+                 --max-time 20 --retry 2 --retry-connrefused "$1" 2>/dev/null || echo 000
+          }
+
+          # ── 0 · BERSAGLIO DI CONTROLLO ──────────────────────────────────────
+          # Prima di dire che il ponte e' morto, provo che io sappia uscire.
+          # Senza questo passo un esito 000 e' ambiguo, ed e' esattamente
+          # l'ambiguita' che ha bloccato la squadra per dieci giorni.
+          echo "── 0 · esco davvero da qui?"
+          CTRL=$(codice https://example.com/)
+          echo "   example.com -> $CTRL"
+          if [ "$CTRL" = "000" ]; then
+            echo ""
+            echo "✗ NON LO SO — questo runner non esce in rete."
+            echo "  Il ponte non e' stato provato. Non concludere niente sul Worker:"
+            echo "  con un bersaglio di controllo muto, ogni altro numero e' rumore."
+            {
+              echo "## ✗ NON LO SO"
+              echo "Il runner non esce in rete: il ponte **non e' stato provato**."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          echo "   ✓ l'uscita funziona: da qui i numeri contano."
+
+          # ── 1 · IL DOMINIO RISOLVE? ─────────────────────────────────────────
+          echo ""
+          echo "── 1 · il dominio esiste?"
+          if getent hosts api.cyberboomer.io; then
+            echo "   ✓ risolve"
+          else
+            echo "   ⚠ non risolve: se il Worker fosse vivo, il DNS lo direbbe."
+          fi
+
+          # ── 2 · LA RADICE ───────────────────────────────────────────────────
+          # La radice e' l'unica rotta pubblica: se risponde, qualcosa e' in piedi.
+          echo ""
+          echo "── 2 · la radice risponde?"
+          RADICE=$(codice https://api.cyberboomer.io/)
+          echo "   GET / -> $RADICE"
+
+          # ── 3 · LA ROTTA DEL GIOCO, SENZA CARTA ─────────────────────────────
+          # Questa e' la rotta che la scheda giocatore usera' davvero (citata in
+          # animagame-site/assets/scheda.js). Senza carta DEVE rispondere 401:
+          # un 200 qui non e' una buona notizia, e' una porta aperta.
+          echo ""
+          echo "── 3 · la rotta del gioco chiede la carta?"
+          SCHEDA=$(codice https://api.cyberboomer.io/schede/mia)
+          echo "   GET /schede/mia (senza carta) -> $SCHEDA"
+
+          # ── 4 · UNA ROTTA CHE NON ESISTE ────────────────────────────────────
+          # Distingue «tutto risponde 401 per default» da «solo le rotte vere».
+          # Non e' pignoleria: cambia cosa vuol dire il 401 del passo 3.
+          echo ""
+          echo "── 4 · e una rotta inventata?"
+          FINTA=$(codice https://api.cyberboomer.io/rotta-che-non-esiste-9f3a)
+          echo "   GET /rotta-che-non-esiste-9f3a -> $FINTA"
+
+          # ── VERDETTO ────────────────────────────────────────────────────────
+          echo ""
+          echo "════════════════════════════════════════════════════"
+          if [ "$RADICE" = "000" ]; then
+            ESITO="✗ IL PONTE NON RISPONDE"
+            NOTA="La radice non da' nessuna risposta, e l'uscita di rete funziona. Il Worker e' giu' o non e' piu' pubblicato: si riparte da qui, non dal gioco."
+            CODA=1
+          elif [ "$RADICE" -ge 500 ] 2>/dev/null; then
+            ESITO="✗ IL PONTE RISPONDE ROTTO"
+            NOTA="La radice risponde $RADICE: c'e' Cloudflare davanti, ma dietro il Worker non regge (5xx e' l'origine, non la guardia). Un 401 sulle altre rotte NON basta a dirlo vivo: puo' arrivare dal bordo, non dal codice."
+            CODA=1
+          elif [ "$SCHEDA" = "200" ]; then
+            ESITO="⚠ IL PONTE E' VIVO MA LA PORTA E' APERTA"
+            NOTA="/schede/mia risponde 200 SENZA carta. Non e' una buona notizia: chiunque legge. Prima di collegare il gioco, chiudere l'autenticazione."
+            CODA=1
+          elif { [ "$SCHEDA" = "401" ] || [ "$SCHEDA" = "403" ]; } \
+               && [ "$RADICE" -ge 200 ] 2>/dev/null && [ "$RADICE" -lt 300 ]; then
+            ESITO="✓ IL PONTE E' VIVO E CHIEDE LA CARTA"
+            NOTA="La radice risponde $RADICE e /schede/mia risponde $SCHEDA senza carta: il Worker e la sua guardia sono in piedi. Resta il lato gioco, che e' un'altra sponda: le fetch in scheda.js sono commenti."
+            CODA=0
+          else
+            ESITO="⚠ RISPONDE, MA NON COME ATTESO"
+            NOTA="Radice $RADICE, /schede/mia $SCHEDA, rotta inventata $FINTA. Qualcosa e' in piedi ma non si comporta come dice il contratto: guardare prima di costruirci sopra."
+            CODA=1
+          fi
+
+          echo "$ESITO"
+          echo "$NOTA"
+          echo ""
+          echo "NON provato: nessuna chiamata CON carta, nessuna verifica del"
+          echo "contratto punti, e niente sul lato gioco (scheda.js)."
+          echo "════════════════════════════════════════════════════"
+
+          {
+            echo "## $ESITO"
+            echo ""
+            echo "$NOTA"
+            echo ""
+            echo "| sonda | atteso | misurato |"
+            echo "|---|---|---|"
+            echo "| controllo \`example.com\` | 200 | $CTRL |"
+            echo "| \`GET /\` | 200 | $RADICE |"
+            echo "| \`GET /schede/mia\` senza carta | 401 | $SCHEDA |"
+            echo "| \`GET /rotta-inventata\` | 401 o 404 | $FINTA |"
+            echo ""
+            echo "**Non provato:** nessuna chiamata con carta, nessuna verifica del contratto punti, niente sul lato gioco (\`scheda.js\`)."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          exit $CODA
