@@ -75,6 +75,31 @@ jobs:
           const URL = process.env.INDIRIZZO, SEC = Number(process.env.SECONDI || 12);
           const b = await chromium.launch({ args: ['--autoplay-policy=no-user-gesture-required'] });
           const p = await (await b.newContext()).newPage();
+          // ⚠️ IL DIFETTO DEI RUN #2-#5, e stava nella prova, non nella radio.
+          //    `radio-player.js:96` fa `new Audio(...)`: un elemento STACCATO,
+          //    che non viene mai appeso al documento. `querySelector('audio')`
+          //    non lo trovera' MAI — nemmeno con la radio che suona benissimo.
+          //    Cinque giri hanno detto «la pagina non contiene un lettore»
+          //    misurando una cosa che il player non fa per progetto.
+          //    Qui il costruttore viene avvolto prima che la pagina giri, cosi'
+          //    l'elemento si trova comunque, staccato o no.
+          // 📜 Una prova che non trova niente non dice «non c'e'»: dice «non vedo».
+          await p.addInitScript(() => {
+            window.__audio_creati = [];
+            const Vero = window.Audio;
+            window.Audio = function (...a) {
+              const el = new Vero(...a);
+              window.__audio_creati.push(el);
+              return el;
+            };
+            window.Audio.prototype = Vero.prototype;
+            const crea = document.createElement.bind(document);
+            document.createElement = function (tag, ...r) {
+              const el = crea(tag, ...r);
+              if (/^(audio|video)$/i.test(tag)) window.__audio_creati.push(el);
+              return el;
+            };
+          });
           const errori = [], voci = [];
           p.on('pageerror', e => errori.push('pageerror: ' + e.message));
           // Il player, quando non parte, LO DICE in console. Non ascoltarlo è
@@ -99,7 +124,9 @@ jobs:
           await p.waitForLoadState('load').catch(() => {});
           const dopoClick = p.url();
           if (dopoClick !== URL) console.log(`la pagina è cambiata: ${dopoClick}`);
-          const elemento = await p.waitForSelector('audio, video', { timeout: 15000 }).catch(() => null);
+          const elemento = await p.waitForFunction(
+            () => !!(document.querySelector('audio, video') || (window.__audio_creati || [])[0]),
+            null, { timeout: 15000 }).catch(() => null);
           if (!elemento) {
             console.log('\n── COSA C\'E\' DAVVERO NELLA PAGINA ──');
             const dentro = await p.evaluate(() => ({
@@ -112,6 +139,23 @@ jobs:
             for (const [k, v] of Object.entries(dentro)) console.log(`  ${k.padEnd(10)} ${v}`);
             if (voci.length) { console.log('\n── COSA DICE IL PLAYER ──'); voci.forEach(v => console.log('  ' + v)); }
             if (errori.length) { console.log('\n── ERRORI ──'); errori.forEach(v => console.log('  ' + v)); }
+            const creati = await p.evaluate(() => (window.__audio_creati || []).length);
+            console.log(`\n  elementi Audio creati dal player (anche staccati): ${creati}`);
+            const cancello = await p.evaluate(() => ({
+              gate: !!document.getElementById('anima-radio-gate'),
+              bottone: !!document.querySelector('#anima-radio-gate .enter-btn'),
+              id_in_pagina: [...document.querySelectorAll('[id]')].map(e => e.id).join(' ') || '(nessuno)',
+              classi_bottoni: [...document.querySelectorAll('button')].map(b => b.className || '(senza classe)').join(' · '),
+            }));
+            console.log('\n── IL CANCELLO CHE IL PLAYER CERCA ──');
+            console.log(`  #anima-radio-gate presente     ${cancello.gate ? '✓' : '✗'}`);
+            console.log(`  .enter-btn dentro il cancello  ${cancello.bottone ? '✓' : '✗'}`);
+            console.log(`  id presenti in pagina          ${cancello.id_in_pagina}`);
+            console.log(`  classi dei bottoni             ${cancello.classi_bottoni}`);
+            if (!cancello.gate || !cancello.bottone) {
+              console.log('  → radio-player.js:58 esce in silenzio: la pagina e il player');
+              console.log('    pubblicati non sono della stessa generazione.');
+            }
             console.log('\n✗ Nessun elemento audio, nemmeno dopo 15 secondi dal click.');
             console.log('  Questo NON dice «il file non suona»: dice che la pagina servita');
             console.log('  non contiene un lettore. Il perche\' e\' la prossima domanda.');
@@ -120,7 +164,7 @@ jobs:
           }
 
           const misura = await p.evaluate(async (sec) => {
-            const a = document.querySelector('audio, video');
+            const a = document.querySelector('audio, video') || (window.__audio_creati || [])[0];
             if (!a) return { errore: 'nessun elemento audio nella pagina' };
             try { await a.play(); } catch (e) { /* il click potrebbe bastare */ }
             const t0 = a.currentTime, d0 = a.webkitAudioDecodedByteCount || 0;
