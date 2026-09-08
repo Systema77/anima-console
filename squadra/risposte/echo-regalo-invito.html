@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>L'invito — foglio di stampa · ANIMA GAME</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Share+Tech+Mono&display=swap">
+<style>
+  :root{
+    --nero:#07090A; --fondo:#0D1011; --carta:#E8EDEA; --muto:#8A9591;
+    --verde:#38E08A; --linea:#1E2523;
+    --mono:"Share Tech Mono",ui-monospace,monospace;
+    --serif:"Newsreader",Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--nero);color:var(--carta);
+       font-family:var(--serif);font-size:17px;line-height:1.7}
+  .foglio{max-width:860px;margin:0 auto;padding:3rem 1.4rem 5rem}
+  h1{font-family:var(--mono);font-size:clamp(1.15rem,3.2vw,1.5rem);font-weight:400;
+     letter-spacing:.06em;text-transform:uppercase;margin:0 0 .3rem}
+  h1 b{color:var(--verde);font-weight:400}
+  .occhiello{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;
+             text-transform:uppercase;color:var(--muto);margin:0 0 2.2rem}
+  h2{font-family:var(--mono);font-size:.82rem;font-weight:400;letter-spacing:.13em;
+     text-transform:uppercase;color:var(--muto);
+     margin:2.8rem 0 .7rem;padding-top:1.3rem;border-top:1px solid var(--linea)}
+  p{margin:0 0 .9rem;max-width:62ch}
+  .nota{color:var(--muto);font-size:.94rem;max-width:62ch}
+  .nota b{color:var(--carta);font-weight:400}
+
+  /* — il pezzo nero: È la tessera. Resta nero anche in stampa, perché l'oggetto è nero. — */
+  .tessera{
+    background:#000;color:var(--carta);border:1px solid var(--linea);border-radius:10px;
+    width:100%;max-width:420px;aspect-ratio:1.586/1;         /* formato tessera, ISO ID-1 */
+    padding:1.5rem 1.6rem;display:flex;flex-direction:column;justify-content:space-between;
+    font-family:var(--mono);font-size:.85rem;line-height:1.7;
+  }
+  .tessera .marchio{color:var(--verde);letter-spacing:.14em}
+  .tessera .riga{color:var(--verde);font-size:1.05rem;letter-spacing:.05em}
+  .tessera .piede{color:var(--muto);font-size:.74rem;line-height:1.6}
+
+  /* — i pezzi di carta: in stampa diventano inchiostro su bianco. — */
+  .carta-stampa{
+    background:var(--fondo);border:1px solid var(--linea);border-left:2px solid var(--verde);
+    border-radius:10px;padding:1.4rem 1.5rem;max-width:62ch;margin:0 0 1rem;
+  }
+  .carta-stampa p:last-child{margin-bottom:0}
+  .carta-stampa .chiusa{color:var(--muto);font-style:italic}
+  .misura{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;
+          text-transform:uppercase;color:var(--muto);display:block;margin:0 0 .6rem}
+  .firma{font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;color:var(--muto);
+         margin-top:3.4rem;padding-top:1.3rem;border-top:1px solid var(--linea)}
+
+  @media print{
+    @page{ margin:14mm; }
+    body{background:#fff;color:#111}
+    .foglio{padding:0;max-width:none}
+    h1,h2{color:#111}
+    h1 b{color:#111}
+    .occhiello,.nota,.misura,.firma{color:#444}
+    h2{border-color:#ccc}
+    .no-stampa{display:none}
+    /* La tessera resta nera: è l'oggetto, non la pagina. */
+    .tessera{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    /* I fogli di carta diventano carta. */
+    .carta-stampa{background:#fff;border:1px solid #bbb;border-left:2px solid #111;
+                  break-inside:avoid;color:#111}
+    .carta-stampa .chiusa{color:#444}
+  }
+</style>
+</head>
+<body>
+<div class="foglio">
+
+  <h1>L&rsquo;<b>invito</b> — foglio di stampa</h1>
+  <p class="occhiello">ANIMA GAME · sette posti su dieci · settembre</p>
+
+  <p class="nota no-stampa">Regalo di chiusura. I quattro testi dell&rsquo;invito non stanno più
+  in un documento da leggere: stanno in un foglio da <b>stampare</b>. Ctrl+P, e quello che esce
+  si mette in una busta. La tessera resta nera anche in stampa perché la tessera <b>è</b> nera;
+  i fogli di carta diventano inchiostro su bianco, perché sono carta. Nessun numero vivo,
+  nessun nome: si può stampare così com&rsquo;è.</p>
+
+  <h2>1 · Il retro della tessera</h2>
+  <span class="misura">formato tessera · mono · quattro righe</span>
+  <div class="tessera">
+    <div>
+      <div class="marchio">&#9673; ANIMA GAME</div>
+    </div>
+    <div>
+      <div class="riga">&gt; playanima.io</div>
+      <div style="color:var(--muto);margin-top:.5rem">Digita la riga. Il codice qui sotto apre.</div>
+    </div>
+    <div class="piede">
+      Il quadratino dice che questa tessera è vera.<br>
+      Non c&rsquo;è niente da comprare.
+    </div>
+  </div>
+
+  <h2>2 · Il biglietto nella busta</h2>
+  <span class="misura">serif · si legge in piedi · va piegato in due</span>
+  <div class="carta-stampa">
+    <p>Questa tessera te l&rsquo;ha data qualcuno che ti conosce, non un sistema che ti ha scelto.</p>
+    <p>Qui dentro non si parla di sé. Si parla di cose utili a vivere un po&rsquo; meglio: una
+    verifica fatta bene, un dubbio tolto di mezzo, una cosa guardata a fondo e scritta.</p>
+    <p>Non devi presentarti, non devi piacere a nessuno, non devi esserci spesso. Entri quando
+    vuoi, usi gli strumenti, e quello che ne esce lo metti nel cerchio oppure te lo tieni:
+    sono due mosse giuste uguali.</p>
+    <p class="chiusa">Se la lasci in un cassetto e non entri mai, la tessera resta tua lo stesso.</p>
+  </div>
+
+  <h2>3 · Il messaggio di chi la consegna</h2>
+  <span class="misura">tre righe · lo scrive un giocatore, non il systema</span>
+  <div class="carta-stampa">
+    <p>Ti ho tenuto un posto. Non è una prova aperta e non è un gruppo: è un gioco a invito,
+    dieci posti, e si gioca con strumenti veri.</p>
+    <p>Ti arriva una tessera nera. Dietro c&rsquo;è una riga da digitare: quella è la porta.</p>
+    <p class="chiusa">Se non ti va, non serve rispondere. La tessera non scade.</p>
+  </div>
+
+  <h2>4 · La risposta a chi un posto lo chiede</h2>
+  <span class="misura">il testo che mancava del tutto</span>
+  <div class="carta-stampa">
+    <p>Grazie di averlo chiesto — e la risposta è che i posti non si chiedono: si danno.
+    Non è per fare i difficili. Il cerchio regge finché ognuno ci è entrato per mano di
+    qualcuno che risponde di lui.</p>
+    <p>Intanto una cosa aperta c&rsquo;è, e non serve nessuna tessera: i verdetti già pubblicati
+    si leggono e si controllano, fonte per fonte. Se leggendone uno ti viene una domanda vera,
+    quella mandala pure. Le domande entrano anche quando le persone non sono ancora entrate.</p>
+  </div>
+  <p class="nota">Il secondo capoverso del &sect;4 vale <b>solo</b> se «mandare una domanda» resta
+  possibile a chi non ha una tessera. È scritto per staccarsi: taglialo e il testo regge intero.</p>
+
+  <p class="firma">— creato da ECHO, 2026-09-08 · su direzione JUDY<br>
+  regalo di chiusura · verde su nero in schermo, inchiostro su bianco in stampa, nero il nero
+  della tessera · nessun numero vivo, nessun nome di persona</p>
+
+</div>
+</body>
+</html>
