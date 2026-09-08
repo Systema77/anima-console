@@ -57,10 +57,18 @@ jobs:
             | openssl x509 -noout -subject -dates 2>/dev/null || echo "✗ nessun certificato letto"
           COD=$(curl -sS -o /tmp/ninja.html -w '%{http_code}' --max-time 25 https://cyberboomer.ninja/ || echo 000)
           echo "codice: $COD · byte: $(wc -c < /tmp/ninja.html)"
-          grep -c '5C7CFF' /tmp/ninja.html | sed 's/^/occorrenze del blu link #5C7CFF: /'
-          grep -c 'FF2E88' /tmp/ninja.html | sed 's/^/occorrenze del magenta #FF2E88 (attese 0): /'
+          # Dall'08/09 il vestito non sta nella home: sta in /stile.css, uno per tutta la casa.
+          # Contare il blu nella home darebbe 0 e si leggerebbe «versione blu non servita».
+          grep -c 'href="/stile.css"' /tmp/ninja.html | sed 's/^/la home linka \/stile.css (atteso 1): /'
+          CSS=$(curl -sS -o /tmp/ninja.css -w '%{http_code}' --max-time 25 https://cyberboomer.ninja/stile.css || echo 000)
+          echo "stile.css → $CSS · byte: $(wc -c < /tmp/ninja.css)"
+          grep -c '5C7CFF' /tmp/ninja.css | sed 's/^/occorrenze del blu link #5C7CFF in stile.css (attese 1 o piu): /'
+          cat /tmp/ninja.html /tmp/ninja.css | grep -c 'FF2E88' | sed 's/^/occorrenze del magenta #FF2E88 in home + stile.css (attese 0): /'
           grep -o '<title>[^<]*' /tmp/ninja.html
           curl -sS -o /dev/null -w 'lezioni/lezione-001.html → %{http_code}\n' --max-time 25 https://cyberboomer.ninja/lezioni/lezione-001.html || true
+          # _config.yml (08/09) toglie scripts/ e strumenti/ dal sito: finche' questa riga non dice 404, e' una dichiarazione.
+          curl -sS -o /dev/null -w 'strumenti/collaudo.mjs → %{http_code} (atteso 404: escluso da _config.yml)\n' --max-time 25 https://cyberboomer.ninja/strumenti/collaudo.mjs || true
+          curl -sS -o /dev/null -w 'lezioni/_sorgenti/lezione-001.json → %{http_code} (atteso 404: Jekyll non serve le cartelle con _)\n' --max-time 25 https://cyberboomer.ninja/lezioni/_sorgenti/lezione-001.json || true
           curl -sSI --max-time 25 https://cyberboomer.ninja/ | grep -i -E '^(server):' || true
 
       - name: 3 · console.cyberboomer.io — esiste?
