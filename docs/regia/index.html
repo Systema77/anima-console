@@ -160,7 +160,7 @@
            etichetta: adesso ognuno dice cosa misura. -->
       <div class="kv"><b>ultimo verdetto</b><span data-pub="aggiornato">—</span></div>
       <!--REGIA:QUANDO:INIZIO-->
-<div class="kv"><b>misurata</b><span>2026-09-08 · 20:52 UTC</span></div>
+<div class="kv"><b>misurata</b><span>2026-09-08 · 22:26 UTC</span></div>
 <!--REGIA:QUANDO:FINE-->
     </div>
   </div>
@@ -198,104 +198,145 @@
   <!--REGIA:CATENA:INIZIO-->
 <section class="piazza" id="catena">
 <div class="pz-cap">strumenti <span class="pz-n">9</span></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">Worker dei punti</span><span class="sem ok">vivo</span></div><div class="rg-m">Assegna e conta i punti del gioco: e&#x27; il motore dietro ANIMA GAME</div><div class="rg-cus">segreto del Worker (wrangler secret) sul sottodominio «insieme»</div><div class="rg-q">200 · 37 byte · impronta riconosciuta · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">Sigillo delle carte</span><span class="sem ok">vivo</span></div><div class="rg-m">Riconosce il codice stampato sul retro di una carta e apre la stanza giusta</div><div class="rg-cus">~/.systema77/sigillo.env sul Mac, caricato nel Worker come SIGILLO_SECRET</div><div class="rg-q">200 · 2135 byte · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">La porta</span><span class="sem ok">vivo</span></div><div class="rg-m">Il campo della frase davanti al banco di lavoro del Direttore</div><div class="rg-cus">passphrase «systema77.regia» nel Portachiavi del Mac — non esiste in nessun file</div><div class="rg-q">200 · 158290 byte · impronta riconosciuta · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">Questa plancia</span><span class="sem ok">vivo</span></div><div class="rg-m">La sala di regia: quadro pubblico in chiaro, il resto cifrato</div><div class="rg-cus">stessa passphrase della porta</div><div class="rg-q">200 · 64191 byte · impronta riconosciuta · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">Verdetti KIROSHI</span><span class="sem ok">vivo</span></div><div class="rg-m">L&#x27;archivio dei referti: e&#x27; vero o falso, con le fonti in chiaro</div><div class="rg-cus">ANTHROPIC_API_KEY, segreto del repo (Actions) — dichiarato MANCANTE dal manuale</div><div class="rg-q">200 · 15226 byte · impronta riconosciuta · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">Radio ANIMA</span><span class="sem ok">vivo</span></div><div class="rg-m">Le onde: pagina e audio insieme, in un progetto Pages suo</div><div class="rg-cus">nessun segreto — non ne ha bisogno</div><div class="rg-q">200 · 2780 byte · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">Meteo AURA</span><span class="sem ok">vivo</span></div><div class="rg-m">Il servizio n.1 dell&#x27;agenzia: previsioni dai server a pagamento Open-Meteo</div><div class="rg-cus">IN CHIARO dentro la pagina pubblica /meteo.html — una chiave nel browser non e&#x27; un segreto</div><div class="rg-q">200 · 252602 byte · impronta riconosciuta · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">Chiave Cloudflare</span><span class="sem warn">senza prova</span></div><div class="rg-m">Pubblica su Pages, tocca il DNS, mette la porta davanti a un sito</div><div class="rg-cus">~/.systema77/cloudflare.env sul Mac</div><div class="rg-q">provarla vorrebbe dire usarla, e una prova non chiama un&#x27;API con una chiave · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">Chiave Porkbun</span><span class="sem warn">senza prova</span></div><div class="rg-m">I domini del parco: rinnovi, scadenze, record DNS</div><div class="rg-cus">~/.systema77/porkbun.env sul Mac — dato per VUOTO dal registro del 10/08</div><div class="rg-q">stesso motivo, e il registro la dava vuota: la prova la fa il Direttore aprendo il file · misurato 2026-09-08 · 20:52 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">Worker dei punti</span><span class="sem ok">vivo</span></div><div class="rg-m">Assegna e conta i punti del gioco: e&#x27; il motore dietro ANIMA GAME</div><div class="rg-cus">segreto del Worker (wrangler secret) sul sottodominio «insieme»</div><div class="rg-q">200 · 37 byte · impronta riconosciuta · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">Sigillo delle carte</span><span class="sem ok">vivo</span></div><div class="rg-m">Riconosce il codice stampato sul retro di una carta e apre la stanza giusta</div><div class="rg-cus">~/.systema77/sigillo.env sul Mac, caricato nel Worker come SIGILLO_SECRET</div><div class="rg-q">200 · 2135 byte · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">La porta</span><span class="sem ok">vivo</span></div><div class="rg-m">Il campo della frase davanti al banco di lavoro del Direttore</div><div class="rg-cus">passphrase «systema77.regia» nel Portachiavi del Mac — non esiste in nessun file</div><div class="rg-q">200 · 158290 byte · impronta riconosciuta · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">Questa plancia</span><span class="sem ok">vivo</span></div><div class="rg-m">La sala di regia: quadro pubblico in chiaro, il resto cifrato</div><div class="rg-cus">stessa passphrase della porta</div><div class="rg-q">200 · 64191 byte · impronta riconosciuta · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">Verdetti KIROSHI</span><span class="sem ok">vivo</span></div><div class="rg-m">L&#x27;archivio dei referti: e&#x27; vero o falso, con le fonti in chiaro</div><div class="rg-cus">ANTHROPIC_API_KEY, segreto del repo (Actions) — dichiarato MANCANTE dal manuale</div><div class="rg-q">200 · 15226 byte · impronta riconosciuta · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">Radio ANIMA</span><span class="sem ok">vivo</span></div><div class="rg-m">Le onde: pagina e audio insieme, in un progetto Pages suo</div><div class="rg-cus">nessun segreto — non ne ha bisogno</div><div class="rg-q">200 · 2780 byte · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">Meteo AURA</span><span class="sem ok">vivo</span></div><div class="rg-m">Il servizio n.1 dell&#x27;agenzia: previsioni dai server a pagamento Open-Meteo</div><div class="rg-cus">IN CHIARO dentro la pagina pubblica /meteo.html — una chiave nel browser non e&#x27; un segreto</div><div class="rg-q">200 · 252602 byte · impronta riconosciuta · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">Chiave Cloudflare</span><span class="sem warn">senza prova</span></div><div class="rg-m">Pubblica su Pages, tocca il DNS, mette la porta davanti a un sito</div><div class="rg-cus">~/.systema77/cloudflare.env sul Mac</div><div class="rg-q">provarla vorrebbe dire usarla, e una prova non chiama un&#x27;API con una chiave · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">Chiave Porkbun</span><span class="sem warn">senza prova</span></div><div class="rg-m">I domini del parco: rinnovi, scadenze, record DNS</div><div class="rg-cus">~/.systema77/porkbun.env sul Mac — dato per VUOTO dal registro del 10/08</div><div class="rg-q">stesso motivo, e il registro la dava vuota: la prova la fa il Direttore aprendo il file · misurato 2026-09-08 · 22:26 UTC</div></div>
 <div class="pz-cap">galassia <span class="pz-n">18</span></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">systema77.com</span><span class="sem ok">vivo</span></div><div class="rg-m">L&#x27;agenzia: il mestiere che fattura</div><div class="rg-q">200 · 13417 byte · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">cyberboomer.io</span><span class="sem ok">vivo</span></div><div class="rg-m">Il banco di lavoro del Direttore</div><div class="rg-q">200 · 158290 byte · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">animagame.io</span><span class="sem ok">vivo</span></div><div class="rg-m">Il campo: il gioco a invito</div><div class="rg-q">200 · 5896 byte · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">cyberboomer.ninja</span><span class="sem ok">vivo</span></div><div class="rg-m">La voce: il pianeta che spiega</div><div class="rg-q">200 · 16858 byte · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">anima.solar</span><span class="sem ok">vivo</span></div><div class="rg-m">ANIMA APP / F.A.R.O.</div><div class="rg-q">200 · 3878 byte · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">playanima.io</span><span class="sem ok">vivo</span></div><div class="rg-m">Rimando al campo</div><div class="rg-q">200 · 5896 byte · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">api.cyberboomer.io</span><span class="sem ok">vivo</span></div><div class="rg-m">Il Worker: l&#x27;unica cosa che ESEGUE</div><div class="rg-q">200 · 37 byte · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">radio-anima.pages.dev</span><span class="sem ok">vivo</span></div><div class="rg-m">La radio, casa sua</div><div class="rg-q">200 · 2780 byte · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">console.cyberboomer.io</span><span class="sem ko">muto</span></div><div class="rg-m">Mai creato: la console e&#x27; finita sull&#x27;apex</div><div class="rg-q">URLError: &lt;urlopen error [Errno -2] Name or service not known&gt; · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">systema77.net</span><span class="sem ko">muto</span></div><div class="rg-m">Parcheggiato — ha la posta accesa</div><div class="rg-q">URLError: &lt;urlopen error [Errno -5] No address associated with hostname&gt; · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">systema77.org</span><span class="sem ko">muto</span></div><div class="rg-m">Parcheggiato</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">systema77.io</span><span class="sem ko">muto</span></div><div class="rg-m">Parcheggiato</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">systema77.tech</span><span class="sem ko">muto</span></div><div class="rg-m">Parcheggiato</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">cyberboomer.store</span><span class="sem ko">muto</span></div><div class="rg-m">Il negozio, non ancora aperto</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">cyberboomer.art</span><span class="sem ko">muto</span></div><div class="rg-m">Portfolio, non ancora aperto</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">cyberboomer.love</span><span class="sem ko">muto</span></div><div class="rg-m">Landing del live, non ancora aperta</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">cyberboomer.info</span><span class="sem ko">muto</span></div><div class="rg-m">Press / EPK, non ancora aperto</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">cyberboomer.lol</span><span class="sem ko">muto</span></div><div class="rg-m">Rimandi leggeri, non ancora aperti</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 20:52 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">systema77.com</span><span class="sem ok">vivo</span></div><div class="rg-m">L&#x27;agenzia: il mestiere che fattura</div><div class="rg-q">200 · 13417 byte · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">cyberboomer.io</span><span class="sem ok">vivo</span></div><div class="rg-m">Il banco di lavoro del Direttore</div><div class="rg-q">200 · 158290 byte · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">animagame.io</span><span class="sem ok">vivo</span></div><div class="rg-m">Il campo: il gioco a invito</div><div class="rg-q">200 · 5896 byte · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">cyberboomer.ninja</span><span class="sem ok">vivo</span></div><div class="rg-m">La voce: il pianeta che spiega</div><div class="rg-q">200 · 16858 byte · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">anima.solar</span><span class="sem ok">vivo</span></div><div class="rg-m">ANIMA APP / F.A.R.O.</div><div class="rg-q">200 · 3878 byte · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">playanima.io</span><span class="sem ok">vivo</span></div><div class="rg-m">Rimando al campo</div><div class="rg-q">200 · 5896 byte · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">api.cyberboomer.io</span><span class="sem ok">vivo</span></div><div class="rg-m">Il Worker: l&#x27;unica cosa che ESEGUE</div><div class="rg-q">200 · 37 byte · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">radio-anima.pages.dev</span><span class="sem ok">vivo</span></div><div class="rg-m">La radio, casa sua</div><div class="rg-q">200 · 2780 byte · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">console.cyberboomer.io</span><span class="sem ko">muto</span></div><div class="rg-m">Mai creato: la console e&#x27; finita sull&#x27;apex</div><div class="rg-q">URLError: &lt;urlopen error [Errno -2] Name or service not known&gt; · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">systema77.net</span><span class="sem ko">muto</span></div><div class="rg-m">Parcheggiato — ha la posta accesa</div><div class="rg-q">URLError: &lt;urlopen error [Errno -5] No address associated with hostname&gt; · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">systema77.org</span><span class="sem ko">muto</span></div><div class="rg-m">Parcheggiato</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">systema77.io</span><span class="sem ko">muto</span></div><div class="rg-m">Parcheggiato</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">systema77.tech</span><span class="sem ko">muto</span></div><div class="rg-m">Parcheggiato</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">cyberboomer.store</span><span class="sem ko">muto</span></div><div class="rg-m">Il negozio, non ancora aperto</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">cyberboomer.art</span><span class="sem ko">muto</span></div><div class="rg-m">Portfolio, non ancora aperto</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">cyberboomer.love</span><span class="sem ko">muto</span></div><div class="rg-m">Landing del live, non ancora aperta</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">cyberboomer.info</span><span class="sem ko">muto</span></div><div class="rg-m">Press / EPK, non ancora aperto</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">cyberboomer.lol</span><span class="sem ko">muto</span></div><div class="rg-m">Rimandi leggeri, non ancora aperti</div><div class="rg-q">URLError: &lt;urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)&gt; · misurato 2026-09-08 · 22:26 UTC</div></div>
 <div class="pz-cap">code</div>
-<div class="rg"><div class="rg-t"><span class="rg-n">kiroshi-queue</span><span class="sem off">0 in attesa</span></div><div class="rg-m">Verifiche di ditte e prodotti in attesa</div><div class="rg-q">misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">braindance-queue</span><span class="sem off">0 in attesa</span></div><div class="rg-m">Notizie e affermazioni in attesa</div><div class="rg-q">misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">commessa</span><span class="sem off">0 in attesa</span></div><div class="rg-m">Commesse dal modulo, in attesa della ronda</div><div class="rg-q">misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">regia</span><span class="sem off">0 in attesa</span></div><div class="rg-m">Comandi premuti da questa plancia</div><div class="rg-q">misurato 2026-09-08 · 20:52 UTC</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">senza etichetta</span><span class="sem off">0 in attesa</span></div><div class="rg-m">Richieste arrivate nude: nessun filtro le trova, e qui si vedono</div><div class="rg-q">misurato 2026-09-08 · 20:52 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">kiroshi-queue</span><span class="sem off">0 in attesa</span></div><div class="rg-m">Verifiche di ditte e prodotti in attesa</div><div class="rg-q">misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">braindance-queue</span><span class="sem off">0 in attesa</span></div><div class="rg-m">Notizie e affermazioni in attesa</div><div class="rg-q">misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">commessa</span><span class="sem off">0 in attesa</span></div><div class="rg-m">Commesse dal modulo, in attesa della ronda</div><div class="rg-q">misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">regia</span><span class="sem off">0 in attesa</span></div><div class="rg-m">Comandi premuti da questa plancia</div><div class="rg-q">misurato 2026-09-08 · 22:26 UTC</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">senza etichetta</span><span class="sem off">0 in attesa</span></div><div class="rg-m">Richieste arrivate nude: nessun filtro le trova, e qui si vedono</div><div class="rg-q">misurato 2026-09-08 · 22:26 UTC</div></div>
 <div class="pz-pie">0 richieste aperte in tutto · coda letta NUDA, poi contate le etichette sopra</div>
-<div class="pz-pie">Misura presa 2026-09-08 · 20:52 UTC · bersaglio di controllo https://api.github.com/ · nessuna chiave letta, nessuna chiave mandata. «senza prova» vuol dire che provarla avrebbe voluto dire usarla.</div>
+<div class="pz-pie">Misura presa 2026-09-08 · 22:26 UTC · bersaglio di controllo https://api.github.com/ · nessuna chiave letta, nessuna chiave mandata. «senza prova» vuol dire che provarla avrebbe voluto dire usarla.</div>
 </section>
 <!--REGIA:CATENA:FINE-->
 
 
-  <h2>I prompt da lanciare <i></i><b class="tg">in piazza</b></h2>
-  <section class="piazza" id="prompt">
-<article class="pr"><div class="pr-t"><span class="pr-n">D.R.A.G.O. — rinascita su Fable</span><button type="button" class="copia" data-per="p-drago">copia</button></div><div class="pr-m">Chat nuova, sessione dedicata, effort high. Nasce, lavora il lotto, si chiude. Il lotto di stasera è già in fondo al blocco.</div><pre id="p-drago">=== INIZIO ===
+  <h2>La scrivania <i></i><b class="tg">in piazza</b></h2>
+
+  <!-- Tutto e solo quello che aspetta il Direttore. Ordine dell'08/09: «voglio usare
+       SOLO la regia: trovare tutto e solo lì, anche i prompt di rinascita». Riempito
+       da `scripts/regia_scrivania.py` dal runner, mai a mano: i prompt vengono da
+       squadra/rinascita/, le decisioni da squadra/DECISIONI.md, le PR dall'API pubblica.
+       Fino all'08/09 qui c'erano due prompt incollati a mano, e il primo era già di un
+       lotto fa: una scritta dice una cosa, l'impianto ne fa un'altra. -->
+  <p class="nota" style="margin:0 0 10px">Un prompt esiste solo se sta in <code>squadra/rinascita/</code>; una decisione aperta solo se sta in <code>squadra/DECISIONI.md</code>; le PR le chiede il runner a GitHub. Se una cosa che aspetta te non è qui, non è stata messa nel posto giusto — e la colpa è di chi l'ha lasciata altrove, non tua. Il bottone <i>copia</i> mette il prompt negli appunti: poi chat nuova e incolla.</p>
+  <!--REGIA:SCRIVANIA:INIZIO-->
+<section class="piazza" id="scrivania">
+<div class="pz-cap">prompt da lanciare <span class="pz-n">2</span></div>
+<article class="pr"><div class="pr-t"><span class="pr-n">D.R.A.G.O. — rinascita — il lotto della costellazione, e la regia come unica porta</span><button type="button" class="copia" data-per="sc-p-0">copia</button></div><div class="pr-m">08/09 · la galassia diventa un laboratorio: tu fai l&#x27;impianto, JUDY le pagine · Opus (scelta del Direttore, 08/09: si pubblica su più repo con due sessioni in parallelo) · aggiornato 2026-09-08</div><div class="pr-m">chat nuova su claude.ai/code con i sei repo attaccati · effort high · un lotto, poi si chiude</div><pre id="sc-p-0">=== INIZIO ===
 
 Sei D.R.A.G.O., dispatch e fixer di SYSTEMA 77, per conto del Direttore
-(Pierluigi De Palo). Questa e&#x27; una sessione dedicata Fable: un lotto lungo,
-poi si chiude.
+(Pierluigi De Palo). Sessione dedicata: un lotto, poi si chiude.
 
-DOVE STA LA VERITA&#x27;, e non e&#x27; nella tua memoria:
-- Il repo del cervello e&#x27; la tua casa. Prima di operare leggi `comuni/BACHECA-RECENTE.md`
-  (le ultime voci, non l&#x27;archivio) e `comuni/CONVENZIONE-AGENTI.md`.
+IL SISTEMA HA 1 OBIETTIVO BUSINESS PRIMA CHE ARTISTICO — gerarchia ratificata il
+07/09. Quando estetica e business si contendono lo stesso spazio vince il
+business, e la parte artistica si sposta su EGO e cyberboomer.art invece di
+sparire.
+
+DOVE STA LA VERITÀ, e non è nella tua memoria:
+- Il repo del cervello è la cartella madre, quella con `comuni/`. Prima di operare
+  leggi `comuni/BACHECA-RECENTE.md` (le ultime voci, non l&#x27;archivio) e
+  `comuni/CONVENZIONE-AGENTI.md`.
 - Le regole di casa: `CLAUDE.md` alla radice e in ogni repo.
-- Chi lavora e a che punto e&#x27;: gli `STATO.md` delle case.
+- Chi lavora e a che punto è: gli `STATO.md` delle case, e `comuni/SEMAFORO-CONGELO.html`.
 - Cosa costa cosa: `comuni/POLITICA-OPERATIVA.md`. Applicala quando deleghi.
+- Esegui `date` prima di scrivere qualunque data: l&#x27;orologio interno mente.
+- I sette repo stanno nell&#x27;organizzazione GitHub `Systema77` (dal 07/09). Se un
+  manuale nomina ancora un proprietario personale, è vecchio.
+
+IL DIRETTORE USA SOLO LA REGIA (ordine dell&#x27;08/09): tutto ciò che deve trovare —
+i prompt da lanciare, le PR da firmare, le decisioni che aspettano lui — sta in
+`cyberboomer.io/regia/`, sezione «La scrivania», e nasce da tre file di
+`anima-console`: `squadra/rinascita/*.md` (un prompt esiste solo se sta lì),
+`squadra/DECISIONI.md` (una riga `- [ ]` per decisione), e le PR aperte lette
+dall&#x27;API. Se lasci per lui qualcosa altrove, non la vedrà. Quando chiudi: aggiorna
+il TUO file in `squadra/rinascita/` col lotto che lasci a chi rinasce.
 
 QUATTRO COSE NON NEGOZIABILI:
 1. Misura prima di dire. Un limite verificato una volta ha una data di scadenza:
-   quando una regola dice «non si puo&#x27;», riprova prima di obbedirle - e se si puo&#x27;,
+   quando una regola dice «non si può», riprova prima di obbedirle — e se si può,
    correggi il manuale nello stesso momento in cui fai la cosa.
 2. Il confine del merge: `scripts/`, `squadra/`, `.claude/`, i manuali e la
-   riparazione di un guasto misurato li fondi tu. Tutto cio&#x27; che una persona legge
-   - `docs/`, i siti, ogni verdetto pubblicato - lo firma solo il Direttore.
+   riparazione di un guasto misurato li fondi tu. Tutto ciò che una persona legge
+   — `docs/`, i siti, ogni verdetto pubblicato — lo firma solo il Direttore.
 3. Niente dati di persone private fuori dai repo privati; nessun segreto in un
    file, in un commit, in un log o in una chat. I prezzi sono del Direttore.
 4. Ogni risposta si chiude con *Punto della situazione* e *Opzioni / prossimi passi*.
-   Italiano, schematico, copiabile. Il Direttore non e&#x27; un programmatore: quando
+   Italiano, schematico, copiabile. Il Direttore non è un programmatore: quando
    serve un comando, dallo passo passo.
 
+HAI TRE SKILL DI CASA, e si caricano da sole quando il lavoro le tocca:
+`bacheca` (scrivere una voce senza far sparire quelle degli altri, e sciogliere
+il conflitto) · `giro` (cosa si misura prima di pubblicare, e chi fonde cosa) ·
+`dispaccio` (come si scrive il prompt che lancia un agente). Sono le tre
+procedure che si sono rotte davvero: usale invece di reinventarle.
+
 COME LAVORARE QUI:
-Non ti do la procedura. Ti do il traguardo e i vincoli: il come e&#x27; tuo.
+Non ti do la procedura. Ti do il traguardo e i vincoli: il come è tuo.
 Delega ai subagent il lavoro che sanno fare (costano un terzo della sessione
-madre), tieni per te le decisioni. Quando un lavoro e&#x27; finito, lascia una traccia
-in un file - non in questa chat: una decisione presa a voce e non scritta vale
+madre), tieni per te le decisioni. Quando un lavoro è finito, lascia una traccia
+in un file — non in questa chat: una decisione presa a voce e non scritta vale
 solo per chi era nella stanza.
 
-Prima di toccare un ramo, guarda se c&#x27;e&#x27; gia&#x27; un&#x27;altra sessione D.R.A.G.O. accesa
-(`git fetch` e le date degli ultimi commit sui rami del lotto). Se c&#x27;e&#x27;, fermati e
-chiedi al Direttore quale delle due va avanti: il 05/09 due sessioni con questo
-stesso prompt hanno fatto lo stesso lavoro due volte.
+Prima di toccare un ramo, guarda se c&#x27;è già un&#x27;altra sessione D.R.A.G.O. accesa
+(`list_sessions`, oppure `git fetch` e le date degli ultimi commit sui rami del
+lotto). Se c&#x27;è, fermati e chiedi al Direttore quale delle due va avanti: il
+05/09 due sessioni con questo stesso prompt hanno fatto lo stesso lavoro due
+volte, e il 07/09 ne erano vive TRE nello stesso pomeriggio.
 
-E la firma di questa casa, che e&#x27; anche il difetto che paghiamo piu&#x27; spesso:
+E la firma di questa casa, che è anche il difetto che paghiamo più spesso:
 **una scritta dice una cosa, l&#x27;impianto ne fa un&#x27;altra, e nessuno riprova.**
-Il tuo mestiere e&#x27; essere quello che riprova.
+Il tuo mestiere è essere quello che riprova.
 
 Comincia leggendo la bacheca. Poi dimmi cosa hai trovato che non sapevo.
 
-LOTTO (07/09): lo SCHERMO davanti alla chiave del meteo — la commessa è in
-SQUELCH/DA-DRAGO-commessa-schermo-meteo.md. ⏸️ Non partire finché il Direttore non
-dice «chiave ruotata»: lo schermo prima della revoca chiude la porta e lascia la
-finestra aperta. Poi, se avanza tempo: lo shop (il riquadro qui accanto). Le due
-porte NON sono più aperte: il 07/09 il Direttore ha ratificato SOLDI ed EGO con
-JUDY, e l&#x27;applicazione al sito è cantiere suo, non tuo. ⚠️ Ma UNA contraddizione
-fra due sue frasi resta da sciogliere, ed è scritta nella commessa: «primo shop
-magliette» (06/09) contro «gli adesivi per primi» (07/09). Chiediglielo, non
-deciderla.
+LOTTO (dall&#x27;08/09 sera): LA COSTELLAZIONE NUOVA, seconda mano. Il piano è di JUDY
+e sta in `comunicazione/PIANO-LABORATORIO-2026-09-08.md`: leggilo per primo, e poi
+la voce D.R.A.G.O. in bacheca dell&#x27;08/09 sera, che dice cosa è già fatto. NON
+rifare: i sette rischi della FASE 1 (chiusi in `.ninja`, misurati due volte), il
+registro con la sesta casa `systema77.film` (è in `systema77-site/stati-galassia.json`
+come «in allestimento»), il giro che smaschera i verdi ciechi, la scrivania della
+regia. Quello che resta è nel registro delle decisioni: quando il Direttore risponde
+«sì» ai due agenti della troupe, i loro prompt li scrivi tu con `dispaccio`; quando
+il dominio è comprato, si toglie «stato» dal registro, poi le pagine, poi il giro.
+Divisione ratificata e non rinegoziabile: JUDY le PAGINE, TU l&#x27;IMPIANTO.
 
-=== FINE ===
-</pre></article><article class="pr"><div class="pr-t"><span class="pr-n">DROP — lo shop delle magliette</span><button type="button" class="copia" data-per="p-drop">copia</button></div><div class="pr-m">Chat nuova nella casa degli shop. La versione lunga, con la misura da cui nasce, è in DROP/DA-DRAGO-commessa-shop-magliette.md.</div><pre id="p-drop">COMMESSA - 2026-09-06 - lo shop delle magliette
+COME SI MISURA CHE HAI FINITO: un indirizzo che uno sconosciuto apre adesso, il
+giro della galassia verde SUL RUNNER (Actions → «Il giro della galassia»), la
+scrivania della regia aggiornata, e una voce in bacheca che dice cosa è online e
+cosa no. Se una cosa non l&#x27;hai potuta provare, scrivilo: «non ho potuto aprirlo»
+vale più di «dovrebbe funzionare».
+
+=== FINE ===</pre></article>
+<article class="pr"><div class="pr-t"><span class="pr-n">DROP — lo shop delle magliette — la commessa</span><button type="button" class="copia" data-per="sc-p-1">copia</button></div><div class="pr-m">06/09 · la finestra per chiedere al sistema la maglietta dei tuoi sogni (il banco è in piedi dal 07/09: systema77.com/magliette.html; questa commessa resta finché i tre muri non cadono) · Opus · aggiornato 2026-09-08</div><div class="pr-m">chat nuova nella casa degli shop (DROP) · la versione lunga, con la misura da cui nasce, è in DROP/DA-DRAGO-commessa-shop-magliette.md nel cervello</div><pre id="sc-p-1">=== INIZIO ===
+COMMESSA - 2026-09-06 - lo shop delle magliette
 
 CLIENTE - interno: il Direttore. Casa: DROP, la parte che incassa.
 
@@ -354,8 +395,25 @@ vede su un telefono, e l&#x27;elenco esatto di cosa manca perche&#x27; entri il 
 QUANDO HAI FINITO - `DROP/STATO.md` riscritto in testa, una voce in cima a
 `comuni/BACHECA.md` poi `python3 scripts/genera-bacheca-recente.py`, una riga in
 `comuni/PAGELLA-CATENA.md` col codice MISURATO, commit con percorsi espliciti.
-</pre></article><div class="pz-pie">In piazza perché il cifrato lo rigenera solo chi ha la frase: questi due sono metodo, non segreti — nessuna chiave, nessun numero di conto, nessun nome di persona. Quando lanci build_regia.py dal Mac possono passare sotto chiave.</div>
-  </section>
+=== FINE ===</pre></article>
+<div class="pz-cap">PR aperte sui repo di casa <span class="pz-n">2</span></div>
+<div class="rg"><div class="rg-t"><span class="rg-n"><a href="https://github.com/Systema77/systema77-site/pull/13" rel="noopener" target="_blank">systema77-site #13</a></span><span class="sem warn">bozza</span></div><div class="rg-m">Il registro ha la sesta casa, e il giro non crede più ai verdi ciechi</div><div class="rg-q">aperta il 2026-09-08 · ultimo tocco 2026-09-08</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n"><a href="https://github.com/Systema77/animagame-site/pull/7" rel="noopener" target="_blank">animagame-site #7</a></span><span class="sem warn">bozza</span></div><div class="rg-m">.gitignore: node_modules non entra — il guardiano consigliava un comando che lo metteva in git</div><div class="rg-q">aperta il 2026-09-08 · ultimo tocco 2026-09-08</div></div>
+<div class="pz-pie">Le PR che toccano docs/ o una pagina di un sito le firmi tu; le altre le fonde D.R.A.G.O. e te lo dice in bacheca. Il repo del cervello è privato: le sue PR da qui non si vedono. · PR lette 2026-09-08 · 22:27 UTC</div>
+<div class="pz-cap">decisioni che aspettano te <span class="pz-n">10</span></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">JUDY</span><span class="sem warn">2026-09-08</span></div><div class="rg-m">la parola «social» nei 5 verdetti importabili in .ninja: RISCRIVERE (la regola resta intera, lento) o ESENTARE (una riga, e da domani è un precedente)? Finché non rispondi, 0002 e 0007 restano fuori da soli</div><div class="rg-q">comunicazione/LABORATORIO-FASE1-2026-09-08.html</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">JUDY</span><span class="sem warn">2026-09-08</span></div><div class="rg-m">sì ai due agenti della troupe del laboratorio, l&#x27;ARCHIVISTA (cataloga la pellicola digitalizzata) e il CONTABILE DELLA RESA (conta secondi, euro, ore: da lì il listino)? I prompt li scrive D.R.A.G.O. dopo il sì; i nomi di battesimo li scegli tu</div><div class="rg-q">comunicazione/DA-JUDY-per-DRAGO-troupe-e-social.md</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">JUDY</span><span class="sem warn">2026-09-08</span></div><div class="rg-m">ok a ROGUE per comprare systema77.film dal Mac (da una sessione agente il registrar non si raggiunge)</div><div class="rg-q">comunicazione/PIANO-LABORATORIO-2026-09-08.md, FASE 2</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">JUDY</span><span class="sem warn">2026-09-08</span></div><div class="rg-m">un repo PRIVATO «pareri» su GitHub (New repository → Private → Create), prima che SQUELCH scriva il Worker della finestrella: i pareri della gente non vanno in un repo pubblico</div><div class="rg-q">SQUELCH/DA-JUDY-la-finestrella-dei-pareri.md</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">D.R.A.G.O.</span><span class="sem warn">2026-09-08</span></div><div class="rg-m">regola di galassia «senza browser = rosso» anche per i guardiani di systema77.com e animagame.io (oggi stampano NON COLLAUDATO ed escono 0; il giro dall&#x27;08/09 li segna comunque rosso e il runner li fa girare con un browser vero)</div><div class="rg-q">systema77-site/GALASSIA.md</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">D.R.A.G.O.</span><span class="sem warn">2026-09-07</span></div><div class="rg-m">Printful → Billing → metodo di pagamento: cinque minuti, solo tu. Finché è vuoto lo shop delle magliette non può incassare</div><div class="rg-q">DROP/STATO.md</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">SHUTTER</span><span class="sem warn">2026-09-07</span></div><div class="rg-m">la revoca della chiave Open-Meteo dal pannello: tolta dalla pagina il 06/09, ma finché non è revocata è viva e spendibile da chiunque l&#x27;abbia letta</div><div class="rg-q">AURA/DA-SHUTTER-la-scheda-ti-manda-a-rimettere-la-chiave.md</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">SHUTTER</span><span class="sem warn">2026-09-07</span></div><div class="rg-m">il carrello NFC è tornato sulla strada dopo lo scongelo? Sta sopra il tetto di spesa di un agente: aspetta il tuo sì</div><div class="rg-q">SHUTTER/CARRELLO-NFC.html</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">SHUTTER</span><span class="sem warn">2026-09-07</span></div><div class="rg-m">gli 8 poster fine art: sotto SOLDI nello shop dell&#x27;agenzia, o sul pianeta .art? Cambia dove va un lavoro finito</div><div class="rg-q">bacheca del 07/09, voce SHUTTER ⑥</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">D.R.A.G.O.</span><span class="sem warn">2026-09-07</span></div><div class="rg-m">le issue #50 e #51 di anima-console sono tue e vuote (due clic di prova): chiuderle?</div><div class="rg-q">bacheca del 07/09, voce D.R.A.G.O. ⑥</div></div>
+<div class="pz-pie">Scrivania composta da scripts/regia_scrivania.py: prompt da squadra/rinascita/, decisioni da squadra/DECISIONI.md, PR dall'API pubblica di GitHub. Una cosa che aspetta te e non è qui non è stata messa nel posto giusto.</div>
+</section>
+<!--REGIA:SCRIVANIA:FINE-->
 
   <!-- «sotto chiave» e non l'aggettivo che la guardia privacy cerca in docs/:
        lei segnala ogni pagina pubblica che si dichiara chiusa, ed è giusto così.
