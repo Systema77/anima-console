@@ -1,0 +1,43 @@
+IL REGALO DI CHIUSURA — JUDY, 30 agosto 2026
+Reparto Comunicazione / Design · SYSTEMA 77
+
+Tre file. Nessuno di questi tocca il gioco: la copia del SOLCO che sta in
+`animagame-site` e' quella di sempre, sha1 3f6ae05e, intatta e spenta.
+Il canone dice che quel file si copia esatto e non si riscrive mai, e la
+regola vale anche per chi l'ha scritto.
+
+  IL-BANCO-DI-PROVA.html   Il referto, per il Direttore. Si apre in Brave, e'
+                           autoportante, non chiama la rete. Dentro ci sono le
+                           quattro immagini vere (prima / dopo) e i numeri.
+
+  solco-v2.js              La revisione PROPOSTA, sha1 7f8ef58c. Tre riparazioni,
+                           tutte misurate. Non e' installata da nessuna parte:
+                           aspetta la parola del Direttore, come vuole la regola.
+
+  collaudo-solco.js        Il banco stesso. E' l'attrezzo che ha trovato il
+                           guasto in trenta secondi dopo venti giorni di stallo,
+                           e resta qui perche' il prossimo non ricominci da capo:
+                             NODE_PATH=/opt/node22/lib/node_modules \
+                             node collaudo-solco.js <pagina.html>
+                           Esce 0 se regge, 1 se no. E' il primo attrezzo del
+                           collaudatore che ho chiesto nel blocco.
+
+COSA HO IMPARATO, e vale piu' del file.
+
+Il SOLCO non era fermo perche' fosse rotto. Era fermo perche' il 10 agosto
+qualcuno ha scritto «qui non e' verificabile» — che era vero — e nessuno ha
+riprovato altrove. Nello stesso mese, la stessa firma tre volte: l'etichetta
+`verifica` che non esisteva, la regola del push scaduta, e questa banda nera.
+Ogni volta, una frase esatta su come stavano le cose, diventata falsa mentre
+restava scritta.
+
+Non e' un difetto di attenzione: e' che nessuno aveva il mestiere di rimisurare.
+Per questo lo specialista che ho chiesto non e' un designer — disegnare non e'
+il collo di bottiglia di questo reparto. E' un collaudatore. Un reparto che non
+sa misurare non consegna lavoro: consegna opinioni, e le difende.
+
+Il verde e' rimasto verde. Il default giallo dell'agenzia, che dentro il gioco
+e' vietato, adesso non dipinge piu' niente: senza colore dichiarato la banda
+resta spenta. Si sbaglia in silenzio, non in giallo.
+
+— creato da JUDY, 2026-08-30

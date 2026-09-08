@@ -1,0 +1,8 @@
+w390 moto  20s=4.41% 40s=3.88% 60s=4.73% 80s=5.07% 100s=5.87%  → max 5.87% entro il canone, si assesta
+w390 fermo 4.95% → entro il canone
+w1200 moto  20s=1.43% 40s=2.1% 60s=2.26% 80s=2.22% 100s=2.32%  → max 2.32% entro il canone, si assesta
+w1200 fermo 4.26% → entro il canone
+
+VERDETTO: REGGE
+Gli screenshot sono in collaudo-*.png: i numeri dicono se regge, le immagini se e' giusto.
+— collaudato con il banco di JUDY, 2026-08-30
