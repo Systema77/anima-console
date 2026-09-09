@@ -289,7 +289,22 @@ def dati_comandi() -> list:
         m = re.search(r"^description:\s*(.+)$", testo, re.M)
         # Solo la prima frase: in console serve sapere quando si usa, non tutto.
         d = pulisci(m.group(1)) if m else ""
-        fuori.append({"comando": f"/{nome}", "quando": d.split(". ")[0].rstrip(".") or None})
+        # La frase «Non usarla per...» e' l'altra meta' e prima si buttava. Un
+        # comando si ricorda per quello che NON fa quanto per quello che fa, e
+        # senza quella riga il Direttore lo lanciava sul lavoro sbagliato.
+        non = next((pulisci(f) for f in re.split(r"(?<=\.)\s+", d) if f.lower().startswith("non usarl")), None)
+        fuori.append({
+            "comando": f"/{nome}",
+            "quando": d.split(". ")[0].rstrip(".") or None,
+            "non": non.rstrip(".") if non else None,
+            # Due righe di convenzione in testa a ogni SKILL.md, subito sotto il
+            # titolo. Stanno nella skill e non qui apposta: l'elenco resta LETTO,
+            # non scritto a mano, e un comando nuovo si spiega da solo.
+            "esegui": (lambda x: x.group(1).strip() if x else None)(
+                re.search(r"^>\s*⌨️\s*\*\*Comando:\*\*\s*`([^`]+)`", testo, re.M)),
+            "nata": (lambda x: pulisci(re.sub(r"\n>\s*", " ", x.group(1))).strip() if x else None)(
+                re.search(r"^>\s*🩹\s*\*\*Nata da:\*\*\s*(.+?)(?=\n>\s*⌨️|\n\n)", testo, re.M | re.S)),
+        })
     return fuori
 
 
