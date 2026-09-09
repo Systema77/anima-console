@@ -39,6 +39,11 @@ on:
     paths:
       - '.github/workflows/misura-catena.yml'
       - 'scripts/misura_catena.py'
+      # La scrivania (08/09): un prompt o una decisione nuova arriva in regia al push,
+      # senza aspettare il giro delle sei.
+      - 'scripts/regia_scrivania.py'
+      - 'squadra/rinascita/**'
+      - 'squadra/DECISIONI.md'
 
 permissions:
   contents: write
@@ -69,6 +74,13 @@ jobs:
         # Lo script in quel caso NON scrive, e il passo deve fallire: un referto
         # che non ha misurato niente non deve sembrare andato bene.
         run: python3 scripts/misura_catena.py
+
+      - name: 1b · La scrivania — prompt da lanciare, PR aperte, decisioni
+        # Ordine del Direttore dell'08/09: «voglio usare SOLO la regia». Legge
+        # squadra/rinascita/, squadra/DECISIONI.md e le PR aperte dei repo pubblici
+        # (API pubblica, nessun token) e riscrive il blocco REGIA:SCRIVANIA della
+        # stessa pagina. Se l'API non risponde lo scrive in pagina, non finge zero.
+        run: python3 scripts/regia_scrivania.py
 
       - name: 2 · Committa la pagina, se e' cambiata
         run: |
