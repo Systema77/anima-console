@@ -177,6 +177,10 @@ Quando lavori in **Claude Code** su questo repo (GitHub: `anima-console`), la mi
 > ed è morto** con «Could not resolve authentication method»: **manca il secret
 > `ANTHROPIC_API_KEY`** nel repo. Log del run verificato, non dedotto. Da oggi lo script lo dice
 > in chiaro (fail-fast) e il workflow fa match **esatto** sull'array delle etichette.
+>
+> ✅ **Chiuso, e la data vera è il 30/08.** Questo verbale resta com'era perché era vero il 17/08, ma chi legge solo questo paragrafo cercherebbe un guasto che non esiste più: la correzione sta in **Blocchi noti**.
+> Due misure indipendenti, e la seconda sposta indietro la data: il run #46 di `kiroshi.yml` (07/09) è arrivato oltre la chiamata a pagamento; e il **log** del run #7 di `.github/workflows/prova-chiave.yml` (04/09) stampa «✓ LA CHIAVE FUNZIONA. 11 modelli raggiungibili».
+> **La causa, che nessuna delle due righe diceva:** la chiave non mancava — era **malformata**, un a capo dentro il valore rompeva il mascheramento di GitHub, ed è stata riparata il **30/08** con la PR #24. Un secret che c'è ma è malformato fallisce come uno assente e si diagnostica in tutt'altro posto.
 
 **Uscita (Claude Code).** Questo è il tuo lavoro ricorrente. Ad ogni sessione:
 1. `gh issue list --label kiroshi-queue --state open` → leggi la coda.
