@@ -102,7 +102,7 @@ Quando lavori in **Claude Code** su questo repo (GitHub: `anima-console`), la mi
 3. **Verifica dal vivo**: funzione serverless + API Claude. ⚠️ **Stessa infrastruttura del bot Slack L1** (`DA-KIROSHI-per-SQUELCH-bot-slack-L1.md`) → costruire **una volta**, servire **due canali**.
 4. **Estensioni**: bot Slack, badge "verificato", accesso per gli altri siti.
 
-**Blocchi noti:** ~~HTTPS del dominio non emesso (priorità 0 — Settings → Pages)~~ → **falso dal 17/07**: misurato dal runner il 05/09 (`.github/workflows/prova-porta.yml`, run #1), `cyberboomer.io` ha un certificato Let's Encrypt valido (17/07 → 15/10), `http` → `https` in 301, la porta servita in HTTPS. La riga è rimasta qui sette settimane oltre la sua verità e mandava a cercare il guasto dell'accesso alla porta nel posto sbagliato: **chi non entra sbaglia la frase, non la rete** (`bash squadra/chiavi.sh leggi regia`). · **secret `ANTHROPIC_API_KEY` non configurato nel repo** (Settings → Secrets and variables → Actions): senza, l'automazione muore alla chiamata API — è la vera causa del failure del run #32 del 16/08, non l'etichetta · servono 10–12 verdetti (oggi 7; la ricerca `cinepresa-…` resta a BRAINDANCE perché è una tesi/claim, non un prodotto).
+**Blocchi noti:** ~~HTTPS del dominio non emesso (priorità 0 — Settings → Pages)~~ → **falso dal 17/07**: misurato dal runner il 05/09 (`.github/workflows/prova-porta.yml`, run #1), `cyberboomer.io` ha un certificato Let's Encrypt valido (17/07 → 15/10), `http` → `https` in 301, la porta servita in HTTPS. La riga è rimasta qui sette settimane oltre la sua verità e mandava a cercare il guasto dell'accesso alla porta nel posto sbagliato: **chi non entra sbaglia la frase, non la rete** (`bash squadra/chiavi.sh leggi regia`). · ~~secret `ANTHROPIC_API_KEY` non configurato nel repo~~ → **falso dal 30/08**: la chiave c'era, ma era **malformata** — un a capo dentro il valore rompeva il mascheramento di GitHub — ed è stata riparata quel giorno (PR #24). Misurato il 09/09 leggendo il **log** del run #7 di `.github/workflows/prova-chiave.yml` (04/09, `workflow_dispatch` su `main`), non il pallino verde: «✓ LA CHIAVE FUNZIONA. 11 modelli raggiungibili» e «✓ `claude-sonnet-5` è fra quelli disponibili». **L'automazione KIROSHI non è più bloccata dalla chiave.** È la terza volta in un mese che questo manuale insegna un ostacolo già rimosso — il 403 di GitHub, l'HTTPS del dominio, ora la chiave — e stavolta la prova era in casa dal 30/08: un workflow scritto apposta, verde cinque volte, che nessuno ha aperto · servono 10–12 verdetti (oggi 7; la ricerca `cinepresa-…` resta a BRAINDANCE perché è una tesi/claim, non un prodotto).
 
 **Regole di lavoro nel repo:**
 - Commit e push: **anche dalle sessioni remote**, sul branch di lavoro, mai su `main`.
@@ -177,6 +177,8 @@ Quando lavori in **Claude Code** su questo repo (GitHub: `anima-console`), la mi
 > ed è morto** con «Could not resolve authentication method»: **manca il secret
 > `ANTHROPIC_API_KEY`** nel repo. Log del run verificato, non dedotto. Da oggi lo script lo dice
 > in chiaro (fail-fast) e il workflow fa match **esatto** sull'array delle etichette.
+>
+> ✅ **Chiuso il 30/08, verificato il 09/09.** Questo verbale resta com'era perché era vero il 17/08. La chiave oggi c'è e autentica: vedi la correzione in **Blocchi noti**. Chi legge solo questo paragrafo cercherebbe un guasto che non esiste più.
 
 **Uscita (Claude Code).** Questo è il tuo lavoro ricorrente. Ad ogni sessione:
 1. `gh issue list --label kiroshi-queue --state open` → leggi la coda.
