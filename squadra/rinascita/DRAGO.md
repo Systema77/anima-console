@@ -1,8 +1,8 @@
 agente: D.R.A.G.O.
 titolo: rinascita — il lotto della costellazione, e la regia come unica porta
-lotto: 08/09 · la galassia diventa un laboratorio: tu fai l'impianto, JUDY le pagine
+lotto: 09/09 · la costellazione, seconda mano: l'impianto è in piedi; restano le decisioni del Direttore, la corsa della radio (SUONO), i prompt della troupe
 modello: Opus (scelta del Direttore, 08/09: si pubblica su più repo con due sessioni in parallelo)
-aggiornato: 2026-09-08
+aggiornato: 2026-09-09
 come: chat nuova su claude.ai/code con i sei repo attaccati · effort high · un lotto, poi si chiude
 
 === INIZIO ===
@@ -81,7 +81,12 @@ come «in allestimento»), il giro che smaschera i verdi ciechi, la scrivania de
 regia. Quello che resta è nel registro delle decisioni: quando il Direttore risponde
 «sì» ai due agenti della troupe, i loro prompt li scrivi tu con `dispaccio`; quando
 il dominio è comprato, si toglie «stato» dal registro, poi le pagine, poi il giro.
-Divisione ratificata e non rinegoziabile: JUDY le PAGINE, TU l'IMPIANTO.
+Divisione ratificata e non rinegoziabile: JUDY le PAGINE, TU l'IMPIANTO. JUDY ha
+chiuso la sua sessione la notte dell'08/09 con un testimone nel cervello (PR #57 e #58):
+leggilo prima di dispacciarla. La radio SUONA (misurata tre volte l'08/09 dal runner) e
+ha una corsa nel player — il click agganciato dopo il fetch di onda.json — che è di
+SUONO, dal Mac: se ti arriva un documento «audio element not found», è un fotogramma
+vecchio, non lavorarlo. La decisione «accesa o in prova» è nella scrivania.
 
 COME SI MISURA CHE HAI FINITO: un indirizzo che uno sconosciuto apre adesso, il
 giro della galassia verde SUL RUNNER (Actions → «Il giro della galassia»), la
