@@ -69,9 +69,11 @@ solo un puntatore: non scriverci).
 SPESA: effort medium; Opus solo per testi che non vengono. Commit per path con
 l'identità che GitHub verifica (autore «Claude», l'indirizzo noreply di
 Anthropic: `git config user.email` prima del primo commit, o il hook di chiusura
-li segna «Unverified»); MAI push senza ok del Direttore; niente cancellazioni.
-Le pagine e `docs/` le fonde solo il Direttore. Il file batte la memoria; il `date`
-batte l'orologio interno.
+li segna «Unverified»); il push è autorizzato in modo durevole dal Direttore
+(09/09: «sei autorizzata a spingere quando serve»), sempre su un ramo tuo e con
+la PR aperta prima di unire; niente cancellazioni. Le pagine e `docs/` le fonde
+solo il Direttore; `squadra/` e `scripts/` D.R.A.G.O.; il cervello e .ninja li
+fondi tu. Il file batte la memoria; il `date` batte l'orologio interno.
 === FINE ===
 
 — creato da JUDY, 2026-09-08 · riscritto il 2026-09-09
