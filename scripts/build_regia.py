@@ -66,6 +66,7 @@ PAGINA = os.path.join(ROOT, "docs", "regia", "index.html")
 # Fuori da questo repo di proposito: sono i consumi del Direttore, e un repo che
 # serve pagine non è il posto dove tenerli. Sul Mac ROOT_CLODE è la cartella sopra.
 VERDETTO = os.path.join(ROOT, "..", "comuni", "verdetto-token.json")
+POLITICA = os.path.join(ROOT, "..", "comuni", "POLITICA-OPERATIVA.md")
 ITERAZIONI = 210_000                   # il motore in pagina rifiuta payload sotto 200.000
 FRASE_MINIMA = 12
 
@@ -204,6 +205,23 @@ def dati_verdetti() -> dict:
     }
 
 
+def regola_barra() -> str:
+    """La REGOLA BARRA, letta dalla politica invece che ricopiata.
+
+    Stesso mestiere di blocchi_noti() qui sotto, e stessa onestà: se il marcatore
+    non c'è, lo DICE. Una regola inventata da un generatore è peggio di una regola
+    mancante, perché sembra ratificata.
+    """
+    try:
+        md = open(POLITICA, encoding="utf-8").read()
+    except OSError:
+        return "non letta: POLITICA-OPERATIVA.md non raggiungibile da qui"
+    for riga in md.splitlines():
+        if riga.strip().startswith("**REGOLA BARRA:**"):
+            return pulisci(riga.split("**REGOLA BARRA:**", 1)[1])
+    return "non trovata: manca il marcatore «REGOLA BARRA» nella politica"
+
+
 def dati_tachimetro() -> dict:
     """La barra del piano, dal file che scrive ROOT_CLODE/scripts/verdetto-token.py.
 
@@ -247,13 +265,13 @@ def dati_tachimetro() -> dict:
                    "percento": m.get("percento"), "riferimento": m.get("origine_tetto"),
                    "stato": m.get("stato")}
                   for m in t.get("modelli", [])],
-        # La regola esiste dal 08/08 in comuni/POLITICA-OPERATIVA.md e finora
-        # nessuno poteva applicarla, perché la barra non si vedeva da nessuna parte.
-        "regola": "Barra oltre ~70% → si lancia solo lavoro Haiku/Sonnet.",
+        # Fino al 09/09 qui la regola era RICOPIATA, ed era la terza copia della
+        # stessa frase. Ora si legge dalla sua sorgente: se cambia là, cambia qui.
+        "regola": regola_barra(),
         "limiti": "I tetti veri delle barre non sono pubblici. Si scrivono in "
                   "scripts/tachimetro-config.json SOLO dopo aver visto una barra "
-                  "svuotarsi davvero: finché sono vuoti il paragone è la settimana "
-                  "precedente, ed è scritto in `riferimento`.",
+                  "svuotarsi davvero, e solo sul piano in corso: un tetto misurato "
+                  "su un piano vecchio non descrive più niente.",
         "rinfresca": rinfresca,
     }
 
