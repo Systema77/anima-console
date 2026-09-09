@@ -931,5 +931,94 @@ bash squadra/chiavi.sh leggi regia      # la frase che apre questa pagina</pre><
   });
 })();
 </script>
+
+<style>
+/* L'elenco dei comandi slash. Riusa .rg-* e .copia della pagina: nessun colore
+   nuovo, nessun font nuovo. Solo la riga del comando ha bisogno di due regole. */
+.cmd-riga{display:flex;gap:8px;align-items:flex-start;margin-top:9px}
+/* Va a capo invece di scorrere: a 390 px `python3 scripts/genera-bacheca-r…`
+   restava tagliato, e un comando che non si legge e' didattico a meta'. */
+.cmd-pre{margin:0;flex:1;min-width:0;background:var(--panel2,#111823);
+  border:1px solid var(--line);border-radius:3px;padding:8px 10px;
+  font-family:var(--mono);font-size:12px;color:var(--txt);
+  white-space:pre-wrap;word-break:break-word}
+.cmd-nata{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.55;
+  border-left:2px solid var(--amber,#f6c453);padding-left:10px}
+</style>
+<script>
+/* ── L'INNESTO DEI COMANDI ──────────────────────────────────────────────────
+   Ordine del Direttore, 2026-09-09: «non li ricordo, e vorrei ritrovarli qui in
+   maniera didattica, con nota personale di funzionamento».
+
+   I dati arrivano gia' dal payload (`comandi`), LETTI dalle skill e non scritti
+   a mano: un comando nuovo compare da solo al primo lancio di build_regia.py.
+   Quello che mancava era solo renderli leggibili — finora uscivano come JSON.
+
+   ⚠ E questo innesto DEVE anche rifare il dump delle altre chiavi. `mostraAperta`
+   fa «o gli innesti o il grezzo»: registrare il primo innesto senza ricopiare il
+   ripiego avrebbe fatto sparire dalla pagina roster, commesse e tachimetro. Un
+   miglioramento che spegne quattro blocchi non e' un miglioramento.
+
+   Regola della casa, rispettata: si costruisce con textContent, mai innerHTML. */
+(function(){
+  "use strict";
+  if (!window.REGIA) return;
+
+  function el(tag, cls, testo){
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (testo != null) e.textContent = testo;
+    return e;
+  }
+
+  function scheda(c, n){
+    var rg = el("div", "rg");
+    var t = el("div", "rg-t");
+    t.appendChild(el("span", "rg-n", c.comando));
+    rg.appendChild(t);
+    if (c.quando) rg.appendChild(el("div", "rg-m", c.quando));
+    if (c.non)    rg.appendChild(el("div", "rg-q", "⛔ " + c.non));
+    if (c.esegui){
+      var riga = el("div", "cmd-riga");
+      var pre = el("pre", "cmd-pre", c.esegui);
+      pre.id = "cmd-slash-" + n;
+      var b = el("button", "copia", "copia");
+      b.type = "button";
+      b.setAttribute("data-per", pre.id);   // il gestore .copia della pagina fa il resto
+      riga.appendChild(pre); riga.appendChild(b);
+      rg.appendChild(riga);
+    }
+    if (c.nata) rg.appendChild(el("div", "cmd-nata", "🩹 Nata da: " + c.nata));
+    return rg;
+  }
+
+  REGIA.suApertura(function(dati){
+    var zona = document.getElementById("innesto");
+    if (!zona) return;
+
+    var comandi = dati && dati.comandi;
+    if (comandi && comandi.length){
+      var blk = el("section", "blk");
+      blk.appendChild(el("h3", null, "I comandi che digiti in chat · " + comandi.length));
+      var dentro = el("div", "pz-cap");
+      dentro.style.padding = "4px 16px 14px";
+      comandi.forEach(function(c, i){ dentro.appendChild(scheda(c, i)); });
+      dentro.appendChild(el("p", "nota",
+        "Letti dalle skill, non scritti a mano: se una nasce o sparisce, la regia se ne accorge al lancio dopo."));
+      blk.appendChild(dentro);
+      zona.appendChild(blk);
+    }
+
+    // il ripiego di prima, per tutto il resto: meglio una pagina brutta che una che tace
+    Object.keys(dati).forEach(function(nome){
+      if (nome === "comandi") return;
+      var b = el("section", "blk");
+      b.appendChild(el("h3", null, nome));
+      b.appendChild(el("pre", null, JSON.stringify(dati[nome], null, 2)));
+      zona.appendChild(b);
+    });
+  });
+})();
+</script>
 </body>
 </html>
