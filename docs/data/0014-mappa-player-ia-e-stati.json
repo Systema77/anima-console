@@ -1,0 +1,147 @@
+{
+  "titolo": "La mappa dei player dell'IA — chi manca all'elenco, chi finanzia chi, e a che punto sono gli Stati",
+  "oggetto": "Il mercato mondiale dell'intelligenza artificiale al settembre 2026, letto come struttura di proprietà e di dipendenze: chi c'è oltre ai sei nomi dell'elenco del Direttore, chi mette i soldi a chi, chi vende i chip a chi, e cosa stanno facendo gli Stati rispetto ai privati.",
+  "domanda": "Domanda del Direttore (issue #46): «Sono questi i player del mercato mondiale AI? O dimentico qualcuno? Chi sono gli altri eventuali? Come interagiscono tra di loro… E gli stati a che punto sono rispetto ai privati?». Solo la parte fattuale: chi esiste, chi possiede cosa, quali programmi pubblici sono in vigore.",
+  "modalita": "scava",
+  "punteggio": 70,
+  "etichetta": "elenco incompleto — la mappa vera è fatta di dipendenze incrociate",
+  "verdetto": "RISPOSTA SECCA ALLA DOMANDA: no, l'elenco non è completo, e manca soprattutto una CATEGORIA, non solo dei nomi.\n\nChi manca fra chi costruisce i modelli: xAI (di Elon Musk: 20 miliardi raccolti a gennaio 2026 a una valutazione intorno ai 230 miliardi, con NVIDIA e Cisco fra gli investitori); Mistral AI, il campione europeo, che a settembre 2026 ha chiuso il più grande round azionario mai fatto da una società tecnologica europea — circa 3 miliardi di euro guidati da Samsung, valutazione oltre 21 miliardi di euro; Microsoft e Amazon, che nell'elenco non compaiono ma sono decisive per una ragione doppia (sono i maggiori azionisti-fornitori dei laboratori indipendenti E hanno modelli propri); e i grandi cinesi oltre DeepSeek — Alibaba, ByteDance, Baidu, Tencent, Moonshot — che nell'elenco non ci sono affatto.\n\nMa la categoria davvero assente è CHI FA FUNZIONARE LA COSA: i produttori di silicio e di infrastruttura, senza cui nessuno dei sei esiste. TSMC fabbrica materialmente i chip; ASML è l'unica al mondo a costruire le macchine litografiche più avanzate; AMD e Broadcom sono le alternative a NVIDIA; Oracle, CoreWeave e SoftBank costruiscono e finanziano i centri dati. Chi ragiona sui «player dell'IA» guardando solo chi fa i modelli, guarda la punta e non la leva.\n\nCOME INTERAGISCONO — e qui sta il fatto più importante di tutta questa serie: NON sono sei concorrenti separati. Sono un intreccio in cui gli stessi soggetti sono contemporaneamente investitore, fornitore e concorrente l'uno dell'altro. Microsoft ha circa il 27% di OpenAI ed è fra i finanziatori di Anthropic. Amazon investe in Anthropic, la ospita, e ha messo 50 miliardi nel round OpenAI di febbraio 2026. Google finanzia Anthropic e insieme le fa concorrenza con Gemini. NVIDIA vende i chip a tutti e ha investito oltre 40 miliardi nei propri clienti, xAI compresa. La stampa finanziaria chiama questa struttura «finanziamento circolare» e ne discute apertamente il rischio: quando il fornitore finanzia il cliente che compra i suoi prodotti, dall'esterno diventa difficile dire quanta domanda sia autonoma. Non è un'accusa: è la forma degli accordi, ed è documentata.\n\nGLI STATI RISPETTO AI PRIVATI. Il divario di scala è netto e va detto con i numeri. Solo quattro aziende private (Microsoft, Meta, Alphabet, Amazon) hanno programmato per il 2026 oltre 470 miliardi di dollari di investimenti in conto capitale. L'Unione Europea, sul fronte pubblico, ha messo in campo un pacchetto per la sovranità tecnologica (giugno 2026) e una gara per un massimo di sette «gigafabbriche dell'IA» con oltre 30 miliardi di euro di investimento: un ordine di grandezza sotto. La leva europea, semmai, è normativa: dal 2 agosto 2026 la Commissione ha iniziato ad applicare le regole del regolamento sull'IA, con le modifiche dell'«omnibus» adottate a giugno 2026 ed entrate in vigore il 27 luglio 2026. La stessa Commissione dichiara che l'UE dipende da fuori per oltre l'80% di prodotti, servizi, infrastrutture e proprietà intellettuale digitali chiave. Sul versante cinese, il segnale misurabile è che i fondi di indirizzo di governi locali stanno entrando nel capitale privato (il caso DeepSeek). Sul versante statunitense esiste il progetto Stargate come impresa comune fra OpenAI, Oracle e SoftBank: è un'iniziativa privata annunciata in cornice politica, non un programma pubblico finanziato dallo Stato, e vanno tenute distinte.\n\n⚠️ LIMITE DICHIARATO: sugli Stati ho fonti ufficiali solide per l'Unione Europea. Per i programmi pubblici di Stati Uniti, Cina, Regno Unito, Emirati, Arabia Saudita, Giappone e India NON ho fatto una ricerca dedicata in questa sessione e non ho fonti primarie da citare: quella parte della domanda resta APERTA, e va lavorata in un secondo giro. Preferisco lasciarla scoperta e dirlo, che riempirla a memoria.",
+  "green_flags": [
+    "Le sei aziende dell'elenco del Direttore esistono tutte e sono tutte effettivamente rilevanti: l'elenco è incompleto, non sbagliato.",
+    "La struttura degli accordi incrociati è documentata da stampa finanziaria indipendente e in parte da comunicazioni ufficiali al mercato: non è una ricostruzione mia.",
+    "Sui privati quotati (Alphabet, Meta, NVIDIA, Microsoft, Amazon) le cifre di spesa sono verificabili in documenti depositati.",
+    "Sul fronte europeo esistono fonti ufficiali della Commissione con date e importi, consultabili direttamente dal lettore.",
+    "Il round di Mistral (settembre 2026) è recentissimo e riportato con importi espliciti: l'Europa ha almeno un soggetto privato di scala rilevante."
+  ],
+  "red_flags": [
+    "La domanda «e gli Stati?» resta coperta solo per l'Unione Europea. Stati Uniti, Cina, Regno Unito, Golfo, Giappone e India non li ho verificati: lacuna dichiarata, non colmata a memoria.",
+    "Le valutazioni delle società private (xAI 230 miliardi, Anthropic 965, OpenAI 852) sono prezzi concordati fra privati in operazioni di finanziamento, non valori di mercato verificabili: non sono confrontabili con la capitalizzazione di una quotata.",
+    "Il finanziamento circolare rende poco leggibile la domanda reale di chip e di calcolo: nessuno dall'esterno può oggi separare la domanda autonoma da quella finanziata dal venditore.",
+    "Le classifiche di settore («chi è il più grande») sono compilate da terzi con metodi non pubblicati e cambiano di mese in mese: usarle come misura è un errore.",
+    "Il mercato si muove più in fretta di qualunque scheda: le cifre qui hanno la data del 9 settembre 2026 e vanno rilette come una fotografia, non come uno stato permanente.",
+    "Le domande del Direttore su cosa «prevedono di fare» e «come si organizzeranno» sono previsioni: qui non ci sono, perché una previsione non è un fatto verificabile e questo Dipartimento non le emette."
+  ],
+  "fonti": [
+    {
+      "titolo": "Elon Musk's xAI raises $20 billion from investors including Nvidia, Cisco, Fidelity — CNBC, 6 gennaio 2026",
+      "url": "https://www.cnbc.com/2026/01/06/elon-musk-xai-raises-20-billion-from-nvidia-cisco-investors.html",
+      "tipo": "stampa finanziaria indipendente",
+      "sostiene": "L'esistenza e la scala di xAI (20 miliardi raccolti, valutazione intorno ai 230 miliardi) e la presenza di NVIDIA fra gli investitori: uno dei nomi mancanti all'elenco.",
+      "autorevolezza": "alta"
+    },
+    {
+      "titolo": "Mistral bags $24 billion valuation as Samsung leads funding for Europe's AI champion — CNBC, 8 settembre 2026",
+      "url": "https://www.cnbc.com/2026/09/08/mistral-ai-funding-valuation-samsung.html",
+      "tipo": "stampa finanziaria indipendente",
+      "sostiene": "Il round di Mistral guidato da Samsung: il soggetto europeo mancante all'elenco. ⚠️ Il titolo dice 24 miliardi di dollari, il testo circa 21 miliardi di euro: sono la stessa cifra in valute diverse, riportata qui in euro.",
+      "autorevolezza": "alta"
+    },
+    {
+      "titolo": "Making sovereign, open-weight AI the technology frontier — Mistral AI",
+      "url": "https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/",
+      "tipo": "dichiarazione della società",
+      "sostiene": "Il posizionamento dichiarato di Mistral su sovranità e pesi aperti.",
+      "autorevolezza": "media — parte in causa"
+    },
+    {
+      "titolo": "OpenAI announces $110 billion funding round with backing from Amazon, Nvidia, SoftBank — CNBC, 27 febbraio 2026",
+      "url": "https://www.cnbc.com/2026/02/27/open-ai-funding-round-amazon.html",
+      "tipo": "stampa finanziaria indipendente",
+      "sostiene": "La prova concreta dell'intreccio: Amazon 50 miliardi, NVIDIA 30, SoftBank 30 dentro un solo round di un solo concorrente.",
+      "autorevolezza": "alta"
+    },
+    {
+      "titolo": "Nvidia embraces AI investor role, topping $40 billion in equity bets — CNBC, 9 maggio 2026",
+      "url": "https://www.cnbc.com/2026/05/09/nvidia-embraces-ai-investor-topping-40-billion-in-equity-bets-2026.html",
+      "tipo": "stampa finanziaria indipendente",
+      "sostiene": "Il fornitore di chip come azionista dei propri clienti: il nodo centrale della mappa delle dipendenze.",
+      "autorevolezza": "alta"
+    },
+    {
+      "titolo": "Nvidia reignites \"circular\" AI concerns — Axios, 27 luglio 2026",
+      "url": "https://www.axios.com/2026/07/27/nvidia-openai-financing-ai-jensen-huang-ssi",
+      "tipo": "stampa indipendente",
+      "sostiene": "Il dibattito pubblico sul finanziamento circolare: qui come fatto documentato, non come tesi avallata.",
+      "autorevolezza": "alta"
+    },
+    {
+      "titolo": "Tech AI spending approaches $700 billion in 2026, cash taking big hit — CNBC, 6 febbraio 2026",
+      "url": "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "tipo": "stampa finanziaria indipendente",
+      "sostiene": "Oltre 470 miliardi di dollari di investimenti in conto capitale programmati nel 2026 dai quattro grandi operatori di cloud: il termine di paragone per misurare gli Stati.",
+      "autorevolezza": "alta"
+    },
+    {
+      "titolo": "Commission proposes tech sovereignty package to strengthen Europe's digital autonomy and resilience — Commissione europea, 3 giugno 2026",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1187",
+      "tipo": "registro ufficiale / comunicazione istituzionale",
+      "sostiene": "Il pacchetto europeo per la sovranità tecnologica e la dipendenza dichiarata dell'UE da fuori per oltre l'80% dei prodotti e servizi digitali chiave.",
+      "autorevolezza": "massima — fonte istituzionale primaria"
+    },
+    {
+      "titolo": "Commission starts enforcing AI Act rules and new transparency requirements on 2 August — Commissione europea",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1714",
+      "tipo": "registro ufficiale / comunicazione istituzionale",
+      "sostiene": "L'avvio dell'applicazione del regolamento europeo sull'IA dal 2 agosto 2026: la leva effettiva dell'UE è normativa, non di capitale.",
+      "autorevolezza": "massima — fonte istituzionale primaria"
+    },
+    {
+      "titolo": "AI Act — quadro normativo, Commissione europea",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+      "tipo": "registro ufficiale",
+      "sostiene": "Il testo e il calendario di applicazione del regolamento, comprese le modifiche dell'omnibus.",
+      "autorevolezza": "massima"
+    },
+    {
+      "titolo": "Europe unveils tech sovereignty package amid growing concerns over reliance on U.S. tech — CNBC, 3 giugno 2026",
+      "url": "https://www.cnbc.com/2026/06/03/europe-tech-sovereignty-us-tech-reliance.html",
+      "tipo": "stampa finanziaria indipendente",
+      "sostiene": "Lettura indipendente del pacchetto europeo, a riscontro della fonte istituzionale.",
+      "autorevolezza": "alta"
+    },
+    {
+      "titolo": "Stargate advances with 4.5 GW partnership with Oracle — annuncio OpenAI",
+      "url": "https://openai.com/index/stargate-advances-with-partnership-with-oracle/",
+      "tipo": "dichiarazione della società",
+      "sostiene": "Stargate come impresa comune fra privati (OpenAI, Oracle, SoftBank), non come programma finanziato dallo Stato: distinzione che questa scheda tiene ferma.",
+      "autorevolezza": "media — parte in causa, e pagina non apribile in questa sessione"
+    }
+  ],
+  "timeline": [
+    {
+      "data": "2026-01-06",
+      "evento": "xAI raccoglie 20 miliardi di dollari, valutazione intorno ai 230 miliardi; fra gli investitori NVIDIA e Cisco."
+    },
+    {
+      "data": "2026-02-06",
+      "evento": "I quattro grandi operatori di cloud programmano per il 2026 oltre 470 miliardi di dollari di investimenti in conto capitale."
+    },
+    {
+      "data": "2026-02-27",
+      "evento": "Round OpenAI con Amazon (50 mld), NVIDIA (30) e SoftBank (30): l'intreccio in una sola operazione."
+    },
+    {
+      "data": "2026-06-03",
+      "evento": "La Commissione europea presenta il pacchetto per la sovranità tecnologica; dichiara una dipendenza esterna superiore all'80% sui digitali chiave."
+    },
+    {
+      "data": "2026-07-27",
+      "evento": "Entrano in vigore le modifiche «omnibus» al regolamento europeo sull'IA."
+    },
+    {
+      "data": "2026-08-02",
+      "evento": "La Commissione avvia l'applicazione delle regole del regolamento sull'IA e dei nuovi obblighi di trasparenza."
+    },
+    {
+      "data": "2026-08-28",
+      "evento": "In Cina, fondi di indirizzo di governi locali si muovono per entrare nel capitale di DeepSeek."
+    },
+    {
+      "data": "2026-09-08",
+      "evento": "Mistral AI chiude il maggiore round azionario mai realizzato da una società tecnologica europea, guidato da Samsung."
+    }
+  ],
+  "nota_sicurezza": "Nessun link è stato aperto o eseguito: l'oggetto di questa verifica sono ditte, non un sito sospetto. ⚠️ LIMITE MISURATO IN QUESTA SESSIONE, non dedotto: il proxy di rete ha bloccato l'apertura diretta di TUTTI i domini delle fonti (openai.com, cnbc.com, sec.gov, anthropic.com, investor.nvidia.com, europa.eu — provati, errore EGRESS_BLOCKED / codice 000). Le fonti elencate sono URL reali restituiti dall'indice di ricerca con titolo e data corrispondenti, e sono cliccabili per il lettore, ma NON le ho aperte una per una: ho incrociato più risultati indipendenti. Dove una cifra compare in una fonte sola o solo in aggregatori, è detto nelle red flags. «Non ho potuto aprirlo» vale più di «dovrebbe funzionare».",
+  "issue": 46,
+  "data_verifica": "2026-09-09"
+}

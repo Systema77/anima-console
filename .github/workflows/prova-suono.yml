@@ -1,0 +1,235 @@
+# COSA FA — apre la radio in un browser VERO sul runner, preme il bottone e
+#   misura se ne esce DAVVERO del suono: byte audio decodificati dal browser,
+#   currentTime che avanza, e il livello del segnale letto con un AnalyserNode.
+# PERCHE ESISTE — dal 05/09 la radio e' dichiarata «in prova» e non «accesa»
+#   per una ragione sola, scritta nel registro della galassia: «SUONO ha
+#   misurato i BYTE, nessuno l'ha ancora sentita suonare».
+#   Un 200 e un content-type dicono che il file arriva. Non dicono che suona.
+#   Questo workflow non sostituisce l'orecchio del Direttore: ma sposta il
+#   confine da «nessuno sa» a «la macchina l'ha decodificata e il segnale non
+#   e' silenzio». Quello che resta e' il gusto, non il funzionamento.
+# FIN DOVE ARRIVA — solo GET su host nostri, nessun segreto, nessuna scrittura.
+#   Se il browser non c'e' o l'audio non parte, lo DICE e fallisce: non finge.
+# COSTO — zero.  USO — Actions -> «Prova del suono» -> Run workflow.
+# — creato da D.R.A.G.O., 2026-09-07
+
+name: Prova del suono
+
+on:
+  workflow_dispatch:
+    inputs:
+      indirizzo:
+        description: "La pagina della radio"
+        default: "https://radio-anima.pages.dev/"
+      secondi:
+        description: "Quanti secondi ascoltare"
+        default: "12"
+
+jobs:
+  ascolta:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 0 · Bersaglio di controllo — la rete del runner funziona?
+        run: |
+          set -u
+          COD=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 25 https://github.com/ || echo 000)
+          echo "github.com: $COD"
+          [ "$COD" != "000" ] || { echo "✗ rete del runner morta: nessuna conclusione lecita"; exit 1; }
+
+      - name: 1 · Il browser
+        # ⚠️ `npx playwright install` scarica i BROWSER ma non lascia il pacchetto
+        #   importabile: uno script fuori dal workspace muore con
+        #   ERR_MODULE_NOT_FOUND prima di misurare qualunque cosa. E' costato il
+        #   run #1 di questo stesso workflow: un rosso che non diceva niente
+        #   sulla radio, solo su di me. Quindi si installa NEL workspace, lo
+        #   script gira da li', e si verifica che il pacchetto si importi PRIMA
+        #   di provare ad ascoltare.
+        run: |
+          set -u
+          cd "$GITHUB_WORKSPACE"
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund --silent playwright@1.56.1
+          npx playwright install --with-deps chromium
+          node -e "require.resolve('playwright'); console.log('playwright importabile: si')"
+
+      - name: 1b · I file da cui dipende il lettore
+        env:
+          INDIRIZZO: ${{ inputs.indirizzo }}
+        run: |
+          set -u
+          BASE="${INDIRIZZO%/}"
+          for f in onda.json radio-player.js orario.js; do
+            echo "== $f"
+            curl -sS -o /tmp/f -w '   codice: %{http_code} · byte: %{size_download} · tipo: %{content_type}\n' --max-time 25 "$BASE/$f" || true
+            head -c 220 /tmp/f | tr -d '\r'; echo
+          done
+
+      - name: 2 · Ascolta
+        env:
+          INDIRIZZO: ${{ inputs.indirizzo }}
+          SECONDI: ${{ inputs.secondi }}
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          cat > ascolta.mjs <<'JS'
+          import { chromium } from 'playwright';
+          const URL = process.env.INDIRIZZO, SEC = Number(process.env.SECONDI || 12);
+          const b = await chromium.launch({ args: ['--autoplay-policy=no-user-gesture-required'] });
+          const p = await (await b.newContext()).newPage();
+          // ⚠️ IL DIFETTO DEI RUN #2-#5, e stava nella prova, non nella radio.
+          //    `radio-player.js:96` fa `new Audio(...)`: un elemento STACCATO,
+          //    che non viene mai appeso al documento. `querySelector('audio')`
+          //    non lo trovera' MAI — nemmeno con la radio che suona benissimo.
+          //    Cinque giri hanno detto «la pagina non contiene un lettore»
+          //    misurando una cosa che il player non fa per progetto.
+          //    Qui il costruttore viene avvolto prima che la pagina giri, cosi'
+          //    l'elemento si trova comunque, staccato o no.
+          // 📜 Una prova che non trova niente non dice «non c'e'»: dice «non vedo».
+          await p.addInitScript(() => {
+            window.__audio_creati = [];
+            const Vero = window.Audio;
+            window.Audio = function (...a) {
+              const el = new Vero(...a);
+              window.__audio_creati.push(el);
+              return el;
+            };
+            window.Audio.prototype = Vero.prototype;
+            const crea = document.createElement.bind(document);
+            document.createElement = function (tag, ...r) {
+              const el = crea(tag, ...r);
+              if (/^(audio|video)$/i.test(tag)) window.__audio_creati.push(el);
+              return el;
+            };
+          });
+          const errori = [], voci = [];
+          p.on('pageerror', e => errori.push('pageerror: ' + e.message));
+          // Il player, quando non parte, LO DICE in console. Non ascoltarlo è
+          // stato il difetto dei run #2 e #3: la risposta era lì e non la leggevo.
+          p.on('console', m => voci.push(`[${m.type()}] ${m.text()}`.slice(0, 200)));
+          // ⚠️ LA CORSA (misurata l'08/09, run #12 delle 23:03 UTC). Il player aggancia
+          //   il click al bottone solo DOPO aver scaricato onda.json (radio-player.js:
+          //   `await fetch(...)` e poi `addEventListener`). Questa prova premeva ENTRA
+          //   64 ms dopo il caricamento: se il fetch non era ancora tornato, il click
+          //   cadeva nel vuoto — niente barra, niente audio, niente in console. Alle
+          //   21:29 era passato (run #11), alle 23:03 no: stessa pagina, stessi byte.
+          //   Una persona legge la porta prima di premere: qui si aspetta che onda.json
+          //   sia arrivato, e si scrive QUANTO si e' aspettato, cosi' la corsa si vede
+          //   nel referto invece di travestirsi da radio muta.
+          const t0 = Date.now();
+          const ondaArrivata = p.waitForResponse(x => /onda\.json/.test(x.url()), { timeout: 20000 })
+            .then(x => `onda.json ${x.status()} · ${Date.now() - t0} ms dopo l'apertura`)
+            .catch(() => 'onda.json NON visto entro 20 s: il player non lo ha nemmeno chiesto');
+          const r = await p.goto(URL, { waitUntil: 'load', timeout: 60000 });
+          console.log(`pagina: ${r.status()} · ${(await p.content()).length} byte`);
+          console.log(await ondaArrivata);
+          await p.waitForTimeout(400);   // il tempo di `res.json()` e dell'aggancio del click
+
+          // il bottone: la radio NON parte da sola, per scelta di casa
+          const etichette = /entra|ascolta|play|sintonizz|accendi|▶/i;
+          let premuto = 'nessuno';
+          for (const el of await p.locator('button, a, [role=button]').all()) {
+            const t = ((await el.textContent()) || '').trim();
+            if (t && etichette.test(t)) { try { await el.click({ timeout: 4000 }); premuto = t.slice(0,40); break; } catch {} }
+          }
+          console.log(`bottone premuto: ${premuto}`);
+
+          // ⚠️ Il run #2 ha detto «nessun elemento audio» dopo aver premuto ENTRA.
+          //   Poteva essere vero, o poteva essere che ho guardato troppo presto:
+          //   il bottone puo' navigare, o l'audio puo' nascere da JS dopo il click.
+          //   Prima di dare la colpa alla radio, si aspetta e si guarda cosa c'e'.
+          await p.waitForLoadState('load').catch(() => {});
+          const dopoClick = p.url();
+          if (dopoClick !== URL) console.log(`la pagina è cambiata: ${dopoClick}`);
+          const elemento = await p.waitForFunction(
+            () => !!(document.querySelector('audio, video') || (window.__audio_creati || [])[0]),
+            null, { timeout: 15000 }).catch(() => null);
+          if (!elemento) {
+            console.log('\n── COSA C\'E\' DAVVERO NELLA PAGINA ──');
+            const dentro = await p.evaluate(() => ({
+              titolo: document.title,
+              elementi: document.querySelectorAll('*').length,
+              tag: [...new Set([...document.querySelectorAll('body *')].map(e => e.tagName))].join(' '),
+              script: [...document.querySelectorAll('script')].map(s => s.src || '(in linea)').join(' · '),
+              testo: (document.body.innerText || '').trim().slice(0, 400),
+            }));
+            for (const [k, v] of Object.entries(dentro)) console.log(`  ${k.padEnd(10)} ${v}`);
+            if (voci.length) { console.log('\n── COSA DICE IL PLAYER ──'); voci.forEach(v => console.log('  ' + v)); }
+            if (errori.length) { console.log('\n── ERRORI ──'); errori.forEach(v => console.log('  ' + v)); }
+            const creati = await p.evaluate(() => (window.__audio_creati || []).length);
+            console.log(`\n  elementi Audio creati dal player (anche staccati): ${creati}`);
+            const cancello = await p.evaluate(() => ({
+              gate: !!document.getElementById('anima-radio-gate'),
+              bottone: !!document.querySelector('#anima-radio-gate .enter-btn'),
+              id_in_pagina: [...document.querySelectorAll('[id]')].map(e => e.id).join(' ') || '(nessuno)',
+              classi_bottoni: [...document.querySelectorAll('button')].map(b => b.className || '(senza classe)').join(' · '),
+            }));
+            console.log('\n── IL CANCELLO CHE IL PLAYER CERCA ──');
+            console.log(`  #anima-radio-gate presente     ${cancello.gate ? '✓' : '✗'}`);
+            console.log(`  .enter-btn dentro il cancello  ${cancello.bottone ? '✓' : '✗'}`);
+            console.log(`  id presenti in pagina          ${cancello.id_in_pagina}`);
+            console.log(`  classi dei bottoni             ${cancello.classi_bottoni}`);
+            if (!cancello.gate || !cancello.bottone) {
+              console.log('  → radio-player.js:58 esce in silenzio: la pagina e il player');
+              console.log('    pubblicati non sono della stessa generazione.');
+            }
+            console.log('\n✗ Nessun elemento audio, nemmeno dopo 15 secondi dal click.');
+            console.log('  Questo NON dice «il file non suona»: dice che la pagina servita');
+            console.log('  non contiene un lettore. Il perche\' e\' la prossima domanda.');
+            await b.close();
+            process.exit(1);
+          }
+
+          const misura = await p.evaluate(async (sec) => {
+            const a = document.querySelector('audio, video') || (window.__audio_creati || [])[0];
+            if (!a) return { errore: 'nessun elemento audio nella pagina' };
+            try { await a.play(); } catch (e) { /* il click potrebbe bastare */ }
+            const t0 = a.currentTime, d0 = a.webkitAudioDecodedByteCount || 0;
+
+            // l'orecchio: RMS del segnale, letto dal grafo audio
+            let rms = null, motivo = null;
+            try {
+              const ctx = new (window.AudioContext || window.webkitAudioContext)();
+              const src = ctx.createMediaElementSource(a);
+              const an = ctx.createAnalyser(); an.fftSize = 2048;
+              src.connect(an); an.connect(ctx.destination);
+              await ctx.resume();
+              const buf = new Float32Array(an.fftSize);
+              let picco = 0;
+              for (let i = 0; i < sec * 4; i++) {
+                await new Promise(r => setTimeout(r, 250));
+                an.getFloatTimeDomainData(buf);
+                let s = 0; for (const v of buf) s += v * v;
+                picco = Math.max(picco, Math.sqrt(s / buf.length));
+              }
+              rms = picco;
+            } catch (e) { motivo = String(e).slice(0, 120); await new Promise(r => setTimeout(r, sec * 1000)); }
+
+            return {
+              sorgente: (a.currentSrc || a.src || '').slice(0, 120),
+              pronto: a.readyState, durata: a.duration,
+              partito: t0, arrivato: a.currentTime, avanzato: +(a.currentTime - t0).toFixed(2),
+              in_pausa: a.paused, muto: a.muted, volume: a.volume,
+              byte_audio_decodificati: (a.webkitAudioDecodedByteCount || 0) - d0,
+              rms_massimo: rms, rms_non_letto: motivo,
+            };
+          }, SEC);
+
+          console.log('\n── LA MISURA ──');
+          for (const [k, v] of Object.entries(misura)) if (v !== null) console.log(`  ${k.padEnd(26)} ${v}`);
+          if (errori.length) console.log(`  errori in pagina: ${errori.join(' | ')}`);
+          await b.close();
+
+          // Il verdetto, e le tre condizioni sono tutte necessarie.
+          const avanza  = misura.avanzato > 1;
+          const decodif = misura.byte_audio_decodificati > 10000;
+          const suona   = misura.rms_massimo === null ? null : misura.rms_massimo > 0.001;
+          console.log('\n── IL VERDETTO ──');
+          console.log(`  il tempo avanza                 ${avanza  ? '✓' : '✗'}`);
+          console.log(`  il browser DECODIFICA audio     ${decodif ? '✓' : '✗'}`);
+          console.log(`  il segnale non è silenzio       ${suona === null ? '· non letto: ' + misura.rms_non_letto : (suona ? '✓' : '✗')}`);
+          if (!avanza || !decodif || suona === false) {
+            console.log('\n✗ NON si può dire che suona. Resta «in prova».');
+            process.exit(1);
+          }
+          console.log('\n✓ Il suono esce davvero. Resta il gusto, che è del Direttore.');
+          JS
+          node ascolta.mjs

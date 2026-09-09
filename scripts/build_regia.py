@@ -63,6 +63,10 @@ import guardia_privacy                 # noqa: E402  (la denylist è una sola, e
 
 ROOT = os.path.dirname(QUI)
 PAGINA = os.path.join(ROOT, "docs", "regia", "index.html")
+# Fuori da questo repo di proposito: sono i consumi del Direttore, e un repo che
+# serve pagine non è il posto dove tenerli. Sul Mac ROOT_CLODE è la cartella sopra.
+VERDETTO = os.path.join(ROOT, "..", "comuni", "verdetto-token.json")
+POLITICA = os.path.join(ROOT, "..", "comuni", "POLITICA-OPERATIVA.md")
 ITERAZIONI = 210_000                   # il motore in pagina rifiuta payload sotto 200.000
 FRASE_MINIMA = 12
 
@@ -199,6 +203,94 @@ def dati_verdetti() -> dict:
         "ultimo": max((v["data"] for v in voci), default=""),
         "prossimo": f"{max(numeri) + 1:04d}",
     }
+
+
+def regola_barra() -> str:
+    """La REGOLA BARRA, letta dalla politica invece che ricopiata.
+
+    Stesso mestiere di blocchi_noti() qui sotto, e stessa onestà: se il marcatore
+    non c'è, lo DICE. Una regola inventata da un generatore è peggio di una regola
+    mancante, perché sembra ratificata.
+    """
+    try:
+        md = open(POLITICA, encoding="utf-8").read()
+    except OSError:
+        return "non letta: POLITICA-OPERATIVA.md non raggiungibile da qui"
+    for riga in md.splitlines():
+        if riga.strip().startswith("**REGOLA BARRA:**"):
+            return pulisci(riga.split("**REGOLA BARRA:**", 1)[1])
+    return "non trovata: manca il marcatore «REGOLA BARRA» nella politica"
+
+
+def dati_tachimetro() -> dict:
+    """La barra del piano, dal file che scrive ROOT_CLODE/scripts/verdetto-token.py.
+
+    Perché sta nel cifrato e non nella parte in chiaro: sono soldi del Direttore.
+    Perché è opzionale: il file vive fuori da questo repo, e da una sessione
+    remota non c'è. Se manca, la regia lo DICE — un numero vecchio mostrato come
+    attuale è peggio di nessun numero.
+
+    Nessuna data calcolata dall'orologio: come tutto il resto del payload, due
+    lanci in giorni diversi devono dare lo stesso file. La freschezza si legge
+    da `misurato`, che è la data scritta nel verdetto.
+
+    ⚠ Con --rigido la build può fermarsi qui: il campo `azione` arriva dal
+    verdetto e a volte nomina il deposito privato. Nel giro normale `oscura()`
+    lo sostituisce; --rigido, per come è fatto, si ferma. È il suo mestiere.
+    """
+    # Senza il nome del deposito privato: lo cancellerebbe `oscura()` un attimo dopo,
+    # e con --rigido fermerebbe la build. Il posto è la cartella madre di questa.
+    rinfresca = "python3 scripts/verdetto-token.py --giorni 30   (dal Mac, nella cartella madre)"
+    try:
+        with open(VERDETTO, encoding="utf-8") as fh:
+            v = json.load(fh)
+    except (OSError, ValueError):
+        return {"stato": "non letto", "rinfresca": rinfresca,
+                "perche": "verdetto-token.json non trovato: la regia si genera dal Mac, "
+                          "dove la cartella madre è quella che tiene i conti."}
+    if v.get("stato") != "ok":
+        return {"stato": "muto", "rinfresca": rinfresca,
+                "perche": v.get("messaggio", "nessun consumo nella finestra")}
+
+    t = v.get("tachimetro") or {}
+    return {
+        "stato": "letto",
+        "misurato": v.get("generato"),
+        "finestra": {"apre": t.get("apre"), "chiude": t.get("chiude"), "restano": t.get("restano")},
+        "semaforo": v.get("semaforo"),
+        "titolo": v.get("titolo"),
+        "azione": v.get("azione"),
+        "al_giorno": v.get("al_giorno"),
+        "barre": [{"modello": m.get("modello"), "speso": m.get("speso"),
+                   "percento": m.get("percento"), "riferimento": m.get("origine_tetto"),
+                   "stato": m.get("stato")}
+                  for m in t.get("modelli", [])],
+        # Fino al 09/09 qui la regola era RICOPIATA, ed era la terza copia della
+        # stessa frase. Ora si legge dalla sua sorgente: se cambia là, cambia qui.
+        "regola": regola_barra(),
+        "limiti": "I tetti veri delle barre non sono pubblici. Si scrivono in "
+                  "scripts/tachimetro-config.json SOLO dopo aver visto una barra "
+                  "svuotarsi davvero, e solo sul piano in corso: un tetto misurato "
+                  "su un piano vecchio non descrive più niente.",
+        "rinfresca": rinfresca,
+    }
+
+
+def dati_comandi() -> list:
+    """I comandi slash che esistono davvero, letti dalle skill della cartella madre.
+
+    Non un elenco scritto a mano: quello invecchia il giorno dopo. Se una skill
+    nasce o sparisce, la regia se ne accorge al primo lancio successivo.
+    """
+    fuori = []
+    for skill in sorted(glob.glob(os.path.join(ROOT, "..", ".claude", "skills", "*", "SKILL.md"))):
+        testo = open(skill, encoding="utf-8").read()
+        nome = os.path.basename(os.path.dirname(skill))
+        m = re.search(r"^description:\s*(.+)$", testo, re.M)
+        # Solo la prima frase: in console serve sapere quando si usa, non tutto.
+        d = pulisci(m.group(1)) if m else ""
+        fuori.append({"comando": f"/{nome}", "quando": d.split(". ")[0].rstrip(".") or None})
+    return fuori
 
 
 def blocchi_noti() -> list:
@@ -382,6 +474,8 @@ def main() -> int:
         "commesse": sq["commesse"],
         "clienti": sq["clienti"],
         "segnalazioni": sq["segnalazioni"],
+        "tachimetro": dati_tachimetro(),
+        "comandi": dati_comandi(),
     }
     if not any(riservati["roster"] + riservati["commesse"]) and vd["totale"] == 0:
         raise SystemExit("✗ non ho letto nulla dai file: prima di cifrare il vuoto, mi fermo.")

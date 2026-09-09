@@ -20,11 +20,30 @@
 name: Misura della catena
 
 on:
+  # ⏱ TRE VOLTE AL GIORNO — 06:00, 12:00 e 18:00 UTC (08 · 14 · 20 in Italia).
+  #   Ordine del Direttore del 07/09: «trova un modo di tenere aggiornata la regia,
+  #   inizio finalmente a usarla». Prima girava solo a mano o quando si toccava lo
+  #   script: la plancia diceva il vero dell'ultima volta che qualcuno l'aveva
+  #   lanciata, che non e' la stessa cosa.
+  #   Il passo 2 committa SOLO se la pagina e' cambiata: un giro a vuoto non lascia
+  #   traccia e non costa niente.
+  #   ⚠️ CONSEGUENZA DA SAPERE, ed e' la domanda che SQUELCH aveva lasciato aperta il
+  #   06/09: cosi' il workflow scrive dentro `docs/` da solo, che per regola e' del
+  #   Direttore. E' il prezzo di una console che si aggiorna da se', e l'ha chiesto
+  #   lui. Scrive solo il blocco fra i marcatori, mai testo editoriale, e ogni
+  #   scrittura resta un commit visibile. Per spegnerlo: si toglie `schedule`.
+  schedule:
+    - cron: '0 6,12,18 * * *'
   workflow_dispatch:
   push:
     paths:
       - '.github/workflows/misura-catena.yml'
       - 'scripts/misura_catena.py'
+      # La scrivania (08/09): un prompt o una decisione nuova arriva in regia al push,
+      # senza aspettare il giro delle sei.
+      - 'scripts/regia_scrivania.py'
+      - 'squadra/rinascita/**'
+      - 'squadra/DECISIONI.md'
 
 permissions:
   contents: write
@@ -55,6 +74,13 @@ jobs:
         # Lo script in quel caso NON scrive, e il passo deve fallire: un referto
         # che non ha misurato niente non deve sembrare andato bene.
         run: python3 scripts/misura_catena.py
+
+      - name: 1b · La scrivania — prompt da lanciare, PR aperte, decisioni
+        # Ordine del Direttore dell'08/09: «voglio usare SOLO la regia». Legge
+        # squadra/rinascita/, squadra/DECISIONI.md e le PR aperte dei repo pubblici
+        # (API pubblica, nessun token) e riscrive il blocco REGIA:SCRIVANIA della
+        # stessa pagina. Se l'API non risponde lo scrive in pagina, non finge zero.
+        run: python3 scripts/regia_scrivania.py
 
       - name: 2 · Committa la pagina, se e' cambiata
         run: |
