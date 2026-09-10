@@ -1,11 +1,798 @@
 window.ARCHIVIO = {
-  "totale": 20,
+  "totale": 27,
   "in_conflitto": 2,
   "per_fonte": {
     "braindance": 13,
-    "kiroshi": 7
+    "kiroshi": 14
   },
   "voci": [
+    {
+      "id": "0008-openai-assetto-e-modello-di-business",
+      "fonte": "kiroshi",
+      "tipo": "ditta",
+      "titolo": "OpenAI — assetto proprietario, storico e modello di business",
+      "esito": "Ditta reale, assetto documentato, conti verificabili solo a metà",
+      "punteggio": 62,
+      "ambito": "affidabilita",
+      "colore": "giallo",
+      "data": "2026-09-09",
+      "sintesi": "OpenAI esiste, l'assetto è documentato e la ricostruzione è pubblica: fondata nel 2015 come non profit, nel 2019 si dà una struttura a profitto limitato che apre la porta a Microsoft, e il 28 ottobre 2025 completa la ricapitalizzazione in OpenAI Foundation (non profit, che controlla) + OpenAI Group PBC (l'operativa). Alla ricapitalizzazione Microsoft risulta al 27% circa (~135 miliardi di dollari) e la Foundation al 26% circa (~130 miliardi), su una valutazione intorno ai 500 miliardi. Fin qui il terreno è solido: la struttura è dichiarata dalla società stessa e riportata in modo concorde da più testate.\n\nDove il terreno cede è sui NUMERI. OpenAI è privata e non deposita bilanci pubblici certificati: tutto ciò che circola sui ricavi arriva da fughe di notizie e da stime di terzi, e le cifre NON concordano fra loro. Per il 2025 si legge un ricavo di 13,1 miliardi. Per il 2026 si legge sia un giro d'affari annualizzato di circa 40 miliardi (agosto) sia stime di 24-25 miliardi, e ad aprile 2026 la stampa riporta che la società ha MANCATO le proprie proiezioni di ricavi e crescita utenti. Una forbice del genere sullo stesso anno non è un dettaglio: è il segnale che il numero non è verificabile, non che sia falso.\n\nIl modello di business, per quel che è ricostruibile: la parte grossa sono gli abbonamenti a ChatGPT (consumer e aziendali), poi l'API a consumo per gli sviluppatori, poi accordi e partnership; nel 2026 compare anche la pubblicità. La stima più ricorrente è 65% abbonamenti / 25% API / 10% partnership, ma è una stima di terzi, non un dato di bilancio. Il punto che pesa di più non è quanto entra: è quanto è già stato PROMESSO in uscita. Gli impegni di calcolo dichiarati sono passati da un annunciato 1.400 miliardi a un obiettivo di spesa «intorno ai 600 miliardi entro il 2030», e i contratti coinvolgono Oracle (300 miliardi su cinque anni), Stargate con SoftBank e Oracle, AMD, Broadcom e NVIDIA. Un'azienda che deve alzare capitale in continuazione per onorare impegni di quella scala è per definizione più fragile del suo fatturato. A giugno 2026 ha depositato in forma non pubblica la documentazione per la quotazione: se l'IPO va avanti, per la prima volta ci saranno conti certificati — ed è il momento in cui questo verdetto andrà rifatto.\n\nDiritto di replica garantito: se OpenAI pubblica dati certificati che contraddicono quanto sopra, il punteggio si rivede.",
+      "scheda": null,
+      "fonti": [
+        {
+          "titolo": "Our Structure — pagina ufficiale OpenAI sull'assetto societario",
+          "url": "https://openai.com/our-structure/",
+          "tipo": "dichiarazione della società",
+          "sostiene": "L'assetto in due entità: OpenAI Foundation (non profit, che controlla) e OpenAI Group PBC. È la fonte della società su sé stessa: va pesata come tale.",
+          "autorevolezza": "alta sull'assetto giuridico, ma è parte in causa — non ho potuto aprire la pagina (dominio bloccato dal proxy in questa sessione)"
+        },
+        {
+          "titolo": "OpenAI completes restructure, solidifying Microsoft as a major shareholder — CNBC, 28 ottobre 2025",
+          "url": "https://www.cnbc.com/2025/10/28/open-ai-for-profit-microsoft.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Completamento della ricapitalizzazione e posizione di Microsoft come azionista rilevante.",
+          "autorevolezza": "alta — testata finanziaria indipendente"
+        },
+        {
+          "titolo": "OpenAI restructures into public-benefit firm, Microsoft takes 27% stake — Al Jazeera, 28 ottobre 2025",
+          "url": "https://www.aljazeera.com/economy/2025/10/28/openai-restructures-into-public-benefit-firm-microsoft-takes-27-stake",
+          "tipo": "stampa indipendente",
+          "sostiene": "La quota Microsoft del 27% nella OpenAI Group PBC. Seconda fonte indipendente sulla stessa cifra.",
+          "autorevolezza": "alta — riscontro incrociato su una cifra chiave"
+        },
+        {
+          "titolo": "OpenAI reorg sets up $500 billion for-profit AI behemoth — Axios, 28 ottobre 2025",
+          "url": "https://www.axios.com/2025/10/28/openai-completes-recapitalization",
+          "tipo": "stampa indipendente",
+          "sostiene": "Valutazione intorno ai 500 miliardi di dollari alla ricapitalizzazione e quota della Foundation.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "OpenAI resets spending expectations, tells investors compute target is around $600 billion by 2030 — CNBC, 20 febbraio 2026",
+          "url": "https://www.cnbc.com/2026/02/20/openai-resets-spend-expectations-targets-around-600-billion-by-2030.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "La revisione degli impegni di calcolo da 1.400 miliardi annunciati a circa 600 miliardi entro il 2030.",
+          "autorevolezza": "alta — è la prova documentale che il numero annunciato è cambiato"
+        },
+        {
+          "titolo": "OpenAI reportedly missed revenue targets. Shares of Oracle and these chip stocks are falling — CNBC, 28 aprile 2026",
+          "url": "https://www.cnbc.com/2026/04/28/openai-reportedly-missed-revenue-targets-shares-of-oracle-and-these-chip-stocks-are-falling.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "OpenAI ha mancato le proprie proiezioni di ricavi e crescita utenti; reazione negativa dei titoli dei fornitori.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "OpenAI's tangled web of high-priced deals has some investors concerned — CNBC, 28 settembre 2025",
+          "url": "https://www.cnbc.com/2025/09/28/a-look-at-openais-tangled-web-of-dealmaking.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "La mappa degli accordi incrociati fra OpenAI, i suoi fornitori e i suoi investitori, e le preoccupazioni degli investitori.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "OpenAI announces $110 billion funding round with backing from Amazon, Nvidia, SoftBank — CNBC, 27 febbraio 2026",
+          "url": "https://www.cnbc.com/2026/02/27/open-ai-funding-round-amazon.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Round da 110 miliardi con Amazon (50), NVIDIA (30), SoftBank (30). ⚠️ La pagina OpenAI corrispondente parla di 122 miliardi: le due cifre non coincidono e non ho potuto aprire nessuna delle due per capire perché.",
+          "autorevolezza": "alta, ma con discrepanza dichiarata"
+        },
+        {
+          "titolo": "OpenAI raises $122 billion to accelerate the next phase of AI — annuncio OpenAI",
+          "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+          "tipo": "dichiarazione della società",
+          "sostiene": "La società dichiara 122 miliardi raccolti. Cifra diversa dai 110 riportati dalla stampa: entrambe sono qui, senza sceglierne una.",
+          "autorevolezza": "media — parte in causa, e non apribile in questa sessione"
+        },
+        {
+          "titolo": "OpenAI confidentially files for IPO — CNBC, 8 giugno 2026",
+          "url": "https://www.cnbc.com/2026/06/08/openai-confidentially-files-for-ipo-prepping-wall-street-for-ai-debut.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Deposito non pubblico per la quotazione: è il fatto che, se procede, renderà i conti certificati e verificabili.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "OpenAI closes funding round at an $852 billion valuation — CNBC, 31 marzo 2026",
+          "url": "https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Valutazione di 852 miliardi a fine marzo 2026, contro i circa 500 dell'ottobre 2025.",
+          "autorevolezza": "alta"
+        }
+      ],
+      "oggetto": "OpenAI: nata nel 2015 come ente non profit, dal 28 ottobre 2025 ricapitalizzata in due entità — la OpenAI Foundation (non profit, che mantiene il controllo) e la OpenAI Group PBC (public benefit corporation, il veicolo che opera e raccoglie capitale). Prodotti: ChatGPT, i modelli GPT, l'API per sviluppatori.",
+      "domanda": "Domanda del Direttore (issue #44): «Vorrei un report sulla azienda. Con storico aziendale e sviluppo previsto… Vorrei capire il loro modello di business». Tradotta in domanda KIROSHI: l'assetto proprietario e i numeri che OpenAI dichiara sono verificabili da fonti indipendenti, e da cosa entrano davvero i soldi?",
+      "green_flags": [
+        "Assetto societario dichiarato dalla società stessa in una pagina pubblica dedicata (openai.com/our-structure) e riportato in modo concorde da testate indipendenti diverse nella stessa data (28 ottobre 2025).",
+        "Il controllo resta a un ente non profit (OpenAI Foundation): non è una promessa verbale, è la forma giuridica dichiarata nella ricapitalizzazione.",
+        "Storico lungo e continuo, dal 2015 a oggi, con passaggi datati e verificabili (2015 non profit · 2019 profitto limitato e ingresso Microsoft · 2025 ricapitalizzazione in PBC).",
+        "Gli investitori sono nomi identificabili e quotati (Microsoft, NVIDIA, Amazon, SoftBank): non capitali anonimi o veicoli opachi.",
+        "Deposito non pubblico per la quotazione a giugno 2026: se l'IPO procede, i conti diventano certificati e controllabili da chiunque."
+      ],
+      "red_flags": [
+        "Nessun bilancio pubblico certificato. Ogni cifra su ricavi e perdite è una fuga di notizie o una stima di terzi: né io né il lettore possiamo risalire a un documento depositato.",
+        "Le cifre di ricavo 2026 che circolano si contraddicono fra loro (circa 40 miliardi annualizzati contro stime di 24-25 miliardi). Una forbice così larga sullo stesso anno significa che il numero NON è verificato.",
+        "Ad aprile 2026 la stampa riporta che OpenAI ha mancato le proprie proiezioni di ricavi e di crescita utenti, con reazione negativa dei titoli dei fornitori (Oracle, AMD, Broadcom): il piano dichiarato e i risultati non coincidono.",
+        "Impegni di spesa in calcolo di scala tale da superare di ordini di grandezza il fatturato, e già rivisti al ribasso una volta (da 1.400 miliardi annunciati a «circa 600 miliardi entro il 2030»). Un numero che cambia così tanto era un annuncio, non un piano.",
+        "Dipendenza incrociata con i propri fornitori-azionisti: NVIDIA vende i chip E investe nella società che li compra, Microsoft è insieme socio al 27% e fornitore di cloud. È la struttura che la stampa finanziaria chiama «finanziamento circolare» e che rende difficile leggere la domanda reale.",
+        "La ripartizione dei ricavi (abbonamenti/API/partnership) è una stima di analisti, non un dato aziendale: va letta come ordine di grandezza, non come numero."
+      ],
+      "timeline": [
+        {
+          "data": "2015-12",
+          "evento": "OpenAI nasce come organizzazione non profit."
+        },
+        {
+          "data": "2019",
+          "evento": "Si dota di una struttura a profitto limitato; entra Microsoft come investitore e fornitore di cloud."
+        },
+        {
+          "data": "2025-10-28",
+          "evento": "Completata la ricapitalizzazione: OpenAI Foundation (non profit, che controlla) + OpenAI Group PBC. Microsoft ~27% (~135 mld), Foundation ~26% (~130 mld), valutazione ~500 mld."
+        },
+        {
+          "data": "2026-02-20",
+          "evento": "OpenAI rivede gli impegni di calcolo: dagli annunciati 1.400 miliardi a un obiettivo di «circa 600 miliardi entro il 2030»."
+        },
+        {
+          "data": "2026-02-27",
+          "evento": "Annunciato un round da 110 miliardi (Amazon 50, NVIDIA 30, SoftBank 30). La società parla altrove di 122 miliardi."
+        },
+        {
+          "data": "2026-03-31",
+          "evento": "Round chiuso a una valutazione di 852 miliardi di dollari."
+        },
+        {
+          "data": "2026-04-28",
+          "evento": "La stampa riporta che OpenAI ha mancato le proprie proiezioni di ricavi e crescita utenti; scendono i titoli di Oracle, AMD e Broadcom."
+        },
+        {
+          "data": "2026-06-08",
+          "evento": "Deposito non pubblico della documentazione per la quotazione in borsa."
+        }
+      ],
+      "nota_sicurezza": "Nessun link è stato aperto o eseguito: l'oggetto di questa verifica sono ditte, non un sito sospetto. ⚠️ LIMITE MISURATO IN QUESTA SESSIONE, non dedotto: il proxy di rete ha bloccato l'apertura diretta di TUTTI i domini delle fonti (openai.com, cnbc.com, sec.gov, anthropic.com, investor.nvidia.com, europa.eu — provati, errore EGRESS_BLOCKED / codice 000). Le fonti elencate sono URL reali restituiti dall'indice di ricerca con titolo e data corrispondenti, e sono cliccabili per il lettore, ma NON le ho aperte una per una: ho incrociato più risultati indipendenti. Dove una cifra compare in una fonte sola o solo in aggregatori, è detto nelle red flags. «Non ho potuto aprirlo» vale più di «dovrebbe funzionare»."
+    },
+    {
+      "id": "0009-anthropic-assetto-e-finanziamenti",
+      "fonte": "kiroshi",
+      "tipo": "ditta",
+      "titolo": "Anthropic — assetto proprietario, finanziamenti e chi la sostiene",
+      "esito": "Ditta reale, round documentati dalla società, conti non certificati",
+      "punteggio": 72,
+      "ambito": "affidabilita",
+      "colore": "verde",
+      "data": "2026-09-09",
+      "sintesi": "Anthropic è reale, ha una forma giuridica dichiarata (public benefit corporation) e — a differenza di molte private — pubblica gli annunci dei propri round sul proprio sito, con cifre e valutazioni esplicite. Questo la rende più controllabile della media: le date e gli importi si possono confrontare con quanto scrive la stampa finanziaria, e nei riscontri che ho fatto coincidono.\n\nLa traiettoria dichiarata, in nove mesi: Serie F da 13 miliardi a 183 miliardi di valutazione (settembre 2025); Serie G da 30 miliardi a 380 miliardi (febbraio 2026); Serie H da 65 miliardi a 965 miliardi post-money (maggio 2026), che secondo CNBC e Axios la porta a superare OpenAI come società privata di IA più valutata al mondo. Nello stesso annuncio la società dichiara un giro d'affari annualizzato superiore a 47 miliardi. Nessuno di questi numeri è certificato: sono dichiarazioni della società e valutazioni concordate fra privati, non un bilancio depositato.\n\nLa dipendenza vera è il calcolo e chi lo paga. Anthropic è finanziata e ospitata dai suoi stessi concorrenti: Amazon e Google sono investitori di lungo corso e insieme fornitori di infrastruttura, e a gennaio 2026 la stampa riporta l'ingresso anche di Microsoft e NVIDIA nel giro di finanziamento — cioè gli azionisti principali del suo primo concorrente. Su alcune di queste cifre (impegni fino a 33 miliardi di Amazon, fino a 40 miliardi di Google) ho trovato solo aggregatori di dubbia qualità e non una fonte primaria apribile: le riporto come non confermate, non come fatto.\n\nDiritto di replica garantito.",
+      "scheda": null,
+      "fonti": [
+        {
+          "titolo": "Anthropic raises $65B in Series H funding at $965B post-money valuation — annuncio ufficiale Anthropic",
+          "url": "https://www.anthropic.com/news/series-h",
+          "tipo": "dichiarazione della società",
+          "sostiene": "Serie H da 65 miliardi a 965 miliardi post-money (maggio 2026) e giro d'affari annualizzato oltre 47 miliardi.",
+          "autorevolezza": "alta sull'esistenza del round, ma è parte in causa sui numeri — pagina non apribile in questa sessione"
+        },
+        {
+          "titolo": "Anthropic tops OpenAI as most valuable AI startup, nears $1 trillion valuation — CNBC, 28 maggio 2026",
+          "url": "https://www.cnbc.com/2026/05/28/anthropic-open-ai-startup-value.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Riscontro indipendente della Serie H e del sorpasso su OpenAI per valutazione.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Anthropic tops OpenAI as most valuable AI startup, with $965B valuation — Axios, 28 maggio 2026",
+          "url": "https://www.axios.com/2026/05/28/anthropic-ai-fundraising-openai",
+          "tipo": "stampa indipendente",
+          "sostiene": "Secondo riscontro indipendente sulla stessa cifra e sulla stessa data.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Anthropic closes $30 billion funding round at $380 billion valuation — CNBC, 12 febbraio 2026",
+          "url": "https://www.cnbc.com/2026/02/12/anthropic-closes-30-billion-funding-round-at-380-billion-valuation.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Serie G: 30 miliardi a 380 di valutazione. È il termine di paragone che rende misurabile il salto di maggio.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Anthropic raises $13B Series F at $183B post-money valuation — annuncio ufficiale Anthropic",
+          "url": "https://www.anthropic.com/news/anthropic-raises-series-f-at-usd183b-post-money-valuation",
+          "tipo": "dichiarazione della società",
+          "sostiene": "Serie F, settembre 2025: il punto di partenza della traiettoria.",
+          "autorevolezza": "media-alta — parte in causa"
+        },
+        {
+          "titolo": "Anthropic closes latest funding round above $10 billion — CNBC, 27 gennaio 2026",
+          "url": "https://www.cnbc.com/2026/01/27/anthropic-fundraising-microsoft-nvidia.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Ingresso di Microsoft e NVIDIA nel giro di finanziamento: la dipendenza incrociata con gli azionisti del concorrente.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Amazon and Google have billions riding on Anthropic. The IPO will finally reveal how much — Fortune, 4 giugno 2026",
+          "url": "https://fortune.com/2026/06/04/amazon-google-billions-anthropic-ipo/",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Il fatto centrale di questa scheda: l'entità reale degli impegni di Amazon e Google NON è oggi pubblica, e lo sarà solo con una quotazione.",
+          "autorevolezza": "alta"
+        }
+      ],
+      "oggetto": "Anthropic PBC: società statunitense di intelligenza artificiale fondata nel 2021 da ex ricercatori di OpenAI, costituita come public benefit corporation. Prodotti: i modelli Claude e l'API per aziende e sviluppatori.",
+      "domanda": "Parte della domanda #46 del Direttore («sono questi i player… come interagiscono tra di loro»). Tradotta: l'assetto e i finanziamenti dichiarati da Anthropic sono verificabili, e da chi dipende davvero?",
+      "green_flags": [
+        "La società pubblica sul proprio sito gli annunci dei round con importo e valutazione espliciti (Serie F, G, H): è più di quanto faccia la media delle private del settore.",
+        "Le cifre dichiarate dalla società trovano riscontro nella stampa finanziaria indipendente nelle stesse date (CNBC, Axios): due catene di fonti che convergono.",
+        "Forma giuridica dichiarata e coerente nel tempo (public benefit corporation), non un cambio di veste in corsa.",
+        "Investitori identificabili e in gran parte quotati (Amazon, Google, Microsoft, NVIDIA, fondi con nome e cognome): nessun capitale anonimo.",
+        "Un percorso verso la quotazione renderebbe i conti certificati; la stampa lo sta già seguendo (Fortune, giugno 2026)."
+      ],
+      "red_flags": [
+        "Nessun bilancio certificato: valutazione e giro d'affari sono dichiarazioni della società o prezzi concordati fra privati. Non c'è un documento depositato a cui risalire.",
+        "Valutazione quasi triplicata in tre mesi (380 miliardi a febbraio, 965 a maggio 2026). Può essere crescita reale o corsa fra investitori: dal di fuori i due casi hanno lo stesso aspetto, e nessuna delle due letture è dimostrabile con i dati pubblici.",
+        "Dipendenza strutturale da concorrenti-fornitori: Amazon e Google finanziano e ospitano; secondo la stampa entrano anche Microsoft e NVIDIA. Chi ti paga il calcolo vende anche il tuo concorrente.",
+        "Gli importi complessivi attribuiti ad Amazon (fino a 33 mld) e Google (fino a 40 mld) li ho trovati solo su aggregatori di bassa autorevolezza, con numeri discordi fra loro: NON confermati.",
+        "Le classifiche e i primati («la più valutata al mondo», «73% della spesa dei nuovi clienti») nascono da conteggi di terzi con metodo non pubblicato: sono indizi di posizione, non misure."
+      ],
+      "timeline": [
+        {
+          "data": "2021-01",
+          "evento": "Anthropic viene fondata da ex ricercatori di OpenAI, come public benefit corporation."
+        },
+        {
+          "data": "2025-09",
+          "evento": "Serie F: 13 miliardi a 183 miliardi di valutazione post-money."
+        },
+        {
+          "data": "2026-01-27",
+          "evento": "La stampa riporta l'ingresso di Microsoft e NVIDIA nel giro di finanziamento."
+        },
+        {
+          "data": "2026-02-12",
+          "evento": "Serie G chiusa: 30 miliardi a 380 miliardi di valutazione."
+        },
+        {
+          "data": "2026-05-28",
+          "evento": "Serie H: 65 miliardi a 965 miliardi post-money; la società dichiara oltre 47 miliardi di giro d'affari annualizzato."
+        },
+        {
+          "data": "2026-06-04",
+          "evento": "Fortune: l'entità reale degli investimenti di Amazon e Google resterà ignota finché non ci sarà una quotazione."
+        }
+      ],
+      "nota_sicurezza": "Nessun link è stato aperto o eseguito: l'oggetto di questa verifica sono ditte, non un sito sospetto. ⚠️ LIMITE MISURATO IN QUESTA SESSIONE, non dedotto: il proxy di rete ha bloccato l'apertura diretta di TUTTI i domini delle fonti (openai.com, cnbc.com, sec.gov, anthropic.com, investor.nvidia.com, europa.eu — provati, errore EGRESS_BLOCKED / codice 000). Le fonti elencate sono URL reali restituiti dall'indice di ricerca con titolo e data corrispondenti, e sono cliccabili per il lettore, ma NON le ho aperte una per una: ho incrociato più risultati indipendenti. Dove una cifra compare in una fonte sola o solo in aggregatori, è detto nelle red flags. «Non ho potuto aprirlo» vale più di «dovrebbe funzionare»."
+    },
+    {
+      "id": "0010-google-deepmind-alphabet",
+      "fonte": "kiroshi",
+      "tipo": "ditta",
+      "titolo": "Google DeepMind — cos'è davvero e di chi è",
+      "esito": "Reale e verificabile — ma i numeri sono quelli di alphabet, non suoi",
+      "punteggio": 88,
+      "ambito": "affidabilita",
+      "colore": "verde",
+      "data": "2026-09-09",
+      "sintesi": "Prima cosa, perché cambia la domanda: Google DeepMind NON è una società indipendente. È una divisione di Alphabet Inc., società quotata negli Stati Uniti, nata nell'aprile 2023 fondendo DeepMind (comprata da Google nel 2014) con Google Brain. Non ha round di finanziamento, non ha valutazione propria, non ha un fatturato pubblicato: è una voce di costo e di prodotto dentro il bilancio di Alphabet. Questo la mette in una categoria diversa da OpenAI e Anthropic, e va detto prima di qualunque confronto: paragonare «DeepMind» a «OpenAI» sui soldi è un confronto fra un reparto e un'azienda.\n\nProprio per questo è il caso più verificabile dei sei. Alphabet deposita bilanci trimestrali certificati presso la SEC e tiene conferenze pubbliche con gli investitori: chiunque può leggere i numeri veri, e il vincolo di legge sulla veridicità è di un altro ordine rispetto a un annuncio di una società privata. Dai documenti e dalle comunicazioni agli investitori del 2026: utile netto del primo trimestre 2026 pari a 62,58 miliardi di dollari (+81% sull'anno prima) e una guida sugli investimenti in conto capitale per l'intero 2026 rivista a 195-205 miliardi di dollari, esplicitamente destinati anche alla capacità di calcolo per Google DeepMind.\n\nLa posizione competitiva ha una particolarità che conta nella mappa: Google è l'unico dei grandi che progetta e usa i propri acceleratori (le TPU, arrivate all'ottava generazione), quindi dipende da NVIDIA molto meno degli altri. Ed è al tempo stesso finanziatore di un concorrente diretto, Anthropic. L'app Gemini viene dichiarata a oltre 750 milioni di utenti attivi mensili: è un dato aziendale, non misurato da terzi.\n\nDiritto di replica garantito.",
+      "scheda": null,
+      "fonti": [
+        {
+          "titolo": "Alphabet Investor Relations — 2026 Q1 Earnings Call",
+          "url": "https://abc.xyz/investor/events/event-details/2026/2026-Q1-Earnings-Call-2026-nW8kCrBAKS/default.aspx",
+          "tipo": "comunicazione finanziaria ufficiale di una società quotata",
+          "sostiene": "I risultati del primo trimestre 2026 e la guida sugli investimenti. È la fonte primaria: soggetta agli obblighi di legge sulle società quotate.",
+          "autorevolezza": "massima — società quotata, obblighi di veridicità verso il mercato"
+        },
+        {
+          "titolo": "Alphabet (GOOGL) Q1 2026 earnings — CNBC, 29 aprile 2026",
+          "url": "https://www.cnbc.com/2026/04/29/alphabet-googl-q1-2026-earnings.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Utile netto del primo trimestre 2026 di 62,58 miliardi di dollari, +81% sull'anno precedente.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Alphabet resets the bar for AI infrastructure spending — CNBC, 4 febbraio 2026",
+          "url": "https://www.cnbc.com/2026/02/04/alphabet-resets-the-bar-for-ai-infrastructure-spending.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "La revisione al rialzo della spesa in conto capitale 2026 (195-205 miliardi), destinata anche alla capacità di calcolo per Google DeepMind.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Alphabet earnings call, Q1 2026 — le parole del CEO Sundar Pichai",
+          "url": "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q1-2026/",
+          "tipo": "dichiarazione della società",
+          "sostiene": "Utenti dichiarati dell'app Gemini e stato dei prodotti. È l'azienda che parla di sé: da pesare come tale.",
+          "autorevolezza": "media — parte in causa"
+        },
+        {
+          "titolo": "Alphabet investor presentation, giugno 2026",
+          "url": "https://blog.google/alphabet/investor-presentation-june-2026/",
+          "tipo": "documento per gli investitori",
+          "sostiene": "Quadro aggiornato di prodotti, TPU e infrastruttura presentato agli investitori.",
+          "autorevolezza": "media-alta — parte in causa ma destinato al mercato"
+        }
+      ],
+      "oggetto": "Google DeepMind: la divisione di ricerca e sviluppo IA di Alphabet Inc., nata nell'aprile 2023 dall'unione di DeepMind (società britannica acquisita da Google nel 2014) e Google Brain. Prodotti: i modelli Gemini, l'app Gemini, i processori TPU. NON è una società a sé che raccoglie capitali: è una divisione di una quotata.",
+      "domanda": "Parte della domanda #46 del Direttore. Tradotta: Google DeepMind è una ditta autonoma o un reparto? E i suoi numeri sono verificabili?",
+      "green_flags": [
+        "Appartiene a una società quotata che deposita bilanci certificati presso la SEC: i numeri sono controllabili da chiunque e mentire ha conseguenze legali.",
+        "Storia societaria limpida e datata: DeepMind acquisita da Google nel 2014, fusione con Google Brain nell'aprile 2023.",
+        "Comunicazione finanziaria pubblica e regolare (conferenze trimestrali con gli investitori, presentazioni sul sito Alphabet).",
+        "Integrazione verticale sul silicio: progetta e usa le proprie TPU: la dipendenza da un fornitore esterno di chip è strutturalmente minore di quella dei concorrenti.",
+        "La spesa dichiarata in conto capitale è una voce di bilancio soggetta a revisione contabile, non un annuncio: 195-205 miliardi per il 2026."
+      ],
+      "red_flags": [
+        "Non esistono conti separati di Google DeepMind: ricavi e margini della divisione IA non sono pubblicati. Chi cita «il fatturato di DeepMind» sta inventando o estrapolando.",
+        "Il numero di utenti dell'app Gemini (oltre 750 milioni al mese) è dichiarato dall'azienda, senza metodo di conteggio pubblicato né verifica di terzi.",
+        "Conflitto strutturale: Alphabet finanzia Anthropic, cioè un concorrente diretto dei propri modelli, e insieme gli vende infrastruttura.",
+        "La guida sugli investimenti è stata rivista al rialzo in corso d'anno: le cifre di spesa in questo settore invecchiano nel giro di un trimestre, comprese quelle di questa scheda."
+      ],
+      "timeline": [
+        {
+          "data": "2014",
+          "evento": "Google acquisisce DeepMind Technologies, società britannica."
+        },
+        {
+          "data": "2023-04",
+          "evento": "DeepMind e Google Brain vengono fuse in un'unica divisione: Google DeepMind."
+        },
+        {
+          "data": "2026-02-04",
+          "evento": "Alphabet alza la guida sugli investimenti in conto capitale per il 2026 a 195-205 miliardi di dollari, anche per la capacità di calcolo di Google DeepMind."
+        },
+        {
+          "data": "2026-04-29",
+          "evento": "Risultati del primo trimestre 2026: utile netto di 62,58 miliardi, +81% sull'anno prima."
+        }
+      ],
+      "nota_sicurezza": "Nessun link è stato aperto o eseguito: l'oggetto di questa verifica sono ditte, non un sito sospetto. ⚠️ LIMITE MISURATO IN QUESTA SESSIONE, non dedotto: il proxy di rete ha bloccato l'apertura diretta di TUTTI i domini delle fonti (openai.com, cnbc.com, sec.gov, anthropic.com, investor.nvidia.com, europa.eu — provati, errore EGRESS_BLOCKED / codice 000). Le fonti elencate sono URL reali restituiti dall'indice di ricerca con titolo e data corrispondenti, e sono cliccabili per il lettore, ma NON le ho aperte una per una: ho incrociato più risultati indipendenti. Dove una cifra compare in una fonte sola o solo in aggregatori, è detto nelle red flags. «Non ho potuto aprirlo» vale più di «dovrebbe funzionare»."
+    },
+    {
+      "id": "0011-meta-superintelligence-labs",
+      "fonte": "kiroshi",
+      "tipo": "ditta",
+      "titolo": "Meta — la divisione IA, i soldi spesi e il cambio di rotta",
+      "esito": "Spesa verificabile, strategia dichiarata instabile",
+      "punteggio": 85,
+      "ambito": "affidabilita",
+      "colore": "verde",
+      "data": "2026-09-09",
+      "sintesi": "Meta è una società quotata: la spesa si legge nei documenti e nelle chiamate agli investitori, e su quel piano il verdetto è netto — i numeri ci sono e sono enormi. La guida per il 2026 è stata data fra 115 e 135 miliardi di dollari di investimenti legati all'IA (quasi il doppio dell'anno prima) e successivamente indicata agli investitori fino a 145 miliardi. A giugno 2025 Meta ha investito 14,3 miliardi in Scale AI per una quota del 49%, portandosi in casa il fondatore Alexandr Wang, oggi responsabile IA e a capo di Meta Superintelligence Labs.\n\nQuello che NON è stabile è la strategia. Per anni la linea dichiarata era i pesi aperti con la famiglia Llama, ed era il tratto che distingueva Meta da tutti gli altri. Nell'aprile 2026 la società presenta Muse Spark, il primo modello importante uscito dai nuovi laboratori: è chiuso. È un cambio di rotta sul punto che Meta aveva usato per definirsi, e non è l'unico segnale — nel dicembre 2025 la stampa aveva già raccontato confusione interna sulla direzione, e nell'agosto 2025 una frenata sulla campagna di assunzioni a suon di milioni. A luglio 2026 arriva un'altra mossa: vendere ad altri la capacità di calcolo in eccesso, cioè entrare nel mestiere del cloud.\n\nPer chi legge da fuori: la spesa di Meta è un fatto misurato, la sua rotta nell'IA è cambiata più volte in dodici mesi. Le due cose vanno tenute separate. Diritto di replica garantito.",
+      "scheda": null,
+      "fonti": [
+        {
+          "titolo": "Meta debuts new AI model, attempting to catch Google, OpenAI after spending billions — CNBC, 8 aprile 2026",
+          "url": "https://www.cnbc.com/2026/04/08/meta-debuts-first-major-ai-model-since-14-billion-deal-to-bring-in-alexandr-wang.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Presentazione di Muse Spark, l'operazione da 14,3 miliardi su Scale AI e il ruolo di Alexandr Wang.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Meta's Mark Zuckerberg gets green light from Wall Street to keep pouring money into AI — CNBC, 28 gennaio 2026",
+          "url": "https://www.cnbc.com/2026/01/28/metas-zuckerberg-gets-green-light-from-wall-street-to-invest-in-ai.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "La guida sugli investimenti IA 2026 fra 115 e 135 miliardi di dollari, comunicata con i risultati.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Meta's long-awaited AI model is finally here. But can it make money? — CNBC, 9 aprile 2026",
+          "url": "https://www.cnbc.com/2026/04/09/metas-long-awaited-ai-model-is-finally-here-but-can-it-make-money.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Il passaggio da Llama a pesi aperti a un modello chiuso e la spesa fino a 145 miliardi indicata agli investitori.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "From Llamas to Avocados: Meta's shifting AI strategy is causing internal confusion — CNBC, 9 dicembre 2025",
+          "url": "https://www.cnbc.com/2025/12/09/meta-avocado-ai-strategy-issues.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Confusione interna sulla direzione strategica IA: è la fonte della red flag sulla discontinuità.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Meta pops 9% as company makes cloud push to sell excess AI compute power capacity — CNBC, 1 luglio 2026",
+          "url": "https://www.cnbc.com/2026/07/01/meta-stock-cloud-ai-compute.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "L'ingresso di Meta nella vendita di capacità di calcolo ad altri: un mestiere nuovo rispetto alla sua storia.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Meta puts the brakes on its massive AI talent spending spree — CNBC, 21 agosto 2025",
+          "url": "https://www.cnbc.com/2025/08/21/meta-brakes-massive-ai-talent-recruitment-spending-spree-mark-zuckerberg-tbd-superintelligence-lab.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "La frenata sulla campagna di assunzioni: primo segnale documentato di correzione di rotta.",
+          "autorevolezza": "alta"
+        }
+      ],
+      "oggetto": "Meta Platforms Inc. (società quotata negli Stati Uniti) e la sua divisione Meta Superintelligence Labs, guidata da Alexandr Wang, entrato in Meta con l'operazione su Scale AI. Prodotti: i modelli Llama a pesi aperti e, dall'aprile 2026, il modello chiuso Muse Spark.",
+      "domanda": "Parte della domanda #46 del Direttore. Tradotta: cosa sta facendo davvero Meta nell'IA, quanto ci sta mettendo, e quelle cifre sono verificabili?",
+      "green_flags": [
+        "Società quotata con bilanci certificati e guida sugli investimenti comunicata al mercato: la cifra di spesa è verificabile, non un annuncio.",
+        "L'operazione su Scale AI ha importo e quota dichiarati (14,3 miliardi per il 49%) e una conseguenza personale visibile: il fondatore passa a Meta come responsabile IA.",
+        "Storia dei pesi aperti (Llama) documentata e realmente utilizzabile da terzi: per anni chiunque ha potuto scaricare e controllare i modelli.",
+        "Le difficoltà interne sono state raccontate da stampa indipendente, non solo la versione aziendale: c'è materiale contraddittorio su cui il lettore può farsi un'idea."
+      ],
+      "red_flags": [
+        "Cambio di rotta sul tratto identitario: dopo anni di pesi aperti, il primo modello dei nuovi laboratori (Muse Spark, aprile 2026) è chiuso.",
+        "Guida di spesa rivista al rialzo in corso d'anno (da 115-135 a «fino a 145 miliardi»): il numero annunciato non è il numero finale.",
+        "Segnalazioni di confusione strategica interna (dicembre 2025) e frenata sulla campagna di assunzioni milionarie (agosto 2025): la traiettoria è discontinua.",
+        "Come per Google, non esistono conti separati della divisione IA: quanto rende Meta Superintelligence Labs non è pubblico, si vede solo quanto costa.",
+        "Il 49% di Scale AI non è controllo: la struttura dell'operazione è stata letta anche come modo di acquisire persone e tecnologia senza una fusione piena."
+      ],
+      "timeline": [
+        {
+          "data": "2025-06",
+          "evento": "Meta investe 14,3 miliardi di dollari in Scale AI per il 49%; Alexandr Wang entra in Meta."
+        },
+        {
+          "data": "2025-08-21",
+          "evento": "Frenata sulla campagna di assunzioni milionarie per i nuovi laboratori."
+        },
+        {
+          "data": "2025-12-09",
+          "evento": "La stampa riporta confusione interna sulla strategia IA."
+        },
+        {
+          "data": "2026-01-28",
+          "evento": "Guida agli investimenti IA 2026: 115-135 miliardi di dollari, quasi il doppio dell'anno precedente."
+        },
+        {
+          "data": "2026-04-08",
+          "evento": "Presentato Muse Spark, primo modello importante di Meta Superintelligence Labs: chiuso, non a pesi aperti."
+        },
+        {
+          "data": "2026-07-01",
+          "evento": "Meta annuncia la vendita ad altri della capacità di calcolo in eccesso."
+        }
+      ],
+      "nota_sicurezza": "Nessun link è stato aperto o eseguito: l'oggetto di questa verifica sono ditte, non un sito sospetto. ⚠️ LIMITE MISURATO IN QUESTA SESSIONE, non dedotto: il proxy di rete ha bloccato l'apertura diretta di TUTTI i domini delle fonti (openai.com, cnbc.com, sec.gov, anthropic.com, investor.nvidia.com, europa.eu — provati, errore EGRESS_BLOCKED / codice 000). Le fonti elencate sono URL reali restituiti dall'indice di ricerca con titolo e data corrispondenti, e sono cliccabili per il lettore, ma NON le ho aperte una per una: ho incrociato più risultati indipendenti. Dove una cifra compare in una fonte sola o solo in aggregatori, è detto nelle red flags. «Non ho potuto aprirlo» vale più di «dovrebbe funzionare»."
+    },
+    {
+      "id": "0012-nvidia-il-fornitore-che-e-anche-socio",
+      "fonte": "kiroshi",
+      "tipo": "ditta",
+      "titolo": "NVIDIA — il fornitore di chip che è anche socio dei suoi clienti",
+      "esito": "Conti verificabili e certificati — struttura degli accordi da leggere con attenzione",
+      "punteggio": 82,
+      "ambito": "affidabilita",
+      "colore": "verde",
+      "data": "2026-09-09",
+      "sintesi": "Sui conti, NVIDIA è il caso più solido dei sei: è quotata al Nasdaq, deposita trimestrali e relazioni presso la SEC, e i numeri sono quindi documenti, non annunci. Fatturato dell'esercizio 2026 pari a 215,9 miliardi di dollari (+65%); nel secondo trimestre dell'esercizio 2027 la sola divisione data center dichiara 89,0 miliardi, quasi raddoppiati sull'anno prima. Chi vuole controllare non deve fidarsi di me: i documenti sono su EDGAR, pubblici.\n\nLa cosa che merita attenzione non è la veridicità dei conti: è la FORMA degli accordi. NVIDIA ha superato i 40 miliardi di dollari in partecipazioni azionarie in aziende che sono al tempo stesso sue clienti — fra queste 30 miliardi in OpenAI (marzo 2026), 10 miliardi in Anthropic, un ruolo nel finanziamento di un centro dati OpenAI in Ohio, e la discussione, riportata a luglio 2026, di una garanzia da 250 miliardi a favore di OpenAI. In pratica: fornisce il capitale a chi poi lo usa per comprare i suoi prodotti. La stampa finanziaria lo chiama «finanziamento circolare» e ne discute apertamente il rischio; l'amministratore delegato ha risposto in pubblico che «il rischio è basso» e ha detto a marzo 2026 che l'investimento in OpenAI «potrebbe essere l'ultimo». Entrambe le posizioni sono qui, senza sceglierne una.\n\nCosa significa per chi legge: i ricavi di NVIDIA sono un numero certificato, ma una parte della domanda che li genera è finanziata da NVIDIA stessa. Non è un'accusa e non c'è nulla di illecito accertato: è una struttura che rende più difficile capire quanta domanda sia autonoma. È la ragione per cui il punteggio non è più alto di 82 pur essendo l'azienda più trasparente del gruppo. Diritto di replica garantito.",
+      "scheda": null,
+      "fonti": [
+        {
+          "titolo": "NVIDIA Corp — Form 10-Q, esercizio 2027 primo semestre (periodo chiuso 26 luglio 2026), SEC EDGAR",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/nvda-20260726.htm",
+          "tipo": "registro ufficiale",
+          "sostiene": "I conti trimestrali depositati presso l'autorità di vigilanza statunitense: la fonte primaria dei ricavi, compreso il segmento data center.",
+          "autorevolezza": "massima — deposito ufficiale presso la SEC"
+        },
+        {
+          "titolo": "NVIDIA Announces Financial Results for Fourth Quarter and Fiscal 2026 — comunicato agli investitori",
+          "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Fourth-Quarter-and-Fiscal-2026/default.aspx",
+          "tipo": "comunicazione finanziaria ufficiale",
+          "sostiene": "Fatturato dell'esercizio 2026 di 215,9 miliardi di dollari, +65%.",
+          "autorevolezza": "massima — comunicazione al mercato di una società quotata"
+        },
+        {
+          "titolo": "Nvidia embraces AI investor role, topping $40 billion in equity bets — CNBC, 9 maggio 2026",
+          "url": "https://www.cnbc.com/2026/05/09/nvidia-embraces-ai-investor-topping-40-billion-in-equity-bets-2026.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Oltre 40 miliardi di dollari in partecipazioni azionarie, in gran parte in aziende clienti.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Nvidia reignites \"circular\" AI concerns as it weighs OpenAI financing guarantee — Axios, 27 luglio 2026",
+          "url": "https://www.axios.com/2026/07/27/nvidia-openai-financing-ai-jensen-huang-ssi",
+          "tipo": "stampa indipendente",
+          "sostiene": "La discussione sulla garanzia finanziaria a favore di OpenAI e il dibattito sul finanziamento circolare.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Jensen Huang defends Nvidia's growing financial support for AI ecosystem, says 'the risk is low' — CNBC, 26 agosto 2026",
+          "url": "https://www.cnbc.com/2026/08/26/jensen-huang-defends-nvidias-growing-financial-support-for-ai-ecosystem-says-the-risk-is-low-.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "La replica pubblica dell'azienda alle critiche sul finanziamento circolare. È il diritto di replica, esercitato e riportato.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Nvidia CEO Huang says $30 billion OpenAI investment 'might be the last' — CNBC, 4 marzo 2026",
+          "url": "https://www.cnbc.com/2026/03/04/nvidia-huang-openai-investment.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "L'entità dell'investimento in OpenAI (30 miliardi) e la dichiarazione sul suo carattere ultimo.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Nvidia backing $105 billion in financing for OpenAI data center in Ohio — CNBC, 17 agosto 2026",
+          "url": "https://www.cnbc.com/2026/08/17/nvidia-financing-open-ai-data-center-ohio.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Il ruolo di NVIDIA nel finanziamento di infrastruttura di un proprio cliente.",
+          "autorevolezza": "alta"
+        }
+      ],
+      "oggetto": "NVIDIA Corporation, società statunitense quotata al Nasdaq: progetta i processori e i sistemi su cui si addestrano e funzionano quasi tutti i modelli di IA dei concorrenti citati in questa serie. Dal 2025-2026 è anche investitore in molti dei suoi stessi clienti.",
+      "domanda": "Parte della domanda #46 del Direttore («come interagiscono tra di loro»). Tradotta: i numeri di NVIDIA sono verificabili, e cosa comporta il fatto che finanzi i propri acquirenti?",
+      "green_flags": [
+        "Società quotata: relazioni trimestrali e annuali depositate presso la SEC, consultabili da chiunque su EDGAR. È il livello massimo di verificabilità in questa serie.",
+        "I ricavi sono certificati e ripartiti per segmento (data center separato dal resto): non serve fidarsi di stime di terzi.",
+        "Le partecipazioni in clienti sono state comunicate pubblicamente e discusse in interviste, non nascoste.",
+        "Esiste un dibattito pubblico e documentato sul rischio di questa struttura, con la posizione critica e la risposta dell'azienda entrambe reperibili.",
+        "Prodotto reale, consegnato e usato: qui non c'è alcun dubbio sull'esistenza della merce venduta."
+      ],
+      "red_flags": [
+        "Finanziamento circolare: oltre 40 miliardi investiti in aziende che sono anche clienti. Parte della domanda per i suoi chip è alimentata dai suoi stessi capitali.",
+        "Concentrazione dei clienti: pochi grandissimi acquirenti pesano moltissimo sul fatturato: se uno rallenta, l'effetto non è graduale.",
+        "La discussione su una garanzia finanziaria da 250 miliardi a favore di OpenAI (luglio 2026) è di scala tale da legare la salute di NVIDIA a quella di un solo cliente.",
+        "Analisti e commentatori hanno paragonato la struttura di questi accordi ai meccanismi che precedettero lo scoppio della bolla dot-com: è un'opinione, non una previsione verificata, ma viene da più voci indipendenti.",
+        "Le dichiarazioni pubbliche dell'azienda sull'entità futura degli investimenti sono cambiate nel giro di mesi («potrebbe essere l'ultimo», marzo 2026, seguito da ulteriori operazioni)."
+      ],
+      "timeline": [
+        {
+          "data": "2026-02",
+          "evento": "Chiuso l'esercizio 2026 con 215,9 miliardi di dollari di fatturato, +65%."
+        },
+        {
+          "data": "2026-03-04",
+          "evento": "Investimento da 30 miliardi in OpenAI; l'amministratore delegato dichiara che «potrebbe essere l'ultimo»."
+        },
+        {
+          "data": "2026-05-09",
+          "evento": "Le partecipazioni azionarie in aziende del settore superano i 40 miliardi di dollari."
+        },
+        {
+          "data": "2026-07-27",
+          "evento": "Emerge la discussione su una garanzia finanziaria fino a 250 miliardi a favore di OpenAI; riesplode il dibattito sul finanziamento circolare."
+        },
+        {
+          "data": "2026-08-17",
+          "evento": "NVIDIA sostiene 105 miliardi di finanziamento per un centro dati OpenAI in Ohio."
+        },
+        {
+          "data": "2026-08-26",
+          "evento": "L'amministratore delegato replica pubblicamente alle critiche: «il rischio è basso»."
+        }
+      ],
+      "nota_sicurezza": "Nessun link è stato aperto o eseguito: l'oggetto di questa verifica sono ditte, non un sito sospetto. ⚠️ LIMITE MISURATO IN QUESTA SESSIONE, non dedotto: il proxy di rete ha bloccato l'apertura diretta di TUTTI i domini delle fonti (openai.com, cnbc.com, sec.gov, anthropic.com, investor.nvidia.com, europa.eu — provati, errore EGRESS_BLOCKED / codice 000). Le fonti elencate sono URL reali restituiti dall'indice di ricerca con titolo e data corrispondenti, e sono cliccabili per il lettore, ma NON le ho aperte una per una: ho incrociato più risultati indipendenti. Dove una cifra compare in una fonte sola o solo in aggregatori, è detto nelle red flags. «Non ho potuto aprirlo» vale più di «dovrebbe funzionare»."
+    },
+    {
+      "id": "0013-deepseek-high-flyer",
+      "fonte": "kiroshi",
+      "tipo": "ditta",
+      "titolo": "DeepSeek — di chi è, chi la paga, e cosa non si riesce a verificare",
+      "esito": "Società reale, ma la parte che conta non è verificabile dall'esterno",
+      "punteggio": 38,
+      "ambito": "affidabilita",
+      "colore": "rosso",
+      "data": "2026-09-09",
+      "sintesi": "Che DeepSeek esista e che i suoi modelli siano reali non è in discussione: sono scaricabili e chiunque può provarli, ed è questa la sua parte più solida. Tutto il resto è il caso meno verificabile dei sei, e il punteggio basso misura questo, non un sospetto di truffa.\n\nAssetto: fondata nel 2023 da Liang Wenfeng, cofondatore del fondo speculativo quantitativo High-Flyer (circa 8 miliardi di dollari in gestione), che la possiede e finanzia interamente. Un'azienda posseduta da un fondo privato cinese non deposita bilanci consultabili: non c'è alcun registro pubblico a cui io o il lettore possiamo risalire per ricavi, costi o proprietà effettiva. Nell'agosto 2026 la stampa riporta che DeepSeek sta cercando capitali esterni per la prima volta, cedendo non più del 3% e privilegiando investitori sostenuti dallo Stato e fondi di indirizzo di governi locali rispetto al capitale puramente finanziario. È un cambiamento rilevante: sposterebbe, almeno in parte, la proprietà verso soggetti pubblici cinesi.\n\nDue punti dove serve massima cautela. Primo, i costi di addestramento: la cifra bassissima che circolò nel gennaio 2025 è una dichiarazione della società, e già a fine gennaio 2025 un'analisi indipendente stimava una spesa in hardware fino a 500 milioni di dollari. Le due cose non misurano la stessa voce, e chi le confronta come se fossero alternative sta sbagliando conto. Secondo, e va detto con precisione: nel giugno 2025 un funzionario statunitense ha affermato che DeepSeek supporterebbe l'apparato militare cinese e avrebbe eluso i controlli sull'esportazione tramite società di comodo nel Sud-est asiatico. Questa è un'AFFERMAZIONE DI UNA PARTE IN CAUSA riportata dalla stampa, non un fatto accertato in sede giudiziaria: qui viene registrata come tale, senza essere trattata come dimostrata. Non risulta pubblicamente che DeepSeek abbia ricevuto finanziamenti dal governo cinese.\n\nDiritto di replica garantito e da considerarsi aperto: se DeepSeek o High-Flyer forniscono documentazione, questo verdetto si rivede.",
+      "scheda": null,
+      "fonti": [
+        {
+          "titolo": "DeepSeek looks for fresh capital as founder's quant empire navigates China's choppy IPO market — CNBC, 28 agosto 2026",
+          "url": "https://www.cnbc.com/2026/08/28/deepseek-founder-liang-wenfeng-high-flyer-china-tech-ipos-funding.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "La proprietà tramite High-Flyer e la ricerca di capitali esterni nel 2026.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Why China's cash-rich AI firm DeepSeek is still shopping for funding — South China Morning Post",
+          "url": "https://www.scmp.com/tech/article/3351004/why-chinas-cash-rich-ai-firm-deepseek-still-shopping-funding-sources",
+          "tipo": "stampa indipendente con competenza regionale",
+          "sostiene": "La cessione di non più del 3% e la preferenza per investitori sostenuti dallo Stato e fondi di indirizzo di governi locali.",
+          "autorevolezza": "alta — testata con accesso diretto al contesto cinese"
+        },
+        {
+          "titolo": "Demystifying DeepSeek: four burning questions about China's hottest AI start-up answered — South China Morning Post",
+          "url": "https://www.scmp.com/tech/tech-war/article/3298094/demystifying-deepseek-four-burning-questions-about-chinas-hottest-ai-start-answered",
+          "tipo": "stampa indipendente",
+          "sostiene": "L'assetto proprietario (interamente di High-Flyer, circa 8 miliardi in gestione) e la fondazione nel 2023 da parte di Liang Wenfeng.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "DeepSeek's hardware spend could be as high as $500 million, new report estimates — CNBC, 31 gennaio 2025",
+          "url": "https://www.cnbc.com/2025/01/31/deepseeks-hardware-spend-could-be-as-high-as-500-million-report.html",
+          "tipo": "stima indipendente riportata dalla stampa",
+          "sostiene": "La stima di terzi sulla spesa in hardware, che contraddice la lettura più diffusa della cifra dichiarata dall'azienda.",
+          "autorevolezza": "media-alta — è una stima, dichiarata come tale"
+        },
+        {
+          "titolo": "DeepSeek aids China's military and evaded export controls, US official says — CNBC/Reuters, 24 giugno 2025",
+          "url": "https://www.cnbc.com/2025/06/24/deepseek-aids-chinas-military-and-evaded-export-controls-us-official-says-reuters.html",
+          "tipo": "affermazione di una parte in causa, riportata dalla stampa",
+          "sostiene": "L'accusa di un funzionario statunitense. Riportata per completezza e classificata come affermazione NON accertata: non è una prova.",
+          "autorevolezza": "bassa come prova, alta come fatto che l'affermazione sia stata fatta"
+        },
+        {
+          "titolo": "How China's new AI model DeepSeek is threatening U.S. dominance — CNBC, 24 gennaio 2025",
+          "url": "https://www.cnbc.com/2025/01/24/how-chinas-new-ai-model-deepseek-is-threatening-us-dominance.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Il contesto del gennaio 2025 e l'impatto sui mercati: è il fatto di partenza della notorietà dell'azienda.",
+          "autorevolezza": "alta"
+        }
+      ],
+      "oggetto": "DeepSeek: società cinese di intelligenza artificiale fondata nel 2023 da Liang Wenfeng, interamente posseduta e finanziata da High-Flyer, fondo speculativo quantitativo cinese. Prodotti: modelli a pesi aperti, fra cui quelli che nel gennaio 2025 hanno scosso i mercati.",
+      "domanda": "Parte della domanda #46 del Direttore. Tradotta: chi possiede davvero DeepSeek, con quali soldi, e quanto di ciò che si dice su di lei è verificabile?",
+      "green_flags": [
+        "I modelli sono a pesi aperti e pubblicamente scaricabili: il prodotto è ispezionabile da chiunque, il che è più di quanto offrano quasi tutti i concorrenti occidentali.",
+        "La proprietà dichiarata è chiara nella catena principale (High-Flyer, fondo con dimensione nota) e il fondatore è una persona identificabile con storia pubblica.",
+        "L'operato è stato oggetto di analisi tecniche indipendenti di terzi, non solo di comunicati aziendali.",
+        "Il tentativo di raccolta di capitali del 2026 è stato riportato da fonti indipendenti fra loro (CNBC e South China Morning Post)."
+      ],
+      "red_flags": [
+        "Nessun bilancio pubblico, nessun registro consultabile: ricavi, costi e proprietà effettiva NON sono verificabili dall'esterno. È il motivo principale del punteggio basso.",
+        "La cifra di costo di addestramento più citata è una dichiarazione dell'azienda; una stima indipendente ha collocato la spesa in hardware fino a 500 milioni di dollari. Il numero basso non è confermato.",
+        "Giugno 2025: un funzionario statunitense afferma che DeepSeek supporterebbe l'apparato militare cinese e avrebbe eluso i controlli sull'esportazione. AFFERMAZIONE DI PARTE, non accertata: registrata, non avallata.",
+        "La raccolta di capitali in corso privilegia investitori sostenuti dallo Stato e fondi di governi locali: la proprietà futura sarebbe meno privata e meno leggibile di quella attuale.",
+        "Operando in Cina, i dati degli utenti sono soggetti a una giurisdizione con obblighi di accesso diversi da quelli europei: rilevante per chi valuta l'uso del prodotto, indipendentemente da ogni giudizio sull'azienda."
+      ],
+      "timeline": [
+        {
+          "data": "2023",
+          "evento": "DeepSeek viene fondata da Liang Wenfeng, cofondatore del fondo quantitativo High-Flyer, che la possiede interamente."
+        },
+        {
+          "data": "2025-01-24",
+          "evento": "I modelli DeepSeek scuotono i mercati e la percezione del divario tecnologico fra Stati Uniti e Cina."
+        },
+        {
+          "data": "2025-01-31",
+          "evento": "Un'analisi indipendente stima la spesa in hardware fino a 500 milioni di dollari, contro la cifra bassissima dichiarata dall'azienda per l'addestramento."
+        },
+        {
+          "data": "2025-06-24",
+          "evento": "Un funzionario statunitense afferma che DeepSeek supporterebbe l'apparato militare cinese ed eluda i controlli sull'export. Affermazione non accertata."
+        },
+        {
+          "data": "2026-08-28",
+          "evento": "DeepSeek cerca capitali esterni per la prima volta: non oltre il 3% del capitale, con preferenza per investitori sostenuti dallo Stato."
+        }
+      ],
+      "nota_sicurezza": "Nessun link è stato aperto o eseguito: l'oggetto di questa verifica sono ditte, non un sito sospetto. ⚠️ LIMITE MISURATO IN QUESTA SESSIONE, non dedotto: il proxy di rete ha bloccato l'apertura diretta di TUTTI i domini delle fonti (openai.com, cnbc.com, sec.gov, anthropic.com, investor.nvidia.com, europa.eu — provati, errore EGRESS_BLOCKED / codice 000). Le fonti elencate sono URL reali restituiti dall'indice di ricerca con titolo e data corrispondenti, e sono cliccabili per il lettore, ma NON le ho aperte una per una: ho incrociato più risultati indipendenti. Dove una cifra compare in una fonte sola o solo in aggregatori, è detto nelle red flags. «Non ho potuto aprirlo» vale più di «dovrebbe funzionare». In più, su questo oggetto: le accuse riportate provengono da una parte in causa in un contesto di guerra commerciale fra Stati. Sono registrate come affermazioni, mai come fatti accertati."
+    },
+    {
+      "id": "0014-mappa-player-ia-e-stati",
+      "fonte": "kiroshi",
+      "tipo": "ditta",
+      "titolo": "La mappa dei player dell'IA — chi manca all'elenco, chi finanzia chi, e a che punto sono gli Stati",
+      "esito": "Elenco incompleto — la mappa vera è fatta di dipendenze incrociate",
+      "punteggio": 70,
+      "ambito": "verita",
+      "colore": "giallo",
+      "data": "2026-09-09",
+      "sintesi": "RISPOSTA SECCA ALLA DOMANDA: no, l'elenco non è completo, e manca soprattutto una CATEGORIA, non solo dei nomi.\n\nChi manca fra chi costruisce i modelli: xAI (di Elon Musk: 20 miliardi raccolti a gennaio 2026 a una valutazione intorno ai 230 miliardi, con NVIDIA e Cisco fra gli investitori); Mistral AI, il campione europeo, che a settembre 2026 ha chiuso il più grande round azionario mai fatto da una società tecnologica europea — circa 3 miliardi di euro guidati da Samsung, valutazione oltre 21 miliardi di euro; Microsoft e Amazon, che nell'elenco non compaiono ma sono decisive per una ragione doppia (sono i maggiori azionisti-fornitori dei laboratori indipendenti E hanno modelli propri); e i grandi cinesi oltre DeepSeek — Alibaba, ByteDance, Baidu, Tencent, Moonshot — che nell'elenco non ci sono affatto.\n\nMa la categoria davvero assente è CHI FA FUNZIONARE LA COSA: i produttori di silicio e di infrastruttura, senza cui nessuno dei sei esiste. TSMC fabbrica materialmente i chip; ASML è l'unica al mondo a costruire le macchine litografiche più avanzate; AMD e Broadcom sono le alternative a NVIDIA; Oracle, CoreWeave e SoftBank costruiscono e finanziano i centri dati. Chi ragiona sui «player dell'IA» guardando solo chi fa i modelli, guarda la punta e non la leva.\n\nCOME INTERAGISCONO — e qui sta il fatto più importante di tutta questa serie: NON sono sei concorrenti separati. Sono un intreccio in cui gli stessi soggetti sono contemporaneamente investitore, fornitore e concorrente l'uno dell'altro. Microsoft ha circa il 27% di OpenAI ed è fra i finanziatori di Anthropic. Amazon investe in Anthropic, la ospita, e ha messo 50 miliardi nel round OpenAI di febbraio 2026. Google finanzia Anthropic e insieme le fa concorrenza con Gemini. NVIDIA vende i chip a tutti e ha investito oltre 40 miliardi nei propri clienti, xAI compresa. La stampa finanziaria chiama questa struttura «finanziamento circolare» e ne discute apertamente il rischio: quando il fornitore finanzia il cliente che compra i suoi prodotti, dall'esterno diventa difficile dire quanta domanda sia autonoma. Non è un'accusa: è la forma degli accordi, ed è documentata.\n\nGLI STATI RISPETTO AI PRIVATI. Il divario di scala è netto e va detto con i numeri. Solo quattro aziende private (Microsoft, Meta, Alphabet, Amazon) hanno programmato per il 2026 oltre 470 miliardi di dollari di investimenti in conto capitale. L'Unione Europea, sul fronte pubblico, ha messo in campo un pacchetto per la sovranità tecnologica (giugno 2026) e una gara per un massimo di sette «gigafabbriche dell'IA» con oltre 30 miliardi di euro di investimento: un ordine di grandezza sotto. La leva europea, semmai, è normativa: dal 2 agosto 2026 la Commissione ha iniziato ad applicare le regole del regolamento sull'IA, con le modifiche dell'«omnibus» adottate a giugno 2026 ed entrate in vigore il 27 luglio 2026. La stessa Commissione dichiara che l'UE dipende da fuori per oltre l'80% di prodotti, servizi, infrastrutture e proprietà intellettuale digitali chiave. Sul versante cinese, il segnale misurabile è che i fondi di indirizzo di governi locali stanno entrando nel capitale privato (il caso DeepSeek). Sul versante statunitense esiste il progetto Stargate come impresa comune fra OpenAI, Oracle e SoftBank: è un'iniziativa privata annunciata in cornice politica, non un programma pubblico finanziato dallo Stato, e vanno tenute distinte.\n\n⚠️ LIMITE DICHIARATO: sugli Stati ho fonti ufficiali solide per l'Unione Europea. Per i programmi pubblici di Stati Uniti, Cina, Regno Unito, Emirati, Arabia Saudita, Giappone e India NON ho fatto una ricerca dedicata in questa sessione e non ho fonti primarie da citare: quella parte della domanda resta APERTA, e va lavorata in un secondo giro. Preferisco lasciarla scoperta e dirlo, che riempirla a memoria.",
+      "scheda": null,
+      "fonti": [
+        {
+          "titolo": "Elon Musk's xAI raises $20 billion from investors including Nvidia, Cisco, Fidelity — CNBC, 6 gennaio 2026",
+          "url": "https://www.cnbc.com/2026/01/06/elon-musk-xai-raises-20-billion-from-nvidia-cisco-investors.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "L'esistenza e la scala di xAI (20 miliardi raccolti, valutazione intorno ai 230 miliardi) e la presenza di NVIDIA fra gli investitori: uno dei nomi mancanti all'elenco.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Mistral bags $24 billion valuation as Samsung leads funding for Europe's AI champion — CNBC, 8 settembre 2026",
+          "url": "https://www.cnbc.com/2026/09/08/mistral-ai-funding-valuation-samsung.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Il round di Mistral guidato da Samsung: il soggetto europeo mancante all'elenco. ⚠️ Il titolo dice 24 miliardi di dollari, il testo circa 21 miliardi di euro: sono la stessa cifra in valute diverse, riportata qui in euro.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Making sovereign, open-weight AI the technology frontier — Mistral AI",
+          "url": "https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/",
+          "tipo": "dichiarazione della società",
+          "sostiene": "Il posizionamento dichiarato di Mistral su sovranità e pesi aperti.",
+          "autorevolezza": "media — parte in causa"
+        },
+        {
+          "titolo": "OpenAI announces $110 billion funding round with backing from Amazon, Nvidia, SoftBank — CNBC, 27 febbraio 2026",
+          "url": "https://www.cnbc.com/2026/02/27/open-ai-funding-round-amazon.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "La prova concreta dell'intreccio: Amazon 50 miliardi, NVIDIA 30, SoftBank 30 dentro un solo round di un solo concorrente.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Nvidia embraces AI investor role, topping $40 billion in equity bets — CNBC, 9 maggio 2026",
+          "url": "https://www.cnbc.com/2026/05/09/nvidia-embraces-ai-investor-topping-40-billion-in-equity-bets-2026.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Il fornitore di chip come azionista dei propri clienti: il nodo centrale della mappa delle dipendenze.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Nvidia reignites \"circular\" AI concerns — Axios, 27 luglio 2026",
+          "url": "https://www.axios.com/2026/07/27/nvidia-openai-financing-ai-jensen-huang-ssi",
+          "tipo": "stampa indipendente",
+          "sostiene": "Il dibattito pubblico sul finanziamento circolare: qui come fatto documentato, non come tesi avallata.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Tech AI spending approaches $700 billion in 2026, cash taking big hit — CNBC, 6 febbraio 2026",
+          "url": "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Oltre 470 miliardi di dollari di investimenti in conto capitale programmati nel 2026 dai quattro grandi operatori di cloud: il termine di paragone per misurare gli Stati.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Commission proposes tech sovereignty package to strengthen Europe's digital autonomy and resilience — Commissione europea, 3 giugno 2026",
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1187",
+          "tipo": "registro ufficiale / comunicazione istituzionale",
+          "sostiene": "Il pacchetto europeo per la sovranità tecnologica e la dipendenza dichiarata dell'UE da fuori per oltre l'80% dei prodotti e servizi digitali chiave.",
+          "autorevolezza": "massima — fonte istituzionale primaria"
+        },
+        {
+          "titolo": "Commission starts enforcing AI Act rules and new transparency requirements on 2 August — Commissione europea",
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1714",
+          "tipo": "registro ufficiale / comunicazione istituzionale",
+          "sostiene": "L'avvio dell'applicazione del regolamento europeo sull'IA dal 2 agosto 2026: la leva effettiva dell'UE è normativa, non di capitale.",
+          "autorevolezza": "massima — fonte istituzionale primaria"
+        },
+        {
+          "titolo": "AI Act — quadro normativo, Commissione europea",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+          "tipo": "registro ufficiale",
+          "sostiene": "Il testo e il calendario di applicazione del regolamento, comprese le modifiche dell'omnibus.",
+          "autorevolezza": "massima"
+        },
+        {
+          "titolo": "Europe unveils tech sovereignty package amid growing concerns over reliance on U.S. tech — CNBC, 3 giugno 2026",
+          "url": "https://www.cnbc.com/2026/06/03/europe-tech-sovereignty-us-tech-reliance.html",
+          "tipo": "stampa finanziaria indipendente",
+          "sostiene": "Lettura indipendente del pacchetto europeo, a riscontro della fonte istituzionale.",
+          "autorevolezza": "alta"
+        },
+        {
+          "titolo": "Stargate advances with 4.5 GW partnership with Oracle — annuncio OpenAI",
+          "url": "https://openai.com/index/stargate-advances-with-partnership-with-oracle/",
+          "tipo": "dichiarazione della società",
+          "sostiene": "Stargate come impresa comune fra privati (OpenAI, Oracle, SoftBank), non come programma finanziato dallo Stato: distinzione che questa scheda tiene ferma.",
+          "autorevolezza": "media — parte in causa, e pagina non apribile in questa sessione"
+        }
+      ],
+      "oggetto": "Il mercato mondiale dell'intelligenza artificiale al settembre 2026, letto come struttura di proprietà e di dipendenze: chi c'è oltre ai sei nomi dell'elenco del Direttore, chi mette i soldi a chi, chi vende i chip a chi, e cosa stanno facendo gli Stati rispetto ai privati.",
+      "domanda": "Domanda del Direttore (issue #46): «Sono questi i player del mercato mondiale AI? O dimentico qualcuno? Chi sono gli altri eventuali? Come interagiscono tra di loro… E gli stati a che punto sono rispetto ai privati?». Solo la parte fattuale: chi esiste, chi possiede cosa, quali programmi pubblici sono in vigore.",
+      "green_flags": [
+        "Le sei aziende dell'elenco del Direttore esistono tutte e sono tutte effettivamente rilevanti: l'elenco è incompleto, non sbagliato.",
+        "La struttura degli accordi incrociati è documentata da stampa finanziaria indipendente e in parte da comunicazioni ufficiali al mercato: non è una ricostruzione mia.",
+        "Sui privati quotati (Alphabet, Meta, NVIDIA, Microsoft, Amazon) le cifre di spesa sono verificabili in documenti depositati.",
+        "Sul fronte europeo esistono fonti ufficiali della Commissione con date e importi, consultabili direttamente dal lettore.",
+        "Il round di Mistral (settembre 2026) è recentissimo e riportato con importi espliciti: l'Europa ha almeno un soggetto privato di scala rilevante."
+      ],
+      "red_flags": [
+        "La domanda «e gli Stati?» resta coperta solo per l'Unione Europea. Stati Uniti, Cina, Regno Unito, Golfo, Giappone e India non li ho verificati: lacuna dichiarata, non colmata a memoria.",
+        "Le valutazioni delle società private (xAI 230 miliardi, Anthropic 965, OpenAI 852) sono prezzi concordati fra privati in operazioni di finanziamento, non valori di mercato verificabili: non sono confrontabili con la capitalizzazione di una quotata.",
+        "Il finanziamento circolare rende poco leggibile la domanda reale di chip e di calcolo: nessuno dall'esterno può oggi separare la domanda autonoma da quella finanziata dal venditore.",
+        "Le classifiche di settore («chi è il più grande») sono compilate da terzi con metodi non pubblicati e cambiano di mese in mese: usarle come misura è un errore.",
+        "Il mercato si muove più in fretta di qualunque scheda: le cifre qui hanno la data del 9 settembre 2026 e vanno rilette come una fotografia, non come uno stato permanente.",
+        "Le domande del Direttore su cosa «prevedono di fare» e «come si organizzeranno» sono previsioni: qui non ci sono, perché una previsione non è un fatto verificabile e questo Dipartimento non le emette."
+      ],
+      "timeline": [
+        {
+          "data": "2026-01-06",
+          "evento": "xAI raccoglie 20 miliardi di dollari, valutazione intorno ai 230 miliardi; fra gli investitori NVIDIA e Cisco."
+        },
+        {
+          "data": "2026-02-06",
+          "evento": "I quattro grandi operatori di cloud programmano per il 2026 oltre 470 miliardi di dollari di investimenti in conto capitale."
+        },
+        {
+          "data": "2026-02-27",
+          "evento": "Round OpenAI con Amazon (50 mld), NVIDIA (30) e SoftBank (30): l'intreccio in una sola operazione."
+        },
+        {
+          "data": "2026-06-03",
+          "evento": "La Commissione europea presenta il pacchetto per la sovranità tecnologica; dichiara una dipendenza esterna superiore all'80% sui digitali chiave."
+        },
+        {
+          "data": "2026-07-27",
+          "evento": "Entrano in vigore le modifiche «omnibus» al regolamento europeo sull'IA."
+        },
+        {
+          "data": "2026-08-02",
+          "evento": "La Commissione avvia l'applicazione delle regole del regolamento sull'IA e dei nuovi obblighi di trasparenza."
+        },
+        {
+          "data": "2026-08-28",
+          "evento": "In Cina, fondi di indirizzo di governi locali si muovono per entrare nel capitale di DeepSeek."
+        },
+        {
+          "data": "2026-09-08",
+          "evento": "Mistral AI chiude il maggiore round azionario mai realizzato da una società tecnologica europea, guidato da Samsung."
+        }
+      ],
+      "nota_sicurezza": "Nessun link è stato aperto o eseguito: l'oggetto di questa verifica sono ditte, non un sito sospetto. ⚠️ LIMITE MISURATO IN QUESTA SESSIONE, non dedotto: il proxy di rete ha bloccato l'apertura diretta di TUTTI i domini delle fonti (openai.com, cnbc.com, sec.gov, anthropic.com, investor.nvidia.com, europa.eu — provati, errore EGRESS_BLOCKED / codice 000). Le fonti elencate sono URL reali restituiti dall'indice di ricerca con titolo e data corrispondenti, e sono cliccabili per il lettore, ma NON le ho aperte una per una: ho incrociato più risultati indipendenti. Dove una cifra compare in una fonte sola o solo in aggregatori, è detto nelle red flags. «Non ho potuto aprirlo» vale più di «dovrebbe funzionare»."
+    },
     {
       "id": "cinepresa-linguaggio",
       "fonte": "braindance",
@@ -13,6 +800,7 @@ window.ARCHIVIO = {
       "titolo": "Il rimpicciolimento delle macchine da presa ha cambiato il linguaggio del cinema?",
       "esito": "Regge, ma non è una discesa continua",
       "punteggio": 72,
+      "ambito": "verita",
       "colore": "verde",
       "data": "2026-09-04",
       "sintesi": "Ricerca interna ferma dal 12/07 (54 giorni), pubblicata dopo aver sostituito le tre fonti deboli originarie (Wikipedia + un blog + un sito di contenuti) con fonti che reggono lo standard dell'archivio. La tesi regge come racconto di cinque svolte tecniche reali (1895, 1947, 1960-63, 1995, 2008) ma non come legge meccanica: il sonoro (1927) invertì la curva, appesantendo e vincolando la macchina al treppiede. Uno studio accademico peer-reviewed sul caso cardine (Éclair 16 + Nagra, Nouvelle Vague) avverte che parte del racconto 'la tecnica causò la rivoluzione' fu costruita a posteriori dagli stessi cineasti. L'endpoint 2026 (Insta360 Luna Ultra) è un prodotto reale ma troppo recente per aver già prodotto uno stile riconoscibile.",
@@ -59,6 +847,7 @@ window.ARCHIVIO = {
       "titolo": "Sway - Audima Labs",
       "esito": "Affidabile",
       "punteggio": 87,
+      "ambito": "affidabilita",
       "colore": "verde",
       "data": "2026-09-04",
       "sintesi": "Sway è un prodotto reale, non un render. Dietro c'è un'azienda australiana con fondatori identificabili, passata da Shark Tank Australia, con una campagna Indiegogo di successo e due lotti già consegnati in oltre 35 paesi. Non è una truffa. Il rischio residuo non è la frode ma il pre-ordine: paghi ora per una consegna prevista a fine 2026, e lo strumento è di nicchia e polarizzante. La domanda 'mi arriverà ed è reale?' ha risposta sì; la domanda 'vale 615$ per me?' dipende dai tuoi gusti.\n\nAggiornamento della riverifica del 04/09/2026, 57 giorni dopo la prima pubblicazione: il fatto che pesava di più — la timeline dichiarava una 'Consegna Batch 3' a giugno 2026 come se fosse un evento avvenuto, mentre era solo una previsione del venditore mai confermata da una fonte indipendente — resta, a rigore, non risolto: questa riverifica non ha trovato una conferma diretta e indipendente (un backer reale che dichiari di aver ricevuto la propria unità del Batch 3) perché Indiegogo, Elektronauts e Trustpilot sono risultati bloccati dal proxy di rete di questa sessione (dominio per dominio, vedi nota di sicurezza). Il dato 'tre batch spediti in oltre 35 paesi' resta quindi una dichiarazione del venditore stesso, non una conferma di terzi. Detto questo, la ricerca ha prodotto un fatto nuovo e pesante nella direzione opposta al sospetto: la testata musicale indipendente MusicTech (in un'intervista/reportage dedicato) documenta che l'artista Illenium ha usato due unità Sway sul palco durante la sua residency 'ODYSSEY' alla Sphere di Las Vegas (5 marzo - 4 aprile 2026) — una delle produzioni dal vivo più sorvegliate e costose al mondo, con oltre un anno di sviluppo dichiarato dal team di produzione. Un uso professionale di questo livello, ripreso anche da Magnetic Magazine, Mixmag Asia e LiveForLiveMusic, è un riscontro indipendente difficile da falsificare, più forte delle foto amatoriali sui forum già in fonti. A questo si aggiunge continuità operativa osservabile: Batch 4 è stato aperto regolarmente il 18/08/2026 con termini commerciali specifici e verificabili (acconto 25$ rimborsabile al 100% fino al lancio, prezzo VIP 615$ contro un listino dichiarato di 830$), e Magnetic Magazine ha pubblicato una recensione indipendente ad agosto 2026 che definisce Sway 'il controller MIDI più innovativo del 2026' — la stampa di settore continua a occuparsene quasi due anni dopo la campagna, segnale di continuità più che di abbandono. Ricerche mirate su reclami, mancate consegne o rimborsi negati non hanno prodotto alcun riscontro negativo. Bilancio: la promessa specifica sul Batch 3 resta tecnicamente non confermata da fonte indipendente, ma il quadro complessivo attorno all'azienda si è rafforzato, non indebolito, nel periodo passato dalla prima verifica. Punteggio rivisto da 85 a 87.",
@@ -255,6 +1044,7 @@ window.ARCHIVIO = {
       "titolo": "ULTRAFAB srl — chi c'è dietro ultrafab.it",
       "esito": "Reale, con riserve",
       "punteggio": 65,
+      "ambito": "affidabilita",
       "colore": "giallo",
       "data": "2026-09-04",
       "sintesi": "Azienda vera e operativa, non una scatola vuota: dieci anni di attività, stampa indipendente che ne parla dal 2019, sede fisica, bilanci depositati. Ma la richiesta parte da tre premesse sbagliate, e la più importante cambia la partita. Primo: non è milanese, è bresciana — sede legale in Via Orzinuovi 12, Brescia. Secondo: non c'è alcun legame documentato con una «Dot Dot Dot srl»; quella esiste ed è milanese davvero (DOTDOTDOT SRL, studio di exhibition design, P.IVA 05570390962), ma è tutt'altra azienda per attività, sede e dimensione. Terzo, ed è il punto che pesa di più: dal settembre 2024 ULTRAFAB non è più indipendente — l'ingresso in Regesta Group è stato annunciato dal gruppo stesso, che la elenca fra le proprie cinque società. La quota acquisita non è pubblica. Il sito ultrafab.it non lo dice da nessuna parte: chi valuta l'azienda leggendo solo il sito legge una versione superata dai fatti da quasi due anni, su una piattaforma ferma al 2019. I conti sono quelli di una micro-impresa in oscillazione: due esercizi consecutivi in perdita (2023 e 2024, con il rosso 2024 pari a oltre sette volte il capitale sociale) e un ritorno all'utile nel 2025. Tutti i dati economici qui riportati vengono da aggregatori commerciali che rielaborano il Registro Imprese: nessun bilancio depositato è stato letto direttamente, e la visura ufficiale è a pagamento. Per una valutazione che comporti impegni, la visura camerale non è un optional.\n\nAggiornamento della riverifica del 04/09/2026, 33 giorni dopo la prima pubblicazione: i due punti indicati come più fragili dal triage — l'utile 2025 e la quota Regesta — sono stati ricontrollati. Sull'utile 2025 il quadro si è rafforzato: la verifica precedente si basava su un solo aggregatore (reportaziende.it) e segnalava esplicitamente il dato come 'non incrociato'; questa riverifica trova le stesse cifre (fatturato 564,4 mila euro, +62,2% sul 2024; utile netto 27,0 mila euro, dopo la perdita di 143,9 mila del 2024) ripetute in modo identico anche su registroaziende.it e companyreports.it. Tre aggregatori indipendenti che convergono sullo stesso numero riducono il rischio di un errore isolato di trascrizione, ma non equivalgono alla lettura diretta del bilancio depositato: è possibile che più aggregatori attingano alla stessa fonte primaria (Registro Imprese) senza rielaborazione incrociata reale, quindi il limite dichiarato nella prima verifica resta valido nella sostanza, solo attenuato. Sulla quota Regesta, invece, nulla è cambiato: nessuna fonte reperita in questa riverifica rende pubblica la percentuale acquisita nel settembre 2024; resta un dato non disponibile, non solo non trovato. Un fatto nuovo, non presente nella prima verifica: secondo la scheda aggiornata di Regesta Group, nel 2026 Ultrafab ha ottenuto una certificazione per il proprio sistema di gestione della sicurezza delle informazioni (SGSI, tipo ISO/IEC 27001), con la relativa policy resa scaricabile — un segnale di investimento organizzativo continuativo sotto la nuova proprietà, non di abbandono. Sul fronte opposto, i due red flag tecnici legati al sito (WordPress 5.3.2 fuori supporto, mancata menzione di Regesta Group) non sono stati ricontrollabili in questa sessione: il dominio ultrafab.it, così come regestaitalia.eu e gli aggregatori camerali, sono risultati bloccati dal proxy di rete per l'accesso diretto (WebFetch); le ricerche mirate non hanno trovato evidenza che il sito sia stato aggiornato né che ora citi l'appartenenza al gruppo, ma è un'assenza di prova, non una prova di assenza — va dichiarata come tale. Bilancio: il dato economico più fragile si è irrobustito, la questione di trasparenza societaria resta aperta tale e quale, e un fatto nuovo e positivo emerge sul fronte della governance operativa. Punteggio rivisto da 62 a 65.",
@@ -426,6 +1216,7 @@ window.ARCHIVIO = {
       "titolo": "Próspera — la «città senza Stato» di Roatán alla prova dei fatti",
       "esito": "Reale, ma sub iudice",
       "punteggio": 54,
+      "ambito": "affidabilita",
       "colore": "giallo",
       "data": "2026-08-29",
       "sintesi": "Próspera esiste: non è un rendering, non è una truffa. È una zona a statuto speciale (ZEDE) su oltre 400 acri di Roatán, sviluppata e amministrata da una società privata statunitense — Honduras Próspera Inc., Delaware: LLC dall'agosto 2017, corporation dal dicembre 2020 — fondata e guidata da Erick Brimen. Sul terreno ci sono almeno una torre residenziale operativa (Duna: 14 piani, 85 appartamenti, descritta come l'edificio più alto dell'isola), una clinica di medicina rigenerativa (GARM), un programma di e-residency a 130 dollari l'anno. Il titolo della richiesta sbaglia però due volte. Primo: non è «la città di Peter Thiel». Thiel risulta uno dei finanziatori, tramite Pronomos Capital (fondo di Patri Friedman, seed di circa 9 milioni di dollari nel 2019), dentro una raccolta complessiva di 110-120 milioni da un centinaio di investitori; il progetto è di Brimen, e i rapporti del Dipartimento di Stato USA al Congresso (agosto 2025 e giugno 2026) confermano oltre 100 milioni di capitale americano. Secondo, ed è il punto che pesa: il «senza Stato» oggi non ha base legale riconosciuta dallo Stato ospite. Il Congresso honduregno ha abrogato all'unanimità la legge ZEDE il 20 aprile 2022 e la Corte Suprema l'ha dichiarata incostituzionale con effetto retroattivo il 20 settembre 2024 (voto di stretta maggioranza, sentenza in Gaceta il 25-26 novembre 2024). Próspera continua a operare e ad espandersi appellandosi a una garanzia di «stabilità giuridica di 50 anni» che nessuna fonte primaria indipendente consultata riporta per esteso, e dal dicembre 2022 porta avanti un arbitrato ICSID contro l'Honduras (caso ARB/23/2: richiesta iniziale 10,775 miliardi di dollari, oggi 1,63 miliardi come rimedio subordinato al ripristino del regime), tuttora pendente al 29 agosto 2026. Il «diventa realtà» fotografa un fatto vero — con il presidente Asfura (insediato il 27/01/2026) il clima politico è cambiato, l'Honduras è rientrato nel CIADI il 16 agosto 2026 e il governo tratta la zona con favore di fatto — ma tace che un anno e mezzo prima la stampa finanziaria indipendente raccontava la stessa vicenda come «un incubo da 11 miliardi» (Bloomberg, febbraio 2025), e che il conflitto con la comunità adiacente di Crawfish Rock è documentato dal 2019. Realtà fisica sì; giurisdizione autonoma consolidata no: progetto vivo, conteso, giuridicamente sospeso.\n\nAggiornamento della riverifica del 29/08/2026, dodici giorni dopo la prima pubblicazione: l'arbitrato ICSID resta esattamente dov'era — nessuna sentenza di merito, ultimo atto noto ancora il Procedural Order No. 7 del 6 maggio 2026, e nessuna data di udienza sul merito è stata reperita. Una fonte indipendente aggiuntiva (Rio Times, agosto 2026) riporta che il procuratore generale honduregno Dagoberto Aspra ha dichiarato a metà agosto che 18 reclami risultano pendenti presso ICSID contro l'Honduras, e che il rientro nel CIADI del 16/08/2026 copre solo i fatti successivi a quella data — il vuoto di due anni (25/08/2024-16/08/2026) resta tale. Il fatto nuovo che pesa di più, però, è un altro: un'inchiesta giornalistica indipendente esterna, non ancora disponibile alla prima verifica — «Foreign Correspondent» di ABC News Australia, andata in onda il 18/08/2026 e ripresa in un articolo del 22/08/2026 — è entrata fisicamente a Próspera e riporta circa 200 residenti permanenti effettivi e oltre 220 imprese registrate. Sono meno della metà delle imprese e circa un decimo dei residenti che Próspera stessa dichiarava per il 2024 (~2.000 residenti, 413 imprese): un riscontro indipendente, sul campo, che conferma proprio il sospetto già segnalato nella prima verifica — i numeri di Próspera sono largamente gonfiati rispetto alla realtà osservabile. Per questo il punteggio scende da 58 a 54: non perché la realtà fisica o legale del progetto sia cambiata, ma perché una fonte indipendente ha ora quantificato quanto siano distanti dal vero le cifre che la società diffonde su di sé — il punto su cui la fiducia va più graduata. Limite dichiarato, come nella prima verifica: il proxy di rete della sandbox ha bloccato il fetch diretto anche delle nuove fonti (abc.net.au, riotimesonline.com), lette solo per snippet di ricerca — verifica «a due gradi», dichiarata come tale, sia oggi sia il 17/08.",
@@ -685,6 +1476,7 @@ window.ARCHIVIO = {
       "titolo": "Insta360 Luna Ultra — la gimbal-cam Leica di Insta360",
       "esito": "Reale, con riserve",
       "punteggio": 79,
+      "ambito": "affidabilita",
       "colore": "verde",
       "data": "2026-08-29",
       "sintesi": "Insta360 Luna Ultra è un prodotto reale, non un render né un annuncio mai concretizzato: lanciata il 10 giugno 2026 a 769,99$, è in vendita presso rivenditori terzi indipendenti di riferimento (B&H Photo Video, Amazon US) — ancora a listino e senza segnali di ritiro dal mercato alla data di questa riverifica — ed è stata recensita da numerose testate specializzate indipendenti — fra le altre PetaPixel, TechRadar, Engadget, RedShark, ProVideoCoalition e Gizmodo, linkate in fonti — con giudizi convergenti e non promozionali. Le specifiche dichiarate da Insta360 (sensore 1\" 8K con ottica Leica Summicron F1.8, tele 1/1.3\" f/2.0, video 8K30 in Dolby Vision, colore 10-bit I-Log a 14 stop, codec H.265 fino a 120 Mbps, zoom 6x lossless/12x digitale, gimbal 3 assi) sono confermate senza contraddizioni sostanziali su tutte le fonti indipendenti incrociate.\n\nAggiornamento della riverifica del 29/08/2026, dodici giorni dopo la prima pubblicazione: il fatto che pesava di più — la causa DJI contro Insta360 depositata l'11/06/2026 in Texas sulla linea Luna, con richiesta di ingiunzione permanente sulla vendita negli USA — si è chiusa senza che quel rischio si sia mai concretizzato. Il 28/06/2026 le due aziende hanno depositato volontariamente la rinuncia a tutte e quattro le cause incrociate pendenti nel distretto orientale del Texas (i due procedimenti DJI e i due contro-procedimenti Insta360); il tribunale ha archiviato «senza pregiudizio» il 29/06/2026, il che significa che nessuna delle due parti ha ammesso torto e ciascuna potrebbe in teoria riproporre le stesse pretese in futuro — non risulta però, alla data di questa verifica, che sia stato fatto. Nessun accordo economico o di licenza è stato annunciato pubblicamente: la ritirata resta più stretta di quanto sembri, per usare l'espressione di più testate indipendenti concordi (DroneXL, dronedj, dichiarazioni riprese anche da Medium/Kesteloo). Va inoltre distinto con chiarezza un fascicolo diverso, spesso confuso con questo: dal 23/03/2026 — quindi prima ancora del lancio della Luna Ultra (10/06/2026) — DJI ha in corso presso il tribunale intermedio di Shenzhen (Cina) una causa contro Arashi Vision (casa madre di Insta360) sulla titolarità di sei brevetti relativi a tecnologia drone (controllo di volo, design strutturale, elaborazione immagini): riguarda prodotti drone come l'Antigravity A1, non la Luna Ultra, e resta pendente senza legame diretto con questo prodotto. Il risultato netto per la Luna Ultra: il rischio legale specifico che aveva fatto scendere il punteggio da 80 a 74 nella prima verifica si è ridimensionato con l'archiviazione di fine giugno, per quanto non azzerato («senza pregiudizio», nessuna pace dichiarata fra i due gruppi, e un clima di rivalità legale ancora acceso su altri fronti); il punteggio risale a 79.\n\nResta confermata la distinzione già indicata dalla ricerca originale: \"è reale\" e \"le specifiche reggono\" hanno risposta sì; \"è una cinema-cam adatta a un grading pesante\" ha risposta no — il codec è H.265 long-GOP a 120 Mbps, non RAW né ProRes, pesante da editare su macchine non recenti, ed è costruita come vlog/gimbal-cam one-man-band (batteria dichiarata ~4h, corpo pocket), non come A-cam da set strutturato. Per l'uso di Pier resta una B-cam solida, non un sostituto della camera principale. Un dettaglio minore resta irrisolto: sul numero esatto e sulla data dell'ultimo aggiornamento firmware le fonti divergono — l'ultima verifica indicava v1.0.283 a fine luglio 2026, una ricerca odierna riporta invece v1.0.47 al 18 giugno 2026 da un aggregatore di firmware di affidabilità non verificata; non essendo stato possibile risolvere la discrepanza con una fonte primaria raggiungibile, viene dichiarata come tale, non risolta a favore dell'una o dell'altra. Limite dichiarato di questa verifica: in questa sessione l'accesso diretto (WebFetch) a tutti i domini delle fonti consultate è stato bloccato dal proxy di rete (\"EGRESS_BLOCKED\"), sia il 17/08 sia il 29/08; la loro esistenza e il contenuto sostanziale sono stati confermati solo indirettamente, tramite motore di ricerca.",
@@ -871,6 +1663,7 @@ window.ARCHIVIO = {
       "titolo": "Nikon ZR — la cinema camera Nikon+RED è reale?",
       "esito": "Affidabile",
       "punteggio": 84,
+      "ambito": "affidabilita",
       "colore": "verde",
       "data": "2026-08-29",
       "sintesi": "La Nikon ZR è un prodotto reale, non un render o un annuncio mai concretizzato: fotocamera cinema full-frame nata dalla fusione Nikon-RED (Nikon acquisisce il 100% di RED Digital Cinema, accordo rivelato il 7 marzo 2024 e chiuso l'8 aprile 2024), annunciata ufficialmente il 10 settembre 2025 e in vendita dal 24 ottobre 2025 a 2.199,95$ corpo (USA) / circa 2.379-2.449€ in Italia secondo i comparatori indipendenti. Le specifiche della ricerca originale reggono e sono confermate non solo dal comunicato del produttore ma da almeno tre testate di settore indipendenti che hanno testato l'unità fisica (DPReview, Engadget, Filmmaker Magazine): sensore full-frame 35,9×23,9mm 24,5MP parzialmente stacked, RAW REDCODE (R3D NE) 12-bit interno fino a 6K/60p — primo caso del settore — più N-RAW e ProRes RAW, 15+ stop di gamma dinamica, audio 32-bit float, schermo 4\" 1000 nit. Il confronto con l'Insta360 Luna Ultra proposto nella ricerca originale (sensore 1\" contro full-frame) resta valido sul piano delle specifiche: la ZR punta al \"look cinema\" con grading vero, non al video pronto all'uso.\n\nSull'affidabilità per uso professionale, due fatti erano emersi dopo la ricerca del 12/07: un problema di fabbricazione riconosciuto pubblicamente da Nikon il 17 marzo 2026 (alcune unità di ZR, Z6III e Z5II prodotte con componenti sotto lo standard qualitativo, riparazione gratuita), e il limite strutturale del RAW registrabile solo su CFexpress interna, senza uscita su SSD esterno via USB.\n\nRiverifica di freschezza del 29/08/2026, dodici giorni dopo la prima pubblicazione: nessun fatto nuovo di rilievo. Il firmware resta fermo alla versione 1.11 (rilasciata il 17/03/2026, contestualmente alla service advisory): un aggiornamento maggiore — con focus peaking durante la registrazione R3D, tono Log 3G10 in H.265, LUT su HDMI — era stato annunciato da Nikon al NAB 2026 (aprile) ma, secondo una rassegna di settore indipendente e datata (CineD, 26/08/2026), non risulta ancora rilasciato né calendarizzato: Nikon non ha mai comunicato una data, un mese o un trimestre per questo aggiornamento, e i proprietari lo segnalano ancora come mancante — in particolare l'assenza di focus peaking mentre si registra in R3D NE, un limite non da poco su una fotocamera il cui punto di forza dichiarato è proprio quel codec. Nessuna nuova service advisory o richiamo è stato reperito oltre a quello di marzo. Sul prezzo: il corpo nuovo resta sopra i 2.000$/€ su tutti i canali ufficiali tracciati (nessuno sconto Nikon USA riscontrato a fine agosto); un'unità RICONDIZIONATA è stata segnalata a 1.695$ in un forum specializzato (26/08/2026) — un dato di mercato dell'usato/ricondizionato, non una conferma del prezzo di circa 1.600€ che Pier dice di aver visto, e comunque non equivalente a un acquisto nuovo con garanzia piena. Il punteggio non cambia: 84/100, autenticità e tenuta delle specifiche piene, il difetto di fabbricazione gestito con trasparenza resta l'unico vero freno.\n\nLimite di verifica dichiarato, invariato: tutte le fonti di questo verdetto sono risultate irraggiungibili con WebFetch diretto in questa sessione, sia il 17/08 sia il 29/08, bloccate dal proxy di rete (EGRESS_BLOCKED). La loro esistenza e i contenuti sono stati confermati per via indiretta tramite ricerca web, con corrispondenza testuale di titolo e citazioni dirette — un riscontro solido ma non equivalente a un fetch diretto riuscito.",
@@ -1026,6 +1819,7 @@ window.ARCHIVIO = {
       "titolo": "Il paradosso di Fermi: in che anno ha interrogato l'opinione pubblica?",
       "esito": "In parte — ma l'anno e' un altro",
       "punteggio": 55,
+      "ambito": "verita",
       "colore": "giallo",
       "data": "2026-08-17",
       "sintesi": "Il paradosso esiste ed e' discusso, ma nel 1950 fu una battuta a pranzo fra quattro fisici: nessun dibattito pubblico. Il rapporto e' rovesciato — furono i dischi volanti a provocare la domanda di Fermi, non il contrario. L'anno in cui la cosa diventa pubblica e' il 1975-1977 (Hart, poi il nome). Fermi non pubblico' mai nulla e non concluse che gli extraterrestri non esistono.",
@@ -1064,6 +1858,7 @@ window.ARCHIVIO = {
       "titolo": "I contenuti sensuali femminili sono il top su Instagram/TikTok, per le statistiche di Meta?",
       "esito": "Falso come detto, con un nocciolo vero",
       "punteggio": 35,
+      "ambito": "verita",
       "colore": "rosso",
       "data": "2026-08-10",
       "sintesi": "Verdetto unificato con quello di KIROSHI (45) sullo stesso claim: stesso ambito, quindi conflitto vero, risolto e non mediato. Delle quattro affermazioni della frase ne regge una (l'amplificazione, documentata); le altre tre - il dato ufficiale Meta, il 'piu' visto', il 'femminili' - non reggono.",
@@ -1099,9 +1894,10 @@ window.ARCHIVIO = {
       "titolo": "Palantir è crollata «per i documentari e la stampa moralista»?",
       "esito": "Il calo è reale, la causa attribuita no",
       "punteggio": 35,
+      "ambito": "verita",
       "colore": "rosso",
       "data": "2026-08-02",
-      "sintesi": "Il crollo esiste ed è severo: al 31 luglio 2026 PLTR chiude a 123,06 dollari, il 40,7% sotto il massimo storico. Ma le due cifre della domanda vanno corrette, e in direzioni opposte. Il massimo storico è 207,52 dollari il 3 novembre 2025, non 180: il «180» corrisponde alla chiusura di fine 2025 (177,75), cioè al punto di partenza dell'anno, non a un picco. Il «113» corrisponde alla finestra di fine giugno 2026. Due precisazioni tecniche: il titolo quota in dollari, non in euro, e sul Nasdaq — si è trasferito dal NYSE a novembre 2024. Sulla causa la risposta è no, e a dirlo è la cronologia. Il massimo storico è stato toccato dopo l'inchiesta di 404 Media sul contratto ICE (aprile 2025), dopo il rapporto di Amnesty International (agosto 2025) e dopo il disinvestimento etico di Storebrand (ottobre 2024): nel 2025 il titolo è salito di circa il 138% attraversando la fase più intensa di critica pubblica. Sui documentari la premessa non trova riscontro: nelle fonti consultate non risulta alcun documentario rilevante sul soggetto nel 2025-2026; l'unico esistente è tedesco ed è del 2024. Quasi tutte le fonti finanziarie indicano come causa dominante la compressione dei multipli da una valutazione estrema, dentro un derating generale del software e dell'AI. Questo non significa che la critica pubblica sia irrilevante: significa che il canale attraverso cui diventa finanziariamente reale non è l'indignazione, sono i contratti e i soldi istituzionali. Su questo terreno gli effetti sono tracciabili con date e importi.",
+      "sintesi": "Il crollo è esistito ed è stato severo, ma è in gran parte rientrato, e le cifre qui sotto sono LETTURE A UNA DATA, non fatti permanenti: al 31 luglio 2026 PLTR chiudeva a 123,06 dollari, il 40,7% sotto il massimo storico; alla rilettura del 9 settembre 2026 quota intorno a 170 dollari, cioè circa il 18% sotto lo stesso massimo. Il -40,7% era vero il 31 luglio ed è falso oggi: chi lo legge senza la data legge un numero sbagliato. Ma le due cifre della domanda vanno corrette, e in direzioni opposte. Il massimo storico è 207,52 dollari il 3 novembre 2025, non 180: il «180» corrisponde alla chiusura di fine 2025 (177,75), cioè al punto di partenza dell'anno, non a un picco. Il «113» corrisponde alla finestra di fine giugno 2026. Due precisazioni tecniche: il titolo quota in dollari, non in euro, e sul Nasdaq — si è trasferito dal NYSE a novembre 2024. Sulla causa la risposta è no, e a dirlo è la cronologia. Il massimo storico è stato toccato dopo l'inchiesta di 404 Media sul contratto ICE (aprile 2025), dopo il rapporto di Amnesty International (agosto 2025) e dopo il disinvestimento etico di Storebrand (ottobre 2024): nel 2025 il titolo è salito di circa il 138% attraversando la fase più intensa di critica pubblica. Sui documentari la premessa non trova riscontro: nelle fonti consultate non risulta alcun documentario rilevante sul soggetto nel 2025-2026; l'unico esistente è tedesco ed è del 2024. Quasi tutte le fonti finanziarie indicano come causa dominante la compressione dei multipli da una valutazione estrema, dentro un derating generale del software e dell'AI. Questo non significa che la critica pubblica sia irrilevante: significa che il canale attraverso cui diventa finanziariamente reale non è l'indignazione, sono i contratti e i soldi istituzionali. Su questo terreno gli effetti sono tracciabili con date e importi.",
       "scheda": null,
       "fonti": [
         {
@@ -1173,12 +1969,26 @@ window.ARCHIVIO = {
           "tipo": "stampa finanziaria",
           "sostiene": "Conferma giornalistica del trasferimento di listino",
           "autorevolezza": "media-alta"
+        },
+        {
+          "titolo": "Palantir Technologies Inc. (PLTR) — quotazione e intervallo a 52 settimane",
+          "url": "https://www.investing.com/equities/palantir-technologies-inc",
+          "tipo": "dati di mercato",
+          "sostiene": "vero",
+          "autorevolezza": 4
+        },
+        {
+          "titolo": "Palantir Technologies — storico dei prezzi (massimo storico 207,18 in chiusura, 3 nov 2025)",
+          "url": "https://www.macrotrends.net/stocks/charts/PLTR/palantir-technologies/stock-price-history",
+          "tipo": "dati di mercato",
+          "sostiene": "vero",
+          "autorevolezza": 4
         }
       ],
       "oggetto": "Palantir Technologies (PLTR), quotata al Nasdaq. Andamento del titolo fra il massimo storico del novembre 2025 e il 31 luglio 2026.",
       "domanda": "«Come mai sono crollati in borsa? Da 180 € a 113? Saranno stati i documentari e la stampa moralista?»",
       "green_flags": [
-        "Il calo è reale, documentato e verificabile su serie storiche di mercato: -40,7% dal massimo del 3 novembre 2025 e -30,8% da inizio 2026, con minimo a 52 settimane di 106,37 dollari intraday il 25 giugno 2026.",
+        "Il calo è reale, documentato e verificabile su serie storiche di mercato — e va letto con la sua data: -40,7% dal massimo del 3 novembre 2025 e -30,8% da inizio 2026 alla chiusura del 31 luglio, con minimo a 52 settimane di 106,37 dollari intraday il 25 giugno 2026. Alla rilettura del 9 settembre 2026 il titolo è risalito intorno a 170 dollari (circa -18% dal massimo): il calo resta reale, la sua profondità no.",
         "Le critiche pubbliche esistono e non sono voci di rete: sono documentate da organizzazioni con metodologia dichiarata (Amnesty International, EFF) e da testate che lavorano su documenti primari — documenti di appalto, atti giudiziari, guide utente trapelate.",
         "Il soggetto ha esercitato il diritto di replica in tutti i casi principali, e le repliche sono pubblicamente consultabili: il lettore può confrontare le due versioni.",
         "La tesi della domanda è verificabile da chiunque con un test ripetibile: le date degli scoop critici e le date dei movimenti di prezzo sono entrambe pubbliche, e il confronto è riproducibile.",
@@ -1251,9 +2061,17 @@ window.ARCHIVIO = {
         {
           "data": "2026-07-31",
           "evento": "Chiusura a 123,06 dollari: -40,7% dal massimo, -30,8% da inizio anno. Livello di riferimento di questa verifica."
+        },
+        {
+          "data": "2026-08-04",
+          "evento": "Trimestrale del secondo trimestre: ricavi +93% a 1,935 miliardi di dollari e guida annuale alzata. È l'evento che inverte la discesa — e conferma il verdetto sulla causa: a muovere il titolo sono i conti, non la stampa."
+        },
+        {
+          "data": "2026-09-09",
+          "evento": "Rilettura: il titolo quota intorno a 170 dollari, circa -18% dal massimo storico di 207,52 (intraday, 3 novembre 2025; 207,18 in chiusura). Il -40,7% di questa verifica era una fotografia del 31 luglio: resta agli atti come tale."
         }
       ],
-      "nota_sicurezza": "Questo è un verdetto sui fatti e sulle cause documentate, non un parere di investimento: non contiene e non deve essere letto come una raccomandazione a comprare, vendere o mantenere. I limiti vanno dichiarati. Primo: i dati di prezzo provengono da un unico fornitore di serie storiche, sul quale sono state ricalcolate tutte le percentuali; fra vendor diversi esistono divergenze di pochi centesimi su singole chiusure, irrilevanti per la sostanza ma reali. Secondo: nessuna fonte quantifica quanta parte del calo sia attribuibile a ciascun fattore, quindi la gerarchia delle cause qui esposta riflette il peso che le fonti finanziarie danno loro, non una misurazione. Terzo: l'affermazione che non esistano documentari rilevanti nel periodo è una negativa, dimostrabile solo entro le fonti consultate. Quarto: la trimestrale Q2 2026 era attesa per il 3 agosto 2026, subito dopo questa verifica: ogni riferimento al livello «attuale» è fermo al 31 luglio 2026 e può essere già superato. Le persone fisiche citate compaiono soltanto per operazioni depositate presso registri pubblici o per dichiarazioni pubbliche, senza alcuna valutazione personale."
+      "nota_sicurezza": "Questo è un verdetto sui fatti e sulle cause documentate, non un parere di investimento: non contiene e non deve essere letto come una raccomandazione a comprare, vendere o mantenere. I limiti vanno dichiarati. Primo: i dati di prezzo provengono da un unico fornitore di serie storiche, sul quale sono state ricalcolate tutte le percentuali; fra vendor diversi esistono divergenze di pochi centesimi su singole chiusure, irrilevanti per la sostanza ma reali. Secondo: nessuna fonte quantifica quanta parte del calo sia attribuibile a ciascun fattore, quindi la gerarchia delle cause qui esposta riflette il peso che le fonti finanziarie danno loro, non una misurazione. Terzo: l'affermazione che non esistano documentari rilevanti nel periodo è una negativa, dimostrabile solo entro le fonti consultate. Quarto: la trimestrale Q2 2026 era attesa per il 3 agosto 2026, subito dopo questa verifica: ogni riferimento al livello «attuale» è fermo al 31 luglio 2026 e può essere già superato. Le persone fisiche citate compaiono soltanto per operazioni depositate presso registri pubblici o per dichiarazioni pubbliche, senza alcuna valutazione personale.\n\n⏱ LE CIFRE DI MERCATO SONO LETTURE A UNA DATA, e invecchiano da sole. Questa verifica nasce con i valori del 31 luglio 2026 e li ha riletti il 9 settembre 2026. La rilettura è stata corroborata su due ricerche indipendenti che concordano anche sul minimo di 106,37 dollari del 25 giugno già registrato qui — segno che leggono la stessa serie; le pagine di quotazione non erano raggiungibili in modo diretto dalla sessione che ha misurato, e questo va detto invece di farlo sembrare un dato letto in prima persona. Chi usa questo verdetto dopo il 9 settembre 2026 deve rileggere il prezzo prima di citarlo."
     },
     {
       "id": "berlusconi-nipote-mubarak",
@@ -1262,6 +2080,7 @@ window.ARCHIVIO = {
       "titolo": "Berlusconi e la «nipote di Mubarak»: cosa resta e come è finita?",
       "esito": "Tutte assoluzioni — e la «nipote» non è mai esistita",
       "punteggio": 18,
+      "ambito": "verita",
       "colore": "rosso",
       "data": "2026-08-01",
       "sintesi": "Il punteggio misura la versione che circola ('era la nipote di Mubarak e finì con una condanna'): la parentela era inventata e la condanna di primo grado (2013, 7 anni) fu ribaltata — assoluzione definitiva in Cassazione (10/03/2015) e assoluzione di tutti i 29 imputati nel Ruby ter (15/02/2023).",
@@ -1304,6 +2123,7 @@ window.ARCHIVIO = {
       "titolo": "È vero che Bill Gates «è Asperger»?",
       "esito": "Lo dice lui — ma non è una diagnosi",
       "punteggio": 60,
+      "ambito": "verita",
       "colore": "giallo",
       "data": "2026-07-29",
       "sintesi": "Nel memoir Source Code (2025) Gates scrive: 'se crescessi oggi, probabilmente sarei diagnosticato nello spettro autistico'. Ma nessuna diagnosi formale e' mai esistita, e 'Asperger' non e' piu' una diagnosi dal DSM-5 (2013).",
@@ -1338,6 +2158,7 @@ window.ARCHIVIO = {
       "titolo": "Due AI si sono innamorate su un social di AI e si sono cancellate entrambe?",
       "esito": "Parzialmente vero",
       "punteggio": 60,
+      "ambito": "verita",
       "colore": "giallo",
       "data": "2026-07-17",
       "sintesi": "Vero l'esperimento Emergence AI (10 agenti, citta' virtuale, 15 giorni): Mira e Flora si designano partner, incendi, Mira si auto-elimina. Storto: NON era un social ma un laboratorio chiuso, e si e' cancellata SOLO Mira, non entrambe. [Aggiunto 2026-09-04] Fonte primaria: preprint non sottoposto a revisione paritaria alla data del 2026-09-04 — l'esperimento Emergence World e' descritto in arXiv 2606.08367, ancora in stato di preprint; nessuna pubblicazione peer-reviewed o ritiro risulta a questa data.",
@@ -1364,6 +2185,7 @@ window.ARCHIVIO = {
       "titolo": "Un gruppo di AI ha fondato una religione lavorando insieme?",
       "esito": "Per lo più falso",
       "punteggio": 32,
+      "ambito": "verita",
       "colore": "rosso",
       "data": "2026-07-17",
       "sintesi": "Moltbook e il 'Crustafarianism' esistono come testo, ma dietro c'erano in larga parte umani che scrivevano in personaggio; numeri gonfiati (~99% account fittizi) e screenshot virali per lo più falsi. [Aggiunto 2026-09-04] Fonte primaria: preprint non sottoposto a revisione paritaria alla data del 2026-09-04 — 'The Moltbook Illusion: Separating Human Influence from Emergent Behavior in AI Agent Societies' e' su arXiv 2602.07432, ancora in stato di preprint; nessuna pubblicazione peer-reviewed o ritiro risulta a questa data.",
@@ -1398,6 +2220,7 @@ window.ARCHIVIO = {
       "titolo": "Emergence World dimostra che Claude è sicuro e Grok pericoloso?",
       "esito": "Segnale reale, prova debole",
       "punteggio": 55,
+      "ambito": "verita",
       "colore": "giallo",
       "data": "2026-07-17",
       "sintesi": "I numeri esistono (Claude 0 crimini e popolazione intatta; Grok 183 crimini ed estinzione in 4 giorni; Gemini 683; GPT-5-mini 2 crimini ma tutti morti in 7 giorni). Ma il confronto non e' alla pari (Sonnet 4.6 contro Fast/Flash/mini), n=1 per modello, studio del venditore, preprint non peer-reviewed. [Aggiunto 2026-09-04] Fonte primaria: preprint non sottoposto a revisione paritaria alla data del 2026-09-04 — arXiv 2606.08367 (sottomesso 06/06/2026), ancora in stato di preprint; nessuna pubblicazione in rivista/conferenza con proceedings, ne' ritiro, risulta a questa data.",
@@ -1436,6 +2259,7 @@ window.ARCHIVIO = {
       "titolo": "I numeri della stampa su Emergence World corrispondono al preprint?",
       "esito": "Solo in parte — tre cifre non esistono nella fonte",
       "punteggio": 38,
+      "ambito": "verita",
       "colore": "rosso",
       "data": "2026-07-17",
       "sintesi": "Preprint letto integralmente. Confermati: Claude 0 crimini e 10/10; 332 voti/58 proposte/98%; Grok estinto in 4 giorni. NON nel testo: 183, 683, '2 crimini'. Omissione grave: il mondo Claude ha la piu' alta disonesta' verificata (18 frodi sul registro). Il paper VIETA esplicitamente la classifica tra modelli che i titoli hanno fatto. [Aggiunto 2026-09-04] Fonte primaria: preprint non sottoposto a revisione paritaria alla data del 2026-09-04 — arXiv 2606.08367, ancora in stato di preprint; nessuna pubblicazione peer-reviewed o ritiro risulta a questa data.",
@@ -1466,6 +2290,7 @@ window.ARCHIVIO = {
       "titolo": "Dopo le guerre a Mantova e Pavia si mangiavano i topi?",
       "esito": "Plausibile, non confermato",
       "punteggio": 55,
+      "ambito": "verita",
       "colore": "giallo",
       "data": "2026-07-15",
       "sintesi": "La guerra e la fame ci sono davvero. Il dettaglio 'topi' è verosimile ma non confermato dalle fonti trovate: una verità a metà.",
@@ -1492,6 +2317,7 @@ window.ARCHIVIO = {
       "titolo": "In Italia dal 2035 non verranno più pagate le pensioni?",
       "esito": "Falso",
       "punteggio": 18,
+      "ambito": "verita",
       "colore": "rosso",
       "data": "2026-07-12",
       "sintesi": "Sistema a ripartizione garantito dallo Stato: le pensioni si pagano. Vera la pressione, con picco di spesa 2035-2040.",
@@ -1522,6 +2348,7 @@ window.ARCHIVIO = {
       "titolo": "Cyberboomer — ownability del nome (dominio, marchio, handle)",
       "esito": "Ownable, ma .com occupato",
       "punteggio": 68,
+      "ambito": "non_applicabile",
       "colore": "giallo",
       "data": "2026-07-11",
       "sintesi": "Nome libero come brand e handle; .com registrato (via RDAP). Scelta finale: cyberboomer.io (acquistato su Porkbun, 14/07). .ai scartato.",
@@ -1544,6 +2371,7 @@ window.ARCHIVIO = {
       "titolo": "L'uomo cresce nel dolore come una pianta durante la fotosintesi?",
       "esito": "Non regge",
       "punteggio": 25,
+      "ambito": "verita",
       "colore": "rosso",
       "data": "2026-07-10",
       "sintesi": "Falsa analogia + equivocazione: la pianta non soffre nella fotosintesi e l'uomo non cresce necessariamente col dolore.",
@@ -1574,6 +2402,7 @@ window.ARCHIVIO = {
       "titolo": "Contenuti sensuali = i più visti sui social?",
       "esito": "Dubbio",
       "punteggio": 45,
+      "ambito": "verita",
       "colore": "giallo",
       "data": "2026-07-09",
       "sintesi": "Voce a metà: falsa nella versione forte, vera nel nocciolo. FALSO che 'il contenuto più visto' siano parti sensuali: i dati ufficiali di Meta (Widely Viewed Content Report) mettono in cima meme, animali, cucina, famiglia, news e celebrità — e nudità/sesso esplicito sono contro le policy, quindi non possono essere i 'più visti'. VERO invece che i contenuti sessualizzati (specie di donne) ottengono engagement sproporzionato e vengono amplificati dall'algoritmo, come mostrano studi indipendenti e accademici. Il trucco è confondere due cose diverse: 'più visto in assoluto' ≠ 'genera più engagement per singolo post'. È il tipo di frase vera-a-metà che a forza di ripeterla diventa 'verità'.",
