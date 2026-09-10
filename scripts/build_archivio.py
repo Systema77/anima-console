@@ -69,6 +69,13 @@ def da_braindance(path):
             "titolo": v.get("titolo"),
             "esito": v.get("verdetto"),          # "Falso", "Parzialmente vero", …
             "punteggio": v.get("punteggio"),
+            # ⚠️ `ambito` dice COSA misura il punteggio (affidabilita | verita |
+            # non_applicabile). Senza, due numeri di scale diverse sembrano
+            # confrontabili. Mancava qui: build_db.py copia il dizionario intero e
+            # se lo portava dietro, questa lista invece è scritta a mano e lo
+            # buttava via in silenzio — a BRAINDANCE da 40 giorni, pur essendo
+            # presente su tutti e 13 i suoi verdetti alla sorgente.
+            "ambito": v.get("ambito"),
             "colore": v.get("colore") or colore_per(v.get("punteggio")),
             "data": v.get("data"),
             "sintesi": v.get("note"),
@@ -91,6 +98,7 @@ def da_kiroshi(paths):
             "titolo": v.get("titolo"),
             "esito": (v.get("etichetta") or "").capitalize(),   # "Affidabile", "Dubbio"
             "punteggio": v.get("punteggio"),
+            "ambito": v.get("ambito"),        # vedi la nota in da_braindance()
             "colore": colore_per(v.get("punteggio")),
             "data": v.get("data_verifica"),
             "sintesi": v.get("verdetto"),
