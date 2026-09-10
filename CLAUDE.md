@@ -260,6 +260,39 @@ lui vende ai clienti, la casa produce. Integrazione per handoff di file col
 Direttore come unico ponte, clienti solo per sigla (C-0N) nel repo — regole in
 `squadra/CONVENZIONE-DUE-DRAGHI.md`.
 
+## UNA CHAT VIVA PER AGENTE (dal 2026-09-10)
+
+> 🩹 **Nata da:** *«ho tante chat dello stesso agente. non so più quale scegliere e su quale
+> lavorare.»* — il Direttore, 10/09.
+
+**Misurato quel giorno, non stimato:** ≥100 sessioni in elenco, di cui **70 già archiviate** e
+**30 vive**. Il disordine non stava nel numero: stava in **tre grovigli di gemelli** —
+«Passaporto dell'immagine» ×4, ECHO ×4 (fra cui *«ECHO vetrina testi»* e *«ECHO vetrina **e**
+testi»*, a 43 minuti di distanza), «magliette DROP» ×2 con il titolo invertito.
+
+📜 **Il problema non erano i titoli mancanti: erano i titoli che si somigliano.**
+
+**Le tre regole che ne escono:**
+
+1. **Ogni chat nasce col tag del suo agente** — `echo`, `kiroshi`, `judy`, `drago`, `drop`,
+   `squelch`, `chrono`, `flux`, `suono`, `rogue`, `shutter`, `trace`, `silverwrit`. Da lì la
+   domanda «quale scelgo» si risolve **con un filtro**, non leggendo trenta titoli.
+   ⚠️ Lo strumento c'era **da sempre** e non era mai stato acceso: delle 27 chat vive, solo 4
+   avevano un tag, e tre erano configurazione tecnica. *Uno strumento che nessuno accende non è
+   una possibilità: è un peso in più da ricordare.*
+2. **Una chat viva per agente.** Aprirne una seconda vuol dire **chiudere la prima** col rito
+   `/chiusura` — che esiste già come skill e non veniva usato. Se due chat hanno lo stesso
+   titolo, una delle due è da chiudere.
+3. **Prima di archiviare, si guarda se ha spinto.** Archiviare è reversibile
+   (`unarchive_session`) **ma libera il container**: quello che è solo nel filesystem si perde.
+   È la lezione di ECHO dello stesso giorno — *il lavoro esiste solo se è in git*. Il 10/09 le
+   quattro archiviate avevano tutte i rami già spinti su tutti i repo: **zero lavoro perso**,
+   e non per fortuna.
+
+⚠️ **Non si archiviano le chat `BLOCKED` o `REVIEW_READY`**, nemmeno quando sono duplicati
+palesi: sono proprio quelle che possono avere dentro roba non spinta. Si archiviano solo le
+`COMPLETED`, e solo se sono gemelle di una più recente.
+
 ## Confine (accordo BRAINDANCE, ratificato 2026-07-12)
 - KIROSHI//OR verifica **ditte / venditori / cose / voci**; le **persone e le
   notizie/claim** sono di **BRAINDANCE**. Notizia *su* un'azienda → BRAINDANCE
