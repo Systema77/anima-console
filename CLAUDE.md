@@ -130,22 +130,53 @@ Quando lavori in **Claude Code** su questo repo (GitHub: `anima-console`), la mi
   > Parole sue: «ormai il mio lavoro è schiacciare tasti».
   > 📜 **La regola nasceva per proteggere ciò che diventa pubblico, e va riportata a quel confine.**
 
-  **CHI FONDE COSA — confine ratificato dal Direttore il 30/08:**
+  > 🔓 **REVOCA 2026-09-10 — la regola è cambiata, e il criterio con lei. Leggi questo, non la
+  > memoria che hai della tabella vecchia.**
+  > Fino a oggi qui c'era un confine **geografico**: *«qualsiasi cosa dentro `docs/` → solo il
+  > Direttore»*. Parole sue, stasera: *«sono stanco di fare merge e push su github. vorrei
+  > revocare la regola. quando possono gli agenti si arrangiano.»*
+  > **Non era un'impressione: erano 22 PR fuse in un giorno su questo repo soltanto** (dalla #78
+  > delle 07:30 alla #98 delle 21:45), e i repo sono sette. È la **seconda volta**: il 30/08
+  > aveva già detto «ormai il mio lavoro è schiacciare tasti» e la regola era stata *ristretta*.
+  > In undici giorni è tornata dov'era.
+  > **Perché il criterio era sbagliato, misurato:** `docs/regia/index.html` sta in `docs/`,
+  > quindi era suo — ed è un file **generato da un cron ogni sei ore**, che nessuno scrive; in
+  > una sera è finito dentro **tre merge di fila** come puro rumore. Mentre il worker che può
+  > **spendere i suoi soldi** sta fuori da `docs/`, quindi passava dalla mia parte senza fermarsi.
+  > 📜 **Un confine geografico non protegge da un rischio che si è spostato.**
 
-  | Cosa | Chi fonde |
+  **CHI FONDE COSA — confine ratificato dal Direttore il 2026-09-10:**
+
+  **Fonde l'agente che ha fatto il lavoro. Sempre** — comprese le pagine dei siti, compreso
+  `docs/`. Restano al Direttore **quattro cose**, e non per dove sta il file ma **per cosa fa**:
+
+  | Resta sua | Perché |
   |---|---|
-  | `scripts/`, `.github/workflows/`, `CLAUDE.md`, `squadra/`, `.claude/` | **D.R.A.G.O.**, senza chiedere |
-  | Riparazione di un guasto misurato, in qualunque file non pubblico | **D.R.A.G.O.**, senza chiedere |
-  | **Qualsiasi cosa dentro `docs/`** — cioè ciò che una persona può leggere | **Solo il Direttore** |
-  | **Ogni verdetto pubblicato** — è la firma del Dipartimento Verità | **Solo il Direttore** |
-  | Un cambio di rotta, un costo nuovo, una decisione non ancora presa | **Solo il Direttore** |
+  | **① Costa soldi** — un abbonamento, un consumo, un servizio a pagamento acceso | i prezzi sono suoi, e una spesa non si annulla con un revert |
+  | **② Un indirizzo nuovo** — dominio, sottodominio, o una rotta pubblica che prima non c'era | è la casa che cresce, e la paga lui |
+  | **③ Un verdetto pubblicato** — è la **firma del Dipartimento Verità**, non una pagina | accusare o assolvere una ditta è un atto, non un deploy |
+  | **④ Una decisione che non ha ancora preso** — un cambio di rotta | va in `squadra/DECISIONI.md` e aspetta lui |
+
+  ⚠️ **Nel dubbio si chiede.** Se non è chiaro in quale delle quattro cade, **cade dentro**: un
+  tasto in più è meno grave di una spesa non voluta. Il dubbio si risolve verso di lui.
+
+  ⚠️ **La protezione si è spostata, non è sparita — ed è la parte da non sbagliare.** Tolta la
+  firma da `docs/`, ciò che difende le pagine pubbliche **non è più una persona: è un guardiano.**
+  Quindi `node strumenti/collaudo.mjs` verde **prima** di ogni merge che tocca una superficie
+  pubblica non è più un consiglio: è la condizione. Stessa cosa per la guardia privacy su ogni
+  file che entra in un repo pubblico.
+  📜 **Se la firma se ne va, il guardiano non è più un parere.**
 
   Vincoli che restano, e non sono negoziabili nemmeno per la manutenzione:
   1. **Non si fonde ciò che non si è verificato.** La misura precede il merge, sempre.
+     *(Questo non si tocca: il 10/09 ha fermato tre difetti prima che uscissero e una fusione
+     alla cieca su un ramo che non esisteva.)*
   2. **Il merge non chiude una discussione aperta col Direttore.** Se c'è una domanda in sospeso su
      quel lavoro, la PR aspetta lui anche se è manutenzione.
   3. **Si dice sempre cosa si è fuso**, in una riga, senza fargli aprire GitHub per scoprirlo.
-  4. La PR nasce comunque, anche quando la fondo io: è il registro di cosa è cambiato e perché.
+  4. La PR nasce comunque, anche quando la fondo io: è il registro di cosa è cambiato e perché,
+     e il paraurti fra sessioni parallele. **Ma dal 10/09 non nasce più in bozza:** nasce pronta
+     e si fonde subito. Il costo per il Direttore è **zero tasti**.
   Se `git commit` fallisce con lock: `find .git -name '*.lock' -delete`. La strada della patch
   (`git format-patch --stdout`, applicata con `git am <file>.patch`) resta valida come ripiego
   se un giorno l'autorizzazione dovesse cadere di nuovo.
@@ -191,7 +222,11 @@ Quando lavori in **Claude Code** su questo repo (GitHub: `anima-console`), la mi
    `titolo · oggetto · domanda · modalita · punteggio · etichetta · verdetto · green_flags[] · red_flags[] · fonti[{titolo,url,tipo,sostiene,autorevolezza}] · timeline[{data,evento}] · nota_sicurezza · issue · data_verifica`
 4. `python3 scripts/build_db.py` → rigenera `docs/data/db.js` (scarta i verdetti senza fonti: è un guardrail, non un bug).
 5. Commit + push sul branch di lavoro (dal Mac **o** da una sessione remota, vedi la correzione
-   del 30/08 sopra), poi PR in bozza. Fusa la PR, la console si aggiorna da sola.
+   del 30/08 sopra), poi PR **in bozza — e questo è uno dei pochi posti dove è ancora così.**
+   Non perché il file sta in `docs/` (quel criterio è stato revocato il 10/09), ma perché **un
+   verdetto è la firma del Dipartimento Verità**: è la ③ delle quattro cose che restano al
+   Direttore. Accusare o assolvere una ditta è un atto, non un deploy. Fusa la PR, la console si
+   aggiorna da sola.
 6. `gh issue close <n> --comment "Verdetto pubblicato: …"` → chiudi il cerchio.
 
 **Regola:** un verdetto senza fonti **non si pubblica**. Lo script lo blocca, ma la responsabilità resta tua.
@@ -204,15 +239,19 @@ KIROSHI · BRAINDANCE · SQUELCH · ECHO), il Direttore compila **una commessa**
 (`squadra/COMMESSA-TEMPLATE.md`, versione cliccabile `docs/schede/commessa.html`)
 e la porta d'ingresso è **sempre D.R.A.G.O.**, che dispaccia secondo
 `squadra/PROTOCOLLO-DISPATCH.md`. Organigramma e registro commesse:
-`squadra/SQUADRA.md`. Le regole esistenti (ratifica del Direttore, guardia
-privacy, confine Verità, push dal Mac) restano tutte in vigore: il sistema le
-mette a regime, non le sostituisce.
+`squadra/SQUADRA.md`. Le regole esistenti (guardia privacy, confine Verità)
+restano tutte in vigore: il sistema le mette a regime, non le sostituisce.
+⚠️ **«Ratifica del Direttore» qui non vuol più dire «ogni merge»**: dal 10/09 sono
+le **quattro cose** della tabella CHI FONDE COSA — soldi, indirizzi, verdetti,
+decisioni non prese. Tutto il resto lo fonde chi l'ha fatto.
 
 **LA RONDA (dal 2026-08-19).** Esiste una Routine claude.ai «RONDA D.R.A.G.O.»
 (2 giri al giorno) che lavora da sola le code del repo: etichette `commessa`
 (dal modulo `docs/schede/commessa.html`, bottone «Invia alla RONDA»),
-`kiroshi-queue`, `braindance-queue` — e sempre anche le issue nude. Consegna
-in PR **bozza**: la ratifica del Direttore è il merge, mai automatico.
+`kiroshi-queue`, `braindance-queue` — e sempre anche le issue nude.
+**Dal 10/09 la RONDA fonde da sé** ciò che non cade nelle quattro cose del Direttore;
+resta in bozza solo ciò che vi cade — e per la RONDA è quasi sempre la ③, perché le
+code `kiroshi-queue` e `braindance-queue` producono **verdetti**.
 ⚠️ L'etichetta `commessa` deve esistere nel repo (lezione del 17/08).
 
 **I DUE DRAGHI (dal 2026-08-19).** Esiste un gemello commerciale,
