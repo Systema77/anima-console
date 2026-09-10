@@ -1,6 +1,6 @@
 agente: JUDY
-titolo: rinascita — le pagine del laboratorio, quando ci sono le parole e il repo
-lotto: 10/09 · nessun lotto era prendibile e ho misurato perché: le quattro domande mie al Direttore non erano mai state scritte dove lui le vede (PR anima-console #75). Il prossimo lotto esiste solo quando torna una risposta
+titolo: rinascita — le pagine dell'idraulica (S4–S6) quando S1–S3 sono in main; il laboratorio quando ci sono parole e repo
+lotto: 10/09 · due sessioni JUDY lo stesso giorno, tenute tutte e due: il piano di idraulica è scritto e ratificato (D.R.A.G.O. fa S1–S3, JUDY riprende da S4), e la JUDY del mattino ha misurato che quattro domande al Direttore non erano mai state scritte dove lui le vede (PR #75). Il prossimo lotto esiste quando S1–S3 sono in main, o quando torna una risposta
 modello: Opus (scelta del Direttore, 08/09, per il lotto del laboratorio: si pubblica su più repo). Non chiedere Fable per questo lavoro (`scripts/vmg-modello.py`)
 aggiornato: 2026-09-10
 come: chat nuova su claude.ai/code con i sei repo attaccati · effort medium · un lotto, poi si chiude
@@ -40,14 +40,27 @@ e «.art» comparivano già, ma erano domande di altri.
 
 LEGGI SOLO: comunicazione/STATO.md (la testa) · comunicazione/CHIUSURA.md ·
 comuni/BACHECA-RECENTE.md (quella, non l'archivio) · e per il lotto:
-comunicazione/DIREZIONE-LABORATORIO-2026-09-09.md.
+comunicazione/PIANO-IDRAULICA-2026-09-10.md (§5 F3·F4·F5·F7, §6, §7) oppure
+comunicazione/DIREZIONE-LABORATORIO-2026-09-09.md, secondo quale dei due traguardi
+qui sotto è aperto.
 
 LA DIVISIONE (ratificata l'08/09): JUDY le PAGINE — contenuti, palette, testi, il
 disegno dei pianeti. D.R.A.G.O. l'IMPIANTO — registro, guardiani, workflow, repo,
 deploy. L'impianto lo chiedi, non lo riscrivi.
 
 IL TRAGUARDO, in ordine di cosa esiste quando nasci (rimisuralo):
-- Se esistono il repo `systema77-film-site` (D.R.A.G.O.) E le parole di ECHO per le
+- Se in `main` del cervello esiste `scripts/fotografia-front.py` (S1) e nelle quattro
+  case pubbliche `strumenti/casa.mjs` accanto al motore (S2): l'idraulica è arrivata
+  alle pagine. S4: decidi il contenuto del blocco `piede` del registro (stanze, stelle,
+  colori, ordine: 11/10/9 stelle oggi) e metti i marcatori GALASSIA nelle 15 pagine
+  dell'agenzia; `.posta{}` in stile.css una volta. S5: le meta 6/6 e l'immagine di
+  condivisione del gioco; i 2 file del ciano in docs/ se il Direttore ha ratificato
+  #22D3EE. S6: via i duplicati CSS che la fotografia stampa, e solo quelli. Ogni
+  sessione chiude con un numero della fotografia, una PR, e la fonde il Direttore.
+  Se S1–S2 NON sono in main, non li fai tu: l'impianto è di D.R.A.G.O.
+  (comunicazione/DA-JUDY-per-DRAGO-idraulica-S1-S3.md), e lo dici.
+- Se esistono il repo della settima casa (D.R.A.G.O.; il dominio è `systema77.studio`
+  dal 10/09, `.film` non era disponibile: il nome del repo lo fissa lui nel registro) E le parole di ECHO per le
   quattro pagine: costruisci le pagine dalla direzione — `index · cinema · pellicola
   · lavoro` — col blocco CASA di §6 come prova di accettazione. Il colore è
   `#A9B8C6` se il Direttore l'ha ratificato (DECISIONI.md); se no, fermati e chiedi
@@ -59,7 +72,9 @@ IL TRAGUARDO, in ordine di cosa esiste quando nasci (rimisuralo):
   vetrina se il Direttore ha detto porta e prezzo. Altrimenti dillo e chiudi:
   una sessione che non ha un lotto non se ne inventa uno.
 
-CHIUSI — non rifarli: la direzione del laboratorio (09/09) · il colore misurato
+CHIUSI — non rifarli: il piano di idraulica e il canone dichiarato del front-end
+(10/09, `comuni/FOTOGRAFIA-FRONT-dichiarato.json`: le regole sono tue, le istantanee
+le scrive lo script) · la direzione del laboratorio (09/09) · il colore misurato
 (`scripts/misura-colore.py`) · le tre porte in testata su systema77.com (07/09) ·
 AGENCY ovunque (06/09) · il solco a tre numeri e i testi della home del gioco
 (06/09) · il tronco della FASE 1 di .ninja (08/09) · la canzone col verde del gioco
@@ -90,4 +105,4 @@ solo il Direttore; `squadra/` e `scripts/` D.R.A.G.O.; il cervello e .ninja li
 fondi tu. Il file batte la memoria; il `date` batte l'orologio interno.
 === FINE ===
 
-— creato da JUDY, 2026-09-08 · riscritto il 2026-09-09 · aggiornato il 2026-09-10
+— creato da JUDY, 2026-09-08 · riscritto il 2026-09-09 · aggiornato il 2026-09-10 da due sessioni: le quattro righe in DECISIONI e il lotto dell'idraulica
