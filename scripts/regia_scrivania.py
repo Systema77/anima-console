@@ -186,9 +186,15 @@ def componi(prompt, fermi, pr, saltati, decisioni, guasto_dec, quando):
             f'<div class="rg-q">aperta il {e(v["aperta"])} · ultimo tocco {e(v["tocco"])}</div></div>')
     if not pr and not saltati:
         p.append('<div class="rg"><div class="rg-m">Nessuna PR aperta sui repo pubblici.</div></div>')
-    nota = ("Le PR che toccano docs/ o una pagina di un sito le firmi tu; le altre le fonde "
-            "D.R.A.G.O. e te lo dice in bacheca. Il repo del cervello è privato: le sue PR da qui "
-            "non si vedono.")
+    # 10/09 — questa riga diceva «le PR che toccano docs/ o una pagina di un sito le firmi tu;
+    # le altre le fonde D.R.A.G.O.». Il «le altre» era un catch-all che cancellava due righe
+    # della tabella (un costo nuovo, una decisione non presa) e il vincolo sulla discussione
+    # aperta. Era la frase che il Direttore leggeva sulla PROPRIA scrivania, e prometteva meno
+    # cautela di quanta ce ne fosse. Riscritta col confine nuovo, che è per conseguenza.
+    nota = ("Fonde l'agente che ha fatto il lavoro, pagine dei siti comprese. Restano tue "
+            "quattro cose: ciò che costa soldi, un indirizzo nuovo, un verdetto pubblicato, "
+            "una decisione che non hai ancora preso — e nel dubbio ti si chiede. "
+            "Il repo del cervello è privato: le sue PR da qui non si vedono.")
     if saltati:
         nota += " Non lette: " + ", ".join(saltati) + "."
     p.append(f'<div class="pz-pie">{e(nota)} · PR lette {e(quando)}</div>')

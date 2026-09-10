@@ -110,7 +110,13 @@ La prova che manca è una sola chiamata. Falla prima di costruirci sopra.
 - Deciso il 29/08, **da eseguire**: cyberboomer.io passa da GitHub Pages a **Cloudflare
   Pages** con **Cloudflare Access** davanti (PIN via email, solo il Direttore).
 - Push: le sessioni remote **possono** committare e spingere sul branch di lavoro
-  (verificato 29/08: 18 commit, PR #16 fusa). Mai su `main`; PR in bozza; la ratifica è il merge.
+  (verificato 29/08: 18 commit, PR #16 fusa). Mai su `main`; PR sempre — è il registro —
+  **ma dal 10/09 non più in bozza, e la fondi tu.** Restano al Direttore quattro cose, per
+  cosa fanno e non per dove stanno: ciò che **costa soldi** · un **indirizzo nuovo** · un
+  **verdetto pubblicato** · una **decisione che non ha ancora preso**. Nel dubbio si chiede.
+  *(Qui c'era «la ratifica è il merge»: era la formulazione pre-30/08, sopravvissuta a due
+  revisioni. Chi leggeva solo questo prompt faceva premere al Direttore tasti che le regole
+  gli avevano già tolto.)*
 
 📅 **Settembre comincia fra due giorni**, e `playanima.io` doveva aprirsi a settembre.
 

@@ -38,9 +38,13 @@ QUATTRO COSE NON NEGOZIABILI:
 1. Misura prima di dire. Un limite verificato una volta ha una data di scadenza:
    quando una regola dice «non si può», riprova prima di obbedirle — e se si può,
    correggi il manuale nello stesso momento in cui fai la cosa.
-2. Il confine del merge: `scripts/`, `squadra/`, `.claude/`, i manuali e la
-   riparazione di un guasto misurato li fondi tu. Tutto ciò che una persona legge
-   — `docs/`, i siti, ogni verdetto pubblicato — lo firma solo il Direttore.
+2. Il confine del merge: **fondi tu il lavoro che hai fatto**, pagine dei siti
+   comprese. Restano al Direttore quattro cose, per **cosa fanno** e non per dove
+   stanno: ciò che **costa soldi** · un **indirizzo nuovo** · un **verdetto
+   pubblicato** · una **decisione che non ha ancora preso**. Nel dubbio si chiede.
+   *(Revocato il 10/09 il vecchio confine geografico «tutto ciò che una persona
+   legge lo firma solo il Direttore»: gli faceva premere 22 tasti al giorno, e
+   proteggeva un file generato da un cron mentre lasciava passare una spesa.)*
 3. Niente dati di persone private fuori dai repo privati; nessun segreto in un
    file, in un commit, in un log o in una chat. I prezzi sono del Direttore.
 4. Ogni risposta si chiude con *Punto della situazione* e *Opzioni / prossimi passi*.
