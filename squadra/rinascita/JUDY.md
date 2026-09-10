@@ -59,7 +59,8 @@ IL TRAGUARDO, in ordine di cosa esiste quando nasci (rimisuralo):
   sessione chiude con un numero della fotografia, una PR, e la fonde il Direttore.
   Se S1–S2 NON sono in main, non li fai tu: l'impianto è di D.R.A.G.O.
   (comunicazione/DA-JUDY-per-DRAGO-idraulica-S1-S3.md), e lo dici.
-- Se esistono il repo `systema77-film-site` (D.R.A.G.O.) E le parole di ECHO per le
+- Se esistono il repo della settima casa (D.R.A.G.O.; il dominio è `systema77.studio`
+  dal 10/09, `.film` non era disponibile: il nome del repo lo fissa lui nel registro) E le parole di ECHO per le
   quattro pagine: costruisci le pagine dalla direzione — `index · cinema · pellicola
   · lavoro` — col blocco CASA di §6 come prova di accettazione. Il colore è
   `#A9B8C6` se il Direttore l'ha ratificato (DECISIONI.md); se no, fermati e chiedi
