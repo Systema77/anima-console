@@ -1064,6 +1064,108 @@ bash squadra/chiavi.sh leggi regia      # la frase che apre questa pagina</pre><
     return rg;
   }
 
+  /* ── LA VISTA DEL TACHIMETRO ───────────────────────────────────────────────
+     Stessa ragione dei comandi: il dato c'era gia' nel payload e usciva in JSON.
+     Qui la riga che conta e' LA DATA, non i numeri: il 19/08 sembrava fresco
+     finche' nessuno contava i giorni, e la regola di casa («oltre ~70% si lancia
+     solo Haiku/Sonnet», dall'08/08) e' rimasta inapplicabile un mese perche' la
+     barra non si vedeva da nessuna parte.
+     — aggiunto da KIROSHI//OR, 2026-09-10 */
+  function barra(dove, b){
+    var r = el("div"); r.style.margin = "0 0 9px";
+    var testa = el("div", "kv");
+    testa.style.display = "flex"; testa.style.justifyContent = "space-between"; testa.style.gap = "12px";
+    testa.appendChild(el("span", null, b.modello || "?"));
+    testa.appendChild(el("span", null,
+      (typeof b.percento === "number" ? b.percento + "%" : "—") +
+      (b.speso == null ? "" : "  $" + b.speso)));
+    r.appendChild(testa);
+    var pista = el("div");
+    pista.style.cssText = "height:6px;margin-top:5px;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--void)";
+    if (typeof b.percento === "number"){
+      var p = Math.max(0, Math.min(100, b.percento)), pieno = el("div");
+      /* La soglia non e' decorativa: e' la regola di casa, resa leggibile senza leggerla. */
+      pieno.style.cssText = "height:100%;width:" + p + "%;background:" +
+        (p >= 70 ? "var(--red)" : p >= 50 ? "var(--amber)" : "var(--cyan)");
+      pista.appendChild(pieno);
+    }
+    r.appendChild(pista);
+    /* Una barra senza paragone non si disegna a meta': si dice perche'. */
+    r.appendChild(el("div", "nota", typeof b.percento === "number"
+      ? "riferimento: " + (b.riferimento || "?")
+      : (b.stato || "nessun paragone")));
+    dove.appendChild(r);
+  }
+
+  /* Quanti giorni ha la misura. Il payload non calcola mai date dall'orologio
+     (due build in giorni diversi devono dare lo stesso file); qui siamo nel
+     browser e la distanza e' tutto il punto. Se la data non si legge, non si
+     inventa niente. */
+  function giorniFa(testo){
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(testo || ""));
+    if (!m) return null;
+    var oggi = new Date();
+    var g = Math.round((Date.UTC(oggi.getUTCFullYear(), oggi.getUTCMonth(), oggi.getUTCDate())
+                        - Date.UTC(+m[1], +m[2] - 1, +m[3])) / 86400000);
+    return g < 0 ? null : g;
+  }
+
+  function vistaTachimetro(t){
+    var blk = el("section", "blk");
+    blk.appendChild(el("h3", null, "Quanto stiamo spendendo"));
+    var d = el("div"); d.style.padding = "14px 16px"; blk.appendChild(d);
+
+    if (!t || t.stato !== "letto"){
+      d.appendChild(el("div", "esito info",
+        t && t.stato === "muto" ? "Tachimetro muto." : "Tachimetro non letto."));
+      if (t && t.perche)    d.appendChild(el("div", "nota", t.perche));
+      if (t && t.rinfresca) d.appendChild(el("div", "nota", "per rinfrescarlo: " + t.rinfresca));
+      return blk;
+    }
+
+    var g = giorniFa(t.misurato);
+    var quando = t.misurato ? String(t.misurato) : "senza data";
+    if (g !== null) quando += "  ·  " + (g === 0 ? "oggi" : g === 1 ? "ieri" : g + " giorni fa");
+    var q = el("div", "kv"); q.style.marginBottom = "12px";
+    q.appendChild(el("b", null, "misurato"));
+    var qs = el("span", null, quando);
+    if (g !== null && g >= 7)  qs.style.color = "var(--amber)";
+    if (g !== null && g >= 14) qs.style.color = "var(--red)";
+    q.appendChild(qs); d.appendChild(q);
+    if (g !== null && g >= 7){
+      d.appendChild(el("div", "nota", "Questa misura ha " + g +
+        " giorni: la finestra che descrive potrebbe essere chiusa. Rimisurare prima di deciderci qualcosa."));
+    }
+
+    if (t.titolo) d.appendChild(el("div", "esito " +
+      (t.semaforo === "rosso" ? "ko" : t.semaforo === "verde" ? "ok" : "info"), t.titolo));
+
+    var f = t.finestra || {};
+    if (f.apre || f.chiude){
+      var r1 = el("div", "kv"); r1.style.marginBottom = "10px";
+      r1.appendChild(el("b", null, "finestra"));
+      r1.appendChild(el("span", null, (f.apre || "?") + " → " + (f.chiude || "?") +
+        (f.restano == null ? "" : "   (restano " + f.restano + " giorni)")));
+      d.appendChild(r1);
+    }
+    if (t.al_giorno != null){
+      var r2 = el("div", "kv"); r2.style.marginBottom = "10px";
+      r2.appendChild(el("b", null, "al giorno")); r2.appendChild(el("span", null, "$" + t.al_giorno));
+      d.appendChild(r2);
+    }
+
+    var barre = Array.isArray(t.barre) ? t.barre : [];
+    if (barre.length){
+      var h = el("div", "kv"); h.appendChild(el("b", null, "per modello")); d.appendChild(h);
+      barre.forEach(function(b){ barra(d, b); });
+    }
+
+    if (t.azione) d.appendChild(el("div", "nota", t.azione));
+    if (t.regola) d.appendChild(el("div", "nota", t.regola));
+    if (t.limiti) d.appendChild(el("div", "nota", t.limiti));
+    return blk;
+  }
+
   REGIA.suApertura(function(dati){
     var zona = document.getElementById("innesto");
     if (!zona) return;
@@ -1081,9 +1183,11 @@ bash squadra/chiavi.sh leggi regia      # la frase che apre questa pagina</pre><
       zona.appendChild(blk);
     }
 
+    if (dati && "tachimetro" in dati) zona.appendChild(vistaTachimetro(dati.tachimetro));
+
     // il ripiego di prima, per tutto il resto: meglio una pagina brutta che una che tace
     Object.keys(dati).forEach(function(nome){
-      if (nome === "comandi") return;
+      if (nome === "comandi" || nome === "tachimetro") return;
       var b = el("section", "blk");
       b.appendChild(el("h3", null, nome));
       b.appendChild(el("pre", null, JSON.stringify(dati[nome], null, 2)));
