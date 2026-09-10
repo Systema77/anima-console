@@ -4,6 +4,7 @@
   "domanda": "Richiesta di «tutte le informazioni riguardanti questa ditta milanese». Esiste davvero? Chi la controlla? Che conti ha? E che rapporto ha con la «Dot Dot Dot srl» citata nella richiesta?",
   "modalita": "scava",
   "punteggio": 65,
+  "ambito": "affidabilita",
   "etichetta": "reale, con riserve",
   "verdetto": "Azienda vera e operativa, non una scatola vuota: dieci anni di attività, stampa indipendente che ne parla dal 2019, sede fisica, bilanci depositati. Ma la richiesta parte da tre premesse sbagliate, e la più importante cambia la partita. Primo: non è milanese, è bresciana — sede legale in Via Orzinuovi 12, Brescia. Secondo: non c'è alcun legame documentato con una «Dot Dot Dot srl»; quella esiste ed è milanese davvero (DOTDOTDOT SRL, studio di exhibition design, P.IVA 05570390962), ma è tutt'altra azienda per attività, sede e dimensione. Terzo, ed è il punto che pesa di più: dal settembre 2024 ULTRAFAB non è più indipendente — l'ingresso in Regesta Group è stato annunciato dal gruppo stesso, che la elenca fra le proprie cinque società. La quota acquisita non è pubblica. Il sito ultrafab.it non lo dice da nessuna parte: chi valuta l'azienda leggendo solo il sito legge una versione superata dai fatti da quasi due anni, su una piattaforma ferma al 2019. I conti sono quelli di una micro-impresa in oscillazione: due esercizi consecutivi in perdita (2023 e 2024, con il rosso 2024 pari a oltre sette volte il capitale sociale) e un ritorno all'utile nel 2025. Tutti i dati economici qui riportati vengono da aggregatori commerciali che rielaborano il Registro Imprese: nessun bilancio depositato è stato letto direttamente, e la visura ufficiale è a pagamento. Per una valutazione che comporti impegni, la visura camerale non è un optional.\n\nAggiornamento della riverifica del 04/09/2026, 33 giorni dopo la prima pubblicazione: i due punti indicati come più fragili dal triage — l'utile 2025 e la quota Regesta — sono stati ricontrollati. Sull'utile 2025 il quadro si è rafforzato: la verifica precedente si basava su un solo aggregatore (reportaziende.it) e segnalava esplicitamente il dato come 'non incrociato'; questa riverifica trova le stesse cifre (fatturato 564,4 mila euro, +62,2% sul 2024; utile netto 27,0 mila euro, dopo la perdita di 143,9 mila del 2024) ripetute in modo identico anche su registroaziende.it e companyreports.it. Tre aggregatori indipendenti che convergono sullo stesso numero riducono il rischio di un errore isolato di trascrizione, ma non equivalgono alla lettura diretta del bilancio depositato: è possibile che più aggregatori attingano alla stessa fonte primaria (Registro Imprese) senza rielaborazione incrociata reale, quindi il limite dichiarato nella prima verifica resta valido nella sostanza, solo attenuato. Sulla quota Regesta, invece, nulla è cambiato: nessuna fonte reperita in questa riverifica rende pubblica la percentuale acquisita nel settembre 2024; resta un dato non disponibile, non solo non trovato. Un fatto nuovo, non presente nella prima verifica: secondo la scheda aggiornata di Regesta Group, nel 2026 Ultrafab ha ottenuto una certificazione per il proprio sistema di gestione della sicurezza delle informazioni (SGSI, tipo ISO/IEC 27001), con la relativa policy resa scaricabile — un segnale di investimento organizzativo continuativo sotto la nuova proprietà, non di abbandono. Sul fronte opposto, i due red flag tecnici legati al sito (WordPress 5.3.2 fuori supporto, mancata menzione di Regesta Group) non sono stati ricontrollabili in questa sessione: il dominio ultrafab.it, così come regestaitalia.eu e gli aggregatori camerali, sono risultati bloccati dal proxy di rete per l'accesso diretto (WebFetch); le ricerche mirate non hanno trovato evidenza che il sito sia stato aggiornato né che ora citi l'appartenenza al gruppo, ma è un'assenza di prova, non una prova di assenza — va dichiarata come tale. Bilancio: il dato economico più fragile si è irrobustito, la questione di trasparenza societaria resta aperta tale e quale, e un fatto nuovo e positivo emerge sul fronte della governance operativa. Punteggio rivisto da 62 a 65.",
   "green_flags": [
@@ -113,18 +114,54 @@
     }
   ],
   "timeline": [
-    { "data": "2016-01-08", "evento": "Registrazione del dominio ultrafab.it, precedente alla costituzione della società." },
-    { "data": "2016", "evento": "Costituzione di ULTRAFAB SRL a Brescia. Il giorno esatto varia fra gli aggregatori; il comunicato di Regesta indica invece il 2017." },
-    { "data": "2018-10", "evento": "Vittoria della tappa bresciana del premio CNA «Cambiamenti»." },
-    { "data": "2019-04-21", "evento": "Il Giornale di Brescia dedica un articolo al prodotto Bishop, descrivendo fondazione, fondatori, partner e funzionamento tecnico, e collocando la sede operativa in Via Orzinuovi 10." },
-    { "data": "2020-04-10", "evento": "Il Sole 24 Ore documenta il fablab di circa 450 mq e la riconversione produttiva durante il Covid." },
-    { "data": "2023", "evento": "Esercizio in perdita: ricavi 401.836 euro, perdita 26.773 euro (dati da aggregatori)." },
-    { "data": "2024", "evento": "Secondo esercizio in perdita: ricavi 347.990 euro, perdita 143.944 euro (dati da aggregatori)." },
-    { "data": "2024-09-06", "evento": "Regesta Group annuncia l'ingresso di Ultrafab nel gruppo. La quota acquisita non viene resa pubblica." },
-    { "data": "2025", "evento": "Ritorno all'utile: ricavi 564,4 mila euro, utile 27,0 mila euro. Alla prima verifica (02/08/2026) il dato veniva da un solo aggregatore; alla riverifica del 04/09/2026 risulta identico su altri due aggregatori indipendenti." },
-    { "data": "2026", "evento": "Secondo la scheda aggiornata di Regesta Group, Ultrafab ottiene una certificazione per il proprio sistema di gestione della sicurezza delle informazioni (SGSI), con policy pubblicata: fatto nuovo, non presente nella verifica di agosto." },
-    { "data": "2026-08-02", "evento": "Prima pubblicazione del verdetto. Il sito ultrafab.it non menzionava ancora l'appartenenza al gruppo." },
-    { "data": "2026-09-04", "evento": "Riverifica di freschezza KIROSHI//OR: l'utile 2025 è ora confermato da tre aggregatori invece di uno, la quota Regesta resta non pubblica, i red flag tecnici sul sito (WordPress obsoleto, mancata menzione di Regesta) non sono stati riverificabili per blocco del proxy di rete su ultrafab.it e regestaitalia.eu. Punteggio rivisto da 62 a 65." }
+    {
+      "data": "2016-01-08",
+      "evento": "Registrazione del dominio ultrafab.it, precedente alla costituzione della società."
+    },
+    {
+      "data": "2016",
+      "evento": "Costituzione di ULTRAFAB SRL a Brescia. Il giorno esatto varia fra gli aggregatori; il comunicato di Regesta indica invece il 2017."
+    },
+    {
+      "data": "2018-10",
+      "evento": "Vittoria della tappa bresciana del premio CNA «Cambiamenti»."
+    },
+    {
+      "data": "2019-04-21",
+      "evento": "Il Giornale di Brescia dedica un articolo al prodotto Bishop, descrivendo fondazione, fondatori, partner e funzionamento tecnico, e collocando la sede operativa in Via Orzinuovi 10."
+    },
+    {
+      "data": "2020-04-10",
+      "evento": "Il Sole 24 Ore documenta il fablab di circa 450 mq e la riconversione produttiva durante il Covid."
+    },
+    {
+      "data": "2023",
+      "evento": "Esercizio in perdita: ricavi 401.836 euro, perdita 26.773 euro (dati da aggregatori)."
+    },
+    {
+      "data": "2024",
+      "evento": "Secondo esercizio in perdita: ricavi 347.990 euro, perdita 143.944 euro (dati da aggregatori)."
+    },
+    {
+      "data": "2024-09-06",
+      "evento": "Regesta Group annuncia l'ingresso di Ultrafab nel gruppo. La quota acquisita non viene resa pubblica."
+    },
+    {
+      "data": "2025",
+      "evento": "Ritorno all'utile: ricavi 564,4 mila euro, utile 27,0 mila euro. Alla prima verifica (02/08/2026) il dato veniva da un solo aggregatore; alla riverifica del 04/09/2026 risulta identico su altri due aggregatori indipendenti."
+    },
+    {
+      "data": "2026",
+      "evento": "Secondo la scheda aggiornata di Regesta Group, Ultrafab ottiene una certificazione per il proprio sistema di gestione della sicurezza delle informazioni (SGSI), con policy pubblicata: fatto nuovo, non presente nella verifica di agosto."
+    },
+    {
+      "data": "2026-08-02",
+      "evento": "Prima pubblicazione del verdetto. Il sito ultrafab.it non menzionava ancora l'appartenenza al gruppo."
+    },
+    {
+      "data": "2026-09-04",
+      "evento": "Riverifica di freschezza KIROSHI//OR: l'utile 2025 è ora confermato da tre aggregatori invece di uno, la quota Regesta resta non pubblica, i red flag tecnici sul sito (WordPress obsoleto, mancata menzione di Regesta) non sono stati riverificabili per blocco del proxy di rete su ultrafab.it e regestaitalia.eu. Punteggio rivisto da 62 a 65."
+    }
   ],
   "nota_sicurezza": "Nessun segnale di malware, phishing o raggiro: il dominio è autentico, decennale e presidiato, e l'azienda è realmente iscritta e attiva. I limiti di questa verifica vanno però dichiarati. Primo: tutti i dati economici e societari provengono da aggregatori commerciali che rielaborano il Registro Imprese e ne vendono l'accesso completo; nessun bilancio depositato è stato letto direttamente e la visura camerale ufficiale non è stata consultata. Secondo: organo amministrativo e compagine sociale sono dietro paywall su tutte le fonti aperte, quindi non affermiamo nulla sull'assetto societario dopo l'ingresso nel gruppo — la quota di Regesta non risulta pubblica da nessuna parte, riconfermato il 04/09/2026. Terzo: la sezione «procedure e pregiudizievoli» degli aggregatori è a pagamento, quindi l'assenza di procedure concorsuali non è dimostrata, è soltanto non emersa. Quarto, limite emerso nella riverifica del 04/09/2026: il proxy di rete di questa sessione ha bloccato l'accesso diretto (WebFetch, errore 'EGRESS_BLOCKED') a ultrafab.it, regestaitalia.eu, reportaziende.it e agli altri aggregatori camerali citati; tutti i dati di questa riverifica sono stati confermati solo indirettamente, tramite motore di ricerca, non con lettura diretta della pagina. In particolare non è stato possibile ricontrollare se il sito ultrafab.it sia ancora fermo tecnicamente (WordPress 5.3.2) o se abbia nel frattempo aggiunto una menzione di Regesta Group: questi due punti restano come alla verifica precedente, non riconfermati né smentiti. Chi debba assumere impegni economici su questa società parta da una visura camerale aggiornata e dai bilanci depositati, non da questo verdetto. Per scelta editoriale non pubblichiamo il nome dell'intestatario privato del dominio: è un dato di registro pubblico, ma nominare una persona fisica non aggiunge nulla al merito.",
   "issue": 6,
