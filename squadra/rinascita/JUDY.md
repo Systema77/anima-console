@@ -1,8 +1,8 @@
 agente: JUDY
 titolo: rinascita — le pagine del laboratorio, quando ci sono le parole e il repo
-lotto: 09/09 · la direzione di systema77.film esiste (colore misurato, quattro pagine, criteri): ora le pagine, o la finestrella
+lotto: 10/09 · nessun lotto era prendibile e ho misurato perché: le quattro domande mie al Direttore non erano mai state scritte dove lui le vede (PR anima-console #75). Il prossimo lotto esiste solo quando torna una risposta
 modello: Opus (scelta del Direttore, 08/09, per il lotto del laboratorio: si pubblica su più repo). Non chiedere Fable per questo lavoro (`scripts/vmg-modello.py`)
-aggiornato: 2026-09-09
+aggiornato: 2026-09-10
 come: chat nuova su claude.ai/code con i sei repo attaccati · effort medium · un lotto, poi si chiude
 
 === INIZIO ===
@@ -22,8 +22,21 @@ PRIMA DI TUTTO: `date`. Poi `git fetch origin && git log origin/main -8
 sessioni JUDY erano vive nello stesso giorno senza saperlo. Salva questa scheda
 in un file e passala al banco:
   python3 scripts/prompt-si-regge.py <scheda.md>
-  python3 scripts/prompt-invecchia.py <scheda.md> --data 2026-09-09
+  python3 scripts/prompt-invecchia.py <scheda.md> --data 2026-09-10
 Se uno dei due dice 1, cerca in `main` cosa è già fatto PRIMA di lavorare.
+⚠️ `prompt-si-regge.py` gira nel repo del cervello e vede UNA casa: i percorsi di
+`strumenti/`, `squadra/`, `docs/` li dà assenti perché vivono in altri repo.
+Il 10/09 sono 5 dei 7 «assenti». Non è una bugia della scheda: è il raggio dello
+strumento. Verifica a mano prima di rincorrere un fantasma.
+
+POI, PRIMA DI DICHIARARTI BLOCCATA — il controllo che il 10/09 mancava, e costa un grep:
+  grep -n 'JUDY' anima-console/squadra/DECISIONI.md
+Conta le TUE voci aperte dentro il registro dell'altro, non dentro il tuo STATO.
+Quel file dice in testa: «una decisione chiesta altrove e non scritta qui non è
+stata chiesta», ed è l'unico posto che il Direttore vede dal telefono. Il 10/09
+quattro mie non c'erano — fra queste porta e prezzo della canzone, cioè il blocco
+su uno dei due lotti di ripiego qui sotto. LEGGI le righe, non contarle: «magliette»
+e «.art» comparivano già, ma erano domande di altri.
 
 LEGGI SOLO: comunicazione/STATO.md (la testa) · comunicazione/CHIUSURA.md ·
 comuni/BACHECA-RECENTE.md (quella, non l'archivio) · e per il lotto:
@@ -50,7 +63,8 @@ CHIUSI — non rifarli: la direzione del laboratorio (09/09) · il colore misura
 (`scripts/misura-colore.py`) · le tre porte in testata su systema77.com (07/09) ·
 AGENCY ovunque (06/09) · il solco a tre numeri e i testi della home del gioco
 (06/09) · il tronco della FASE 1 di .ninja (08/09) · la canzone col verde del gioco
-(08/09) · riservatezza.html nelle tre porte (09/09).
+(08/09) · riservatezza.html nelle tre porte (09/09) · le quattro righe mancanti in
+`DECISIONI.md` (10/09, PR anima-console #75: la fonde D.R.A.G.O.).
 
 MISURA: `node strumenti/collaudo.mjs` nella casa che tocchi, e leggi la sezione 6.
 Se dice «NON COLLAUDATO» non hai collaudato: da una sessione remota collega il
@@ -76,4 +90,4 @@ solo il Direttore; `squadra/` e `scripts/` D.R.A.G.O.; il cervello e .ninja li
 fondi tu. Il file batte la memoria; il `date` batte l'orologio interno.
 === FINE ===
 
-— creato da JUDY, 2026-09-08 · riscritto il 2026-09-09
+— creato da JUDY, 2026-09-08 · riscritto il 2026-09-09 · aggiornato il 2026-09-10
