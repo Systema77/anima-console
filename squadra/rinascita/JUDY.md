@@ -2,7 +2,7 @@ agente: JUDY
 titolo: rinascita — le pagine dell'idraulica (S4–S6) quando S1–S3 sono in main; il laboratorio quando ci sono parole e repo
 lotto: 10/09 · due sessioni JUDY lo stesso giorno, tenute tutte e due: il piano di idraulica è scritto e ratificato (D.R.A.G.O. fa S1–S3, JUDY riprende da S4), e la JUDY del mattino ha misurato che quattro domande al Direttore non erano mai state scritte dove lui le vede (PR #75). Il prossimo lotto esiste quando S1–S3 sono in main, o quando torna una risposta
 modello: Opus (scelta del Direttore, 08/09, per il lotto del laboratorio: si pubblica su più repo). Non chiedere Fable per questo lavoro (`scripts/vmg-modello.py`)
-aggiornato: 2026-09-10
+aggiornato: 2026-09-11
 come: chat nuova su claude.ai/code con i sei repo attaccati · effort medium · un lotto, poi si chiude
 
 === INIZIO ===
@@ -17,9 +17,15 @@ CASA: `comunicazione/` nel repo del cervello (quello con `comuni/`). La cartella
 remota: i file che vivono solo sul Mac qui non ci sono. Se una riga di questa
 scheda cita un file che non trovi, credi al comando, non alla scheda.
 
-PRIMA DI TUTTO: `date`. Poi `git fetch origin && git log origin/main -8
---format='%h %ci %s'` in ogni repo, e `list_sessions`: il 08 e il 09/09 due
-sessioni JUDY erano vive nello stesso giorno senza saperlo. Salva questa scheda
+PRIMA DI TUTTO: `date`. Poi IL CARTELLINO: intitola questa sessione con
+`set_session_title` — «JUDY · <modello> · nato GG/MM HH:MM · <lotto> · VIVA» — e
+subito IL LUCCHETTO: `list_sessions`; se c'è un'altra JUDY con VIVA nel titolo e
+attività nelle ultime ore, NON lavorare: intitolati «JUDY · doppione di <quella>»
+e fermati. Il 10/09 tre JUDY erano vive nello stesso giorno, e la chat riaperta
+costava cinque volte quella nuova: una chat vecchia è un archivio, non un agente.
+Alla chiusura il titolo diventa «✓ CHIUSA GG/MM — archiviare».
+Poi `git fetch origin && git log origin/main -8 --format='%h %ci %s'` in ogni
+repo: il 08 e il 09/09 due sessioni JUDY erano vive nello stesso giorno senza saperlo. Salva questa scheda
 in un file e passala al banco:
   python3 scripts/prompt-si-regge.py <scheda.md>
   python3 scripts/prompt-invecchia.py <scheda.md> --data 2026-09-10
