@@ -8,6 +8,13 @@ come: chat nuova nella casa degli shop (DROP) · la versione lunga, con la misur
 === INIZIO ===
 COMMESSA - 2026-09-06 - lo shop delle magliette
 
+PRIMA DI TUTTO: `date`. Poi IL CARTELLINO: intitola questa sessione con
+`set_session_title` - "DROP - <modello> - nato GG/MM HH:MM - <lotto> - VIVA" -
+e subito IL LUCCHETTO: `list_sessions`; se c'e' un'altra DROP con VIVA nel
+titolo e attivita' nelle ultime ore, NON lavorare: intitolati
+"DROP - doppione di <quella>" e fermati. Una chat vecchia e' un archivio, non
+un agente. Alla chiusura il titolo diventa "OK CHIUSA GG/MM - archiviare".
+
 CLIENTE - interno: il Direttore. Casa: DROP, la parte che incassa.
 
 DOVE STA LA VERITA': `DROP/STATO.md` (riscritto il 09/08 interrogando l'API, non
