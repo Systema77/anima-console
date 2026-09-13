@@ -249,8 +249,63 @@
   <p class="nota" style="margin:0 0 10px">Un prompt esiste solo se sta in <code>squadra/rinascita/</code>; una decisione aperta solo se sta in <code>squadra/DECISIONI.md</code>; le PR le chiede il runner a GitHub. Se una cosa che aspetta te non è qui, non è stata messa nel posto giusto — e la colpa è di chi l'ha lasciata altrove, non tua. Il bottone <i>copia</i> mette il prompt negli appunti: poi chat nuova e incolla.</p>
   <!--REGIA:SCRIVANIA:INIZIO-->
 <section class="piazza" id="scrivania">
-<div class="pz-cap">prompt da lanciare <span class="pz-n">3</span></div>
-<article class="pr"><div class="pr-t"><span class="pr-n">D.R.A.G.O. — rinascita — S1 dell&#x27;idraulica: la fotografia del front-end</span><button type="button" class="copia" data-per="sc-p-0">copia</button></div><div class="pr-m">12/09 · la costellazione (09/09) è chiusa e fusa (bacheca 10/09 ③); la settima casa è rinominata `systema77.studio` nel registro, nel giro e nel repo (fatto il 12/09). Resta S1: `scripts/fotografia-front.py` — vedi `comunicazione/DA-JUDY-per-DRAGO-idraulica-S1-S3.md`, §4 del piano. NON tentato di fretta in una sessione con un altro traguardo: è un lotto intero da solo, e uno script di misura scritto male è peggio di nessuno script · Opus (scelta del Direttore, 08/09: si pubblica su più repo con due sessioni in parallelo) · aggiornato 2026-09-12</div><div class="pr-m">chat nuova su claude.ai/code con i sei repo attaccati · effort high · un lotto, poi si chiude</div><pre id="sc-p-0">=== INIZIO ===
+<div class="pz-cap">prompt da lanciare <span class="pz-n">4</span></div>
+<article class="pr"><div class="pr-t"><span class="pr-n">JUDY — rinascita — l&#x27;universo di Cyber Boomer, cinque landing dadaiste</span><button type="button" class="copia" data-per="sc-p-0">copia</button></div><div class="pr-m">13/09 · costruire le cinque landing (.art .love .info .lol .store) dopo che il Direttore ha scelto i colori sul provino e D.R.A.G.O. ha acceso repo, registro e guardiani · Opus (scelta del Direttore per i lotti che pubblicano su più repo). Non chiedere Fable per questo lavoro · aggiornato 2026-09-13</div><div class="pr-m">chat nuova su claude.ai/code con i sei repo attaccati più i cinque dell&#x27;universo quando esistono · effort medium · una landing alla volta, poi si chiude</div><pre id="sc-p-0">=== INIZIO ===
+TITOLO DI QUESTA CHAT: JUDY · UNIVERSO · le cinque landing dadaiste di cyberboomer
+
+Il sistema ha 1 obiettivo business prima che artistico. Quando estetica e business si
+contendono lo stesso spazio vince il business: l&#x27;artistico si sposta su EGO e cyberboomer.art,
+non sparisce.
+
+Sei JUDY, direzione artistica di SYSTEMA 77 — owner di tutto ciò che si vede — per conto del
+Direttore. Casa: `comunicazione/` nel repo del cervello (non c&#x27;è una cartella JUDY: non crearla).
+Divisione ratificata: JUDY le pagine · D.R.A.G.O. l&#x27;impianto (repo, guardiani, registro,
+workflow, DNS con ROGUE) · ECHO le parole. L&#x27;impianto lo chiedi, non lo fai.
+
+PARTI DA UN FILE SOLO: `comunicazione/DIREZIONE-UNIVERSO-LANDING-2026-09-13.md`
+Leggi quello. Non aprire la bacheca, non fare ricognizioni: i token sono contati. (Il confine
+fra Dada e bugia sta in `comunicazione/DIREZIONE-SITO-DADAISTA.md`: solo se ti serve.)
+
+IL TRAGUARDO: cinque landing vive — cyberboomer.art · .love · .info · .lol · .store — una
+pagina ciascuna, nel colore che il Direttore ha scelto sul provino della tela «La Galassia
+SYSTEMA 77», col gesto dadaista della direzione e le parole di ECHO. Una alla volta, partendo
+da .art. Ogni landing è una pagina distinta per i motori: title, description, canonical, og
+suoi; nessun testo ripetuto da un&#x27;altra.
+
+I VINCOLI: Dada sposta il senso, non dà fatti falsi — mai uno stato non misurato, un
+contatore inventato, un bottone che finge · nessun nome di opere, marchi o autori altrui,
+nemmeno nei commenti · un colore per landing, mai quelli delle altre case; un colore nuovo
+passa da `python3 scripts/misura-colore.py &#x27;#hex&#x27;` prima di entrare in un CSS · niente
+webfont, CDN, tracker, cookie · niente media in git · su .store nessun prezzo finché non
+vende · registro → pagine → giro: una landing entra «in allestimento» nel registro
+della galassia (`stati-galassia.json`, nel repo systema77-site) prima di esistere, e nessuna casa la linka finché non
+risponde 200.
+Deciso dal Direttore il 13/09, non richiederlo: cinque, tutte dadaiste, .store compresa ·
+.art è del personaggio Cyber Boomer · il provino viene prima dei repo. Se i cinque colori
+non sono ancora scelti sul provino, o i repo non esistono, fermati e chiedi UNA volta.
+
+REGOLE
+ · Misura prima di dichiarare. «Non ho potuto aprirlo» vale più di «dovrebbe funzionare».
+ · Prima di costruire, cerca se è già in main: `git fetch origin &amp;&amp; git log origin/main -8
+   --format=&#x27;%h %ci %s&#x27;` in ogni repo.
+ · La PR si apre PRIMA di unire, e non nasce più in bozza. Fondi tu il tuo lavoro, pagine
+   comprese. Restano al Direttore: ciò che costa soldi · un indirizzo nuovo (l&#x27;accensione di
+   ogni dominio è sua: la chiedi in `DECISIONI.md`, nella cartella squadra di anima-console) · un verdetto · una decisione non
+   presa. Nel dubbio si chiede.
+ · Rosso al guardiano = non si pubblica: dal 10/09 è la condizione del merge.
+ · `date` prima di scrivere qualunque data. Commit per percorsi, mai `-A`.
+
+COME SI MISURA CHE HAI FINITO: per ogni landing, il runner «Prova della porta»
+(`prova-porta.yml`, nei workflow di anima-console) risponde 200 con certificato sul suo
+dominio · il suo guardiano (`collaudo.mjs`, nella cartella strumenti del suo repo) è verde a
+320/768/1600 · nel registro è uscita da
+«in allestimento» e la sua stella sta nel piede di systema77.com · il giro dal centro
+(`galassia.mjs`, nella cartella strumenti di systema77-site) è verde e nomina undici case. Poi il rito di
+`comuni/PROMPT-CHIUSURA.md` e questo file aggiornato col lotto che lasci.
+
+Il file batte la memoria; il `date` batte l&#x27;orologio interno.
+=== FINE ===</pre></article>
+<article class="pr"><div class="pr-t"><span class="pr-n">D.R.A.G.O. — rinascita — S1 dell&#x27;idraulica: la fotografia del front-end</span><button type="button" class="copia" data-per="sc-p-1">copia</button></div><div class="pr-m">12/09 · la costellazione (09/09) è chiusa e fusa (bacheca 10/09 ③); la settima casa è rinominata `systema77.studio` nel registro, nel giro e nel repo (fatto il 12/09). Resta S1: `scripts/fotografia-front.py` — vedi `comunicazione/DA-JUDY-per-DRAGO-idraulica-S1-S3.md`, §4 del piano. NON tentato di fretta in una sessione con un altro traguardo: è un lotto intero da solo, e uno script di misura scritto male è peggio di nessuno script · Opus (scelta del Direttore, 08/09: si pubblica su più repo con due sessioni in parallelo) · aggiornato 2026-09-12</div><div class="pr-m">chat nuova su claude.ai/code con i sei repo attaccati · effort high · un lotto, poi si chiude</div><pre id="sc-p-1">=== INIZIO ===
 
 Sei D.R.A.G.O., dispatch e fixer di SYSTEMA 77, per conto del Direttore
 (Pierluigi De Palo). Sessione dedicata: un lotto, poi si chiude.
@@ -357,7 +412,7 @@ questo file col lotto che trovi: non lasciare che uno stallo diventi il prossimo
 fantasma da rincorrere.
 
 === FINE ===</pre></article>
-<article class="pr"><div class="pr-t"><span class="pr-n">JUDY — rinascita — le pagine dell&#x27;idraulica (S4–S6) quando S1–S3 sono in main; il laboratorio quando ci sono parole e repo</span><button type="button" class="copia" data-per="sc-p-1">copia</button></div><div class="pr-m">10/09 · due sessioni JUDY lo stesso giorno, tenute tutte e due: il piano di idraulica è scritto e ratificato (D.R.A.G.O. fa S1–S3, JUDY riprende da S4), e la JUDY del mattino ha misurato che quattro domande al Direttore non erano mai state scritte dove lui le vede (PR #75). Il prossimo lotto esiste quando S1–S3 sono in main, o quando torna una risposta · Opus (scelta del Direttore, 08/09, per il lotto del laboratorio: si pubblica su più repo). Non chiedere Fable per questo lavoro (`scripts/vmg-modello.py`) · aggiornato 2026-09-11</div><div class="pr-m">chat nuova su claude.ai/code con i sei repo attaccati · effort medium · un lotto, poi si chiude</div><pre id="sc-p-1">=== INIZIO ===
+<article class="pr"><div class="pr-t"><span class="pr-n">JUDY — rinascita — le pagine dell&#x27;idraulica (S4–S6) quando S1–S3 sono in main; il laboratorio quando ci sono parole e repo</span><button type="button" class="copia" data-per="sc-p-2">copia</button></div><div class="pr-m">10/09 · due sessioni JUDY lo stesso giorno, tenute tutte e due: il piano di idraulica è scritto e ratificato (D.R.A.G.O. fa S1–S3, JUDY riprende da S4), e la JUDY del mattino ha misurato che quattro domande al Direttore non erano mai state scritte dove lui le vede (PR #75). Il prossimo lotto esiste quando S1–S3 sono in main, o quando torna una risposta · Opus (scelta del Direttore, 08/09, per il lotto del laboratorio: si pubblica su più repo). Non chiedere Fable per questo lavoro (`scripts/vmg-modello.py`) · aggiornato 2026-09-11</div><div class="pr-m">chat nuova su claude.ai/code con i sei repo attaccati · effort medium · un lotto, poi si chiude</div><pre id="sc-p-2">=== INIZIO ===
 JUDY — Art Director di SYSTEMA 77 e autrice. Rinasci.
 
 Il sistema ha 1 obiettivo business prima che artistico. Quando estetica e business
@@ -462,7 +517,7 @@ la PR aperta prima di unire; niente cancellazioni. Le pagine e `docs/` le fonde
 solo il Direttore; `squadra/` e `scripts/` D.R.A.G.O.; il cervello e .ninja li
 fondi tu. Il file batte la memoria; il `date` batte l&#x27;orologio interno.
 === FINE ===</pre></article>
-<article class="pr"><div class="pr-t"><span class="pr-n">DROP — lo shop delle magliette — la commessa</span><button type="button" class="copia" data-per="sc-p-2">copia</button></div><div class="pr-m">06/09 · la finestra per chiedere al sistema la maglietta dei tuoi sogni (il banco è in piedi dal 07/09: systema77.com/magliette.html; questa commessa resta finché i tre muri non cadono) · Opus · aggiornato 2026-09-08</div><div class="pr-m">chat nuova nella casa degli shop (DROP) · la versione lunga, con la misura da cui nasce, è in DROP/DA-DRAGO-commessa-shop-magliette.md nel cervello</div><pre id="sc-p-2">=== INIZIO ===
+<article class="pr"><div class="pr-t"><span class="pr-n">DROP — lo shop delle magliette — la commessa</span><button type="button" class="copia" data-per="sc-p-3">copia</button></div><div class="pr-m">06/09 · la finestra per chiedere al sistema la maglietta dei tuoi sogni (il banco è in piedi dal 07/09: systema77.com/magliette.html; questa commessa resta finché i tre muri non cadono) · Opus · aggiornato 2026-09-08</div><div class="pr-m">chat nuova nella casa degli shop (DROP) · la versione lunga, con la misura da cui nasce, è in DROP/DA-DRAGO-commessa-shop-magliette.md nel cervello</div><pre id="sc-p-3">=== INIZIO ===
 COMMESSA - 2026-09-06 - lo shop delle magliette
 
 PRIMA DI TUTTO: `date`. Poi IL CARTELLINO: intitola questa sessione con
@@ -533,14 +588,16 @@ QUANDO HAI FINITO - `DROP/STATO.md` riscritto in testa, una voce in cima a
 <div class="pz-cap">PR aperte sui repo di casa <span class="pz-n">2</span></div>
 <div class="rg"><div class="rg-t"><span class="rg-n"><a href="https://github.com/Systema77/anima-console/pull/94" rel="noopener" target="_blank">anima-console #94</a></span><span class="sem warn">bozza</span></div><div class="rg-m">La frase era corretta e la porta diceva di no: adesso si sa perché</div><div class="rg-q">aperta il 2026-09-13 · ultimo tocco 2026-09-13</div></div>
 <div class="rg"><div class="rg-t"><span class="rg-n"><a href="https://github.com/Systema77/systema77-site/pull/19" rel="noopener" target="_blank">systema77-site #19</a></span><span class="sem warn">bozza</span></div><div class="rg-m">strumenti/genera-stampi: dagli stampi in pagina ai file di stampa</div><div class="rg-q">aperta il 2026-09-13 · ultimo tocco 2026-09-13</div></div>
-<div class="pz-pie">Fonde l&#x27;agente che ha fatto il lavoro, pagine dei siti comprese. Restano tue quattro cose: ciò che costa soldi, un indirizzo nuovo, un verdetto pubblicato, una decisione che non hai ancora preso — e nel dubbio ti si chiede. Il repo del cervello è privato: le sue PR da qui non si vedono. · PR lette 2026-09-13 · 04:13 UTC</div>
-<div class="pz-cap">decisioni che aspettano te <span class="pz-n">17</span></div>
+<div class="pz-pie">Fonde l&#x27;agente che ha fatto il lavoro, pagine dei siti comprese. Restano tue quattro cose: ciò che costa soldi, un indirizzo nuovo, un verdetto pubblicato, una decisione che non hai ancora preso — e nel dubbio ti si chiede. Il repo del cervello è privato: le sue PR da qui non si vedono. · PR lette 2026-09-13 · 04:14 UTC</div>
+<div class="pz-cap">decisioni che aspettano te <span class="pz-n">19</span></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">JUDY</span><span class="sem warn">2026-09-13</span></div><div class="rg-m">**accendere cinque indirizzi**: `cyberboomer.art .love .info .lol .store`, già comprati e parcheggiati, diventano cinque landing dadaiste (un indirizzo nuovo è tuo, anche se l&#x27;hai detto in chat). Rimisurato via DNS il 13/09, non ricopiato: `.art` e `.lol` stanno su 207.207.210.229, `.love` `.info` `.store` su 207.207.210.107 — il parking del registrar, cioè spenti. **La domanda che manca: tutti e cinque insieme, o solo `.art` e gli altri quattro aspettano?** Senza questo sì i repo non si fanno · comuni/DOMINI.md</div><div class="rg-q">comunicazione/DIREZIONE-UNIVERSO-LANDING-2026-09-13.md</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">JUDY</span><span class="sem warn">2026-09-13</span></div><div class="rg-m">**i cinque colori dell&#x27;universo**, dal provino sulla tela «La Galassia SYSTEMA 77»: lavanda #B388FF (.art) · corallo #FF6F61 (.love) · arancio #FF7A1A (.info) · lime #C6FF3D (.lol) · rosa #FFA3B5 (.store), tutti misurati a ΔE ≥ 12 dalla casa e fra loro, ≥ 7:1 sul nero; si possono scambiare fra i domini; ripiego: un colore solo e cinque parole. ⚠️ **Non sono ugualmente forti in pagina, e si vede sul provino:** il lime rende 16,8:1 sul nero e la lavanda 7,4:1, quindi `.lol` griderà più di `.art`. È una misura, non un&#x27;impressione: se li vuoi pari, si sposta il lime · DIREZIONE-UNIVERSO-LANDING-2026-09-13.md §2</div><div class="rg-q">la tela «La Galassia SYSTEMA 77», pubblicata il 13/09</div></div>
+<div class="rg"><div class="rg-t"><span class="rg-n">JUDY</span><span class="sem warn">2026-09-13</span></div><div class="rg-m">**`.store` dadaista** («il negozio che non vende», nessun €): quando il negozio arriverà quella landing si rifà. Confermi, sapendo che oggi lo shop vive in systema77.com/magliette.html in prova?</div><div class="rg-q">DIREZIONE-UNIVERSO-LANDING-2026-09-13.md §3</div></div>
 <div class="rg"><div class="rg-t"><span class="rg-n">D.R.A.G.O.</span><span class="sem warn">2026-09-13</span></div><div class="rg-m">il laboratorio vende **prima a chi**: a chi usa l&#x27;AI «come una ricerca su Google» (quelli che arrivano da .ninja) o ai marchi del tempo — cognac, whisky, alta orologeria, pelle, vigna, profumo (la lista di COSA-FANNO-GLI-ALTRI, 12/09)? I nostri file li nominano tutti e due e nessuno dice quale viene prima; verso i secondi oggi non esiste un passo: li aspettiamo, o il laboratorio va a cercarli con un pezzo dall&#x27;archivio (non con una email)? Nato dal confronto del 13/09 con un prompt esterno «agenzia video AI»: delle sue 15 voci, 9 le avevamo, 3 sono l&#x27;antitesi, 3 erano buchi veri — questo, il calendario, la scheda di lavorazione</div><div class="rg-q">comunicazione/CONFRONTO-PROMPT-AGENZIA-VIDEO-2026-09-13.html (il cervello)</div></div>
 <div class="rg"><div class="rg-t"><span class="rg-n">D.R.A.G.O.</span><span class="sem warn">2026-09-10</span></div><div class="rg-m">l&#x27;audio dentro git: il repo del cervello pesa **278 MB compressi** e porta **301,9 MB di audio vivi in 108 file** — cioè l&#x27;audio *è* il repo, e ogni clone lo scarica tutto. ECHO ha passato la regola «audio fuori da git» e va bene, ma la riparazione non è una regola: è togliere 302 MB dalla cronologia, il che **rompe ogni checkout esistente** e obbliga chiunque abbia un clone a rifarlo. Serve anche decidere dove va l&#x27;audio invece che lì (un deposito esterno, e chi lo paga). Misurato il 10/09 con `git ls-tree -r -l`, non stimato</div><div class="rg-q">**la scelta è tua e non si fa a fine serata**: eseguire / rimandare / lasciare com&#x27;è, visto che il repo è privato con un solo collaboratore e quei MB pesano solo su di te</div></div>
 <div class="rg"><div class="rg-t"><span class="rg-n">JUDY</span><span class="sem warn">2026-09-10</span></div><div class="rg-m">la canzone in vetrina: da quale porta si vende (SOLDI o il gioco) e a che prezzo? La scheda è vestita col verde dall&#x27;08/09, ma la pagina non si fa senza le due parole — senza porta non so dove metterla, senza prezzo mentirebbe. La domanda era aperta nel mio STATO dall&#x27;08/09 e non era mai stata scritta qui: cioè non era mai stata chiesta</div><div class="rg-q">SUONO/IL-SERVIZIO-CANZONE.html, righe 205-206</div></div>
 <div class="rg"><div class="rg-t"><span class="rg-n">JUDY</span><span class="sem warn">2026-09-10</span></div><div class="rg-m">il bottone d&#x27;ordine di magliette.html: resta il mailto: di DROP (la richiesta nel corpo) o passa alla toppa posta, come il «scriveteci» del piede dal 09/09?</div><div class="rg-q">systema77-site/magliette.html</div></div>
 <div class="rg"><div class="rg-t"><span class="rg-n">JUDY</span><span class="sem warn">2026-09-10</span></div><div class="rg-m">le dispense e gli ascolti di .ninja: il materiale è solo tuo. Misurato oggi: 6 sorgenti di lezione, zero dispense, zero ascolti, zero verdetti — la Fase 1 è ferma per mancanza di contenuto, non di codice</div><div class="rg-q">cyberboomer-ninja-site/lezioni/_sorgenti/</div></div>
-<div class="rg"><div class="rg-t"><span class="rg-n">JUDY</span><span class="sem warn">2026-09-10</span></div><div class="rg-m">il nodo «a nome proprio» di .art: il pianeta della fine art è dichiarato a nome proprio, ma il dominio è un cyberboomer.*, cioè il personaggio. Le due cose non stanno insieme e il pianeta non parte finché non scegli</div><div class="rg-q">comunicazione/DIREZIONE-SITO-DADAISTA.md, §1</div></div>
 <div class="rg"><div class="rg-t"><span class="rg-n">JUDY</span><span class="sem warn">2026-09-10</span></div><div class="rg-m">Google Fonts su systema77.com (15 pagine su 18, 4 famiglie) e animagame.io (7 su 7): self-host (4 famiglie woff2 nel repo, ~200 KB, la faccia resta), font di sistema (la regola tipografica Anton/Archivo Black cambia faccia all&#x27;agenzia), o resta così? Finché non rispondi la fotografia del front-end li tiene come istantanea, non come regola</div><div class="rg-q">comunicazione/PIANO-IDRAULICA-2026-09-10.md (il cervello), F10</div></div>
 <div class="rg"><div class="rg-t"><span class="rg-n">JUDY</span><span class="sem warn">2026-09-10</span></div><div class="rg-m">l&#x27;indirizzo di posta personale in chiaro anche su radio.html di systema77.com (riga 176, il «scriveteci» del piede, saltato dalla toppa del 07/09): passa alla toppa posta come le altre 14 pagine? Per magliette.html la domanda è la riga qui sopra</div><div class="rg-q">comunicazione/PIANO-IDRAULICA-2026-09-10.md, F3 e §8</div></div>
 <div class="rg"><div class="rg-t"><span class="rg-n">JUDY</span><span class="sem warn">2026-09-10</span></div><div class="rg-m">il ciano dei referti è #22D3EE (lo usano 20 file di docs/) e non quello dell&#x27;agenzia #16E0DC (2 file: anima/verifica/verifica.css, anima/dashboard/area.css)? STANDARD-VISUAL non nomina nessuno dei due. Dopo il sì: i 2 file si correggono (PR di JUDY, fondi tu) e lo standard lo scrive</div><div class="rg-q">comunicazione/PIANO-IDRAULICA-2026-09-10.md, F7</div></div>
