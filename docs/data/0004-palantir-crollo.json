@@ -4,10 +4,11 @@
   "domanda": "«Come mai sono crollati in borsa? Da 180 € a 113? Saranno stati i documentari e la stampa moralista?»",
   "modalita": "scava",
   "punteggio": 35,
+  "ambito": "verita",
   "etichetta": "il calo è reale, la causa attribuita no",
-  "verdetto": "Il crollo esiste ed è severo: al 31 luglio 2026 PLTR chiude a 123,06 dollari, il 40,7% sotto il massimo storico. Ma le due cifre della domanda vanno corrette, e in direzioni opposte. Il massimo storico è 207,52 dollari il 3 novembre 2025, non 180: il «180» corrisponde alla chiusura di fine 2025 (177,75), cioè al punto di partenza dell'anno, non a un picco. Il «113» corrisponde alla finestra di fine giugno 2026. Due precisazioni tecniche: il titolo quota in dollari, non in euro, e sul Nasdaq — si è trasferito dal NYSE a novembre 2024. Sulla causa la risposta è no, e a dirlo è la cronologia. Il massimo storico è stato toccato dopo l'inchiesta di 404 Media sul contratto ICE (aprile 2025), dopo il rapporto di Amnesty International (agosto 2025) e dopo il disinvestimento etico di Storebrand (ottobre 2024): nel 2025 il titolo è salito di circa il 138% attraversando la fase più intensa di critica pubblica. Sui documentari la premessa non trova riscontro: nelle fonti consultate non risulta alcun documentario rilevante sul soggetto nel 2025-2026; l'unico esistente è tedesco ed è del 2024. Quasi tutte le fonti finanziarie indicano come causa dominante la compressione dei multipli da una valutazione estrema, dentro un derating generale del software e dell'AI. Questo non significa che la critica pubblica sia irrilevante: significa che il canale attraverso cui diventa finanziariamente reale non è l'indignazione, sono i contratti e i soldi istituzionali. Su questo terreno gli effetti sono tracciabili con date e importi.",
+  "verdetto": "Il crollo è esistito ed è stato severo, ma è in gran parte rientrato, e le cifre qui sotto sono LETTURE A UNA DATA, non fatti permanenti: al 31 luglio 2026 PLTR chiudeva a 123,06 dollari, il 40,7% sotto il massimo storico; alla rilettura del 9 settembre 2026 quota intorno a 170 dollari, cioè circa il 18% sotto lo stesso massimo. Il -40,7% era vero il 31 luglio ed è falso oggi: chi lo legge senza la data legge un numero sbagliato. Ma le due cifre della domanda vanno corrette, e in direzioni opposte. Il massimo storico è 207,52 dollari il 3 novembre 2025, non 180: il «180» corrisponde alla chiusura di fine 2025 (177,75), cioè al punto di partenza dell'anno, non a un picco. Il «113» corrisponde alla finestra di fine giugno 2026. Due precisazioni tecniche: il titolo quota in dollari, non in euro, e sul Nasdaq — si è trasferito dal NYSE a novembre 2024. Sulla causa la risposta è no, e a dirlo è la cronologia. Il massimo storico è stato toccato dopo l'inchiesta di 404 Media sul contratto ICE (aprile 2025), dopo il rapporto di Amnesty International (agosto 2025) e dopo il disinvestimento etico di Storebrand (ottobre 2024): nel 2025 il titolo è salito di circa il 138% attraversando la fase più intensa di critica pubblica. Sui documentari la premessa non trova riscontro: nelle fonti consultate non risulta alcun documentario rilevante sul soggetto nel 2025-2026; l'unico esistente è tedesco ed è del 2024. Quasi tutte le fonti finanziarie indicano come causa dominante la compressione dei multipli da una valutazione estrema, dentro un derating generale del software e dell'AI. Questo non significa che la critica pubblica sia irrilevante: significa che il canale attraverso cui diventa finanziariamente reale non è l'indignazione, sono i contratti e i soldi istituzionali. Su questo terreno gli effetti sono tracciabili con date e importi.",
   "green_flags": [
-    "Il calo è reale, documentato e verificabile su serie storiche di mercato: -40,7% dal massimo del 3 novembre 2025 e -30,8% da inizio 2026, con minimo a 52 settimane di 106,37 dollari intraday il 25 giugno 2026.",
+    "Il calo è reale, documentato e verificabile su serie storiche di mercato — e va letto con la sua data: -40,7% dal massimo del 3 novembre 2025 e -30,8% da inizio 2026 alla chiusura del 31 luglio, con minimo a 52 settimane di 106,37 dollari intraday il 25 giugno 2026. Alla rilettura del 9 settembre 2026 il titolo è risalito intorno a 170 dollari (circa -18% dal massimo): il calo resta reale, la sua profondità no.",
     "Le critiche pubbliche esistono e non sono voci di rete: sono documentate da organizzazioni con metodologia dichiarata (Amnesty International, EFF) e da testate che lavorano su documenti primari — documenti di appalto, atti giudiziari, guide utente trapelate.",
     "Il soggetto ha esercitato il diritto di replica in tutti i casi principali, e le repliche sono pubblicamente consultabili: il lettore può confrontare le due versioni.",
     "La tesi della domanda è verificabile da chiunque con un test ripetibile: le date degli scoop critici e le date dei movimenti di prezzo sono entrambe pubbliche, e il confronto è riproducibile.",
@@ -94,25 +95,89 @@
       "tipo": "stampa finanziaria",
       "sostiene": "Conferma giornalistica del trasferimento di listino",
       "autorevolezza": "media-alta"
+    },
+    {
+      "titolo": "Palantir Technologies Inc. (PLTR) — quotazione e intervallo a 52 settimane",
+      "url": "https://www.investing.com/equities/palantir-technologies-inc",
+      "tipo": "dati di mercato",
+      "sostiene": "vero",
+      "autorevolezza": 4
+    },
+    {
+      "titolo": "Palantir Technologies — storico dei prezzi (massimo storico 207,18 in chiusura, 3 nov 2025)",
+      "url": "https://www.macrotrends.net/stocks/charts/PLTR/palantir-technologies/stock-price-history",
+      "tipo": "dati di mercato",
+      "sostiene": "vero",
+      "autorevolezza": 4
     }
   ],
   "timeline": [
-    { "data": "2024-10-25", "evento": "Storebrand esclude Palantir dai propri investimenti per ragioni etiche. Nessun effetto rilevabile sul prezzo: il titolo salirà fortemente nei mesi successivi." },
-    { "data": "2024-11-26", "evento": "Palantir trasferisce la quotazione dal NYSE al Nasdaq, ticker invariato." },
-    { "data": "2025-04-18", "evento": "404 Media pubblica l'inchiesta sul contratto ICE, basata su documenti di appalto pubblici. È l'inizio della catena critica moderna." },
-    { "data": "2025-08-21", "evento": "Rapporto di Amnesty International. Il titolo continua a salire." },
-    { "data": "2025-11-03", "evento": "MASSIMO STORICO: chiusura a 207,52 dollari, nel giorno della trimestrale Q3 2025 (ricavi 1,18 miliardi, +63%). Il titolo quel giorno sale del 3,35%: il ribasso non parte da qui, parte dopo." },
-    { "data": "2025-12-31", "evento": "Chiusura 2025 a 177,75 dollari, anno a +138%. È il livello ricordato nella domanda come «180»." },
-    { "data": "2026-01-02", "evento": "Prima seduta del 2026 a -5,9%: rotazione dal software verso i semiconduttori e presa di profitto differita a fine anno fiscale." },
-    { "data": "2026-02-02", "evento": "Trimestrale Q4 2025 largamente sopra le attese e guidance alzata. Il titolo rimbalza ma non torna sui massimi." },
-    { "data": "2026-04-02", "evento": "Il fondo pensione olandese ABP disinveste 825 milioni di euro." },
-    { "data": "2026-05-08", "evento": "Trimestrale Q1 2026 forte su tutte le voci. Il titolo scende comunque: il rapporto prezzo/vendite si è già contratto da circa 100 a 67." },
-    { "data": "2026-06-03", "evento": "La Commissione Scienza e Tecnologia dei Comuni britannici raccomanda di sciogliere il contratto con il servizio sanitario nazionale." },
-    { "data": "2026-06-25", "evento": "Minimo a 52 settimane: 106,37 dollari intraday. Giugno chiuderà a -25,47%, il mese peggiore di questa discesa ma non della storia del titolo: nel febbraio 2021 fece -32,06%." },
-    { "data": "2026-07-28", "evento": "-6,08% in giornata dopo una nota di Cleveland Research sulla debolezza della spesa commerciale fra i partner." },
-    { "data": "2026-07-31", "evento": "Chiusura a 123,06 dollari: -40,7% dal massimo, -30,8% da inizio anno. Livello di riferimento di questa verifica." }
+    {
+      "data": "2024-10-25",
+      "evento": "Storebrand esclude Palantir dai propri investimenti per ragioni etiche. Nessun effetto rilevabile sul prezzo: il titolo salirà fortemente nei mesi successivi."
+    },
+    {
+      "data": "2024-11-26",
+      "evento": "Palantir trasferisce la quotazione dal NYSE al Nasdaq, ticker invariato."
+    },
+    {
+      "data": "2025-04-18",
+      "evento": "404 Media pubblica l'inchiesta sul contratto ICE, basata su documenti di appalto pubblici. È l'inizio della catena critica moderna."
+    },
+    {
+      "data": "2025-08-21",
+      "evento": "Rapporto di Amnesty International. Il titolo continua a salire."
+    },
+    {
+      "data": "2025-11-03",
+      "evento": "MASSIMO STORICO: chiusura a 207,52 dollari, nel giorno della trimestrale Q3 2025 (ricavi 1,18 miliardi, +63%). Il titolo quel giorno sale del 3,35%: il ribasso non parte da qui, parte dopo."
+    },
+    {
+      "data": "2025-12-31",
+      "evento": "Chiusura 2025 a 177,75 dollari, anno a +138%. È il livello ricordato nella domanda come «180»."
+    },
+    {
+      "data": "2026-01-02",
+      "evento": "Prima seduta del 2026 a -5,9%: rotazione dal software verso i semiconduttori e presa di profitto differita a fine anno fiscale."
+    },
+    {
+      "data": "2026-02-02",
+      "evento": "Trimestrale Q4 2025 largamente sopra le attese e guidance alzata. Il titolo rimbalza ma non torna sui massimi."
+    },
+    {
+      "data": "2026-04-02",
+      "evento": "Il fondo pensione olandese ABP disinveste 825 milioni di euro."
+    },
+    {
+      "data": "2026-05-08",
+      "evento": "Trimestrale Q1 2026 forte su tutte le voci. Il titolo scende comunque: il rapporto prezzo/vendite si è già contratto da circa 100 a 67."
+    },
+    {
+      "data": "2026-06-03",
+      "evento": "La Commissione Scienza e Tecnologia dei Comuni britannici raccomanda di sciogliere il contratto con il servizio sanitario nazionale."
+    },
+    {
+      "data": "2026-06-25",
+      "evento": "Minimo a 52 settimane: 106,37 dollari intraday. Giugno chiuderà a -25,47%, il mese peggiore di questa discesa ma non della storia del titolo: nel febbraio 2021 fece -32,06%."
+    },
+    {
+      "data": "2026-07-28",
+      "evento": "-6,08% in giornata dopo una nota di Cleveland Research sulla debolezza della spesa commerciale fra i partner."
+    },
+    {
+      "data": "2026-07-31",
+      "evento": "Chiusura a 123,06 dollari: -40,7% dal massimo, -30,8% da inizio anno. Livello di riferimento di questa verifica."
+    },
+    {
+      "data": "2026-08-04",
+      "evento": "Trimestrale del secondo trimestre: ricavi +93% a 1,935 miliardi di dollari e guida annuale alzata. È l'evento che inverte la discesa — e conferma il verdetto sulla causa: a muovere il titolo sono i conti, non la stampa."
+    },
+    {
+      "data": "2026-09-09",
+      "evento": "Rilettura: il titolo quota intorno a 170 dollari, circa -18% dal massimo storico di 207,52 (intraday, 3 novembre 2025; 207,18 in chiusura). Il -40,7% di questa verifica era una fotografia del 31 luglio: resta agli atti come tale."
+    }
   ],
-  "nota_sicurezza": "Questo è un verdetto sui fatti e sulle cause documentate, non un parere di investimento: non contiene e non deve essere letto come una raccomandazione a comprare, vendere o mantenere. I limiti vanno dichiarati. Primo: i dati di prezzo provengono da un unico fornitore di serie storiche, sul quale sono state ricalcolate tutte le percentuali; fra vendor diversi esistono divergenze di pochi centesimi su singole chiusure, irrilevanti per la sostanza ma reali. Secondo: nessuna fonte quantifica quanta parte del calo sia attribuibile a ciascun fattore, quindi la gerarchia delle cause qui esposta riflette il peso che le fonti finanziarie danno loro, non una misurazione. Terzo: l'affermazione che non esistano documentari rilevanti nel periodo è una negativa, dimostrabile solo entro le fonti consultate. Quarto: la trimestrale Q2 2026 era attesa per il 3 agosto 2026, subito dopo questa verifica: ogni riferimento al livello «attuale» è fermo al 31 luglio 2026 e può essere già superato. Le persone fisiche citate compaiono soltanto per operazioni depositate presso registri pubblici o per dichiarazioni pubbliche, senza alcuna valutazione personale.",
+  "nota_sicurezza": "Questo è un verdetto sui fatti e sulle cause documentate, non un parere di investimento: non contiene e non deve essere letto come una raccomandazione a comprare, vendere o mantenere. I limiti vanno dichiarati. Primo: i dati di prezzo provengono da un unico fornitore di serie storiche, sul quale sono state ricalcolate tutte le percentuali; fra vendor diversi esistono divergenze di pochi centesimi su singole chiusure, irrilevanti per la sostanza ma reali. Secondo: nessuna fonte quantifica quanta parte del calo sia attribuibile a ciascun fattore, quindi la gerarchia delle cause qui esposta riflette il peso che le fonti finanziarie danno loro, non una misurazione. Terzo: l'affermazione che non esistano documentari rilevanti nel periodo è una negativa, dimostrabile solo entro le fonti consultate. Quarto: la trimestrale Q2 2026 era attesa per il 3 agosto 2026, subito dopo questa verifica: ogni riferimento al livello «attuale» è fermo al 31 luglio 2026 e può essere già superato. Le persone fisiche citate compaiono soltanto per operazioni depositate presso registri pubblici o per dichiarazioni pubbliche, senza alcuna valutazione personale.\n\n⏱ LE CIFRE DI MERCATO SONO LETTURE A UNA DATA, e invecchiano da sole. Questa verifica nasce con i valori del 31 luglio 2026 e li ha riletti il 9 settembre 2026. La rilettura è stata corroborata su due ricerche indipendenti che concordano anche sul minimo di 106,37 dollari del 25 giugno già registrato qui — segno che leggono la stessa serie; le pagine di quotazione non erano raggiungibili in modo diretto dalla sessione che ha misurato, e questo va detto invece di farlo sembrare un dato letto in prima persona. Chi usa questo verdetto dopo il 9 settembre 2026 deve rileggere il prezzo prima di citarlo.",
   "issue": 3,
   "data_verifica": "2026-08-02"
 }

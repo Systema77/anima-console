@@ -16,7 +16,19 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "docs", "data")
 OUT = os.path.join(DATA, "db.js")
 
-RICHIESTI = ("titolo", "oggetto", "punteggio", "etichetta", "verdetto", "data_verifica")
+RICHIESTI = ("titolo", "oggetto", "punteggio", "ambito", "etichetta", "verdetto", "data_verifica")
+
+# `ambito` dice COSA misura il punteggio, e senza di lui il numero non significa
+# niente: un 70 di affidabilità e un 70 di verità sono scale diverse, e messi
+# accanto sembrano confrontabili. Vocabolario CHIUSO — se serve un valore nuovo
+# si discute, non si allarga di nascosto.
+#
+# ⚠️ PERCHE' E' OBBLIGATORIO E NON FACOLTATIVO. La regola è stata ratificata il
+# 10/08. Tre verdetti sono nati senza il campo il 29/08; altri sette il 09/09.
+# Cioè: finché restava un campo gentile, il debito RICRESCEVA più in fretta di
+# quanto lo si riparasse — dieci verdetti nuovi, zero con l'ambito. Un promemoria
+# non regge una regola: la regge un cancello. — KIROSHI//OR, 2026-09-10
+AMBITI = ("affidabilita", "verita", "non_applicabile")
 
 
 def main() -> int:
@@ -52,6 +64,14 @@ def main() -> int:
             continue
         if not 0 <= pt <= 100:
             problemi.append(f"{nome}: punteggio fuori scala 0-100 — {pt}")
+            continue
+
+        # Un ambito inventato è peggio di un ambito assente: assente si vede,
+        # inventato passa per buono e porta il numero su una scala che nessuno
+        # ha definito.
+        if v["ambito"] not in AMBITI:
+            problemi.append(f"{nome}: ambito fuori vocabolario — {v['ambito']!r} "
+                            f"(ammessi: {', '.join(AMBITI)})")
             continue
 
         if not v.get("fonti"):

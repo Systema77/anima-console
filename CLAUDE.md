@@ -92,7 +92,7 @@ Quando lavori in **Claude Code** su questo repo (GitHub: `anima-console`), la mi
 - Motore: `scripts/kiroshi_check.py` — numerazione file = max NNNN esistente + 1 (mai il numero issue) · fail-fast se manca il secret · db.js delegato a `build_db.py`
 - Verdetti = dati strutturati: `docs/data/*.json` + `docs/data/db.js` (`window.KIROSHI_DB`; ogni voce ha un campo `id` generato dal nome file → permalink `…/fake-checker/#NNNN`)
 - Sito **statico**, GitHub Pages da `docs/`, CNAME `cyberboomer.io`
-- **7 verdetti** pubblicati (0001 Sway · 0002 social · 0003 Ultrafab · 0004 Palantir · 0005 Prospera · 0006 Insta360 · 0007 Nikon ZR)
+- ~~**7 verdetti** pubblicati~~ → **14**, misurati il 09/09 (`ls docs/data/[0-9]*.json`). Ai sette di agosto (0001 Sway · 0002 social · 0003 Ultrafab · 0004 Palantir · 0005 Prospera · 0006 Insta360 · 0007 Nikon ZR) se ne sono aggiunti sette il 09/09, tutti sui player dell'IA: 0008 OpenAI · 0009 Anthropic · 0010 Google DeepMind · 0011 Meta · 0012 Nvidia · 0013 DeepSeek · 0014 la mappa. Sono le richieste #44 e #46, lavorate a mano dopo che l'automazione si era fermata al passo 7.
 - `docs/index.html` = **la PORTA** (dal 31/08, generata da `scripts/build_porta.py`, mai a mano): un campo per la frase di sblocco, dietro il banco di lavoro del Direttore cifrato in AES-GCM-256 — la chiave è `systema77.regia` nel Portachiavi (`squadra/chiavi.sh`) e non compare mai in un file del repo. Le altre pagine restano dov'erano: `docs/fake-checker/` = console verdetti + pannello richieste (cyan) · `docs/anima/` = hub A.N.I.M.A. · `docs/braindance/` = coda BRAINDANCE · `docs/schede/` = pagine interne · `docs/regia/` = plancia
   > ⚠️ Fino al 04/09 questa riga diceva «`docs/index.html` = hub Cyber Boomer (ambra Camera Oscura)»: era vero il 17/08 ed è falso dal 31/08. Corretta nello stesso giro in cui è stata misurata.
 
@@ -102,7 +102,7 @@ Quando lavori in **Claude Code** su questo repo (GitHub: `anima-console`), la mi
 3. **Verifica dal vivo**: funzione serverless + API Claude. ⚠️ **Stessa infrastruttura del bot Slack L1** (`DA-KIROSHI-per-SQUELCH-bot-slack-L1.md`) → costruire **una volta**, servire **due canali**.
 4. **Estensioni**: bot Slack, badge "verificato", accesso per gli altri siti.
 
-**Blocchi noti:** ~~HTTPS del dominio non emesso (priorità 0 — Settings → Pages)~~ → **falso dal 17/07**: misurato dal runner il 05/09 (`.github/workflows/prova-porta.yml`, run #1), `cyberboomer.io` ha un certificato Let's Encrypt valido (17/07 → 15/10), `http` → `https` in 301, la porta servita in HTTPS. La riga è rimasta qui sette settimane oltre la sua verità e mandava a cercare il guasto dell'accesso alla porta nel posto sbagliato: **chi non entra sbaglia la frase, non la rete** (`bash squadra/chiavi.sh leggi regia`). · **secret `ANTHROPIC_API_KEY` non configurato nel repo** (Settings → Secrets and variables → Actions): senza, l'automazione muore alla chiamata API — è la vera causa del failure del run #32 del 16/08, non l'etichetta · servono 10–12 verdetti (oggi 7; la ricerca `cinepresa-…` resta a BRAINDANCE perché è una tesi/claim, non un prodotto).
+**Blocchi noti:** ~~HTTPS del dominio non emesso (priorità 0 — Settings → Pages)~~ → **falso dal 17/07**: misurato dal runner il 05/09 (`.github/workflows/prova-porta.yml`, run #1), `cyberboomer.io` ha un certificato Let's Encrypt valido (17/07 → 15/10), `http` → `https` in 301, la porta servita in HTTPS. La riga è rimasta qui sette settimane oltre la sua verità e mandava a cercare il guasto dell'accesso alla porta nel posto sbagliato: **chi non entra sbaglia la frase, non la rete** (`bash squadra/chiavi.sh leggi regia`). · ~~secret `ANTHROPIC_API_KEY` non configurato nel repo~~ → **falso dal 07/09**: il run #46 di `kiroshi.yml` è arrivato al passo 7, cioè **oltre** la chiamata a pagamento del passo 4, e ha prodotto un verdetto vero (99 righe di JSON su `kiroshi/verifica-44`). Il secret c'è. Restava scritto qui che mancava, e chi leggeva cercava il guasto tre passi prima di dove stava · **nuovo blocco misurato l'08/09: le Actions non possono aprire PR in questo repo** (`GitHub Actions is not permitted to create or approve pull requests`) → Settings → Actions → General → Workflow permissions → «Allow GitHub Actions to create and approve pull requests». Finché è spento, il ciclo produce il verdetto, lo spinge sul ramo e **non arriva mai alla proposta** · servono 10–12 verdetti (oggi 7; la ricerca `cinepresa-…` resta a BRAINDANCE perché è una tesi/claim, non un prodotto).
 
 **Regole di lavoro nel repo:**
 - Commit e push: **anche dalle sessioni remote**, sul branch di lavoro, mai su `main`.
@@ -130,22 +130,53 @@ Quando lavori in **Claude Code** su questo repo (GitHub: `anima-console`), la mi
   > Parole sue: «ormai il mio lavoro è schiacciare tasti».
   > 📜 **La regola nasceva per proteggere ciò che diventa pubblico, e va riportata a quel confine.**
 
-  **CHI FONDE COSA — confine ratificato dal Direttore il 30/08:**
+  > 🔓 **REVOCA 2026-09-10 — la regola è cambiata, e il criterio con lei. Leggi questo, non la
+  > memoria che hai della tabella vecchia.**
+  > Fino a oggi qui c'era un confine **geografico**: *«qualsiasi cosa dentro `docs/` → solo il
+  > Direttore»*. Parole sue, stasera: *«sono stanco di fare merge e push su github. vorrei
+  > revocare la regola. quando possono gli agenti si arrangiano.»*
+  > **Non era un'impressione: erano 22 PR fuse in un giorno su questo repo soltanto** (dalla #78
+  > delle 07:30 alla #98 delle 21:45), e i repo sono sette. È la **seconda volta**: il 30/08
+  > aveva già detto «ormai il mio lavoro è schiacciare tasti» e la regola era stata *ristretta*.
+  > In undici giorni è tornata dov'era.
+  > **Perché il criterio era sbagliato, misurato:** `docs/regia/index.html` sta in `docs/`,
+  > quindi era suo — ed è un file **generato da un cron ogni sei ore**, che nessuno scrive; in
+  > una sera è finito dentro **tre merge di fila** come puro rumore. Mentre il worker che può
+  > **spendere i suoi soldi** sta fuori da `docs/`, quindi passava dalla mia parte senza fermarsi.
+  > 📜 **Un confine geografico non protegge da un rischio che si è spostato.**
 
-  | Cosa | Chi fonde |
+  **CHI FONDE COSA — confine ratificato dal Direttore il 2026-09-10:**
+
+  **Fonde l'agente che ha fatto il lavoro. Sempre** — comprese le pagine dei siti, compreso
+  `docs/`. Restano al Direttore **quattro cose**, e non per dove sta il file ma **per cosa fa**:
+
+  | Resta sua | Perché |
   |---|---|
-  | `scripts/`, `.github/workflows/`, `CLAUDE.md`, `squadra/`, `.claude/` | **D.R.A.G.O.**, senza chiedere |
-  | Riparazione di un guasto misurato, in qualunque file non pubblico | **D.R.A.G.O.**, senza chiedere |
-  | **Qualsiasi cosa dentro `docs/`** — cioè ciò che una persona può leggere | **Solo il Direttore** |
-  | **Ogni verdetto pubblicato** — è la firma del Dipartimento Verità | **Solo il Direttore** |
-  | Un cambio di rotta, un costo nuovo, una decisione non ancora presa | **Solo il Direttore** |
+  | **① Costa soldi** — un abbonamento, un consumo, un servizio a pagamento acceso | i prezzi sono suoi, e una spesa non si annulla con un revert |
+  | **② Un indirizzo nuovo** — dominio, sottodominio, o una rotta pubblica che prima non c'era | è la casa che cresce, e la paga lui |
+  | **③ Un verdetto pubblicato** — è la **firma del Dipartimento Verità**, non una pagina | accusare o assolvere una ditta è un atto, non un deploy |
+  | **④ Una decisione che non ha ancora preso** — un cambio di rotta | va in `squadra/DECISIONI.md` e aspetta lui |
+
+  ⚠️ **Nel dubbio si chiede.** Se non è chiaro in quale delle quattro cade, **cade dentro**: un
+  tasto in più è meno grave di una spesa non voluta. Il dubbio si risolve verso di lui.
+
+  ⚠️ **La protezione si è spostata, non è sparita — ed è la parte da non sbagliare.** Tolta la
+  firma da `docs/`, ciò che difende le pagine pubbliche **non è più una persona: è un guardiano.**
+  Quindi `node strumenti/collaudo.mjs` verde **prima** di ogni merge che tocca una superficie
+  pubblica non è più un consiglio: è la condizione. Stessa cosa per la guardia privacy su ogni
+  file che entra in un repo pubblico.
+  📜 **Se la firma se ne va, il guardiano non è più un parere.**
 
   Vincoli che restano, e non sono negoziabili nemmeno per la manutenzione:
   1. **Non si fonde ciò che non si è verificato.** La misura precede il merge, sempre.
+     *(Questo non si tocca: il 10/09 ha fermato tre difetti prima che uscissero e una fusione
+     alla cieca su un ramo che non esisteva.)*
   2. **Il merge non chiude una discussione aperta col Direttore.** Se c'è una domanda in sospeso su
      quel lavoro, la PR aspetta lui anche se è manutenzione.
   3. **Si dice sempre cosa si è fuso**, in una riga, senza fargli aprire GitHub per scoprirlo.
-  4. La PR nasce comunque, anche quando la fondo io: è il registro di cosa è cambiato e perché.
+  4. La PR nasce comunque, anche quando la fondo io: è il registro di cosa è cambiato e perché,
+     e il paraurti fra sessioni parallele. **Ma dal 10/09 non nasce più in bozza:** nasce pronta
+     e si fonde subito. Il costo per il Direttore è **zero tasti**.
   Se `git commit` fallisce con lock: `find .git -name '*.lock' -delete`. La strada della patch
   (`git format-patch --stdout`, applicata con `git am <file>.patch`) resta valida come ripiego
   se un giorno l'autorizzazione dovesse cadere di nuovo.
@@ -177,6 +208,10 @@ Quando lavori in **Claude Code** su questo repo (GitHub: `anima-console`), la mi
 > ed è morto** con «Could not resolve authentication method»: **manca il secret
 > `ANTHROPIC_API_KEY`** nel repo. Log del run verificato, non dedotto. Da oggi lo script lo dice
 > in chiaro (fail-fast) e il workflow fa match **esatto** sull'array delle etichette.
+>
+> ✅ **Chiuso, e la data vera è il 30/08.** Questo verbale resta com'era perché era vero il 17/08, ma chi legge solo questo paragrafo cercherebbe un guasto che non esiste più: la correzione sta in **Blocchi noti**.
+> Due misure indipendenti, e la seconda sposta indietro la data: il run #46 di `kiroshi.yml` (07/09) è arrivato oltre la chiamata a pagamento; e il **log** del run #7 di `.github/workflows/prova-chiave.yml` (04/09) stampa «✓ LA CHIAVE FUNZIONA. 11 modelli raggiungibili».
+> **La causa, che nessuna delle due righe diceva:** la chiave non mancava — era **malformata**, un a capo dentro il valore rompeva il mascheramento di GitHub, ed è stata riparata il **30/08** con la PR #24. Un secret che c'è ma è malformato fallisce come uno assente e si diagnostica in tutt'altro posto.
 
 **Uscita (Claude Code).** Questo è il tuo lavoro ricorrente. Ad ogni sessione:
 1. `gh issue list --label kiroshi-queue --state open` → leggi la coda.
@@ -187,7 +222,11 @@ Quando lavori in **Claude Code** su questo repo (GitHub: `anima-console`), la mi
    `titolo · oggetto · domanda · modalita · punteggio · etichetta · verdetto · green_flags[] · red_flags[] · fonti[{titolo,url,tipo,sostiene,autorevolezza}] · timeline[{data,evento}] · nota_sicurezza · issue · data_verifica`
 4. `python3 scripts/build_db.py` → rigenera `docs/data/db.js` (scarta i verdetti senza fonti: è un guardrail, non un bug).
 5. Commit + push sul branch di lavoro (dal Mac **o** da una sessione remota, vedi la correzione
-   del 30/08 sopra), poi PR in bozza. Fusa la PR, la console si aggiorna da sola.
+   del 30/08 sopra), poi PR **in bozza — e questo è uno dei pochi posti dove è ancora così.**
+   Non perché il file sta in `docs/` (quel criterio è stato revocato il 10/09), ma perché **un
+   verdetto è la firma del Dipartimento Verità**: è la ③ delle quattro cose che restano al
+   Direttore. Accusare o assolvere una ditta è un atto, non un deploy. Fusa la PR, la console si
+   aggiorna da sola.
 6. `gh issue close <n> --comment "Verdetto pubblicato: …"` → chiudi il cerchio.
 
 **Regola:** un verdetto senza fonti **non si pubblica**. Lo script lo blocca, ma la responsabilità resta tua.
@@ -200,15 +239,19 @@ KIROSHI · BRAINDANCE · SQUELCH · ECHO), il Direttore compila **una commessa**
 (`squadra/COMMESSA-TEMPLATE.md`, versione cliccabile `docs/schede/commessa.html`)
 e la porta d'ingresso è **sempre D.R.A.G.O.**, che dispaccia secondo
 `squadra/PROTOCOLLO-DISPATCH.md`. Organigramma e registro commesse:
-`squadra/SQUADRA.md`. Le regole esistenti (ratifica del Direttore, guardia
-privacy, confine Verità, push dal Mac) restano tutte in vigore: il sistema le
-mette a regime, non le sostituisce.
+`squadra/SQUADRA.md`. Le regole esistenti (guardia privacy, confine Verità)
+restano tutte in vigore: il sistema le mette a regime, non le sostituisce.
+⚠️ **«Ratifica del Direttore» qui non vuol più dire «ogni merge»**: dal 10/09 sono
+le **quattro cose** della tabella CHI FONDE COSA — soldi, indirizzi, verdetti,
+decisioni non prese. Tutto il resto lo fonde chi l'ha fatto.
 
 **LA RONDA (dal 2026-08-19).** Esiste una Routine claude.ai «RONDA D.R.A.G.O.»
 (2 giri al giorno) che lavora da sola le code del repo: etichette `commessa`
 (dal modulo `docs/schede/commessa.html`, bottone «Invia alla RONDA»),
-`kiroshi-queue`, `braindance-queue` — e sempre anche le issue nude. Consegna
-in PR **bozza**: la ratifica del Direttore è il merge, mai automatico.
+`kiroshi-queue`, `braindance-queue` — e sempre anche le issue nude.
+**Dal 10/09 la RONDA fonde da sé** ciò che non cade nelle quattro cose del Direttore;
+resta in bozza solo ciò che vi cade — e per la RONDA è quasi sempre la ③, perché le
+code `kiroshi-queue` e `braindance-queue` producono **verdetti**.
 ⚠️ L'etichetta `commessa` deve esistere nel repo (lezione del 17/08).
 
 **I DUE DRAGHI (dal 2026-08-19).** Esiste un gemello commerciale,
@@ -216,6 +259,39 @@ in PR **bozza**: la ratifica del Direttore è il merge, mai automatico.
 lui vende ai clienti, la casa produce. Integrazione per handoff di file col
 Direttore come unico ponte, clienti solo per sigla (C-0N) nel repo — regole in
 `squadra/CONVENZIONE-DUE-DRAGHI.md`.
+
+## UNA CHAT VIVA PER AGENTE (dal 2026-09-10)
+
+> 🩹 **Nata da:** *«ho tante chat dello stesso agente. non so più quale scegliere e su quale
+> lavorare.»* — il Direttore, 10/09.
+
+**Misurato quel giorno, non stimato:** ≥100 sessioni in elenco, di cui **70 già archiviate** e
+**30 vive**. Il disordine non stava nel numero: stava in **tre grovigli di gemelli** —
+«Passaporto dell'immagine» ×4, ECHO ×4 (fra cui *«ECHO vetrina testi»* e *«ECHO vetrina **e**
+testi»*, a 43 minuti di distanza), «magliette DROP» ×2 con il titolo invertito.
+
+📜 **Il problema non erano i titoli mancanti: erano i titoli che si somigliano.**
+
+**Le tre regole che ne escono:**
+
+1. **Ogni chat nasce col tag del suo agente** — `echo`, `kiroshi`, `judy`, `drago`, `drop`,
+   `squelch`, `chrono`, `flux`, `suono`, `rogue`, `shutter`, `trace`, `silverwrit`. Da lì la
+   domanda «quale scelgo» si risolve **con un filtro**, non leggendo trenta titoli.
+   ⚠️ Lo strumento c'era **da sempre** e non era mai stato acceso: delle 27 chat vive, solo 4
+   avevano un tag, e tre erano configurazione tecnica. *Uno strumento che nessuno accende non è
+   una possibilità: è un peso in più da ricordare.*
+2. **Una chat viva per agente.** Aprirne una seconda vuol dire **chiudere la prima** col rito
+   `/chiusura` — che esiste già come skill e non veniva usato. Se due chat hanno lo stesso
+   titolo, una delle due è da chiudere.
+3. **Prima di archiviare, si guarda se ha spinto.** Archiviare è reversibile
+   (`unarchive_session`) **ma libera il container**: quello che è solo nel filesystem si perde.
+   È la lezione di ECHO dello stesso giorno — *il lavoro esiste solo se è in git*. Il 10/09 le
+   quattro archiviate avevano tutte i rami già spinti su tutti i repo: **zero lavoro perso**,
+   e non per fortuna.
+
+⚠️ **Non si archiviano le chat `BLOCKED` o `REVIEW_READY`**, nemmeno quando sono duplicati
+palesi: sono proprio quelle che possono avere dentro roba non spinta. Si archiviano solo le
+`COMPLETED`, e solo se sono gemelle di una più recente.
 
 ## Confine (accordo BRAINDANCE, ratificato 2026-07-12)
 - KIROSHI//OR verifica **ditte / venditori / cose / voci**; le **persone e le
