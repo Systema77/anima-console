@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mercato video AI — Cyber Boomer · SYSTEMA 77</title>
+<meta name="description" content="Chi sono oggi le agenzie e gli studi concorrenti che producono video con IA generativa: posizionamento, prezzi, fonti.">
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root{
+    /* Camera oscura — una lampada calda in una stanza buia */
+    --bg-deep:    #0C0B0E;
+    --bg-surface: #141216;
+    --amber:      #C9A15E;
+    --text-hi:    #ECE7DF;
+    --text-lo:    #A7A29B;
+    --line:       #3A3730;
+    --red:        #C97A5E;
+    --font-mono:  'Courier Prime','Courier New','Lucida Console',monospace;
+    --font-serif: 'Iowan Old Style','Palatino Linotype',Palatino,'Georgia',serif;
+  }
+
+  body{
+    background:var(--bg-deep);
+    color:var(--text-hi);
+    font-family:var(--font-serif);
+    line-height:1.6;
+    min-height:100vh;
+  }
+
+  body::before{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:9998;
+    background:radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(0,0,0,.55) 100%);
+  }
+
+  main{ max-width:760px; margin:0 auto; padding:4rem 1.5rem 2rem; position:relative; z-index:1; }
+
+  .back{
+    display:inline-block; margin-bottom:3rem;
+    font-family:var(--font-mono); font-size:.72rem; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--text-lo); text-decoration:none;
+    transition:color .2s;
+  }
+  .back:hover, .back:focus-visible{ color:var(--amber); }
+
+  .eyebrow{
+    font-family:var(--font-mono); font-size:.72rem; letter-spacing:.28em;
+    text-transform:uppercase; color:var(--amber); margin-bottom:1rem;
+  }
+
+  h1{
+    font-family:var(--font-mono); font-size:1.6rem; font-weight:400;
+    letter-spacing:.04em; margin-bottom:1rem;
+  }
+
+  .lede{ color:var(--text-lo); margin-bottom:2rem; max-width:56ch; }
+
+  .avviso{
+    border:1px solid var(--line); border-left:2px solid var(--red);
+    background:var(--bg-surface); padding:1.2rem 1.4rem; margin-bottom:3rem;
+    font-size:.92rem;
+  }
+  .avviso p + p{ margin-top:.7rem; }
+  .avviso .tag{
+    display:block; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--red); margin-bottom:.6rem;
+  }
+
+  h2{
+    font-family:var(--font-mono); font-size:.95rem; font-weight:400;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--amber);
+    margin:2.6rem 0 1rem; padding-bottom:.5rem; border-bottom:1px solid var(--line);
+  }
+
+  ul.elenco{ list-style:none; }
+  ul.elenco li{
+    padding:.9rem 0; border-bottom:1px solid var(--line);
+  }
+  ul.elenco li:first-child{ padding-top:0; }
+  ul.elenco b{ color:var(--text-hi); }
+  ul.elenco .note{ display:block; color:var(--text-lo); font-size:.92rem; margin-top:.2rem; }
+  ul.elenco .fonti{ display:block; margin-top:.35rem; }
+  ul.elenco .fonti a{ color:var(--text-lo); font-size:.8rem; }
+  ul.elenco .fonti a:hover, ul.elenco .fonti a:focus-visible{ color:var(--amber); }
+
+  p.corpo{ margin-bottom:1rem; max-width:64ch; }
+  p.corpo a{ color:var(--text-hi); }
+  p.corpo a:hover, p.corpo a:focus-visible{ color:var(--amber); }
+
+  .cifre{ display:grid; grid-template-columns:1fr 1fr; gap:.8rem 1.5rem; margin:1rem 0 1.5rem; }
+  .cifre div{ border-left:2px solid var(--line); padding-left:.8rem; }
+  .cifre .num{ display:block; font-family:var(--font-mono); font-size:1.1rem; color:var(--amber); }
+  .cifre .lbl{ display:block; font-size:.82rem; color:var(--text-lo); }
+
+  ol.fonti-elenco{ list-style:none; counter-reset:f; }
+  ol.fonti-elenco li{
+    counter-increment:f; padding:.55rem 0; border-bottom:1px solid var(--line);
+    font-size:.88rem; display:flex; gap:.7rem;
+  }
+  ol.fonti-elenco li::before{
+    content:counter(f); font-family:var(--font-mono); color:var(--text-lo); flex:none; width:1.6rem;
+  }
+  ol.fonti-elenco a{ color:var(--text-hi); word-break:break-word; }
+  ol.fonti-elenco a:hover, ol.fonti-elenco a:focus-visible{ color:var(--amber); }
+
+  footer{
+    max-width:760px; margin:0 auto; padding:3rem 1.5rem 4rem;
+    border-top:1px solid var(--line); margin-top:3rem;
+    font-family:var(--font-mono); font-size:.78rem; color:var(--text-lo);
+    position:relative; z-index:1;
+  }
+  footer a{ color:var(--text-lo); }
+  footer a:hover, footer a:focus-visible{ color:var(--amber); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<main>
+  <a class="back" href="index.html">&larr; Schede</a>
+
+  <p class="eyebrow">Ricerca di mercato · 13&nbsp;·&nbsp;09&nbsp;·&nbsp;2026</p>
+  <h1>Chi produce video con IA generativa, oggi</h1>
+  <p class="lede">Chi sono le agenzie e gli studi concorrenti che vendono video fatto con IA
+  generativa come servizio commerciale — a livello globale — e come si posizionano.</p>
+
+  <div class="avviso">
+    <span class="tag">Come leggere questa scheda</span>
+    <p>Costruita da <b>ricerche web (WebSearch)</b>, non da pagine lette per intero e verificate
+    incrociando le fonti primarie: in questa sessione il recupero del testo completo delle
+    pagine (WebFetch) era bloccato dalla rete della sessione stessa — confermato anche su
+    Wikipedia, quindi non è un problema delle fonti scelte. Un tentativo di ricerca profonda
+    automatica con verifica avversariale (il workflow <code>deep-research</code>) è fallito
+    proprio a questo passaggio: 20 fonti trovate, 0 lette.</p>
+    <p>Quello che segue sono quindi <b>estratti e sintesi di risultati di ricerca</b>, con link
+    diretti alle fonti. Alcune affermazioni hanno più fonti indipendenti che si confermano a
+    vicenda (lo dico dove succede); altre vengono da una sola fonte, spesso un blog aziendale con
+    un interesse dichiarato a promuovere sé stesso o i propri clienti. Prima di usarla per una
+    decisione vera, vale la pena verificare i nomi principali con una ricerca mirata quando la
+    rete di sessione lo permetterà.</p>
+  </div>
+
+  <h2>I grandi gruppi che internalizzano</h2>
+  <ul class="elenco">
+    <li>
+      <b>WPP Production</b> — WPP ha consolidato le sue capacità di produzione (inclusa Hogarth)
+      in un'unica unità dal 23&nbsp;febbraio 2026: oltre 10.000 persone in 40+ sedi, pensata come
+      "high-velocity content studio" basato su IA generativa.
+      <span class="fonti"><a href="https://www.storyboard18.com/advertising/wpp-consolidates-global-production-operations-into-new-ai-driven-unit-88139.htm" target="_blank" rel="noopener">Storyboard18</a> · <a href="https://www.marketingdive.com/news/wpp-rolls-production-capabilities-into-new-wpp-production-unit/810502/" target="_blank" rel="noopener">Marketing Dive</a></span>
+    </li>
+    <li>
+      <b>Accenture Song</b> — collega produzione video IA a pianificazione campagne e
+      storyboarding; con un cliente CPG ha tagliato i costi di produzione contenuti del 30-50%.
+      <span class="fonti"><a href="https://digiday.com/marketing/this-is-what-the-future-will-look-like-accenture-song-has-moved-upstream-of-advertising/" target="_blank" rel="noopener">Digiday</a></span>
+    </li>
+    <li>
+      <b>Omnicom, Publicis, WPP, Stagwell</b> — hanno tutti annunciato partnership con Adobe
+      (Cannes Lions 2026) per piattaforme IA di contenuto/dati, ciascuno con un'implementazione
+      diversa.
+      <span class="fonti"><a href="https://futureweek.com/week-in-review-cannes-lions-2026-omnicom-media-and-netflix-partner-gap-announces-ai-transformation-and-adobe-enters-a-series-of-partnerships/" target="_blank" rel="noopener">Futureweek</a></span>
+    </li>
+  </ul>
+
+  <h2>Studi e agenzie "AI-native" o boutique</h2>
+  <ul class="elenco">
+    <li>
+      <b>Superside</b> — "Creative-as-a-Service" a abbonamento; clienti citati Amazon/Google.
+      Prezzo: piano base "Flex" da <b>$15.000/mese</b>, fino a $40.000+/mese, più $1.000/mese di
+      fee di piattaforma; impegno minimo di un anno.
+      <span class="fonti"><a href="https://www.superside.com/blog/ai-video-production-companies" target="_blank" rel="noopener">Superside (fonte di parte)</a> · <a href="https://vidico.com/news/superside-pricing/" target="_blank" rel="noopener">Vidico</a> · <a href="https://www.vendr.com/marketplace/superside" target="_blank" rel="noopener">Vendr</a></span>
+    </li>
+    <li>
+      <b>Native Foreign</b> (USA) — accreditata come prima agenzia ad aver consegnato uno spot
+      commerciale con Sora (OpenAI): il film sull'origine di Toys "R" Us, presentato a Cannes
+      Lions 2024, dalla concezione al prodotto finale in poche settimane. <b>Confermato da 8
+      fonti indipendenti</b> (non solo blog di settore) — è l'affermazione più solida di tutta
+      questa scheda.
+      <span class="fonti"><a href="https://venturebeat.com/ai/toys-r-us-unveils-first-commercial-made-with-openais-sora" target="_blank" rel="noopener">VentureBeat</a> · <a href="https://www.nbcnews.com/tech/internet/toys-r-us-ai-video-ad-controversy-explained-commercial-rcna159030" target="_blank" rel="noopener">NBC News</a> · <a href="https://www.hollywoodreporter.com/business/digital/toys-r-us-ad-sora-openai-video-tool-reaction-1235932993/" target="_blank" rel="noopener">Hollywood Reporter</a> · <a href="https://www.cnn.com/2024/06/25/tech/toys-r-us-sora-ai/index.html" target="_blank" rel="noopener">CNN</a> · <a href="https://www.prnewswire.com/news-releases/toysrus-studios-and-native-foreign-use-openais-sora-to-narrate-the-origin-story-of-beloved-toyrus-brand-302180332.html" target="_blank" rel="noopener">PR Newswire</a></span>
+    </li>
+    <li>
+      <b>MATA AI Generative Studio</b> — fondata nel 2025, team con background TBWA/Publicis/
+      VML/BBDO/DDB; focus su auto, banking, sport, beauty, lusso, entertainment.
+      <span class="fonti"><a href="https://mataai.studio/" target="_blank" rel="noopener">mataai.studio</a></span>
+    </li>
+    <li>
+      <b>The Dor Brothers</b> — sede reale a Lisbona (nonostante la fama "berlinese"), ~30
+      persone, team internazionale; 300+ progetti, 100M+ visualizzazioni; clienti eToro (spot a
+      Times Square), Snoop Dogg, French Montana, Microsoft. Prezzi non pubblicati.
+      <span class="fonti"><a href="https://thedorbrothers.com/about/" target="_blank" rel="noopener">thedorbrothers.com</a></span>
+    </li>
+    <li>
+      <b>Altri nomi europei citati ricorrentemente, non approfonditi:</b> Private Island (Londra
+      — spot IA per KFC, UEFA Women's Euros, FIFA 22), AI25.Studio (Varsavia), Swindles®
+      (Aquisgrana — Mercedes-Benz, Sparkasse, Lindt), Synima (Londra/NY/LA/Amsterdam), Trippy
+      Pictures (Vienna, un Cannes Lion, workflow ComfyUI-native).
+      <span class="fonti"><a href="https://trippy.pictures/blog/best-ai-video-production-companies-europe" target="_blank" rel="noopener">Trippy Pictures (fonte di parte)</a> · <a href="https://h3aifilms.com/best-ai-video-production-companies/" target="_blank" rel="noopener">H3 AI Films (fonte di parte)</a></span>
+    </li>
+    <li>
+      <b>Monks, Lemonlight, Waymark</b> — citati ripetutamente in più liste comparative
+      indipendenti, senza dettaglio verificato oltre il nome.
+      <span class="fonti"><a href="https://www.awesomic.com/blog/ai-video-production-agencies" target="_blank" rel="noopener">Awesomic</a> · <a href="https://www.lavamedia.us/blog/top-10-ai-video-production-agencies-in-2026" target="_blank" rel="noopener">Lava Media</a></span>
+    </li>
+  </ul>
+
+  <h2>Concorrenti italiani diretti</h2>
+  <ul class="elenco">
+    <li>
+      <b>Kortocircuito Film Production</b> (Milano) — dichiara esplicitamente "agenzia di
+      produzione video con AI" nel proprio sito, accanto a servizi tradizionali TV/digitali.
+      <span class="fonti"><a href="https://www.kortocircuito.com/agenzia-produzione-video-con-ai/" target="_blank" rel="noopener">kortocircuito.com</a></span>
+    </li>
+    <li>
+      <b>Noonic</b> (Padova, opera in tutta Italia) — divisione di fotografia corporate con
+      pipeline IA per cataloghi scalabili.
+      <span class="fonti"><a href="https://noonic.com/soluzioni/media/video-production" target="_blank" rel="noopener">noonic.com</a></span>
+    </li>
+    <li>
+      <b>Capture Studio, ORBIS Production, Thomas Graziani Visuals</b> — case di produzione
+      video tradizionali (Roma/Napoli/Milano/Torino) che compaiono nelle stesse ricerche ma senza
+      un'offerta IA dichiarata: probabile fascia "da tenere d'occhio", non ancora concorrente
+      diretto sull'IA.
+      <span class="fonti"><a href="https://capturestudio.it/" target="_blank" rel="noopener">capturestudio.it</a></span>
+    </li>
+  </ul>
+
+  <h2>Il fronte asiatico</h2>
+  <p class="corpo">Cina, Giappone e India descritti come i mercati più aggressivi
+  sull'adozione. <b>Kling AI</b> (Cina) — ricavi +300% nel 2026 secondo la fonte, coprirebbe il
+  28% degli ad-video social in APAC (dato Statista citato dalla fonte, non verificato alla
+  fonte primaria). <b>ShengShu AI</b> ha ricevuto un round da <b>$300M guidato da Alibaba</b>
+  (aprile 2026), fra i maggiori investimenti singoli nel video generativo.</p>
+  <p class="corpo fonti"><a href="https://resource.digen.ai/chinese-ai-video-generator-revolution-2026/" target="_blank" rel="noopener">digen.ai</a> · <a href="https://techbehemoths.com/companies/ai-video-generation/china" target="_blank" rel="noopener">TechBehemoths</a></p>
+
+  <h2>Piattaforme e capitali (il "sotto" su cui lavorano le agenzie)</h2>
+  <div class="cifre">
+    <div><span class="num">$3,67B</span><span class="lbl">funding totale tracciato nel settore, 131 round (mediana $8,85M)</span></div>
+    <div><span class="num">$900M</span><span class="lbl">round di Luma AI — ~24,5% di tutto il funding tracciato</span></div>
+    <div><span class="num">$200M</span><span class="lbl">Series E di Synthesia, valutazione $4B</span></div>
+    <div><span class="num">$32M</span><span class="lbl">Series A di Hedra</span></div>
+  </div>
+  <p class="corpo fonti"><a href="https://www.ngram.com/blog/ai-video-statistics-2026" target="_blank" rel="noopener">ngram.com</a> · <a href="https://newmarketpitch.com/blogs/news/ai-creative-tools-funding-analysis" target="_blank" rel="noopener">New Market Pitch</a></p>
+
+  <h2>Prezzi e modelli di business</h2>
+  <p class="corpo">Pattern ricorrente in più fonti, non un listino verificato: fascia
+  <b>"agenzia AI pura" $500–8.000</b> a progetto · fascia <b>"agenzia premium ibrida"
+  $15.000–50.000</b> · retainer tradizionale ancora citato a <b>$2.000–20.000+/mese</b>. Stima
+  di mercato complessiva per il 2026: da ~$847M (definizione stretta, solo generatori) a
+  ~$3,67B (definizione ampia, editing e avatar inclusi). Il 73% delle Fortune&nbsp;500 avrebbe
+  già integrato tool IA nella produzione contenuti, con budget di produzione ridotti del
+  60-80% e volume di output moltiplicato 5-10× secondo le fonti citate.</p>
+  <p class="corpo fonti"><a href="https://playcut.ai/blog/how-much-to-charge-for-ai-video/" target="_blank" rel="noopener">Playcut</a> · <a href="https://knowlify.com/articles/explainer-video-agency-cost-guide" target="_blank" rel="noopener">Knowlify</a> · <a href="https://www.fortunebusinessinsights.com/ai-video-generator-market-110060" target="_blank" rel="noopener">Fortune Business Insights</a></p>
+
+  <h2>Tutte le fonti citate in questa scheda</h2>
+  <ol class="fonti-elenco">
+    <li><a href="https://www.storyboard18.com/advertising/wpp-consolidates-global-production-operations-into-new-ai-driven-unit-88139.htm" target="_blank" rel="noopener">storyboard18.com — WPP Consolidates Global Production Operations</a></li>
+    <li><a href="https://www.marketingdive.com/news/wpp-rolls-production-capabilities-into-new-wpp-production-unit/810502/" target="_blank" rel="noopener">marketingdive.com — WPP rolls production capabilities</a></li>
+    <li><a href="https://digiday.com/marketing/this-is-what-the-future-will-look-like-accenture-song-has-moved-upstream-of-advertising/" target="_blank" rel="noopener">digiday.com — Accenture Song</a></li>
+    <li><a href="https://futureweek.com/week-in-review-cannes-lions-2026-omnicom-media-and-netflix-partner-gap-announces-ai-transformation-and-adobe-enters-a-series-of-partnerships/" target="_blank" rel="noopener">futureweek.com — Cannes Lions 2026 recap</a></li>
+    <li><a href="https://www.superside.com/blog/ai-video-production-companies" target="_blank" rel="noopener">superside.com — 11 Best AI Video Production Companies</a></li>
+    <li><a href="https://vidico.com/news/superside-pricing/" target="_blank" rel="noopener">vidico.com — Superside Pricing</a></li>
+    <li><a href="https://www.vendr.com/marketplace/superside" target="_blank" rel="noopener">vendr.com — Superside Software Pricing</a></li>
+    <li><a href="https://venturebeat.com/ai/toys-r-us-unveils-first-commercial-made-with-openais-sora" target="_blank" rel="noopener">venturebeat.com — Toys R Us / Sora</a></li>
+    <li><a href="https://www.nbcnews.com/tech/internet/toys-r-us-ai-video-ad-controversy-explained-commercial-rcna159030" target="_blank" rel="noopener">nbcnews.com — Toys R Us AI video controversy</a></li>
+    <li><a href="https://www.hollywoodreporter.com/business/digital/toys-r-us-ad-sora-openai-video-tool-reaction-1235932993/" target="_blank" rel="noopener">hollywoodreporter.com — Toys R Us Sora reaction</a></li>
+    <li><a href="https://www.cnn.com/2024/06/25/tech/toys-r-us-sora-ai/index.html" target="_blank" rel="noopener">cnn.com — Toys R Us made an ad almost entirely AI</a></li>
+    <li><a href="https://www.prnewswire.com/news-releases/toysrus-studios-and-native-foreign-use-openais-sora-to-narrate-the-origin-story-of-beloved-toyrus-brand-302180332.html" target="_blank" rel="noopener">prnewswire.com — comunicato ufficiale Toys R Us / Native Foreign</a></li>
+    <li><a href="https://mataai.studio/" target="_blank" rel="noopener">mataai.studio</a></li>
+    <li><a href="https://thedorbrothers.com/about/" target="_blank" rel="noopener">thedorbrothers.com — About</a></li>
+    <li><a href="https://trippy.pictures/blog/best-ai-video-production-companies-europe" target="_blank" rel="noopener">trippy.pictures — Best AI Video Production Companies in Europe</a></li>
+    <li><a href="https://h3aifilms.com/best-ai-video-production-companies/" target="_blank" rel="noopener">h3aifilms.com — Best AI Video Production Companies</a></li>
+    <li><a href="https://www.awesomic.com/blog/ai-video-production-agencies" target="_blank" rel="noopener">awesomic.com — 11 Best AI Video Production Agencies</a></li>
+    <li><a href="https://www.lavamedia.us/blog/top-10-ai-video-production-agencies-in-2026" target="_blank" rel="noopener">lavamedia.us — Top 10 AI Video Production Agencies</a></li>
+    <li><a href="https://www.kortocircuito.com/agenzia-produzione-video-con-ai/" target="_blank" rel="noopener">kortocircuito.com — Agenzia di produzione video con AI</a></li>
+    <li><a href="https://noonic.com/soluzioni/media/video-production" target="_blank" rel="noopener">noonic.com — Video production</a></li>
+    <li><a href="https://capturestudio.it/" target="_blank" rel="noopener">capturestudio.it</a></li>
+    <li><a href="https://resource.digen.ai/chinese-ai-video-generator-revolution-2026/" target="_blank" rel="noopener">digen.ai — Chinese AI Video Generator</a></li>
+    <li><a href="https://techbehemoths.com/companies/ai-video-generation/china" target="_blank" rel="noopener">techbehemoths.com — AI Video Generation Companies in China</a></li>
+    <li><a href="https://www.ngram.com/blog/ai-video-statistics-2026" target="_blank" rel="noopener">ngram.com — 50+ AI Video Statistics for 2026</a></li>
+    <li><a href="https://newmarketpitch.com/blogs/news/ai-creative-tools-funding-analysis" target="_blank" rel="noopener">newmarketpitch.com — AI Creative Tools Startup Funding</a></li>
+    <li><a href="https://playcut.ai/blog/how-much-to-charge-for-ai-video/" target="_blank" rel="noopener">playcut.ai — How Much to Charge for AI Video</a></li>
+    <li><a href="https://knowlify.com/articles/explainer-video-agency-cost-guide" target="_blank" rel="noopener">knowlify.com — Explainer Video Agency Cost Guide</a></li>
+    <li><a href="https://www.fortunebusinessinsights.com/ai-video-generator-market-110060" target="_blank" rel="noopener">fortunebusinessinsights.com — AI Video Generator Market Size</a></li>
+  </ol>
+
+</main>
+
+<footer>
+  <a href="../">cyberboomer.io</a> · Systema 77 · 2026
+</footer>
+
+</body>
+</html>
+<!-- prodotto da Claude Code su richiesta diretta del Direttore, 2026-09-13. Non firmato come un
+     agente di casa: nessun mandato specifico è stato dato per questo lavoro. -->
