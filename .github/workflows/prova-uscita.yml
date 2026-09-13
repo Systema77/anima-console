@@ -1,0 +1,194 @@
+# COSA FA — risponde a una domanda sola: «l'uscita meteo e' accesa, ed e' una
+#   porta o un proxy aperto?». Si lancia a mano dal bottone "Run workflow".
+# PERCHE ESISTE — il passo 5 del manuale del Worker (repo interno, non citato qui)
+#   chiede quattro richieste, e tre provano cio' che la porta RIFIUTA. Su uno
+#   schermo di telefono un 403 e un 404 si leggono uguale: bianco con una scritta.
+#   E soprattutto: dalla barra degli indirizzi NON si manda l'header `Origin`,
+#   e senza quello ogni richiesta sbatte contro il PRIMO cancello — quindi tre
+#   prove su quattro non arrivano nemmeno al cancello che dovrebbero provare.
+#   Qui l'header si manda, e ogni prova colpisce il suo.
+# FIN DOVE ARRIVA — misura i quattro cancelli del Worker senza spendere un
+#   centesimo. Il quinto passo (la previsione vera) tocca l'API a pagamento ed
+#   e' spento di default: si accende con la spunta `spendi`.
+# COSTO — zero, salvo la spunta `spendi`: allora e' UNA chiamata del piano
+#   Open-Meteo a pagamento (29 EUR/mese), e per dieci minuti resta in cache.
+# SICUREZZA — non usa nessun secret, quindi non puo' stamparne uno. Non manda
+#   mai una chiave: la chiave vive solo nel campo Secret del Worker.
+# USO — Actions -> "Prova dell'uscita meteo" -> Run workflow.
+# — creato da D.R.A.G.O., 2026-09-13
+
+name: Prova dell'uscita meteo
+
+on:
+  workflow_dispatch:
+    inputs:
+      base:
+        description: "Indirizzo del Worker, senza barra finale"
+        required: true
+        default: "https://meteo.cyberboomer.io"
+      origine:
+        description: "L'origine ammessa (deve combaciare con la var ORIGINI del Worker)"
+        required: true
+        default: "https://systema77.com"
+      spendi:
+        description: "Fare ANCHE la previsione vera — costa una chiamata del piano a pagamento"
+        type: boolean
+        default: false
+
+jobs:
+  prova:
+    runs-on: ubuntu-latest
+    env:
+      BASE: ${{ inputs.base }}
+      ORIG: ${{ inputs.origine }}
+    steps:
+      - name: 0 · Bersaglio di CONTROLLO — la rete del runner funziona?
+        # Prima di dichiarare morto qualcosa si prova un bersaglio noto vivo.
+        # Se muore anche questo, il guasto e' del runner e TUTTO il referto va
+        # buttato: un 000 direbbe qualcosa sulla nostra rete, niente sul Worker.
+        # E' il passo che rende credibile il resto.
+        run: |
+          set -u
+          COD=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 25 \
+                https://radio-anima.pages.dev/ || echo 000)
+          echo "radio-anima.pages.dev (noto vivo): $COD"
+          if [ "$COD" = "000" ]; then
+            echo "✗ NON RAGGIUNGO NEMMENO IL BERSAGLIO DI CONTROLLO."
+            echo "  Il guasto e' della rete del runner. Nessuna conclusione"
+            echo "  sull'uscita e' lecita da questo run."
+            exit 1
+          fi
+          echo "✓ la rete del runner funziona: si puo' misurare."
+          echo "bersaglio: $BASE   origine dichiarata: $ORIG"
+
+      - name: 1 · L'IDENTITA — chi risponde su / e' davvero la nostra uscita?
+        # Su Cloudflare un 200 puo' essere una pagina qualunque: un indirizzo mai
+        # esistito risponde con la home. La prova non e' il codice: e' il CORPO.
+        # L'impronta `/` e' aperta e senza origine apposta — e' l'unico appiglio
+        # del collaudo.
+        run: |
+          set -u
+          COD=$(curl -sS -o /tmp/radice.txt -w '%{http_code}' --max-time 25 "$BASE/" || echo 000)
+          echo "GET $BASE/  ->  $COD"
+          echo "corpo (primi 200 caratteri):"; head -c 200 /tmp/radice.txt || true; echo
+          echo "---"
+          if [ "$COD" = "000" ]; then
+            echo "ESITO: NON RISPONDE. Il controllo al passo 0 era verde, quindi"
+            echo "stavolta e' davvero il Worker o il DNS del Custom Domain."
+            echo "Se il Worker e' appena nato, il DNS puo' metterci qualche minuto."
+            exit 1
+          fi
+          if grep -q '"servizio":"uscita-meteo"' /tmp/radice.txt; then
+            echo "ESITO: ACCESA, ed e' LA NOSTRA uscita (impronta riconosciuta)."
+          else
+            echo "ESITO: qualcosa risponde $COD, MA NON E' l'uscita meteo."
+            echo "Il corpo non contiene {\"servizio\":\"uscita-meteo\"}."
+            echo "Probabile: il Custom Domain punta altrove, o il codice incollato"
+            echo "nell'editor non e' worker.js."
+            exit 1
+          fi
+
+      - name: 2 · I TRE CANCELLI — cio' che la porta RIFIUTA, e a spese di nessuno
+        # ⚠️ L'ORDINE CONTA, ed e' la ragione per cui ogni riga manda (o non manda)
+        # l'header Origin. Nel Worker i cancelli sono in quest'ordine:
+        #   ① origine  →  ② percorso  →  ③ luogo  →  chiave  →  ④ la spesa
+        # Quindi una richiesta SENZA Origin muore al ①, e non dice NIENTE su ② e ③.
+        # Il LEGGIMI del 10/09 prometteva 404 su due percorsi ostili aperti dalla
+        # barra degli indirizzi: sbagliato, da li' l'header non parte e la risposta
+        # e' 403. Corretto il 13/09 nello stesso giro in cui e' nato questo file.
+        # 📜 Un manuale che insegna l'attesa sbagliata fa dichiarare rotto cio' che e' sano.
+        run: |
+          set -u
+          esito=0
+          prova () { # $1=descrizione $2=percorso $3=origine-o-vuoto $4=codice atteso $5=parola attesa nel corpo
+            if [ -n "$3" ]; then
+              COD=$(curl -sS -o /tmp/p.txt -w '%{http_code}' --max-time 25 -H "Origin: $3" "$BASE$2" || echo 000)
+            else
+              COD=$(curl -sS -o /tmp/p.txt -w '%{http_code}' --max-time 25 "$BASE$2" || echo 000)
+            fi
+            CORPO=$(head -c 200 /tmp/p.txt | tr -d '\n')
+            printf '%-58s codice=%s corpo=%s\n' "$1" "$COD" "$CORPO"
+            if [ "$COD" = "$4" ] && printf '%s' "$CORPO" | grep -q "$5"; then
+              echo "   ✓ atteso $4 + $5"
+            else
+              echo "   ✗ ATTESO codice=$4 con \"$5\" — NON E' QUELLO CHE HO AVUTO"
+              esito=1
+            fi
+          }
+
+          echo "═══ ① l'origine e' il PRIMO cancello (nessun header Origin) ═══"
+          prova "percorso ostile, senza origine" "/v1/rotta-inventata" "" 403 origine_non_ammessa
+          prova "forecast vero, senza origine"   "/v1/forecast?latitude=40.703&longitude=17.8105" "" 403 origine_non_ammessa
+
+          echo
+          echo "═══ ② la lista dei percorsi (origine giusta, percorso no) ═══"
+          prova "percorso inventato" "/v1/rotta-inventata" "$ORIG" 404 percorso_non_in_lista
+          # ⚠️ `constructor` non e' pignoleria: la lista chiusa scritta come oggetto
+          # JS diceva «si'» a quattro percorsi ostili su cinque. Con una Map, zero.
+          # Questo e' il collaudo di quella correzione, e va tenuto per sempre.
+          prova "constructor (la trappola dell'oggetto JS)" "/constructor" "$ORIG" 404 percorso_non_in_lista
+          prova "__proto__" "/__proto__" "$ORIG" 404 percorso_non_in_lista
+
+          echo
+          echo "═══ ③ la lista dei luoghi — e NON costa niente ═══"
+          # Parigi con l'origine giusta passa ① e ②, e muore al ③: il cancello del
+          # luogo sta PRIMA della chiave e PRIMA della fetch. Quindi questa prova
+          # misura la difesa che conta davvero senza spendere un centesimo.
+          prova "Parigi (48.85, 2.35)" "/v1/forecast?latitude=48.85&longitude=2.35" "$ORIG" 403 luogo_non_in_lista
+          prova "Parigi sul marine"    "/v1/marine?latitude=48.85&longitude=2.35"   "$ORIG" 403 luogo_non_in_lista
+
+          echo
+          echo "---"
+          if [ "$esito" = "0" ]; then
+            echo "ESITO: I TRE CANCELLI TENGONO. Non e' un proxy aperto."
+          else
+            echo "ESITO: ALMENO UNA PROVA HA DATO UNA RISPOSTA CHE NON MI ASPETTAVO."
+            echo "Finche' questo passo e' rosso l'uscita NON va collegata a meteo.html:"
+            echo "una porta che non rifiuta cio' che deve rifiutare e' un proxy aperto."
+            exit 1
+          fi
+
+      - name: 3 · LA PREVISIONE VERA — solo se l'hai spuntato, perche' COSTA
+        # Rule ①: cio' che costa soldi e' del Direttore. Le prove di sopra girano
+        # sempre perche' sono gratis; questa arriva a Open-Meteo sul piano a
+        # pagamento, quindi si accende a mano. Una prova che spende non parte da sola.
+        if: ${{ inputs.spendi }}
+        run: |
+          set -u
+          echo "⚠️ questa richiesta tocca il piano a pagamento Open-Meteo."
+          COD=$(curl -sS -o /tmp/prev.txt -w '%{http_code}' --max-time 40 \
+                -H "Origin: $ORIG" \
+                "$BASE/v1/forecast?latitude=40.703&longitude=17.8105" || echo 000)
+          PESO=$(wc -c < /tmp/prev.txt)
+          echo "GET /v1/forecast (Torre Guaceto)  ->  $COD, $PESO byte"
+          echo "corpo (primi 220 caratteri):"; head -c 220 /tmp/prev.txt || true; echo
+          echo "---"
+          if [ "$COD" = "503" ]; then
+            echo "ESITO: 503 chiave_assente — il Worker c'e' ma il Secret"
+            echo "OPEN_METEO_KEY_2 non e' stato salvato (o e' stato salvato come Text)."
+            exit 1
+          fi
+          if [ "$COD" = "502" ]; then
+            echo "ESITO: 502 — Open-Meteo ha rifiutato. Quasi sempre: chiave sbagliata,"
+            echo "scaduta, o incollata con uno spazio/a-capo dentro. Il numero che il"
+            echo "corpo riporta e' il codice che ha dato Open-Meteo."
+            exit 1
+          fi
+          if [ "$COD" = "200" ] && grep -q '"hourly"' /tmp/prev.txt; then
+            echo "ESITO: 🟢 L'USCITA E' VIVA E COMPLETA."
+            echo "La previsione passa, e la chiave non e' mai uscita dal Worker."
+          else
+            echo "ESITO: risposta $COD senza il campo \"hourly\": non e' una previsione."
+            exit 1
+          fi
+
+      - name: 4 · Cosa questo referto NON dice
+        if: always()
+        run: |
+          echo "· NON dice che meteo.html funziona: la pagina non e' ancora collegata"
+          echo "  (e' il passo 6, e si fa solo dopo che questo referto e' verde)."
+          echo "· NON prova che l'header Origin sia una difesa: e' falsificabile, e chi"
+          echo "  lo falsifica ENTRA. Quello che NON puo' fare e' farci spendere, ed e'"
+          echo "  il cancello ③ (la lista dei luoghi) a impedirlo — misurato al passo 2."
+          echo "· Senza la spunta 'spendi' NON dice niente sulla chiave: dice solo che"
+          echo "  i cancelli tengono."
