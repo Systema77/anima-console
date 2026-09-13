@@ -103,7 +103,18 @@ STRUMENTI = [
 
     {"id": "meteo", "nome": "Meteo AURA",
      "mestiere": "Il servizio n.1 dell'agenzia: previsioni dai server a pagamento Open-Meteo",
-     "custode": "IN CHIARO dentro la pagina pubblica /meteo.html — una chiave nel browser non e' un segreto",
+     # ⚠️ Corretto il 13/09 da SHUTTER: questa riga diceva «IN CHIARO dentro la
+     # pagina pubblica», ed era vera fino al 06/09. Quel giorno la chiave e'
+     # stata TOLTA apposta (systema77-site, commit 05e056a). Misurato oggi:
+     # meteo.html:359 ha `const APIKEY='';` e la chiave non compare in nessuno
+     # dei repo pubblici. La riga misurata accanto si aggiorna da sola ogni
+     # poche ore, questa prosa no: sembrava fresca ed era vecchia di una
+     # settimana. 📜 Un dato misurato accanto a una frase scritta a mano fa
+     # sembrare misurata anche la frase.
+     "custode": "USCITA dalla pagina pubblica il 06/09: /meteo.html ha APIKEY vuota e parla coi server GRATUITI. Resta da REVOCARE dal pannello Open-Meteo — e' stata pubblica 18 giorni",
+     # L'impronta qui sotto NON distingue quale server sia in uso: il ternario
+     # in pagina scrive tutti e due gli indirizzi, quindi si trova comunque.
+     # Prova che la pagina e' nostra, non che stiamo usando la licenza pagata.
      "url": "https://systema77.com/meteo.html", "impronta": "customer-api.open-meteo.com"},
 
     # Le due che non si possono provare senza usarle. Restano in elenco: una
