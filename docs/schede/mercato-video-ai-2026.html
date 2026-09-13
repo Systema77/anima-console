@@ -9,109 +9,131 @@
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
   :root{
-    /* Camera oscura — una lampada calda in una stanza buia */
-    --bg-deep:    #0C0B0E;
-    --bg-surface: #141216;
-    --amber:      #C9A15E;
-    --text-hi:    #ECE7DF;
-    --text-lo:    #A7A29B;
-    --line:       #3A3730;
-    --red:        #C97A5E;
-    --font-mono:  'Courier Prime','Courier New','Lucida Console',monospace;
-    --font-serif: 'Iowan Old Style','Palatino Linotype',Palatino,'Georgia',serif;
+    /* Token KIROSHI 2.0 — squadra/CANONE-KIROSHI-2.md, presi così come sono, non reinventati */
+    --k2-void:    #07090d;
+    --k2-bg:      #0a0e14;
+    --k2-panel:   #0d141d;
+    --k2-panel-2: #111823;
+    --k2-panel-3: #161f2c;
+    --k2-line:    #1b2634;
+    --k2-line-2:  #22303f;
+    --k2-txt:   #d7e3ef;
+    --k2-muted: #7d93a8;
+    --k2-dim:   #6b7e91;
+    --k2-cyan-100: #12313b;
+    --k2-cyan-300: #4fb8d6;
+    --k2-cyan-500: #22d3ee;
+    --k2-cyan-700: #8de9fb;
+    --k2-cyan-glow: rgba(34,211,238,.35);
+    --k2-stato-allarme: #ff8a3d;
+
+    /* mono = dati/etichette che una macchina misura · sans = frasi scritte per un umano */
+    --k2-mono: ui-monospace,SFMono-Regular,Menlo,monospace;
+    --k2-sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+
+    --k2-text-xs:   .6875rem;
+    --k2-text-sm:   .8125rem;
+    --k2-text-base: .9375rem;
+    --k2-text-md:   1rem;
+    --k2-text-lg:   1.25rem;
+    --k2-text-xl:   1.625rem;
+    --k2-text-2xl:  2.25rem;
+
+    --k2-sp-1: .25rem; --k2-sp-2: .5rem; --k2-sp-3: .75rem; --k2-sp-4: 1rem;
+    --k2-sp-5: 1.5rem; --k2-sp-6: 2rem;  --k2-sp-7: 3rem;   --k2-sp-8: 4rem;
   }
 
   body{
-    background:var(--bg-deep);
-    color:var(--text-hi);
-    font-family:var(--font-serif);
-    line-height:1.6;
+    background:var(--k2-void);
+    color:var(--k2-txt);
+    font-family:var(--k2-sans);
+    font-size:var(--k2-text-base);
+    line-height:1.65;
     min-height:100vh;
   }
 
-  body::before{
-    content:''; position:fixed; inset:0; pointer-events:none; z-index:9998;
-    background:radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(0,0,0,.55) 100%);
-  }
-
-  main{ max-width:760px; margin:0 auto; padding:4rem 1.5rem 2rem; position:relative; z-index:1; }
+  main{ max-width:760px; margin:0 auto; padding:var(--k2-sp-8) var(--k2-sp-4) var(--k2-sp-6); }
 
   .back{
-    display:inline-block; margin-bottom:3rem;
-    font-family:var(--font-mono); font-size:.72rem; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--text-lo); text-decoration:none;
+    display:inline-block; margin-bottom:var(--k2-sp-7);
+    font-family:var(--k2-mono); font-size:var(--k2-text-xs); letter-spacing:.18em;
+    text-transform:uppercase; color:var(--k2-muted); text-decoration:none;
     transition:color .2s;
   }
-  .back:hover, .back:focus-visible{ color:var(--amber); }
+  .back:hover, .back:focus-visible{ color:var(--k2-cyan-500); }
 
   .eyebrow{
-    font-family:var(--font-mono); font-size:.72rem; letter-spacing:.28em;
-    text-transform:uppercase; color:var(--amber); margin-bottom:1rem;
+    font-family:var(--k2-mono); font-size:var(--k2-text-xs); letter-spacing:.24em;
+    text-transform:uppercase; color:var(--k2-cyan-500); margin-bottom:var(--k2-sp-3);
   }
 
   h1{
-    font-family:var(--font-mono); font-size:1.6rem; font-weight:400;
-    letter-spacing:.04em; margin-bottom:1rem;
+    font-family:var(--k2-sans); font-size:var(--k2-text-xl); font-weight:600;
+    letter-spacing:-.01em; margin-bottom:var(--k2-sp-3); color:var(--k2-txt);
   }
 
-  .lede{ color:var(--text-lo); margin-bottom:2rem; max-width:56ch; }
+  .lede{ color:var(--k2-muted); margin-bottom:var(--k2-sp-6); max-width:56ch; font-size:var(--k2-text-md); }
 
   .avviso{
-    border:1px solid var(--line); border-left:2px solid var(--red);
-    background:var(--bg-surface); padding:1.2rem 1.4rem; margin-bottom:3rem;
-    font-size:.92rem;
+    border:1px solid var(--k2-line-2); border-left:2px solid var(--k2-stato-allarme);
+    background:var(--k2-panel-3); border-radius:8px;
+    padding:var(--k2-sp-4) var(--k2-sp-5); margin-bottom:var(--k2-sp-7);
+    font-size:var(--k2-text-sm); color:var(--k2-muted);
   }
-  .avviso p + p{ margin-top:.7rem; }
+  .avviso p + p{ margin-top:var(--k2-sp-3); }
   .avviso .tag{
-    display:block; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--red); margin-bottom:.6rem;
+    display:block; font-family:var(--k2-mono); font-size:var(--k2-text-xs); letter-spacing:.18em;
+    text-transform:uppercase; color:var(--k2-stato-allarme); margin-bottom:var(--k2-sp-3);
   }
+  .avviso code{ font-family:var(--k2-mono); color:var(--k2-cyan-700); font-size:.92em; }
 
   h2{
-    font-family:var(--font-mono); font-size:.95rem; font-weight:400;
-    letter-spacing:.1em; text-transform:uppercase; color:var(--amber);
-    margin:2.6rem 0 1rem; padding-bottom:.5rem; border-bottom:1px solid var(--line);
+    font-family:var(--k2-mono); font-size:var(--k2-text-sm); font-weight:400;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--k2-cyan-500);
+    margin:var(--k2-sp-7) 0 var(--k2-sp-4); padding-bottom:var(--k2-sp-2);
+    border-bottom:1px solid var(--k2-line);
   }
 
   ul.elenco{ list-style:none; }
   ul.elenco li{
-    padding:.9rem 0; border-bottom:1px solid var(--line);
+    padding:var(--k2-sp-4) 0; border-bottom:1px solid var(--k2-line);
   }
   ul.elenco li:first-child{ padding-top:0; }
-  ul.elenco b{ color:var(--text-hi); }
-  ul.elenco .note{ display:block; color:var(--text-lo); font-size:.92rem; margin-top:.2rem; }
-  ul.elenco .fonti{ display:block; margin-top:.35rem; }
-  ul.elenco .fonti a{ color:var(--text-lo); font-size:.8rem; }
-  ul.elenco .fonti a:hover, ul.elenco .fonti a:focus-visible{ color:var(--amber); }
+  ul.elenco b{ color:var(--k2-txt); font-weight:600; }
+  ul.elenco .fonti{ display:block; margin-top:var(--k2-sp-2); font-family:var(--k2-mono); }
+  ul.elenco .fonti a{ color:var(--k2-dim); font-size:var(--k2-text-xs); letter-spacing:.02em; }
+  ul.elenco .fonti a:hover, ul.elenco .fonti a:focus-visible{ color:var(--k2-cyan-500); }
 
-  p.corpo{ margin-bottom:1rem; max-width:64ch; }
-  p.corpo a{ color:var(--text-hi); }
-  p.corpo a:hover, p.corpo a:focus-visible{ color:var(--amber); }
+  p.corpo{ margin-bottom:var(--k2-sp-4); max-width:64ch; }
+  p.corpo a{ color:var(--k2-txt); }
+  p.corpo a:hover, p.corpo a:focus-visible{ color:var(--k2-cyan-500); }
+  p.corpo.fonti{ font-family:var(--k2-mono); }
+  p.corpo.fonti a{ color:var(--k2-dim); font-size:var(--k2-text-xs); }
+  p.corpo.fonti a:hover, p.corpo.fonti a:focus-visible{ color:var(--k2-cyan-500); }
 
-  .cifre{ display:grid; grid-template-columns:1fr 1fr; gap:.8rem 1.5rem; margin:1rem 0 1.5rem; }
-  .cifre div{ border-left:2px solid var(--line); padding-left:.8rem; }
-  .cifre .num{ display:block; font-family:var(--font-mono); font-size:1.1rem; color:var(--amber); }
-  .cifre .lbl{ display:block; font-size:.82rem; color:var(--text-lo); }
+  .cifre{ display:grid; grid-template-columns:1fr 1fr; gap:var(--k2-sp-4) var(--k2-sp-6); margin:var(--k2-sp-4) 0 var(--k2-sp-6); }
+  .cifre div{ border-left:2px solid var(--k2-line-2); padding-left:var(--k2-sp-3); }
+  .cifre .num{ display:block; font-family:var(--k2-mono); font-size:var(--k2-text-lg); color:var(--k2-cyan-700); line-height:1.2; }
+  .cifre .lbl{ display:block; font-size:var(--k2-text-sm); color:var(--k2-muted); margin-top:var(--k2-sp-1); }
 
-  ol.fonti-elenco{ list-style:none; counter-reset:f; }
+  ol.fonti-elenco{ list-style:none; counter-reset:f; font-family:var(--k2-mono); }
   ol.fonti-elenco li{
-    counter-increment:f; padding:.55rem 0; border-bottom:1px solid var(--line);
-    font-size:.88rem; display:flex; gap:.7rem;
+    counter-increment:f; padding:var(--k2-sp-2) 0; border-bottom:1px solid var(--k2-line);
+    font-size:var(--k2-text-xs); display:flex; gap:var(--k2-sp-3);
   }
   ol.fonti-elenco li::before{
-    content:counter(f); font-family:var(--font-mono); color:var(--text-lo); flex:none; width:1.6rem;
+    content:counter(f); color:var(--k2-dim); flex:none; width:1.6rem;
   }
-  ol.fonti-elenco a{ color:var(--text-hi); word-break:break-word; }
-  ol.fonti-elenco a:hover, ol.fonti-elenco a:focus-visible{ color:var(--amber); }
+  ol.fonti-elenco a{ color:var(--k2-muted); word-break:break-word; }
+  ol.fonti-elenco a:hover, ol.fonti-elenco a:focus-visible{ color:var(--k2-cyan-500); }
 
   footer{
-    max-width:760px; margin:0 auto; padding:3rem 1.5rem 4rem;
-    border-top:1px solid var(--line); margin-top:3rem;
-    font-family:var(--font-mono); font-size:.78rem; color:var(--text-lo);
-    position:relative; z-index:1;
+    max-width:760px; margin:var(--k2-sp-6) auto 0; padding:var(--k2-sp-6) var(--k2-sp-4) var(--k2-sp-7);
+    border-top:1px solid var(--k2-line);
+    font-family:var(--k2-mono); font-size:var(--k2-text-xs); color:var(--k2-dim);
   }
-  footer a{ color:var(--text-lo); }
-  footer a:hover, footer a:focus-visible{ color:var(--amber); }
+  footer a{ color:var(--k2-dim); }
+  footer a:hover, footer a:focus-visible{ color:var(--k2-cyan-500); }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -289,10 +311,17 @@
 </main>
 
 <footer>
-  <a href="../">cyberboomer.io</a> · Systema 77 · 2026
+  <a href="../">cyberboomer.io</a> · Systema 77 · 2026 · design KIROSHI 2.0
 </footer>
 
 </body>
 </html>
 <!-- prodotto da Claude Code su richiesta diretta del Direttore, 2026-09-13. Non firmato come un
-     agente di casa: nessun mandato specifico è stato dato per questo lavoro. -->
+     agente di casa: nessun mandato specifico è stato dato per questo lavoro.
+     Token visivi da squadra/CANONE-KIROSHI-2.md (JUDY, 2026-08-29), prima applicazione reale
+     del canone fuori dal file che lo definisce. Rifatta lo stesso giorno: la prima versione
+     (palette ambra "Camera Oscura" copiata da index.html) usava font di sistema mai verificati
+     (Iowan Old Style, Palatino, Courier Prime) che cadevano in fallback silenzioso — lo stesso
+     bug che ECHO aveva già documentato in bacheca il 10/09 su un'altra pagina di questo repo.
+     I font di KIROSHI 2.0 (ui-monospace/-apple-system stack) sono pile di sistema reali,
+     verificate rese in Chromium headless prima di pubblicare. -->
