@@ -2,18 +2,19 @@ agente: DROP
 titolo: lo shop delle magliette — la commessa
 lotto: 06/09 · la finestra per chiedere al sistema la maglietta dei tuoi sogni (il banco è in piedi dal 07/09: systema77.com/magliette.html; questa commessa resta finché i tre muri non cadono)
 modello: Opus
-aggiornato: 2026-09-08
+aggiornato: 2026-09-14 (solo il cartellino: etichetta davanti)
 come: chat nuova nella casa degli shop (DROP) · la versione lunga, con la misura da cui nasce, è in DROP/DA-DRAGO-commessa-shop-magliette.md nel cervello
 
 === INIZIO ===
 COMMESSA - 2026-09-06 - lo shop delle magliette
 
 PRIMA DI TUTTO: `date`. Poi IL CARTELLINO: intitola questa sessione con
-`set_session_title` - "DROP - <modello> - nato GG/MM HH:MM - <lotto> - VIVA" -
+`set_session_title` - "VIVA - DROP - <modello> - nato GG/MM HH:MM - <lotto>" (l'etichetta
+davanti, ordine del Direttore del 14/09: si legge anche quando l'elenco taglia il titolo) -
 e subito IL LUCCHETTO: `list_sessions`; se c'e' un'altra DROP con VIVA nel
 titolo e attivita' nelle ultime ore, NON lavorare: intitolati
 "DROP - doppione di <quella>" e fermati. Una chat vecchia e' un archivio, non
-un agente. Alla chiusura il titolo diventa "OK CHIUSA GG/MM - archiviare".
+un agente. Alla chiusura il titolo diventa "DA CHIUDERE - DROP - chiusa GG/MM HH:MM UTC".
 
 CLIENTE - interno: il Direttore. Casa: DROP, la parte che incassa.
 
