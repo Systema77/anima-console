@@ -381,6 +381,49 @@ def _posti_sulla_carta() -> list:
     return voci
 
 
+def blocco_sessioni() -> dict:
+    """LE CHAT APERTE — «quale apro?» risolto con un elenco, non con la memoria.
+
+    PERCHE' ESISTE, con le parole del Direttore (10/09): «ho tante chat dello
+    stesso agente. non so piu' quale scegliere e su quale lavorare.» Il
+    disordine non sta nel numero: sta nei titoli che si somigliano — «Shop
+    magliette DROP» e «DROP Shop magliette SYSTEMA 77» sono la stessa cosa col
+    titolo invertito, e stanno aperte tutte e due.
+
+    Il dato e' un'ISTANTANEA DATATA prodotta in ROOT_CLODE da
+    `scripts/sessioni-istantanea.py`: da qui non si puo' chiamare nessuna API,
+    e un numero inventato sarebbe peggio di uno vecchio. La pagina dichiara
+    quando e' stata misurata. Se l'istantanea non c'e', questo blocco lo DICE —
+    stessa regola di `_case_di_lavoro()`: non si riempie il vuoto con una
+    certezza.
+
+    ⚠️ I titoli stanno SOLO qui dentro, cioe' dentro il cifrato: dicono su cosa
+    lavora la casa e alcuni nominano persone. Mai in chiaro.
+    """
+    percorso = os.path.join(os.path.dirname(ROOT), "comuni", "sessioni.json")
+    if not os.path.exists(percorso):
+        return {"misurato": None, "per_agente": {}, "gemelli": [],
+                "nota": ("⚠️ Nessuna istantanea delle sessioni: questa porta e' stata "
+                         "generata da dove ROOT_CLODE non si vede, oppure la misura non "
+                         "e' mai stata fatta. Si rifa' con "
+                         "`python3 scripts/sessioni-istantanea.py <scarico>` nella "
+                         "cartella madre, poi si rigenera la porta.")}
+    with open(percorso, encoding="utf-8") as f:
+        d = json.load(f)
+    return {
+        "misurato": d.get("misurato"),
+        "totale": d.get("totale"),
+        "vive": d.get("vive"),
+        "archiviate": d.get("archiviate"),
+        "per_agente": d.get("per_agente", {}),
+        "gemelli": d.get("gemelli", []),
+        "nota": ("Una chat viva per agente: aprirne una seconda vuol dire chiudere la "
+                 "prima con /chiusura. Dove vedi piu' di una riga sotto lo stesso nome, "
+                 "una delle due e' da chiudere. «(nessun tag)» non e' un agente: e' una "
+                 "chat nata senza etichetta, e da li' non la ritrova nessun filtro."),
+    }
+
+
 def blocco_note() -> dict:
     return {"voci": [
         "cyberboomer.io è il banco di lavoro del Direttore: officina privata, non vetrina. "
@@ -956,6 +999,35 @@ th{color:var(--cia);font-family:ui-monospace,Menlo,monospace;font-size:10px;lett
       h += '<div class="meta" style="margin:6px 0 2px">' + esc(pr.nota) + '</div>';
     }
 
+    // ①bis LE CHAT APERTE — subito dopo i prompt, perché la prima domanda di una
+    //      giornata è «quale chat riapro?», e finora si rispondeva a memoria.
+    var ch = d.sessioni || {};
+    h += '<h2>Le chat aperte</h2>';
+    if (ch.misurato) {
+      h += '<div class="cif">'
+         + '<div><b>' + esc(ch.vive) + '</b><span>vive</span></div>'
+         + '<div><b>' + esc(ch.archiviate) + '</b><span>archiviate</span></div>'
+         + '<div><b>' + esc((ch.gemelli || []).length) + '</b><span>nomi con più di una chat</span></div>'
+         + '</div>';
+      Object.keys(ch.per_agente || {}).forEach(function (nome) {
+        var righe = ch.per_agente[nome];
+        h += '<details class="pz"' + (righe.length > 1 ? ' open' : '') + '><summary>'
+           + '<span class="t">' + esc(nome) + '</span>'
+           + '<span class="meta">' + esc(righe.length) + (righe.length > 1 ? ' chat — una di troppo' : ' chat') + '</span>'
+           + '</summary><div class="corpo">';
+        righe.forEach(function (r) {
+          h += '<div><a href="' + esc(r.url) + '" target="_blank" rel="noopener">'
+             + esc(r.titolo) + '</a> <span class="meta">' + esc(r.tocco)
+             + ' · ' + esc(r.stato.toLowerCase()) + '</span></div>';
+        });
+        h += '</div></details>';
+      });
+      h += '<div class="meta" style="margin:6px 0 2px">misurato il ' + esc(ch.misurato)
+         + ' — ' + esc(ch.nota) + '</div>';
+    } else {
+      h += '<div class="vuoto">' + esc(ch.nota) + '</div>';
+    }
+
     // ② IL DIGEST
     var dg = d.digest || {};
     h += '<h2>Digest</h2>';
@@ -1179,6 +1251,7 @@ def main() -> None:
         "pr": blocco_pr(),
         "numeri": blocco_numeri(),
         "moviola": blocco_moviola(),
+        "sessioni": blocco_sessioni(),
     }
 
     vecchio = None
