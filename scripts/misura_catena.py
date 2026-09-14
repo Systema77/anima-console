@@ -111,7 +111,13 @@ STRUMENTI = [
      # poche ore, questa prosa no: sembrava fresca ed era vecchia di una
      # settimana. 📜 Un dato misurato accanto a una frase scritta a mano fa
      # sembrare misurata anche la frase.
-     "custode": "USCITA dalla pagina pubblica il 06/09: /meteo.html ha APIKEY vuota e parla coi server GRATUITI. Resta da REVOCARE dal pannello Open-Meteo — e' stata pubblica 18 giorni",
+     # ⚠️ Aggiornato il 14/09 da SHUTTER: la revoca e' fatta. NON e' una nostra
+     # misura — il pannello Open-Meteo non e' interrogabile da qui: e' una
+     # dichiarazione del Direttore, letta in bacheca (voce JUDY delle 17:00 UTC).
+     # Scritta come sua parola, non come nostro verdetto. La riga di prima
+     # («resta da REVOCARE») e' vissuta poche ore oltre la sua verita' su una
+     # pagina che si rigenera ogni sei ore.
+     "custode": "USCITA dalla pagina pubblica il 06/09 (APIKEY vuota, server GRATUITI) e REVOCATA dal Direttore il 14/09 — sua dichiarazione, il pannello non lo vediamo. E' stata pubblica 18 giorni e resta leggibile nella storia di git: per questo si revoca invece di cancellarla. La chiave NUOVA non torna in pagina — va in un secret del Worker",
      # L'impronta qui sotto NON distingue quale server sia in uso: il ternario
      # in pagina scrive tutti e due gli indirizzi, quindi si trova comunque.
      # Prova che la pagina e' nostra, non che stiamo usando la licenza pagata.
