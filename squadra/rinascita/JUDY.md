@@ -1,8 +1,8 @@
 agente: JUDY
 titolo: rinascita — le pagine dell'idraulica (S4–S6) quando S1–S3 sono in main; il laboratorio quando ci sono parole e repo
-lotto: 10/09 · due sessioni JUDY lo stesso giorno, tenute tutte e due: il piano di idraulica è scritto e ratificato (D.R.A.G.O. fa S1–S3, JUDY riprende da S4), e la JUDY del mattino ha misurato che quattro domande al Direttore non erano mai state scritte dove lui le vede (PR #75). Il prossimo lotto esiste quando S1–S3 sono in main, o quando torna una risposta
+lotto: 14/09 · il provino dei cinque colori è sulla tela e pubblicato («La Galassia SYSTEMA 77», sorgenti in comunicazione/canvas-provino-universo/), e aspetta DUE righe del Direttore in anima-console/squadra/DECISIONI.md: i cinque colori, e l'accensione di cinque indirizzi — tutti e cinque o solo .art. Senza quelle, i repo delle landing non si fanno. Sbloccate anche le tre PR ferme di ROOT_CLODE (#99 #126 #135) e lasciato a D.R.A.G.O. il dispaccio sui due guardiani ciechi (comunicazione/DA-JUDY-per-DRAGO-i-due-guardiani-ciechi.md): misurato che anche il Mac è cieco, serve il modello di .ninja. ⚠️ Il 14/09 tre chat JUDY erano vive insieme: prima di lavorare, il lucchetto
 modello: Opus (scelta del Direttore, 08/09, per il lotto del laboratorio: si pubblica su più repo). Non chiedere Fable per questo lavoro (`scripts/vmg-modello.py`)
-aggiornato: 2026-09-14 (solo il cartellino: etichetta davanti)
+aggiornato: 2026-09-14 (il lotto, e il cartellino con l'etichetta davanti)
 come: chat nuova su claude.ai/code con i sei repo attaccati · effort medium · un lotto, poi si chiude
 
 === INIZIO ===
