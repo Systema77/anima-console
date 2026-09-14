@@ -33,6 +33,10 @@ jobs:
           COD=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 25 https://github.com/ || echo 000)
           echo "github.com: $COD"; [ "$COD" != "000" ] || { echo "✗ rete del runner morta: nessuna conclusione lecita"; exit 1; }
 
+      # Serve solo al confronto del passo 1: senza l'albero, il peso servito
+      # resta un numero nudo e chi legge lo spiega invece di misurarlo.
+      - uses: actions/checkout@v4
+
       - name: 1 · cyberboomer.io — HTTPS, certificato, ed è la PORTA?
         run: |
           set -u
@@ -44,6 +48,18 @@ jobs:
           echo "== https GET =="
           COD=$(curl -sS -o /tmp/porta.html -w '%{http_code}' --max-time 25 https://cyberboomer.io/ || echo 000)
           echo "codice: $COD · byte: $(wc -c < /tmp/porta.html)"
+          # Il peso servito da solo non dice niente: il 13/09 un 143 KB senza
+          # riferimento si e' preso una spiegazione plausibile e FALSA prima di
+          # una misura. Qui il riferimento c'e' sempre, stampato accanto.
+          SERVITI=$(wc -c < /tmp/porta.html)
+          IN_REPO=$(wc -c < docs/index.html)
+          echo "peso servito: $SERVITI byte · peso su questo albero: $IN_REPO byte · differenza: $((SERVITI - IN_REPO))"
+          if [ "$SERVITI" -eq "$IN_REPO" ]; then
+            echo "✓ Pages serve ESATTAMENTE la porta di questo albero"
+          else
+            echo "✗ Pages serve una porta DIVERSA da questo albero — non spiegare il perche': guarda il diff"
+            echo "  (sha256 servito: $(sha256sum < /tmp/porta.html | cut -c1-16)… · albero: $(sha256sum < docs/index.html | cut -c1-16)…)"
+          fi
           grep -q 'frase di sblocco' /tmp/porta.html && echo "✓ c'è il campo della frase" || echo "✗ manca il campo della frase"
           grep -q 'PORTA_PAYLOAD' /tmp/porta.html && echo "✓ c'è il blocco cifrato (PORTA_PAYLOAD)" || echo "✗ manca il blocco cifrato"
           grep -o 'PBKDF2-SHA256[^<]\{0,40\}' /tmp/porta.html | head -1
