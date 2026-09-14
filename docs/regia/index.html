@@ -1041,7 +1041,7 @@ bash squadra/chiavi.sh leggi regia      # la frase che apre questa pagina</pre><
   async function tentaApertura(){
     if (occupato) return;
     const campo = $('frase');
-    const frase = campo.value;
+    const frase = campo.value.trim().normalize('NFC');
     if (!frase) { dillo('Serve la passphrase.', 'ko'); return; }
     campo.value = '';                            // fuori dal DOM subito
     occupato = true; $('apri').disabled = true;

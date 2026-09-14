@@ -40,6 +40,7 @@ import os
 import re
 import subprocess
 import sys
+import unicodedata
 from datetime import date, timedelta
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -54,10 +55,22 @@ FRASE_MINIMA = 12
 SEGNO = "PORTA_PAYLOAD"       # marcatore del blocco JSON dentro la pagina
 
 
+# ── la stessa ripulitura che fa il browser, e qui sta il punto ────────────────
+#  Il Portachiavi arrivava gia' ripulito (`security -w` aggiunge sempre un a-capo
+#  suo, e `.strip()` lo toglieva); REGIA_PASSPHRASE e il campo della pagina no.
+#  Stessa frase, DUE CHIAVI DIVERSE a seconda di da dove arriva.
+#  Oggi non morde: la frase e' ASCII pulito, 29 byte per 29 caratteri, NFC e NFD
+#  identiche (misurato da `prova_frase.py` il 13/09). Cioe' questa funzione e' un
+#  NO-OP sulla serratura di adesso — ed e' esattamente per questo che si mette
+#  ora: farlo dopo, con un accento o uno spazio in coda gia' dentro, non sarebbe
+#  una ripulitura ma un cambio di serratura.
+def pulisci(frase: str) -> str:
+    return unicodedata.normalize("NFC", frase.strip())
+
 # ── la frase ─────────────────────────────────────────────────────────────────
 def passphrase() -> str:
     """Dall'ambiente o dal Portachiavi. Mai da riga di comando."""
-    frase = os.environ.get("REGIA_PASSPHRASE", "")
+    frase = pulisci(os.environ.get("REGIA_PASSPHRASE", ""))
     da = "REGIA_PASSPHRASE"
     if not frase:
         chiavi = os.path.join(ROOT, "squadra", "chiavi.sh")
@@ -65,7 +78,7 @@ def passphrase() -> str:
             r = subprocess.run(["bash", chiavi, "leggi", "regia"],
                                capture_output=True, text=True)
             if r.returncode == 0 and r.stdout.strip():
-                frase, da = r.stdout.strip(), "chiavi.sh leggi regia"
+                frase, da = pulisci(r.stdout), "chiavi.sh leggi regia"
     if not frase:
         raise SystemExit(
             "✗ nessuna frase di sblocco.\n"
@@ -891,7 +904,7 @@ th{color:var(--cia);font-family:ui-monospace,Menlo,monospace;font-size:10px;lett
   }
 
   async function apri() {
-    var frase = campo.value;
+    var frase = campo.value.trim().normalize('NFC');
     if (!frase) { guasto('serve la frase'); campo.focus(); return; }
 
     // PERCHE' QUESTO CONTROLLO ESISTE — 30/08: il Direttore ha scritto la frase
