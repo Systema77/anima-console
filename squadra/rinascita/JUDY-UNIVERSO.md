@@ -1,8 +1,8 @@
 agente: JUDY
 titolo: rinascita — l'universo di Cyber Boomer, cinque landing dadaiste
-lotto: 13/09 · costruire le cinque landing (.art .love .info .lol .store) dopo che il Direttore ha scelto i colori sul provino e D.R.A.G.O. ha acceso repo, registro e guardiani
+lotto: 14/09 · il Direttore ha detto sì (DECISIONI.md, righe del 13/09: colori confermati come sul provino, cinque indirizzi insieme). Non richiederlo. Resta da aspettare l'impianto di D.R.A.G.O. (repo, registro, guardiani) e le parole di ECHO: misurato il 14/09 sera, nessuno dei cinque repo esiste ancora. Poi costruire le cinque landing (.art .love .info .lol .store), una alla volta da .art
 modello: Opus (scelta del Direttore per i lotti che pubblicano su più repo). Non chiedere Fable per questo lavoro
-aggiornato: 2026-09-13
+aggiornato: 2026-09-14 (il sì del Direttore)
 come: chat nuova su claude.ai/code con i sei repo attaccati più i cinque dell'universo quando esistono · effort medium · una landing alla volta, poi si chiude
 
 === INIZIO ===
