@@ -1,11 +1,15 @@
 /* IL SIGILLO — pagina pubblica di verifica card.
-   Registro FREDDO (KIROSHI): nero #0A0A0A · ciano #16E0DC · Share Tech Mono.
-   Zero ambra, zero calore, zero emotivo. */
+   Registro FREDDO (KIROSHI): il referto di comuni/STANDARD-VISUAL.md — nero-blu #0A0E14 ·
+   ciano #22D3EE · monospazio di sistema. Zero ambra, zero calore, zero emotivo.
+   Fino al 20/09 qui c'erano il ciano #16E0DC, il giallo #F2E205 e il magenta #FF2E88
+   dell'AGENZIA, e un carattere scaricato da Google a ogni apertura: portati nel referto
+   con la riga F7 di squadra/DECISIONI.md (JUDY, 2026-09-20). I nomi delle variabili
+   restano quelli di prima: le pagine non le toccano. */
 
 :root{
-  --nero:#0A0A0A; --ciano:#16E0DC; --giallo:#F2E205; --rosso:#FF2E88;
-  --superficie:#141414; --linea:#2A2A26; --muto:#8F8A82;
-  --mono:"Share Tech Mono",ui-monospace,monospace;
+  --nero:#0A0E14; --ciano:#22D3EE; --giallo:#F6C453; --rosso:#FF5C6C;
+  --superficie:#0D141D; --linea:#1E2A38; --muto:#7D93A8;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 *{box-sizing:border-box}
 body{
@@ -36,16 +40,16 @@ body{
   color:var(--ciano); font-size:25px; flex:none; position:relative;
 }
 .marchio-b::after{content:""; position:absolute; inset:4px;
-  border:1px solid rgba(22,224,220,.35); border-radius:50%}
+  border:1px solid rgba(34,211,238,.35); border-radius:50%}
 .esito .l{font-size:11px; letter-spacing:.24em; text-transform:uppercase}
 .esito .v{font-size:23px; letter-spacing:.16em; color:var(--ciano)}
 
 /* varianti */
 .ko .marchio-b{border-color:var(--rosso); color:var(--rosso)}
-.ko .marchio-b::after{border-color:rgba(255,46,136,.35)}
+.ko .marchio-b::after{border-color:rgba(255,92,108,.35)}
 .ko .esito .v{color:var(--rosso)}
 .attesa .marchio-b{border-color:var(--muto); color:var(--muto)}
-.attesa .marchio-b::after{border-color:rgba(143,138,130,.3)}
+.attesa .marchio-b::after{border-color:rgba(125,147,168,.3)}
 .attesa .esito .v{color:var(--muto)}
 
 /* riga stato — pill bordata */
@@ -71,7 +75,7 @@ body{
   background:transparent; color:var(--ciano); border:1px solid var(--ciano);
   border-radius:2px; padding:12px 26px; cursor:pointer; text-decoration:none;
 }
-.entra:hover{background:rgba(22,224,220,.1)}
+.entra:hover{background:rgba(34,211,238,.1)}
 
 .nota{
   width:100%; max-width:560px; border-left:2px solid var(--ciano);
