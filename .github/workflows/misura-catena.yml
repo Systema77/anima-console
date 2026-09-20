@@ -36,6 +36,18 @@ on:
     - cron: '0 6,12,18 * * *'
   workflow_dispatch:
   push:
+    # ⚠️ AGGIUNTO IL 20/09, e senza questo il passo 2 e' pericoloso.
+    # Qui c'era solo `paths:`. Segnalato da SHUTTER il 15/09: un push su un ramo
+    # QUALUNQUE che tocchi uno di quei percorsi faceva girare il workflow SU QUEL
+    # RAMO, e il passo 2 gli committava dentro docs/regia/index.html e lo spingeva
+    # con `HEAD:${GITHUB_REF_NAME}`. Cioe' il runner scriveva nel ramo di lavoro di
+    # chi stava solo modificando lo script.
+    # 📜 Un filtro sui PERCORSI dice QUANDO partire, non DOVE scrivere: sono due
+    #    domande diverse, e mancava la seconda.
+    # Va riparato insieme al retry qui sotto e non dopo: un push che ritenta tre
+    # volte su un ramo sbagliato e' peggio di uno che fallisce una volta sola.
+    branches:
+      - main
     paths:
       - '.github/workflows/misura-catena.yml'
       - 'scripts/misura_catena.py'
@@ -83,20 +95,63 @@ jobs:
         run: python3 scripts/regia_scrivania.py
 
       - name: 2 · Committa la pagina, se e' cambiata
+        # ⚠️ RIPARATO IL 20/09 — il push falliva, e non per la rete.
+        # Fra `actions/checkout` e `git push` il ramo remoto puo' muoversi: basta
+        # un altro push, di una persona o di un altro workflow. Il run che ha
+        # scoperto il guasto aveva fatto il commit dd3015b e si e' preso
+        # «! [rejected] HEAD -> main (fetch first)». Non e' un caso raro: questo
+        # gira tre volte al giorno piu' a ogni push sui percorsi sorvegliati.
+        #
+        # ⛔ E NON SI RIPARA CON --force NE' CON --force-with-lease: qui il ramo e'
+        # main, e forzare vuol dire cancellare il commit di qualcun altro per
+        # pubblicare una pagina generata. Una misura non vale un lavoro.
+        #
+        # Si rifa' la misura DOPO il reset, e non si riusa quella dei passi 1 e 1b:
+        # se main si e' mosso, la pagina va ricalcolata sullo stato nuovo, altrimenti
+        # si pubblica una misura del passato con la data di adesso.
+        # 📜 Ritentare senza rimisurare non e' riprovare: e' insistere.
         run: |
-          set -eu
-          if [ -z "$(git status --porcelain docs/regia/index.html)" ]; then
-            echo "= la pagina dice gia' quello che ho misurato: niente da committare"
-            exit 0
-          fi
-          git config user.name  "misura-catena"
-          git config user.email "misura-catena@users.noreply.github.com"
-          # `-m` PRIMA di `--`: dopo i due trattini git legge solo percorsi, e
-          # al run #1 si e' preso «-m» e il messaggio per due nomi di file.
-          git commit -m "La catena misurata dal runner: $(date -u '+%Y-%m-%d %H:%M UTC')" \
-            -- docs/regia/index.html
-          git push origin "HEAD:${GITHUB_REF_NAME}"
-          echo "✓ pagina aggiornata sul ramo ${GITHUB_REF_NAME}"
+          set -euo pipefail
+
+          branch="${GITHUB_REF_NAME}"
+
+          for tentativo in 1 2 3; do
+            echo "── pubblicazione, tentativo ${tentativo}/3"
+
+            git fetch --no-tags origin "$branch"
+            # FETCH_HEAD e non origin/$branch: il fetch appena fatto lo aggiorna
+            # sempre, mentre `origin/$branch` dipende dal refspec che checkout ha
+            # configurato. Se quel refspec non copre il ramo, `reset` tornerebbe
+            # sul commit VECCHIO e i tre tentativi fallirebbero tutti allo stesso
+            # modo, in un ciclo che sembra una race e non lo e'.
+            git reset --hard FETCH_HEAD
+
+            python3 scripts/misura_catena.py
+            python3 scripts/regia_scrivania.py
+
+            if [ -z "$(git status --porcelain -- docs/regia/index.html)" ]; then
+              echo "= la pagina dice gia' quello che ho misurato: niente da committare"
+              exit 0
+            fi
+
+            git config user.name  "misura-catena"
+            git config user.email "misura-catena@users.noreply.github.com"
+            # `-m` PRIMA di `--`: dopo i due trattini git legge solo percorsi, e
+            # al run #1 si e' preso «-m» e il messaggio per due nomi di file.
+            git commit -m "La catena misurata dal runner: $(date -u '+%Y-%m-%d %H:%M UTC')" \
+              -- docs/regia/index.html
+
+            if git push origin "HEAD:${branch}"; then
+              echo "✓ pagina aggiornata sul ramo ${branch}"
+              exit 0
+            fi
+
+            echo "  il ramo remoto si e' mosso durante il push: rimisuro e riprovo"
+          done
+
+          echo "✗ non sono riuscito a pubblicare in 3 tentativi: il ramo si muove"
+          echo "  piu' in fretta di quanto ci metto a misurare. Non forzo."
+          exit 1
 
       - name: 3 · Cosa legge il Direttore — le righe, in chiaro nel log
         if: always()
