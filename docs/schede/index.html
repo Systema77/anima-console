@@ -5,23 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Documenti pubblici · SYSTEMA 77</title>
 <meta name="description" content="Le schede pubbliche di SYSTEMA 77: competenze della squadra di ripresa, consiglio Anima Game, termini e consenso a strati.">
+<link rel="stylesheet" href="../referto.css">
 <style>
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-  :root{
-    /* Il referto freddo di comuni/STANDARD-VISUAL.md: questa e' una pagina del banco,
-       non della superficie pubblica. Fino al 20/09 vestiva l'ambra Camera Oscura del
-       design system ANIMA v1 (con un refuso, #141216): riportata dentro col lotto 3 del
-       rapporto sulla grafica della console (JUDY). I nomi delle variabili restano. */
-    --bg-deep:    #0A0E14;
-    --bg-surface: #111823;
-    --amber:      #22D3EE;
-    --text-hi:    #D7E3EF;
-    --text-lo:    #7D93A8;
-    --line:       #1E2A38;
-    --font-mono:  ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-    --font-serif: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-  }
 
   body{
     background:var(--bg-deep);
@@ -39,11 +26,11 @@
     text-transform:uppercase; color:var(--text-lo); text-decoration:none;
     transition:color .2s;
   }
-  .back:hover, .back:focus-visible{ color:var(--amber); }
+  .back:hover, .back:focus-visible{ color:var(--accent); }
 
   .eyebrow{
     font-family:var(--font-mono); font-size:.72rem; letter-spacing:.28em;
-    text-transform:uppercase; color:var(--amber); margin-bottom:1rem;
+    text-transform:uppercase; color:var(--accent); margin-bottom:1rem;
   }
 
   h1{
@@ -62,7 +49,7 @@
     padding:1.15rem .25rem; text-decoration:none; color:var(--text-hi);
     transition:color .2s, padding-left .2s;
   }
-  ul.docs a:hover, ul.docs a:focus-visible{ color:var(--amber); padding-left:.6rem; }
+  ul.docs a:hover, ul.docs a:focus-visible{ color:var(--accent); padding-left:.6rem; }
 
   ul.docs .name{ display:block; }
   ul.docs .desc{
@@ -80,7 +67,7 @@
     position:relative; z-index:1;
   }
   footer a{ color:var(--text-lo); }
-  footer a:hover, footer a:focus-visible{ color:var(--amber); }
+  footer a:hover, footer a:focus-visible{ color:var(--accent); }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }

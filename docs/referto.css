@@ -1,0 +1,61 @@
+/* IL REFERTO FREDDO — il foglio unico dei token della console (cyberboomer.io).
+   Canone: comuni/STANDARD-VISUAL.md nel cervello, «dashboard dati interne e pagine di
+   referto». Fino al 20/09 questi valori erano incollati in un blocco :root dentro
+   ogni pagina, ventisei volte: una correzione al canone costava ventisei file, e due
+   pagine avevano già preso una tinta diversa senza che nessuno se ne accorgesse.
+   Da oggi le pagine linkano questo foglio e tengono nel loro <style> solo ciò che è
+   loro. Lotto 5 del rapporto sulla grafica della console.
+
+   Regole:
+   · i nomi CANONICI sono i primi; gli ALIAS sotto esistono solo perché le pagine
+     scritte prima li usano, e non si toccano ventisei pagine per un nome.
+     Una pagina nuova usa i nomi canonici.
+   · un valore si cambia QUI e in comuni/STANDARD-VISUAL.md, mai in una pagina.
+   · niente caratteri da fuori: la regia dichiara «non parla con nessuno», e vale
+     per tutta la console.
+
+   — creato da JUDY, 2026-09-20 */
+
+:root{
+  /* superfici, dal fondo alla luce */
+  --void:#07090d;        /* il nero della pagina dietro la plancia */
+  --bg:#0a0e14;          /* il fondo del referto */
+  --field:#0d141d;       /* campi, pannelli della regia: un gradino sotto il pannello */
+  --panel:#111823;       /* il pannello */
+  --panel2:#111823;      /* secondo pannello: oggi coincide col primo */
+  --line:#1e2a38;        /* la riga */
+  --line2:#22303f;       /* la riga più marcata */
+
+  /* testo */
+  --txt:#d7e3ef;
+  --muted:#7d93a8;
+  --dim:#5a6b7d;
+
+  /* l'accento e i tre semafori */
+  --cyan:#22d3ee;
+  --green:#2ee6a6;
+  --amber:#f6c453;
+  --red:#ff5c6c;
+  --magenta:#f43f8e;     /* solo dove serve un quarto stato; non è il magenta dell'agenzia */
+
+  /* i fondi dei semafori (le schede BRAINDANCE) */
+  --green-bg:#0f2a22;  --green-ink:#7ff0c9;
+  --amber-bg:#2a2410;
+  --coral-bg:#2a1114;  --coral-ink:#ffb3ba;
+  --blue-bg:#0e2830;
+
+  /* caratteri: solo di sistema */
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+
+  /* ── alias: i nomi che le pagine scritte prima usano ── */
+  --ink:var(--txt);        --testo:var(--txt);      --text-hi:var(--txt);   --body:var(--txt);
+  --text-lo:var(--muted);
+  --verde:var(--green);
+  --giallo:var(--amber);   --yellow:var(--amber);   --amber-ink:var(--amber); --amber-fill:var(--amber);
+  --rosso:var(--red);      --coral-fill:var(--red);
+  --accent:var(--cyan);    --blue-ink:var(--cyan);
+  --card:var(--panel);     --surface:var(--panel);  --bg-surface:var(--panel);
+  --bg-deep:var(--bg);
+  --font-mono:var(--mono); --font-serif:var(--sans); --serif:var(--sans);
+}

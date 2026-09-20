@@ -5,11 +5,13 @@
    dell'AGENZIA, e un carattere scaricato da Google a ogni apertura: portati nel referto
    con la riga F7 di squadra/DECISIONI.md (JUDY, 2026-09-20). I nomi delle variabili
    restano quelli di prima: le pagine non le toccano. */
+@import url("../../referto.css");
 
 :root{
-  --nero:#0A0E14; --ciano:#22D3EE; --giallo:#F6C453; --rosso:#FF5C6C;
-  --superficie:#0D141D; --linea:#1E2A38; --muto:#7D93A8;
-  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  /* i token vengono da /referto.css (lotto 5, 20/09): qui solo i nomi che questo
+     foglio e area.css usano dal 06/08. Un valore si cambia là, non qui. */
+  --nero:var(--bg); --ciano:var(--cyan); --giallo:var(--amber); --rosso:var(--red);
+  --superficie:var(--field); --linea:var(--line); --muto:var(--muted);
 }
 *{box-sizing:border-box}
 body{
