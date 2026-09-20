@@ -1,5 +1,6 @@
 /* AREA PERSONALE — aggiunte a verifica.css, non una seconda pelle.
-   Registro FREDDO invariato: nero #0A0A0A · ciano #16E0DC · Share Tech Mono.
+   Registro FREDDO invariato: i token del referto stanno in verifica.css (dal 20/09
+   nero-blu #0A0E14 · ciano #22D3EE · monospazio di sistema).
    Qui c'e' solo cio' che la pagina di verifica non aveva: un modulo da compilare.
 
 — creato da SQUELCH, 2026-08-06 */
@@ -27,7 +28,7 @@
   border:1px solid var(--linea); border-radius:2px; padding:15px 12px;
   text-transform:uppercase; width:100%;
 }
-.modulo input::placeholder{color:#3A3A36; letter-spacing:.16em}
+.modulo input::placeholder{color:#5A6B7D; letter-spacing:.16em}
 .modulo input:focus{outline:none; border-color:var(--ciano)}
 .modulo .entra{width:100%; text-align:center}
 .modulo .entra:disabled{opacity:.4; cursor:default}
