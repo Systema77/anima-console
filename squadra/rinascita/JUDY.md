@@ -1,8 +1,8 @@
 agente: JUDY
 titolo: rinascita — le pagine dell'idraulica (S4–S6) quando S1–S3 sono in main; il laboratorio quando ci sono parole e repo
-lotto: 14/09 · il provino dei cinque colori è sulla tela e pubblicato («La Galassia SYSTEMA 77», sorgenti in comunicazione/canvas-provino-universo/), e aspetta DUE righe del Direttore in anima-console/squadra/DECISIONI.md: i cinque colori, e l'accensione di cinque indirizzi — tutti e cinque o solo .art. Senza quelle, i repo delle landing non si fanno. Sbloccate anche le tre PR ferme di ROOT_CLODE (#99 #126 #135) e lasciato a D.R.A.G.O. il dispaccio sui due guardiani ciechi (comunicazione/DA-JUDY-per-DRAGO-i-due-guardiani-ciechi.md): misurato che anche il Mac è cieco, serve il modello di .ninja. ⚠️ Il 14/09 tre chat JUDY erano vive insieme: prima di lavorare, il lucchetto
+lotto: 20/09 · la CONSOLE è coordinata: rapporto sulla grafica (comunicazione/REPORT-CONSOLE-2026-09-20.html nel cervello) e cinque lotti fatti — sigillo nel referto, schede chiare scure, ambra via dall'indice e dal verbale, un titolo solo, e docs/referto.css come foglio unico (23 pagine + il sigillo). I primi quattro sono in main (PR #110), il quinto sul ramo judy/foglio-unico-referto. L'UNIVERSO ha il sì del Direttore (colori e cinque indirizzi, DECISIONI.md 13/09 → [x]) e aspetta l'impianto di D.R.A.G.O. e le parole di ECHO: il dispaccio è rinascita/JUDY-UNIVERSO.md. Fuori dal foglio unico, e da fare se serve: la porta (i token stanno in build_porta.py), la scheda del mercato (33 token con prefisso k2), i due cartelli ambra
 modello: Opus (scelta del Direttore, 08/09, per il lotto del laboratorio: si pubblica su più repo). Non chiedere Fable per questo lavoro (`scripts/vmg-modello.py`)
-aggiornato: 2026-09-14 (il lotto, e il cartellino con l'etichetta davanti)
+aggiornato: 2026-09-20 (il lotto: console coordinata, universo in attesa dell'impianto)
 come: chat nuova su claude.ai/code con i sei repo attaccati · effort medium · un lotto, poi si chiude
 
 === INIZIO ===
