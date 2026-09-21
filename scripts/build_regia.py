@@ -83,13 +83,16 @@ b64 = lambda b: base64.b64encode(b).decode("ascii")
 #  NO-OP sulla serratura di adesso — ed e' esattamente per questo che si mette
 #  ora: farlo dopo, con un accento o uno spazio in coda gia' dentro, non sarebbe
 #  una ripulitura ma un cambio di serratura.
-def pulisci(frase: str) -> str:
+#  ⚠️ Si chiama `pulisci_frase` e non `pulisci` perche' in questo file esiste GIA'
+#  un `pulisci()` che toglie asterischi e backtick dal markdown delle tabelle:
+#  definito piu' in basso, vinceva lui, e la frase ci passava dentro.
+def pulisci_frase(frase: str) -> str:
     return unicodedata.normalize("NFC", frase.strip())
 
 # ── passphrase ───────────────────────────────────────────────────────────────
 def passphrase() -> str:
     """Due sorgenti dichiarate, nessuna delle due è la riga di comando."""
-    frase = pulisci(os.environ.get("REGIA_PASSPHRASE", ""))
+    frase = pulisci_frase(os.environ.get("REGIA_PASSPHRASE", ""))
     da = "REGIA_PASSPHRASE"
     if not frase:
         chiavi = os.path.join(ROOT, "squadra", "chiavi.sh")
@@ -97,7 +100,7 @@ def passphrase() -> str:
             r = subprocess.run(["bash", chiavi, "leggi", "regia"],
                                capture_output=True, text=True)
             if r.returncode == 0:
-                frase, da = pulisci(r.stdout), "chiavi.sh leggi regia"
+                frase, da = pulisci_frase(r.stdout), "chiavi.sh leggi regia"
     if not frase:
         raise SystemExit(
             "✗ nessuna passphrase.\n"
