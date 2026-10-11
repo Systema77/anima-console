@@ -1,8 +1,8 @@
 window.ARCHIVIO = {
-  "totale": 27,
+  "totale": 26,
   "in_conflitto": 2,
   "per_fonte": {
-    "braindance": 13,
+    "braindance": 12,
     "kiroshi": 14
   },
   "voci": [
@@ -2242,41 +2242,6 @@ window.ARCHIVIO = {
         {
           "titolo": "Il Post (17/02/2023) — Karima, il libro",
           "url": "https://www.ilpost.it/2023/02/17/ruby-berlusconi-karima-el-mahroug/"
-        }
-      ]
-    },
-    {
-      "id": "bill-gates-asperger",
-      "fonte": "braindance",
-      "tipo": "persona",
-      "titolo": "È vero che Bill Gates «è Asperger»?",
-      "esito": "Lo dice lui — ma non è una diagnosi",
-      "punteggio": 60,
-      "ambito": "verita",
-      "colore": "giallo",
-      "data": "2026-07-29",
-      "sintesi": "Nel memoir Source Code (2025) Gates scrive: 'se crescessi oggi, probabilmente sarei diagnosticato nello spettro autistico'. Ma nessuna diagnosi formale e' mai esistita, e 'Asperger' non e' piu' una diagnosi dal DSM-5 (2013).",
-      "scheda": "schede/bill-gates-asperger.html",
-      "fonti": [
-        {
-          "titolo": "Fortune (25/01/2025) — estratto memoir",
-          "url": "https://www.fortune.com/2025/01/25/bill-gates-autism-spectrum-childhood-neurodivergence-memoir-source-code"
-        },
-        {
-          "titolo": "Axios (03/02/2025) — intervista",
-          "url": "https://www.axios.com/2025/02/03/bill-gates-interview-autism-spectrum"
-        },
-        {
-          "titolo": "Disability Scoop (28/01/2025)",
-          "url": "https://www.disabilityscoop.com/2025/01/28/bill-gates-suggests-he-would-be-diagnosed-with-autism-if-he-were-a-child-now/31266/"
-        },
-        {
-          "titolo": "APA — DSM-5, spettro autistico (PDF)",
-          "url": "https://www.psychiatry.org/File%20Library/Psychiatrists/Practice/DSM/APA_DSM-5-Autism-Spectrum-Disorder.pdf"
-        },
-        {
-          "titolo": "Forbes (09/05/2021) — Musk a SNL",
-          "url": "https://www.forbes.com/sites/joewalsh/2021/05/09/elon-musk-reveals-he-has-aspergers-on-saturday-night-live/"
         }
       ]
     },
