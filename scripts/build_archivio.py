@@ -117,11 +117,9 @@ def da_kiroshi(paths):
 
 def main():
     bd_path = os.path.join(DATA, "braindance.json")
-    if not os.path.exists(bd_path):
-        print("✗ manca docs/data/braindance.json")
-        return 1
-
-    voci = da_braindance(bd_path) + da_kiroshi(sorted(glob.glob(os.path.join(DATA, "[0-9]*.json"))))
+    # Dal 13/10 i verdetti BRAINDANCE non escono da qui (BRAINDANCE-1 = 2, sì del Direttore in chat:
+    # su .ninja solo i firmati, 0 su 12): senza il file l'archivio porta solo le schede KIROSHI. — SQUELCH
+    voci = (da_braindance(bd_path) if os.path.exists(bd_path) else []) + da_kiroshi(sorted(glob.glob(os.path.join(DATA, "[0-9]*.json"))))
 
     # regola editoriale, la stessa di build_db.py: un verdetto senza fonti non si pubblica
     senza_fonti = [v["id"] for v in voci if not v["fonti"]]
