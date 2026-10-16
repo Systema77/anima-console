@@ -245,14 +245,16 @@ restano tutte in vigore: il sistema le mette a regime, non le sostituisce.
 le **quattro cose** della tabella CHI FONDE COSA — soldi, indirizzi, verdetti,
 decisioni non prese. Tutto il resto lo fonde chi l'ha fatto.
 
-**LA RONDA (dal 2026-08-19).** Esiste una Routine claude.ai «RONDA D.R.A.G.O.»
-(2 giri al giorno) che lavora da sola le code del repo: etichette `commessa`
+**LA RONDA (dal 2026-08-19, riscritta il 2026-10-14).** Esiste una Routine claude.ai «RONDA D.R.A.G.O.»
+che lavora da sola le code del repo: etichette `commessa`
 (dal modulo `docs/schede/commessa.html`, bottone «Invia alla RONDA»),
-`kiroshi-queue`, `braindance-queue` — e sempre anche le issue nude.
-**Dal 10/09 la RONDA fonde da sé** ciò che non cade nelle quattro cose del Direttore;
-resta in bozza solo ciò che vi cade — e per la RONDA è quasi sempre la ③, perché le
-code `kiroshi-queue` e `braindance-queue` producono **verdetti**.
-⚠️ L'etichetta `commessa` deve esistere nel repo (lezione del 17/08).
+`braindance-queue` e, per le issue vecchie, `kiroshi-queue` — e sempre anche le issue nude.
+**Dall'11/10 ogni verdetto è di BRAINDANCE** (KIROSHI//OR è l'editor grafico di JUDY): la
+ronda tratta `kiroshi-queue` come `braindance-queue` e non manda più nulla a KIROSHI.
+**Un verdetto resta sempre in bozza** (la ③ delle quattro cose del Direttore); fonde da sé
+solo ciò che non vi cade. Code vuote = silenzio, niente subagent (misurato il 14/10: 21 issue,
+0 aperte dal 22/09). Il prompt in vigore: `ROOT_CLODE/DRAGO/RONDA-PROMPT-2026-10-14.md`
+(1 giro al giorno proposto, Max 5x). ⚠️ L'etichetta `commessa` deve esistere nel repo (17/08).
 
 **I DUE DRAGHI (dal 2026-08-19).** Esiste un gemello commerciale,
 **D.R.A.G.O.//CLIENT** (chat claude.ai, identità in `squadra/DRAGO-CLIENT.md`):
