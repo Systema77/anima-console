@@ -46,6 +46,70 @@
     if (dati.collaudo) collaudo.hidden = false;
   }
 
+  /* IL RITO NFC (SHUTTER §3; scritto il 19/10). Il chip arriva con e e c nell'indirizzo,
+     il QR senza: senza e/c resta la verifica di sempre. Il chip della mano punta alla
+     pagina generica, /anima/verifica/?id=MANO-nn&e=…&c=…: nessuna pagina nuova.
+     Il nonce del rito sta in localStorage, non in sessionStorage: su Android il secondo
+     tocco apre una scheda nuova. La sessione si scrive dove la legge area2.js. */
+  var q = new URLSearchParams(location.search);
+  var e = q.get('e'), c = q.get('c');
+  if (e && c && /^(SYS|MANO)-\d{2}$/.test(id)) {
+    // Un tocco vale una volta sola: ricaricare la pagina sarebbe un replay, e un 403.
+    history.replaceState(null, '', location.pathname + (id.indexOf('MANO-') === 0 ? '?id=' + id : ''));
+    tocca(id, e, c);
+    return;
+  }
+
+  function tocca(id, e, c) {
+    // Testi provvisori: le parole sono di JUDY (consegna del 19/10).
+    var TESTI = {
+      attesa: 'UN ATTIMO',
+      manca_mano: 'ORA LA MANO',
+      manca_carta: 'ORA LA CARTA',
+      sotto: 'Avvicina il telefono entro dieci minuti.',
+      fatto: 'SEI DENTRO',
+      no: 'NON APRE'
+    };
+    var API = 'https://api.cyberboomer.io';
+    var CHIAVE_RITO = 's77.rito';
+    var rito = null;
+    try { rito = JSON.parse(localStorage.getItem(CHIAVE_RITO) || 'null'); } catch (x) { /* privata */ }
+    if (rito && !(rito.scade > Date.now())) rito = null;
+
+    mostra('attesa', TESTI.attesa, { card_id: id, stato: 'tocco' });
+    var corpo = { id: id, e: e, c: c };
+    if (rito) corpo.rito = rito.nonce;
+    fetch(API + '/tocco', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(corpo)
+    })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (r) {
+        var d = r.d;
+        if (r.ok && d.sessione) {
+          try {
+            localStorage.removeItem(CHIAVE_RITO);
+            localStorage.setItem('s77.sessione', JSON.stringify({ token: d.sessione, scade: d.scade, carta: d.carta }));
+          } catch (x) { /* privata: si entra lo stesso, la sessione non resta */ }
+          mostra(null, TESTI.fatto, { card_id: d.carta, stato: 'attiva' });
+          location.replace('/anima/dashboard/?id=' + encodeURIComponent(d.carta));
+        } else if (r.ok && d.rito) {
+          try {
+            localStorage.setItem(CHIAVE_RITO, JSON.stringify({ nonce: d.rito, scade: Date.now() + d.scade_fra * 1000 }));
+          } catch (x) { /* privata: il secondo tocco non trovera' il rito */ }
+          mostra('attesa', d.manca === 'mano' ? TESTI.manca_mano : TESTI.manca_carta,
+                 { card_id: id, stato: TESTI.sotto });
+        } else {
+          if (d.errore === 'rito_scaduto') try { localStorage.removeItem(CHIAVE_RITO); } catch (x) { /* */ }
+          mostra('ko', TESTI.no, { card_id: id, stato: d.messaggio || TESTI.no });
+        }
+      })
+      .catch(function () {
+        mostra('ko', TESTI.no, { card_id: id, stato: 'rete assente: riavvicina il telefono' });
+      });
+  }
+
   if (!id || !/^[A-Z0-9-]{3,20}$/.test(id)) {
     mostra('attesa', 'NESSUN ID', { stato: 'in attesa di un ID' });
     return;
